@@ -1,5 +1,5 @@
 package model.component.constraint;
-
-public class Constraint {
+//GC
+public interface Constraint {
 
 }
