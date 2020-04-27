@@ -6,7 +6,7 @@ import java.util.List;
 //GC
 public interface Constraint {
 
-	String getNomeVincolo();
+	String getConstraintName();
 	boolean checkList(List<Component> components);
 	
 }
