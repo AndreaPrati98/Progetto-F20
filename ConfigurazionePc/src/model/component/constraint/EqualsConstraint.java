@@ -35,7 +35,7 @@ public class EqualsConstraint implements Constraint {
 			List<Constraint> constraints = comp.getConstraints();
 			//Ciclo interno per controllare i vincoli dell'i-esimo componente
 			for(Constraint constr : constraints) {
-				//Controllo se io (vincolo) e l'i-esimo vincolo abbiamo lo stesso nome
+				//Controllo se io (vincolo) e il j-esimo vincolo abbiamo lo stesso nome
 				if(constr.getConstraintName().equals(myName)){
 					//Se abbiamo lo stesso nome, ma attributi divesi (verificabile
 					//col metodo equals di object che controlla l'uguaglianza tra tutti 
