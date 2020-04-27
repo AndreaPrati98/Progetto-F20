@@ -45,16 +45,12 @@ public class EqualsConstraint implements Constraint {
 						return false;
 					}					
 				}						
+			}				
 		}
-			
+		
 		//Se ho controllato tutti e nessuno è incompatibile con i miei vincoli
 		//allora è ok
-		return true;			
-	}
-		
-		
-		
-		return false;
+		return true;
 	}
 
 
