@@ -9,7 +9,7 @@ import model.component.constraint.Constraint;
 public class Component {
 
 	private String typeComponent;
-	private List<Constraint> constraintList;
+	private List<Constraint> constraintList;//non è meglio una mappa??
 	private Map<String, String> attributesMap;
 
 	public Component(String typeComponent, List<Constraint> constraintList, Map<String, String> attributesMap) {
