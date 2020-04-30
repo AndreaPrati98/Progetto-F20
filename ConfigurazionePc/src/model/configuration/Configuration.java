@@ -68,6 +68,7 @@ public class Configuration {
 					if (!flag) {
 						return flag;
 					}
+					check=false;
 				}
 			}
 		}
