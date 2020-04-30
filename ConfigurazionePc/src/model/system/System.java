@@ -1,6 +1,6 @@
 package model.system;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import model.catalog.ComponentCatalog;
@@ -57,6 +57,10 @@ public class System {
 	@Override
 	public String toString() {
 		return "System [configuration=" + configuration + "]";
+	}
+
+	public Customer getCustomer() {
+		return customer;
 	}
 	
 	
