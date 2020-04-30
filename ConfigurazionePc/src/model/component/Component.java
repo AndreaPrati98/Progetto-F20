@@ -55,4 +55,15 @@ public class Component {
 		this.typeComponent = typeComponent;
 	}
 
+
+
+
+	@Override
+	public String toString() {
+		return "Component [typeComponent=" + typeComponent + ", constraintList=" + constraintList + ", attributesMap="
+				+ attributesMap + "]";
+	}
+	
+	
+
 }

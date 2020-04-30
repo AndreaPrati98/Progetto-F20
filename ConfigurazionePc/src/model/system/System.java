@@ -45,5 +45,20 @@ public class System {
 	public ComponentCatalog getCatalog(String compnentType) {
 		return catalog;
 	}
+	
+	public List<Component> getAddedComponents(){
+		return configuration.getAddedComponents();
+	}
+	
+	public List<String> getNeededComponents(){
+		return configuration.getNeededComponents();
+	}
+
+	@Override
+	public String toString() {
+		return "System [configuration=" + configuration + "]";
+	}
+	
+	
 
 }
