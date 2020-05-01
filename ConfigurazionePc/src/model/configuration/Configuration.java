@@ -43,44 +43,22 @@ public class Configuration {
 	public boolean checkConf() { // metodo per controllare se la mia configurazione permette di creare un pc
 									// funzionante
 		boolean flag = false; // salvero' true se la mia configurazione funziona, false altrimenti
-		boolean check = true; // variabile per controllare se nell'inventario ho gia un determinato componente
-		List<String> tempInventary = new ArrayList<String>(); // creo un "inventerio" per sapere quali tipi di
-																// componenti ho gia aggiunto
 		if (addedComponents.size() >= neededComponents.size()) { // se il # dei componenti aggiunti è < del # di quelli
-																	// obbligatori mi fermo a priori
-			for (Component comp : addedComponents) {
-				for (String ti : tempInventary) {
-					if (comp.getTypeComponent().equals(ti)) { // se un tipo di componente è gia presente
-																// nell'inventario non lo riaggiungo
-						check = false; // setto a false perchè nell'inventario non ho trovato quel elemento, lo
-										// rimando all'if seguente
+			for (String nc : neededComponents) { // con il doppio ciclo controllo se gli elementi dell'inventario
+				for (Component ac : addedComponents) { // sono tutti quelli obbligatori
+					if (nc.equals(ac.getTypeComponent())) {
+						flag = true;
 						break;
 					}
 				}
-				if (check) {
-					tempInventary.add(comp.getTypeComponent()); // dato che non l'ho trovato, lo aggiungo
+				if (!flag) {
+					return flag;
 				}
-				check = true;
+				flag = false;
 			}
-			if (tempInventary.size() >= neededComponents.size()) { // se il mio inventario è piu piccolo dei componenti
-																	// obbligatori mi fermo a priori
-				flag = true;
-				check = false;
-				for (String nc : neededComponents) { // con il doppio ciclo controllo se gli elementi dell'inventario
-														// sono tutti quelli obbligatori
-					for (String ti : tempInventary) {
-						if (nc.equals(ti)) {
-							check = true;
-							break;
-						}
-					}
-					flag = flag && check;
-					if (!flag) {
-						return flag;
-					}
-					check = false;
-				}
-			}
+			flag = true;
+			return flag;
+
 		}
 		return flag;
 	}
@@ -97,7 +75,5 @@ public class Configuration {
 	public String toString() {
 		return "Configuration [addedComponents=" + addedComponents + "]";
 	}
-	
-	
-	
+
 }
