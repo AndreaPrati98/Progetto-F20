@@ -25,9 +25,9 @@ public class Configuration {
 	/**
 	 * aggiunta del componente scelto nella lista dei componenti solo se compatibile
 	 * 
-	 * @param c type:{@link Component}-->Component that you would like to add.
+	 * @param c type:{@link Component} Component that you would like to add.
 	 * @return true if the component have been added,false if the component haven't been added
-	 * @see {@link Component} 
+	 * @see Component 
 	 * 
 	 * */
 	public boolean addComponent(Component c) {
@@ -57,7 +57,7 @@ public class Configuration {
 	}
 
 	/**
-	 * se il numero dei componenti aggiunti è < del numero di quelli necessari restituisco subito false
+	 * se il numero dei componenti aggiunti è minore del numero di quelli necessari restituisco subito false
 	 * altrimenti con il doppio ciclo controllo se gli elementi di neededComponent sono contenuti tutti 
 	 *  in added component
 	 * @return true added components contains essential components
@@ -85,7 +85,7 @@ public class Configuration {
 	}
 	/**
 	 * 
-	 * @return neededComponents
+	 * @return - neededComponents
 	 */
 	public List<String> getNeededComponents() {
 		return neededComponents;
