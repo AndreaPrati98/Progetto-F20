@@ -3,6 +3,8 @@ package model.customer;
 import java.lang.module.Configuration;
 import java.util.ArrayList;
 import java.util.List;
+
+import model.system.System;
 /**
  * 
  * @author Andrea
@@ -14,9 +16,11 @@ public class Customer {
 	
 	//private String name;
 	private List<Configuration> configurationList;
-
-	public Customer() {
+	private System facadeController;
+	
+	public Customer(System system) {
 		configurationList = new ArrayList<Configuration>();
+		facadeController = system;
 	}
 	
 	public List<Configuration> getConfigurationList() {
