@@ -33,7 +33,7 @@ public class ComponentCatalog {
 	
 	/**
 	 * 
-	 * @param newComponent - the component you want to add 
+	 * @param remComponent - the component you want to remove 
 	 * @return false - if the componentList already conains this component or newComponent is null
 	 * @return true - if is alright
 	 */
