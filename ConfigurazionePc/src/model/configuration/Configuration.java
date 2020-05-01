@@ -51,13 +51,13 @@ public class Configuration {
 						break;
 					}
 				}
-				if (!flag) {
-					return flag;
+				if (!flag) { 
+					return flag; //se la configurazione non è funzionante ritorno subito flag al programma, senza curarmi delle altre componenti
 				}
-				flag = false;
+				flag = false; //reimposto il flag a false per quando ripartira' il ciclo
 			}
 			flag = true;
-			return flag;
+			return flag; //se tutto fila liscio ritorno il flag = true
 
 		}
 		return flag;
