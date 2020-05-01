@@ -23,7 +23,8 @@ public class Configuration {
 	 * @param c - Component that you would like to add.
 	 * @return true - if the component have been added
 	 * @return false - if the component haven't been added
-	 * @see {@link Component}
+	 * @see {@link Component} 
+	 * 
 	 * */
 	public boolean addComponent(Component c) {
 		if (check(c)) {

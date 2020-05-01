@@ -51,6 +51,7 @@ public class System {
 	/**
 	 * @param comp - Component that you would like to add.
 	 * @see {@link Configuration}
+	 * 
 	 * */
 	public void addComponent(Component comp) {
 		configuration.addComponent(comp);
