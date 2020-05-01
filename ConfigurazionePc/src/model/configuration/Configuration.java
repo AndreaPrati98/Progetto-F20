@@ -6,7 +6,9 @@ import java.util.List;
 import model.component.Component;
 import model.component.constraint.Constraint;
 
-//Frenkli Buzhiqi, Alessandro Capici
+/**
+ * @author Capici Alessandro ,Frenkli Buzhiqi
+ * */
 
 public class Configuration {
 	private List<String> neededComponents; // lista di elementi obbligatori per far si che un pc si possa accendere
@@ -17,7 +19,12 @@ public class Configuration {
 		this.neededComponents = neededComponents;
 		addedComponents = new ArrayList<Component>();
 	}
-
+	/**
+	 * @param c - Component that you would like to add.
+	 * @return true - if the component have been added
+	 * @return false - if the component haven't been added
+	 * @see {@link Component}
+	 * */
 	public boolean addComponent(Component c) {
 		if (check(c)) {
 			addedComponents.add(c);// aggiunta del componente scelto nella lista dei componenti solo se compatibile
