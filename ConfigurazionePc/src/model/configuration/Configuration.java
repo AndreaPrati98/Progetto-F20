@@ -40,7 +40,7 @@ public class Configuration {
 	}
 
 	/**
-	 * se anche solo un vincolo non è rispettato esco dal ciclo restituendo false
+	 * se anche solo un vincolo non è rispettato esco dal ciclo restituendo false 
 	 * @param c type:{@link Component}
 	 * @return true if the component will respect constraint,false if the component will not respect constraint
 	 */
