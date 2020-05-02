@@ -5,7 +5,11 @@ import java.util.Map;
 
 import model.component.constraint.Constraint;
 
-//Capici Alessandro
+/**
+ * 
+ * @author Capici Alessandro
+ *
+ */
 public class Component {
 
 	private String typeComponent;
@@ -20,7 +24,10 @@ public class Component {
 
 	
 	
-	
+	/**
+	 * 
+	 * @return constraint's list
+	 */
 	public List<Constraint> getConstraints() {
 		// TODO Auto-generated method stub
 		return this.constraintList;
@@ -28,14 +35,22 @@ public class Component {
 
 
 
-
+	/**
+	 * 
+	 * @return attributes map
+	 */
 	public Map<String, String> getAttributesMap() {
 		return attributesMap;
 	}
 
 
 
-
+	/**
+	 * 
+	 * @param key type:String
+	 * @param attributes type:String
+	 * @return true if attributesMap 's attributes will be replace
+	 */
 	public boolean setAttributesMap(String key, String attributes) {
 		attributesMap.replace(key, attributes);
 		return true;
@@ -43,14 +58,20 @@ public class Component {
 
 
 
-
+	/**
+	 * 
+	 * @return type component
+	 */
 	public String getTypeComponent() {
 		return typeComponent;
 	}
 
 
 
-
+	/**
+	 * 
+	 * @param typeComponent type:String
+	 */
 	public void setTypeComponent(String typeComponent) {
 		this.typeComponent = typeComponent;
 	}

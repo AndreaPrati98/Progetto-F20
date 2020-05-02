@@ -5,7 +5,11 @@ import java.util.List;
 
 import model.component.Component;
 
-// Capici Alessandro
+/**
+ * 
+ * @author Capici Alessandro
+ *
+ */
 public class DimensionConstraint implements Constraint {
 
 	private String name;
@@ -26,6 +30,14 @@ public class DimensionConstraint implements Constraint {
 	}
 
 	@Override
+	/**
+	 * Vede se il nuovo componente e conforme alle compatibilità ,controllando prima se deve essere inserito
+	 * o deve ospitare e poi maggiorandolo o minorandolo rispetto agli  opportuni valori massimi o minimi
+	 * usa sia getNestedType che getIEDimension
+	 *
+	 * @param component type:{@link Component}
+	 * @return true if the component will respect the constraint,false if it will not respect the costraint
+	 */
 	public boolean checkList(List<Component> components) {
 		// TODO Auto-generated method stub
 		List<Constraint> lista;
@@ -57,7 +69,11 @@ public class DimensionConstraint implements Constraint {
 		}
 		return flag;
 	}
-
+	/**
+	 * Ritorna se il componente in questione deve essere inserito o deve ospitare un altro componente
+	 * @param c (Component) {@link Component}
+	 * @return INTERNAL or EXTERNAL
+	 */
 	private String getNestedType(Component c) { // sarebbe meglio creare un enum
 		String buffer = null;
 		String attributes = c.getAttributesMap().get(c.getTypeComponent());
@@ -72,6 +88,13 @@ public class DimensionConstraint implements Constraint {
 
 	}
 
+	/**
+	 * Ritorna tutte le dimensioni da rispettare , fa uso a sua volta di GetNestedType 
+	 * @param component tyoe:{@link Component}
+	 * @param b type:String
+	 * @param ri type:Integer
+	 * @return
+	 */
 	private List<Double> getIEDimension(List<Component> component, String b, int ri) {
 		List<Double> dim = new ArrayList<Double>();
 		List<Constraint> lista;
@@ -90,11 +113,17 @@ public class DimensionConstraint implements Constraint {
 		return dim;
 
 	}
-
+	/**
+	 * 
+	 * @return referenceIndex
+	 */
 	public int getReferenceIndex() {
 		return referenceIndex;
 	}
-
+	/**
+	 * 
+	 * @return value
+	 */
 	public double getValue() {
 		return value;
 	}
