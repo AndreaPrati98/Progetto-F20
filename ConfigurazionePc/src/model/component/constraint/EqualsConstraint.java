@@ -58,5 +58,17 @@ public class EqualsConstraint implements Constraint {
 		return true;
 	}
 
+	@Override
+	public String getValue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ConstraintType getConstraintType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
