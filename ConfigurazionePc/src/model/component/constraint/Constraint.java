@@ -3,10 +3,16 @@ import model.component.*;
 
 import java.util.List;
 
-//GC
+/**
+ * 
+ * @author Guglielmo Cassini
+ *
+ */
 public interface Constraint {
 
 	String getConstraintName();
 	boolean checkList(List<Component> components);
+	String getValue();
+	ConstraintType getConstraintType();
 	
 }
