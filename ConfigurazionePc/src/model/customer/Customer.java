@@ -4,7 +4,7 @@ import java.lang.module.Configuration;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.system.System;
+import model.system.Configurator;
 /**
  * 
  * @author Andrea
@@ -16,9 +16,10 @@ public class Customer {
 	
 	//private String name;
 	private List<Configuration> configurationList;
-	private System facadeController;
+	@SuppressWarnings("unused")
+	private Configurator facadeController;
 	
-	public Customer(System system) {
+	public Customer(Configurator system) {
 		configurationList = new ArrayList<Configuration>();
 		facadeController = system;
 	}

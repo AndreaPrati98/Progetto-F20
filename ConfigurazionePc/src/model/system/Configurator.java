@@ -14,13 +14,13 @@ import model.customer.Customer;
  * 
  * 
  * */
-public class System {
+public class Configurator {
 
 	private ComponentCatalog catalog;
 	private Customer customer;
 	private Configuration configuration;
 
-	public System(ComponentCatalog catalog, Customer customer) {
+	public Configurator(ComponentCatalog catalog, Customer customer) {
 		this.catalog = catalog;
 		this.customer = customer;
 
