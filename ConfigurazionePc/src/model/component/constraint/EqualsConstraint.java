@@ -8,7 +8,12 @@ public class EqualsConstraint implements Constraint {
 
 	private String name;
 	private String value;
-
+	
+	/**
+	 * 
+	 * @param name
+	 * @param value
+	 */
 	public EqualsConstraint(String name, String value) {
 		super();
 		this.name = name;
@@ -22,7 +27,7 @@ public class EqualsConstraint implements Constraint {
 	}
 		
 	//Controlla se esiste almeno un vincolo che abbia nome uguale ma 
-	//valore diverso rispetto al me-vincolo.
+	//valore diverso rispetto al this.
 	//Se esiste --> False
 	//Se non esiste --> True
 	@Override
