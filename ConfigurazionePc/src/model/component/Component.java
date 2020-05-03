@@ -12,12 +12,12 @@ import model.component.constraint.Constraint;
  */
 public class Component {
 
-	private String name;
+	private String typeComponent;
 	private List<Constraint> constraintList;//non è meglio una mappa??
 	private Map<String, String> attributesMap;
 
-	public Component(String name, List<Constraint> constraintList, Map<String, String> attributesMap) {
-		this.setNameComponent(name);
+	public Component(String typeComponent, List<Constraint> constraintList, Map<String, String> attributesMap) {
+		this.setTypeComponent(typeComponent);
 		this.constraintList = constraintList;
 		this.attributesMap=attributesMap;
 	}
@@ -62,8 +62,8 @@ public class Component {
 	 * 
 	 * @return type component
 	 */
-	public String getNameComponent() {
-		return name;
+	public String getTypeComponent() {
+		return typeComponent;
 	}
 
 
@@ -72,8 +72,8 @@ public class Component {
 	 * 
 	 * @param typeComponent type:String
 	 */
-	public void setNameComponent(String name) {
-		this.name = name;
+	public void setTypeComponent(String typeComponent) {
+		this.typeComponent = typeComponent;
 	}
 
 
@@ -81,7 +81,7 @@ public class Component {
 
 	@Override
 	public String toString() {
-		return "Component [typeComponent=" + name + ", constraintList=" + constraintList + ", attributesMap="
+		return "Component [typeComponent=" + typeComponent + ", constraintList=" + constraintList + ", attributesMap="
 				+ attributesMap + "]";
 	}
 	
