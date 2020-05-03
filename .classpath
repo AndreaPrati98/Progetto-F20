@@ -6,5 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="ConfigurazionePc/src"/>
+	<classpathentry kind="lib" path="ConfigurazionePc/src/model/util/json-simple-1.1.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

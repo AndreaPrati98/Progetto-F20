@@ -11,7 +11,7 @@ import view.TesterFrame.TypeList;
 public class Tester {
 	
 	public static void main(String[] args) {
-	
+		
 		TesterFrame pippo = new TesterFrame("Frame di test");
 		pippo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pippo.setVisible(true);
@@ -29,6 +29,7 @@ public class Tester {
 				System.out.println("fatto 3");
 			}
 		});
+
 		
 	}
 	

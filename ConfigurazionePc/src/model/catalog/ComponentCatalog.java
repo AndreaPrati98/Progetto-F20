@@ -1,9 +1,9 @@
 package model.catalog;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import model.component.Component;
+import model.util.JSONUtil;
 /**
  * Here is where we have the list of all components 
  * @author Andrea
@@ -14,7 +14,8 @@ public class ComponentCatalog {
 	private List<Component> componentList;
 	
 	public ComponentCatalog() {
-		componentList = new ArrayList<Component>();
+		//componentList = new ArrayList<Component>();
+		componentList = (new JSONUtil()).getComponents();
 	}
 	
 	/**
