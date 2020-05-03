@@ -23,11 +23,11 @@ public class Listener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource().equals(view.getAddComponentButton())) {
-			System.out.println("daad");
+			view.getListModelAdded().addElement(view.getComponentJList().getSelectedValue());
 		}
 		
 		if(e.getSource().equals(view.getRemoveComponenButtont())) {
-			
+			view.getListModelAdded().removeElementAt(view.getChosenJList().getSelectedIndex());
 		}
 		
 	}

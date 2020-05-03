@@ -45,7 +45,8 @@ public class TesterFrame extends JFrame {
 	private JLabel infoLabel;
 	private JList<String> componentJList;
 	private JList<String> chosenJList;
-	private DefaultListModel<String> listModel;
+	private DefaultListModel<String> listModelCatalog;
+	private DefaultListModel<String> listModelAdded;
 
 	// Queste due liste servono solo ad aggiornare le JList (non conosco altri modi)
 	private LinkedList<String> bufferComponent;
@@ -63,9 +64,10 @@ public class TesterFrame extends JFrame {
 
 		addingRemovingComponent = new JPanel();
 		managingConfiguration = new JPanel();
-		listModel = new DefaultListModel<String>();
-		componentJList = new JList(listModel);
-		chosenJList = new JList<String>();
+		listModelCatalog = new DefaultListModel<String>();
+		listModelAdded = new DefaultListModel<String>();
+		componentJList = new JList(listModelCatalog);
+		chosenJList = new JList<String>(listModelAdded);
 
 		choiceOfComponents = this.createJSplitPane(this.createScrollPanel(componentJList),
 				this.createScrollPanel(chosenJList));
@@ -221,12 +223,17 @@ public class TesterFrame extends JFrame {
 		return componentJList;
 	}
 	
-	public DefaultListModel<String> getListModel() {
-		return listModel;
+	public DefaultListModel<String> getListModelCatalog() {
+		return listModelCatalog;
 	}
 
 	public JList<String> getChosenJList() {
 		return chosenJList;
 	}
 
+	public DefaultListModel<String> getListModelAdded() {
+		return listModelAdded;
+	}
+
+	
 }

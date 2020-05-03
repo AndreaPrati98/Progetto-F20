@@ -15,9 +15,15 @@ public class Controller {
 		String s=null;
 		for (Component c : model.getCatalog().getComponentList()) {
 			s=c.getAttributesMap().get("name");
-			view.getListModel().addElement(s);
+			view.getListModelCatalog().addElement(s);
 		}
+		addListener();
 		
+	}
+	
+	private void addListener() {
+		view.getAddComponentButton().addActionListener(new Listener(view, model));
+		view.getRemoveComponenButtont().addActionListener(new Listener(view, model));
 	}
 
 }
