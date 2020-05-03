@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.LinkedList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -34,9 +35,13 @@ public class TesterFrame extends JFrame {
 	private JLabel infoLabel;
 	private JList<String> componentJList;
 	private JList<String> chosenJList;
+
+	private LinkedList<String> bufferComponents;	
 	
 	public TesterFrame(String title) {
 		super(title);
+		this.bufferComponents = new LinkedList<String>();
+		
 		this.initialPosition();
 		content = this.getContentPane();
 		
@@ -122,15 +127,16 @@ public class TesterFrame extends JFrame {
 	 * 
 	 * @param s
 	 */
+	
 	/*
-	public void addElementJList(String s) {
+	public void addElementJList(JList<String> list, String s) {
 		//TODO  
-		lm.add(s);
+		bufferComponents.add(s);
 		//devo aggiungere il vettore di stringe, lo dichiaro, lo riempio e poi lo metto dento alla JList 
-		String[] listData = new String[lm.size()];
+		String[] listData = new String[bufferComponents.size()];
 		
 		int i = 0;
-		for(String elem : lm) {
+		for(String elem : bufferComponents) {
 			
 			listData[i] = elem;
 			i++;
@@ -157,7 +163,5 @@ public class TesterFrame extends JFrame {
 		
 	}
 	*/
-	
-	
 	
 }
