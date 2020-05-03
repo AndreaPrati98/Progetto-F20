@@ -81,8 +81,8 @@ public class DimensionConstraint implements Constraint {
 	 * Ritorna tutte le dimensioni da rispettare , fa uso a sua volta di
 	 * GetNestedType
 	 * 
-	 * @param component tyoe:{@link Component}
-	 * @param externalConstraintType   type:{@link ConstraintType}
+	 * @param component              tyoe:{@link Component}
+	 * @param externalConstraintType type:{@link ConstraintType}
 	 * @return dimension's list
 	 */
 	@SuppressWarnings("unlikely-arg-type")
@@ -92,8 +92,9 @@ public class DimensionConstraint implements Constraint {
 		for (Component c : component) {
 			lista = c.getConstraints();
 			for (Constraint listOfConstraint : lista) {
-				String internalConstraintType =listOfConstraint.getConstraintName();
-				if (this.name.equals(listOfConstraint.getConstraintName()) && !(externalConstraintType.equals(internalConstraintType))) {
+				String internalConstraintType = listOfConstraint.getConstraintName();
+				if (this.name.equals(listOfConstraint.getConstraintName())
+						&& !(externalConstraintType.equals(internalConstraintType))) {
 					Double d = Double.parseDouble(getValue());
 					dim.add(d);
 				}
