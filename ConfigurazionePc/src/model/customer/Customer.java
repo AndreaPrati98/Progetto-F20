@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.configuration.Configuration;
-import model.system.Configurator;
+import model.configurator.Configurator;
 /**
  * 
  * @author Andrea

@@ -5,7 +5,9 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.LinkedList;
+import java.util.List;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,7 +15,10 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.ListModel;
 import javax.swing.ScrollPaneConstants;
+
+import model.component.Component;
 
 /**
  * 
@@ -40,6 +45,7 @@ public class TesterFrame extends JFrame {
 	private JLabel infoLabel;
 	private JList<String> componentJList;
 	private JList<String> chosenJList;
+	private DefaultListModel<String> listModel;
 
 	// Queste due liste servono solo ad aggiornare le JList (non conosco altri modi)
 	private LinkedList<String> bufferComponent;
@@ -49,7 +55,7 @@ public class TesterFrame extends JFrame {
 		super(title);
 		this.bufferComponent = new LinkedList<String>();
 		this.bufferNewComponent = new LinkedList<String>();
-		
+
 		this.initialPosition();
 		content = this.getContentPane();
 
@@ -57,11 +63,12 @@ public class TesterFrame extends JFrame {
 
 		addingRemovingComponent = new JPanel();
 		managingConfiguration = new JPanel();
-
-		componentJList = new JList<String>();
+		listModel = new DefaultListModel<String>();
+		componentJList = new JList(listModel);
 		chosenJList = new JList<String>();
 
-		choiceOfComponents = this.createJSplitPane(this.createScrollPanel(componentJList), this.createScrollPanel(chosenJList));
+		choiceOfComponents = this.createJSplitPane(this.createScrollPanel(componentJList),
+				this.createScrollPanel(chosenJList));
 		addingRemovingComponent.add(choiceOfComponents);
 
 		addComponentButton = new JButton("AGGIUNGI COMPONENTE");
@@ -74,6 +81,8 @@ public class TesterFrame extends JFrame {
 
 		content.add(addingRemovingComponent, BorderLayout.NORTH);
 		content.add(managingConfiguration, BorderLayout.SOUTH);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setVisible(true);
 
 	}
 
@@ -133,13 +142,14 @@ public class TesterFrame extends JFrame {
 	}
 
 	/**
-	 * Add an element to a JList and refresh the JSplitPanel in which there is the list
+	 * Add an element to a JList and refresh the JSplitPanel in which there is the
+	 * list
 	 * 
 	 * @param s
 	 * @param typePanel - type of panel in which there is the list we wanto to
 	 */
 	public void addElementJList(TesterFrame.TypeList typeList, String s) {
-		
+
 		// devo aggiungere il vettore di stringe, lo dichiaro, lo riempio e poi lo metto
 		// dento alla JList
 
@@ -163,7 +173,6 @@ public class TesterFrame extends JFrame {
 		} else {
 			throw new IllegalArgumentException("typeList this method isn't able to handle");
 		}
-		
 
 		// questa sezione decide quale JList aggiornare
 		if (typeList == TesterFrame.TypeList.NEW_COMPONENT_LIST) {
@@ -175,7 +184,8 @@ public class TesterFrame extends JFrame {
 		}
 
 		addingRemovingComponent.remove(choiceOfComponents);
-		choiceOfComponents = this.createJSplitPane(this.createScrollPanel(componentJList), this.createScrollPanel(chosenJList));
+		choiceOfComponents = this.createJSplitPane(this.createScrollPanel(componentJList),
+				this.createScrollPanel(chosenJList));
 		addingRemovingComponent.add(choiceOfComponents);
 
 		addingRemovingComponent.revalidate();
@@ -209,6 +219,10 @@ public class TesterFrame extends JFrame {
 
 	public JList<String> getComponentJList() {
 		return componentJList;
+	}
+	
+	public DefaultListModel<String> getListModel() {
+		return listModel;
 	}
 
 	public JList<String> getChosenJList() {

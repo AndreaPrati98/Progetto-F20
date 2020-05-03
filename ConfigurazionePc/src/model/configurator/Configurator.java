@@ -1,4 +1,4 @@
-package model.system;
+package model.configurator;
 
 
 import java.util.List;
@@ -20,9 +20,9 @@ public class Configurator {
 	private Customer customer;
 	private Configuration configuration;
 
-	public Configurator(ComponentCatalog catalog, Customer customer) {
+	public Configurator(ComponentCatalog catalog) {
 		this.catalog = catalog;
-		this.customer = customer;
+
 
 	}
 	/**
