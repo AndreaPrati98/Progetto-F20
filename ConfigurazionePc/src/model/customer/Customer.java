@@ -1,9 +1,10 @@
 package model.customer;
 
-import java.lang.module.Configuration;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import model.configuration.Configuration;
 import model.system.Configurator;
 /**
  * 
