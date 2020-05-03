@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.util.LinkedList;
 
@@ -26,9 +27,13 @@ public class TesterFrame extends JFrame {
 
 	// si parte dal presupposto che sia unica la configurazione che stiamo creando
 	
+	public static enum typeList {
+		NEW_COMPONENT_LIST, ADDED_COMPONENT_LIST;
+	}
+	
 	private Container content;
 	private JPanel addingRemovingComponent;
-	private JPanel managingConfigurations;
+	private JPanel managingConfiguration;
 	private JSplitPane choiceOfComponents;
 	private JButton addComponentButton;
 	private JButton removeComponenButtont;
@@ -36,11 +41,13 @@ public class TesterFrame extends JFrame {
 	private JList<String> componentJList;
 	private JList<String> chosenJList;
 
-	private LinkedList<String> bufferComponents;	
+	// Queste due liste servono solo ad aggiornare le JList (non conosco altri modi)
+	private LinkedList<String> bufferComponent;
+	private LinkedList<String> bufferNewComponent;
 	
 	public TesterFrame(String title) {
 		super(title);
-		this.bufferComponents = new LinkedList<String>();
+		this.bufferComponent = new LinkedList<String>();
 		
 		this.initialPosition();
 		content = this.getContentPane();
@@ -48,7 +55,7 @@ public class TesterFrame extends JFrame {
 		content.setLayout(new BorderLayout());
 		
 		addingRemovingComponent = new JPanel();
-		managingConfigurations = new JPanel();
+		managingConfiguration = new JPanel();
 		
 		componentJList = new JList<String>();
 		chosenJList = new JList<String>();
@@ -62,10 +69,11 @@ public class TesterFrame extends JFrame {
 		addingRemovingComponent.add(removeComponenButtont);
 		
 		infoLabel = new JLabel("Qui visualizzerai le informazioni sulla configurazione che stai creando");
-		managingConfigurations.add(infoLabel);
+		managingConfiguration.add(infoLabel);
 		
 		content.add(addingRemovingComponent, BorderLayout.NORTH);
-		content.add(managingConfigurations, BorderLayout.SOUTH);
+		content.add(managingConfiguration, BorderLayout.SOUTH);
+		
 	}
 	
 	/**
@@ -126,28 +134,37 @@ public class TesterFrame extends JFrame {
 	/**
 	 * 
 	 * @param s
+	 * @param typePanel - type of panel in witch there is the list we wanto to 
 	 */
 	
-	/*
-	public void addElementJList(JList<String> list, String s) {
+	
+	public void addElementJList(TesterFrame.typeList typeList, String s) {
 		//TODO  
-		bufferComponents.add(s);
+		bufferComponent.add(s);
 		//devo aggiungere il vettore di stringe, lo dichiaro, lo riempio e poi lo metto dento alla JList 
-		String[] listData = new String[bufferComponents.size()];
+		String[] listData = new String[bufferComponent.size()];
 		
 		int i = 0;
-		for(String elem : bufferComponents) {
-			
+		for(String elem : bufferComponent) {	
 			listData[i] = elem;
 			i++;
 			
 		}
 		
+		if(typeList == TesterFrame.typeList.NEW_COMPONENT_LIST) {
+			componentJList.setListData(listData);
+		}else if(typeList == TesterFrame.typeList.ADDED_COMPONENT_LIST) {
+			componentJList.setListData(listData);
+		} else {
+			throw new IllegalArgumentException("typeList this method isn't able to handle");
+		}
 		
-		ibanList.setListData(listData);
+		addingRemovingComponent.remove(choiceOfComponents);
+		choiceOfComponents = this.createJSplitPane(this.createScrollPanel(componentJList), this.createScrollPanel(chosenJList));
 		
-		p0.remove(splitPane);
-		
+		addingRemovingComponent.revalidate();
+		addingRemovingComponent.repaint();
+/*		
 		scrollPaneIban = createScrollPanel(ibanList);
 		
 		//creo spazio per le info
@@ -160,8 +177,7 @@ public class TesterFrame extends JFrame {
 		
 		p0.revalidate();
 		p0.repaint();
-		
+*/		
 	}
-	*/
 	
 }
