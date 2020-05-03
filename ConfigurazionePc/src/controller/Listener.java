@@ -5,14 +5,22 @@ import java.awt.event.ActionListener;
 
 import model.configurator.Configurator;
 import view.TesterFrame;
-
+/**
+ * 
+ * @author Ripari Irene
+ *
+ */
 public class Listener implements ActionListener {
 	
 	private TesterFrame view;
 	private Configurator model;
 	
 	
-
+	/**
+	 * 
+	 * @param view
+	 * @param model
+	 */
 	public Listener(TesterFrame view, Configurator model) {
 		this.view = view;
 		this.model = model;
