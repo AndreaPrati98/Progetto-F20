@@ -6,23 +6,23 @@
                     "name": "Vincolo ramSize",
                     "constraint": "DimensionConstraint",
                     "type": "EXTERNAL",
-                    "value": "ramSize"
+                    "value": "128"
                 },
                 {
                     "name": "Vincolo cpuSocket",
                     "constraint": "EqualsConstraint",
-                    "value": "cpuSocket"
+                    "value": "1151"
                 },
                 {
                     "name": "Vincolo ramType",
                     "constraint": "EqualsConstraint",
-                    "value": "ramType"
+                    "value": "ddr4"
                 },
                 {
                     "name": "Vincolo alimentazione",
                     "constraint": "MaxConstraint",
                     "type": "INTERNAL",
-                    "value": "power"
+                    "value": "65"
                 }
             ],
             "attributesMap": {
@@ -45,23 +45,23 @@
                     "name": "Vincolo ramSize",
                     "constraint": "DimensionConstraint",
                     "type": "EXTERNAL",
-                    "value": "ramSize"
+                    "value": "64"
                 },
                 {
                     "name": "Vincolo cpuSocket",
                     "constraint": "EqualsConstraint",
-                    "value": "cpuSocket"
+                    "value": "1440"
                 },
                 {
                     "name": "Vincolo ramType",
                     "constraint": "EqualsConstraint",
-                    "value": "ramType"
+                    "value": "ddr4"
                 },
                 {
                     "name": "Vincolo alimentazione",
                     "constraint": "MaxConstraint",
                     "type": "INTERNAL",
-                    "value": "power"
+                    "value": "25"
                 }
             ],
             "attributesMap": {
@@ -84,23 +84,23 @@
                     "name": "Vincolo ramSize",
                     "constraint": "DimensionConstraint",
                     "type": "EXTERNAL",
-                    "value": "ramSize"
+                    "value": "64"
                 },
                 {
                     "name": "Vincolo cpuSocket",
                     "constraint": "EqualsConstraint",
-                    "value": "cpuSocket"
+                    "value": "1151"
                 },
                 {
                     "name": "Vincolo ramType",
                     "constraint": "EqualsConstraint",
-                    "value": "ramType"
+                    "value": "ddr4"
                 },
                 {
                     "name": "Vincolo alimentazione",
                     "constraint": "MaxConstraint",
                     "type": "INTERNAL",
-                    "value": "power"
+                    "value": "65"
                 }
             ],
             "attributesMap": {
@@ -123,23 +123,23 @@
                     "name": "Vincolo ramSize",
                     "constraint": "DimensionConstraint",
                     "type": "EXTERNAL",
-                    "value": "ramSize"
+                    "value": "128"
                 },
                 {
                     "name": "Vincolo cpuSocket",
                     "constraint": "EqualsConstraint",
-                    "value": "cpuSocket"
+                    "value": "1440"
                 },
                 {
                     "name": "Vincolo ramType",
                     "constraint": "EqualsConstraint",
-                    "value": "ramType"
+                    "value": "ddr4"
                 },
                 {
                     "name": "Vincolo alimentazione",
                     "constraint": "MaxConstraint",
                     "type": "INTERNAL",
-                    "value": "power"
+                    "value": "45"
                 }
             ],
             "attributesMap": {
@@ -162,23 +162,23 @@
                     "name": "Vincolo ramSize",
                     "constraint": "DimensionConstraint",
                     "type": "EXTERNAL",
-                    "value": "ramSize"
+                    "value": "128"
                 },
                 {
                     "name": "Vincolo cpuSocket",
                     "constraint": "EqualsConstraint",
-                    "value": "cpuSocket"
+                    "value": "am4"
                 },
                 {
                     "name": "Vincolo ramType",
                     "constraint": "EqualsConstraint",
-                    "value": "ramType"
+                    "value": "ddr4"
                 },
                 {
                     "name": "Vincolo alimentazione",
                     "constraint": "MaxConstraint",
                     "type": "INTERNAL",
-                    "value": "power"
+                    "value": "95"
                 }
             ],
             "attributesMap": {
@@ -200,13 +200,13 @@
                 {
                     "name": "Vincolo formFactor",
                     "constraint": "EqualsConstraint",
-                    "value": "formFactor"
+                    "value": "atx"
                 },
                 {
                     "name": "Vincolo graphicCardLength",
                     "constraint": "DimensionConstraint",
                     "type": "EXTERNAL",
-                    "value": "graphicCardLength"
+                    "value": "350"
                 }
             ],
             "attributesMap": {
@@ -221,13 +221,13 @@
                 {
                     "name": "Vincolo formFactor",
                     "constraint": "EqualsConstraint",
-                    "value": "formFactor"
+                    "value": "atx"
                 },
                 {
                     "name": "Vincolo graphicCardLength",
                     "constraint": "DimensionConstraint",
                     "type": "EXTERNAL",
-                    "value": "graphicCardLength"
+                    "value": "381"
                 }
             ],
             "attributesMap": {
@@ -242,13 +242,13 @@
                 {
                     "name": "Vincolo formFactor",
                     "constraint": "EqualsConstraint",
-                    "value": "formFactor"
+                    "value": "micro atx"
                 },
                 {
                     "name": "Vincolo graphicCardLength",
                     "constraint": "DimensionConstraint",
                     "type": "EXTERNAL",
-                    "value": "graphicCardLength"
+                    "value": "315"
                 }
             ],
             "attributesMap": {
@@ -263,7 +263,7 @@
                 {
                     "name": "Vincolo cpuSocket",
                     "constraint": "EqualsConstraint",
-                    "value": "cpuSocket"
+                    "value": "am4"
                 }
             ],
             "attributesMap": {
@@ -278,7 +278,7 @@
                 {
                     "name": "Vincolo cpuSocket",
                     "constraint": "EqualsConstraint",
-                    "value": "cpuSocket"
+                    "value": "1151"
                 }
             ],
             "attributesMap": {
@@ -293,7 +293,7 @@
                 {
                     "name": "Vincolo cpuSocket",
                     "constraint": "EqualsConstraint",
-                    "value": "cpuSocket"
+                    "value": "1140"
                 }
             ],
             "attributesMap": {
@@ -308,7 +308,7 @@
                 {
                     "name": "Vincolo cpuSocket",
                     "constraint": "EqualsConstraint",
-                    "value": "cpuSocket"
+                    "value": "1151"
                 }
             ],
             "attributesMap": {
@@ -324,7 +324,7 @@
                     "name": "Vincolo alimentazione",
                     "constraint": "MaxConstraint",
                     "type": "EXTERNAL",
-                    "value": "power"
+                    "value": "750"
                 }
             ],
             "attributesMap": {
@@ -339,7 +339,7 @@
                     "name": "Vincolo alimentazione",
                     "constraint": "MaxConstraint",
                     "type": "EXTERNAL",
-                    "value": "power"
+                    "value": "500"
                 }
             ],
             "attributesMap": {
@@ -354,7 +354,7 @@
                     "name": "Vincolo alimentazione",
                     "constraint": "MaxConstraint",
                     "type": "EXTERNAL",
-                    "value": "power"
+                    "value": "200"
                 }
             ],
             "attributesMap": {
@@ -369,7 +369,7 @@
                     "name": "Vincolo alimentazione",
                     "constraint": "MaxConstraint",
                     "type": "EXTERNAL",
-                    "value": "power"
+                    "value": "2000"
                 }
             ],
             "attributesMap": {
@@ -383,7 +383,7 @@
                 {
                     "name": "Vincolo storagePortVersion",
                     "constraint": "EqualsConstraint",
-                    "value": "storagePortVersion"
+                    "value": "sata3"
                 }
             ],
             "attributesMap": {
@@ -399,7 +399,7 @@
                 {
                     "name": "Vincolo storagePortVersion",
                     "constraint": "EqualsConstraint",
-                    "value": "storagePortVersion"
+                    "value": "sata3"
                 }
             ],
             "attributesMap": {
@@ -415,7 +415,7 @@
                 {
                     "name": "Vincolo storagePortVersion",
                     "constraint": "EqualsConstraint",
-                    "value": "storagePortVersion"
+                    "value": "sata3"
                 }
             ],
             "attributesMap": {
@@ -431,40 +431,40 @@
                 {
                     "name": "Vincolo cpuSocket",
                     "constraint": "EqualsConstraint",
-                    "value": "cpuSocket"
+                    "value": "am4"
                 },
                 {
                     "name": "Vincolo ramType",
                     "constraint": "EqualsConstraint",
-                    "value": "ramType"
+                    "value": "ddr4"
                 },
                 {
                     "name": "Vincolo ramSize",
                     "constraint": "DimensionConstraint",
                     "type": "EXTERNAL",
-                    "value": "ramSize"
+                    "value": "32"
                 },
                 {
                     "name": "Vincolo formFactor",
                     "constraint": "EqualsConstraint",
-                    "value": "formFactor"
+                    "value": "micro atx"
                 },
                 {
                     "name": "Vincolo storagePortVersion",
                     "constraint": "EqualsConstraint",
-                    "value": "storagePortVersion"
+                    "value": "sata3"
                 },
                 {
                     "name": "Vincolo alimentazione",
                     "constraint": "MaxConstraint",
                     "type": "INTERNAL",
-                    "value": "power"
+                    "value": "60"
                 },
                 {
                     "name": "Vincolo ramSlotCount",
                     "constraint": "DimensionConstraint",
                     "type": "EXTERNAL",
-                    "value": "ramSlotCount"
+                    "value": "2"
                 }
             ],
             "attributesMap": {
@@ -476,6 +476,7 @@
                 "formFactor": "micro atx",
                 "name": "asus prime a32m-k",
                 "pciSlotCount": "1",
+                "storagePortVersion": "sata3",
                 "cpuSocket": "am4",
                 "power": "60",
                 "ramType": "ddr4",
@@ -488,7 +489,7 @@
                 {
                     "name": "Vincolo cpuSocket",
                     "constraint": "EqualsConstraint",
-                    "value": "cpuSocket"
+                    "value": "1151"
                 },
                 {
                     "name": "Vincolo ramType",
@@ -504,24 +505,24 @@
                 {
                     "name": "Vincolo formFactor",
                     "constraint": "EqualsConstraint",
-                    "value": "formFactor"
+                    "value": "ddr4"
                 },
                 {
                     "name": "Vincolo storagePortVersion",
                     "constraint": "EqualsConstraint",
-                    "value": "storagePortVersion"
+                    "value": "sata3"
                 },
                 {
                     "name": "Vincolo alimentazione",
                     "constraint": "MaxConstraint",
                     "type": "INTERNAL",
-                    "value": "power"
+                    "value": "60"
                 },
                 {
                     "name": "Vincolo ramSlotCount",
                     "constraint": "DimensionConstraint",
                     "type": "EXTERNAL",
-                    "value": "ramSlotCount"
+                    "value": "4"
                 }
             ],
             "attributesMap": {
@@ -533,6 +534,7 @@
                 "formFactor": "atx",
                 "name": "asus prime z390-1",
                 "pciSlotCount": "2",
+                "storagePortVersion": "sata3",
                 "cpuSocket": "1151",
                 "power": "60",
                 "ramType": "ddr4",
@@ -545,40 +547,40 @@
                 {
                     "name": "Vincolo cpuSocket",
                     "constraint": "EqualsConstraint",
-                    "value": "cpuSocket"
+                    "value": "1150"
                 },
                 {
                     "name": "Vincolo ramType",
                     "constraint": "EqualsConstraint",
-                    "value": "ramType"
+                    "value": "ddr3"
                 },
                 {
                     "name": "Vincolo ramSize",
                     "constraint": "DimensionConstraint",
                     "type": "EXTERNAL",
-                    "value": "ramSize"
+                    "value": "32"
                 },
                 {
                     "name": "Vincolo formFactor",
                     "constraint": "EqualsConstraint",
-                    "value": "formFactor"
+                    "value": "atx"
                 },
                 {
                     "name": "Vincolo storagePortVersion",
                     "constraint": "EqualsConstraint",
-                    "value": "storagePortVersion"
+                    "value": "sata3"
                 },
                 {
                     "name": "Vincolo alimentazione",
                     "constraint": "MaxConstraint",
                     "type": "INTERNAL",
-                    "value": "power"
+                    "value": "70"
                 },
                 {
                     "name": "Vincolo ramSlotCount",
                     "constraint": "DimensionConstraint",
                     "type": "EXTERNAL",
-                    "value": "ramSlotCount"
+                    "value": "4"
                 }
             ],
             "attributesMap": {
@@ -590,6 +592,7 @@
                 "formFactor": "atx",
                 "name": "msi z97 gaming 3",
                 "pciSlotCount": "2",
+                "storagePortVersion": "sata3",
                 "cpuSocket": "1150",
                 "power": "70",
                 "ramType": "ddr3",
@@ -602,19 +605,19 @@
                 {
                     "name": "Vincolo ramType",
                     "constraint": "EqualsConstraint",
-                    "value": "ramType"
+                    "value": "ddr4"
                 },
                 {
                     "name": "Vincolo ramSlotCount",
                     "constraint": "DimensionConstraint",
                     "type": "INTERNAL",
-                    "value": "ramSlotCount"
+                    "value": "1"
                 },
                 {
                     "name": "Vincolo ramSize",
                     "constraint": "DimensionConstraint",
                     "type": "INTERNAL",
-                    "value": "ramSize"
+                    "value": "8"
                 }
             ],
             "attributesMap": {
@@ -630,19 +633,19 @@
                 {
                     "name": "Vincolo ramType",
                     "constraint": "EqualsConstraint",
-                    "value": "ramType"
+                    "value": "ddr3"
                 },
                 {
                     "name": "Vincolo ramSlotCount",
                     "constraint": "DimensionConstraint",
                     "type": "INTERNAL",
-                    "value": "ramSlotCount"
+                    "value": "1"
                 },
                 {
                     "name": "Vincolo ramSize",
                     "constraint": "DimensionConstraint",
                     "type": "INTERNAL",
-                    "value": "ramSize"
+                    "value": "8"
                 }
             ],
             "attributesMap": {
@@ -658,19 +661,19 @@
                 {
                     "name": "Vincolo ramType",
                     "constraint": "EqualsConstraint",
-                    "value": "ramType"
+                    "value": "ddr4"
                 },
                 {
                     "name": "Vincolo ramSlotCount",
                     "constraint": "DimensionConstraint",
                     "type": "INTERNAL",
-                    "value": "ramSlotCount"
+                    "value": "1"
                 },
                 {
                     "name": "Vincolo ramSize",
                     "constraint": "DimensionConstraint",
                     "type": "INTERNAL",
-                    "value": "ramSize"
+                    "value": "16"
                 }
             ],
             "attributesMap": {
@@ -687,13 +690,13 @@
                     "name": "Vincolo graphicCardLength",
                     "constraint": "DimensionConstraint",
                     "type": "INTERNAL",
-                    "value": "graphicCardLength"
+                    "value": "147"
                 },
                 {
                     "name": "Vincolo pciSlotCount",
                     "constraint": "DimensionConstraint",
                     "type": "INTERNAL",
-                    "value": "pciSlotCount"
+                    "value": "1"
                 }
             ],
             "attributesMap": {
@@ -713,13 +716,13 @@
                     "name": "Vincolo graphicCardLength",
                     "constraint": "DimensionConstraint",
                     "type": "INTERNAL",
-                    "value": "graphicCardLength"
+                    "value": "403"
                 },
                 {
                     "name": "Vincolo pciSlotCount",
                     "constraint": "DimensionConstraint",
                     "type": "INTERNAL",
-                    "value": "pciSlotCount"
+                    "value": "1"
                 }
             ],
             "attributesMap": {
@@ -739,13 +742,13 @@
                     "name": "Vincolo graphicCardLength",
                     "constraint": "DimensionConstraint",
                     "type": "INTERNAL",
-                    "value": "graphicCardLength"
+                    "value": "167"
                 },
                 {
                     "name": "Vincolo pciSlotCount",
                     "constraint": "DimensionConstraint",
                     "type": "INTERNAL",
-                    "value": "pciSlotCount"
+                    "value": "1"
                 }
             ],
             "attributesMap": {
@@ -765,13 +768,13 @@
                     "name": "Vincolo graphicCardLength",
                     "constraint": "DimensionConstraint",
                     "type": "INTERNAL",
-                    "value": "graphicCardLength"
+                    "value": "330"
                 },
                 {
                     "name": "Vincolo pciSlotCount",
                     "constraint": "DimensionConstraint",
                     "type": "INTERNAL",
-                    "value": "pciSlotCount"
+                    "value": "1"
                 }
             ],
             "attributesMap": {

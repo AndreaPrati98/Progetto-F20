@@ -446,6 +446,7 @@ public class JSONUtil {
 	private HashMap<String, String> addMobo() {
 		// - nome, slotPCI
 		//Vincoli, cpuSocket, ramType, formFactor, power
+		//aggiungere storageportversion
 		HashMap<String, String> map = new HashMap<>();
 
 		System.out.println("Inserisci il nome: ");
