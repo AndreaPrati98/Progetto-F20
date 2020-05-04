@@ -13,7 +13,7 @@ import view.TesterFrame;
 public class Listener implements ActionListener {
 	
 	private TesterFrame view;
-	private Configurator model;
+	//private Configurator model;
 	
 	
 	/**
@@ -23,7 +23,7 @@ public class Listener implements ActionListener {
 	 */
 	public Listener(TesterFrame view, Configurator model) {
 		this.view = view;
-		this.model = model;
+		//this.model = model;
 	}
 
 

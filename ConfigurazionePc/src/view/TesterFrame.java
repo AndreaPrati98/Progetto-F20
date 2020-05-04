@@ -5,7 +5,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.LinkedList;
-import java.util.List;
+//import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -15,10 +15,10 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.ListModel;
+//import javax.swing.ListModel;
 import javax.swing.ScrollPaneConstants;
 
-import model.component.Component;
+//import model.component.Component;
 
 /**
  * 
@@ -66,7 +66,7 @@ public class TesterFrame extends JFrame {
 		managingConfiguration = new JPanel();
 		listModelCatalog = new DefaultListModel<String>();
 		listModelAdded = new DefaultListModel<String>();
-		componentJList = new JList(listModelCatalog);
+		componentJList = new JList<String>(listModelCatalog);
 		chosenJList = new JList<String>(listModelAdded);
 
 		choiceOfComponents = this.createJSplitPane(this.createScrollPanel(componentJList),
