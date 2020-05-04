@@ -488,7 +488,7 @@ public class JSONUtil {
 	}
 
 	private HashMap<String, String> addGraphicCard() {
-		// - nome, frequenza, velocità memoria, PCIexpress
+		// - nome, frequenza, velocitï¿½ memoria, PCIexpress
 		//Vincoli graphicCardLength, pciexpress
 		HashMap<String, String> map = new HashMap<>();
 
@@ -498,7 +498,7 @@ public class JSONUtil {
 		System.out.println("Inserisci la frequenza: ");
 		map.put("graphicCardFrequency", in.nextLine());
 		
-		System.out.println("Inserisci la velocità della memoria: ");
+		System.out.println("Inserisci la velocitï¿½ della memoria: ");
 		map.put("graphicCardMemoryFrequency", in.nextLine());
 		
 		System.out.println("Inserisci la lunghezza della scheda: ");
