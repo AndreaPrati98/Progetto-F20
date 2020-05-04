@@ -50,11 +50,12 @@ public class Configurator {
 	}
 	/**
 	 * @param comp - Component that you would like to add.
+	 * @return 
 	 * @see {@link Configuration}
 	 * 
 	 * */
-	public void addComponent(Component comp) {
-		configuration.addComponent(comp);
+	public boolean addComponent(Component comp) {
+		return configuration.addComponent(comp);
 	}
 	
 	/**

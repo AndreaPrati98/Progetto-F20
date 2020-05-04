@@ -19,10 +19,10 @@ public class Controller {
 		this.model = model;
 		String s = null;
 		for (Component c : model.getCatalog().getComponentList()) {
-			s = c.getTypeComponent()+"    name : " + c.getAttributesMap().get("name") + "    ";
+			s = c.getTypeComponent()+"--name:" + c.getAttributesMap().get("name") + "--";
 			for (String keylist : c.getAttributesMap().keySet()) {
 				if (c.getAttributesMap().get(keylist) != null && !keylist.equals("name")) {
-					s = s + keylist + " : " + c.getAttributesMap().get(keylist) + "    ";
+					s = s + keylist + ":" + c.getAttributesMap().get(keylist) + "--";
 				}
 			}
 			view.getListModelCatalog().addElement(s);
