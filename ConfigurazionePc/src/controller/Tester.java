@@ -7,11 +7,12 @@ import view.TesterFrame;
 public class Tester {
 
 	public static void main(String[] args) {
+
 		ComponentCatalog catalog=new ComponentCatalog();
 		Configurator model=new Configurator(catalog);
 		TesterFrame view=new TesterFrame("Prova");
 		Controller controller=new Controller(view, model);
-
+		
 //		TesterFrame pippo = new TesterFrame("Frame di test");
 //		pippo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 //		pippo.setVisible(true);

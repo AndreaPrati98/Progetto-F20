@@ -31,7 +31,7 @@ import model.component.constraint.MaxConstraint;
  * MAPPA DEGLI ATTRIBUTI E LISTA VINCOLI
  * 
  * - CPU:
- * Vincoli: cpuSocket, ramType, power
+ * Vincoli: cpuSocket, ramType, power, ramSize
  * _ name
  * _ cpuFrequency
  * _ ramSize
@@ -45,19 +45,20 @@ import model.component.constraint.MaxConstraint;
  * 
  * 
  * RAM:
- * Vincoli: ramType, ramSlotCount
+ * Vincoli: ramType, ramSlotCount, ramSize (cpu e mobo)
  * _ name
  * _ ramType
- * _ ramMaxFrequency
+ * _ ramFrequency
  * _ ramSize
  * 
  * MOBO:
- * Vincoli: cpuSocket, ramType, formFactor, power
+ * Vincoli: cpuSocket, ramType, ramSize, formFactor, storagePortVersion, power
  * _ name
  * _ cpuSocket
- * _ supportedRam
- * _ ramMaxFrequency
+ * _ ramType
+ * _ ramFrequency
  * _ pciSlotCount
+ * _ storagePortVersion
  * _ usbPortsCount
  * _ hdmiPortsCount
  * _ ramSlotCount
@@ -93,13 +94,25 @@ import model.component.constraint.MaxConstraint;
  * _ power
  * 
  * - MASSSTORAGE
+ * Vincoli: storagePortVersion
  * _ name
  * _ type
- * _ portVersion
+ * _ storagePortVersion
  * _ size
  */
 
+/* TEST GETCOMPONENTS
+JSONUtil j = new JSONUtil();
 
+for(Component c:j.getComponents()) {
+	System.out.println("TIPO: " + c.getTypeComponent() + " NOME: " + c.getAttributesMap().get("name"));
+	System.out.println("VINCOLI:");
+	for(Constraint v: c.getConstraints()) {
+		System.out.println("Nome: " + v.getConstraintName() + " Valore: " + v.getValue() + " Tipo: " + v.getConstraintType() + " Constr:" + v.getClass().getSimpleName());
+	}
+	System.out.println();
+}
+*/
 public class JSONUtil {
 
 	private String typeComponent;
@@ -265,8 +278,6 @@ public class JSONUtil {
 			JSONListObj = new JSONObject();
 			JSONListObj.put("name", constraintList.get(i).getConstraintName());
 			JSONListObj.put("value", constraintList.get(i).getValue());
-			
-			System.out.println(constraintList.get(i).getConstraintType());
 			
 			if(constraintList.get(i).getConstraintType() != null) {
 				JSONListObj.put("type", constraintList.get(i).getConstraintType().name());
@@ -444,8 +455,11 @@ public class JSONUtil {
 		System.out.println("Inserisci il tipo di ram supportata");
 		map.put("ramType", in.nextLine());
 		
+		System.out.println("Inserisci la max ram supportata");
+		map.put("ramSize", in.nextLine());
+		
 		System.out.println("Inserisci la massima frequenza della ram: ");
-		map.put("ramMaxFrequency", in.nextLine());
+		map.put("ramFrequency", in.nextLine());
 
 		System.out.println("Inserisci il numero di slot PCIexp");
 		map.put("pciSlotCount", in.nextLine());
