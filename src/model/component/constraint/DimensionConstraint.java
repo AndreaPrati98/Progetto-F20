@@ -23,16 +23,19 @@ public class DimensionConstraint implements Constraint {
 	 * @param constraintType {@link ConstraintType}
 	 */
 	public DimensionConstraint(String name, String value, ConstraintType constraintType) {
+		super();
 		this.name = name;
 		this.value = value;
 		this.constraintType = constraintType;
 	}
-
+	
 	@Override
 	public String getConstraintName() {
 		// TODO Auto-generated method stub
 		return name;
 	}
+
+
 
 	/**
 	 * Vede se il nuovo componente e conforme alle compatibilità ,controllando prima
@@ -77,7 +80,6 @@ public class DimensionConstraint implements Constraint {
 		}
 		return flag;
 	}*/
-
 	/**
 	 * Ritorna tutte le dimensioni da rispettare , fa uso a sua volta di
 	 * GetNestedType
