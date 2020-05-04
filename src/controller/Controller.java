@@ -1,5 +1,9 @@
 package controller;
 
+import model.component.Component;
+import model.configurator.Configurator;
+import view.TesterFrame;
+
 public class Controller {
 
 	private TesterFrame view;
