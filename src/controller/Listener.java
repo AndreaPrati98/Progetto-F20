@@ -39,7 +39,6 @@ public class Listener implements ActionListener {
 		bufferSplit = buffer.split(":");
 		if (e.getSource().equals(view.getAddComponentButton())) {
 			if (model.addComponent(findComponent(type, bufferSplit[1]))) {
-				System.out.println("c");
 				view.getInfoLabel().setText("Componente aggiunto");
 				view.getListModelAdded().addElement(view.getComponentJList().getSelectedValue());
 			} else {

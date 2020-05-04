@@ -46,14 +46,14 @@ public class Configuration {
 	 * @return true if the component will respect constraint,false if the component will not respect constraint
 	 */
 	private boolean check(Component c) {
-		/*boolean flag = true; 
-		List<Constraint> listConstraint = c.getConstraints();
-		for (Constraint constraint : listConstraint) {
-			if (!constraint.checkList(addedComponents)) {
-				flag = false;
-				break;
-			}
-		}*/
+//		boolean flag = true; 
+//		List<Constraint> listConstraint = c.getConstraints();
+//		for (Constraint constraint : listConstraint) {
+//			if (!constraint.checkList(addedComponents)) {
+//				flag = false;
+//				break;
+//			}
+//		}
 		InterfaceConstraintChecker cc = new ConstraintChecker();
 		return cc.check(c, addedComponents);
 	}
@@ -69,7 +69,7 @@ public class Configuration {
 		if (addedComponents.size() >= neededComponents.size()) { 
 			for (String nc : neededComponents) {
 				for (Component ac : addedComponents) { 
-					if (nc.equals(ac.getTypeComponent())) {
+					if (nc.equalsIgnoreCase((ac.getTypeComponent()))) {
 						flag = true;
 						break;
 					}
