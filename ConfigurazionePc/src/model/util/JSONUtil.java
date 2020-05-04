@@ -214,6 +214,7 @@ public class JSONUtil {
 	/**
 	 * @return a list containing every component
 	 */
+	@SuppressWarnings("unchecked")
 	public List<Component> getComponents() {
 		List<Component> componentList = new ArrayList<Component>();
 		JSONArray JSONArray = readJSONComponents();
@@ -264,6 +265,7 @@ public class JSONUtil {
 		return componentList;
 	}
 
+	@SuppressWarnings("unchecked")
 	private void writeToJSON(String typeComponent, HashMap<String, String> map, List<Constraint> constraintList) {
 		JSONObject JSONFinal = new JSONObject();
 		JSONObject JSONComponent = new JSONObject();
@@ -307,7 +309,7 @@ public class JSONUtil {
 	}
 
 	private Constraint getDimCon() {
-		String name, value, constraint;
+		String name, value;
 		ConstraintType type;
 
 		System.out.println("Inserisci il nome");
