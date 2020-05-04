@@ -40,7 +40,7 @@ public class Controller {
 
 	private void addListener() {
 		view.getAddComponentButton().addActionListener(new Listener(view, model));
-		view.getRemoveComponenButtont().addActionListener(new Listener(view, model));
+		view.getRemoveComponentButtont().addActionListener(new Listener(view, model));
 	}
 
 }

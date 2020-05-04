@@ -34,7 +34,7 @@ public class Listener implements ActionListener {
 			view.getListModelAdded().addElement(view.getComponentJList().getSelectedValue());
 		}
 		
-		if(e.getSource().equals(view.getRemoveComponenButtont())) {
+		if(e.getSource().equals(view.getRemoveComponentButtont())) {
 			view.getListModelAdded().removeElementAt(view.getChosenJList().getSelectedIndex());
 		}
 		
