@@ -1,1 +1,789 @@
-{"components":[{"constraintList":[{"name":"Vincolo ramSize","constraint":"DimensionConstraint","type":"EXTERNAL","value":"ramSize"},{"name":"Vincolo cpuSocket","constraint":"EqualsConstraint","value":"cpuSocket"},{"name":"Vincolo ramType","constraint":"EqualsConstraint","value":"ramType"},{"name":"Vincolo alimentazione","constraint":"MaxConstraint","type":"INTERNAL","value":"power"}],"attributesMap":{"generation":"9","tdp":"65","cpuFrequency":"2.9","cacheSize":"9","hasIntegratedGraphicCard":"true","name":"I5-9400F","cpuSocket":"1151","power":"65","ramSize":"128","ramType":"ddr4"},"typeComponent":"cpu"},{"constraintList":[{"name":"Vincolo ramSize","constraint":"DimensionConstraint","type":"EXTERNAL","value":"ramSize"},{"name":"Vincolo cpuSocket","constraint":"EqualsConstraint","value":"cpuSocket"},{"name":"Vincolo ramType","constraint":"EqualsConstraint","value":"ramType"},{"name":"Vincolo alimentazione","constraint":"MaxConstraint","type":"INTERNAL","value":"power"}],"attributesMap":{"generation":"9","tdp":"25","cpuFrequency":"1.9","cacheSize":"9","hasIntegratedGraphicCard":"true","name":"i7-9850HL","cpuSocket":"1440","power":"25","ramSize":"64","ramType":"ddr4"},"typeComponent":"cpu"},{"constraintList":[{"name":"Vincolo ramSize","constraint":"DimensionConstraint","type":"EXTERNAL","value":"ramSize"},{"name":"Vincolo cpuSocket","constraint":"EqualsConstraint","value":"cpuSocket"},{"name":"Vincolo ramType","constraint":"EqualsConstraint","value":"ramType"},{"name":"Vincolo alimentazione","constraint":"MaxConstraint","type":"INTERNAL","value":"power"}],"attributesMap":{"generation":"9","tdp":"65","cpuFrequency":"3.6","cacheSize":"6","hasIntegratedGraphicCard":"true","name":"i3-9100F","cpuSocket":"1151","power":"65","ramSize":"64","ramType":"ddr4"},"typeComponent":"cpu"},{"constraintList":[{"name":"Vincolo ramSize","constraint":"DimensionConstraint","type":"EXTERNAL","value":"ramSize"},{"name":"Vincolo cpuSocket","constraint":"EqualsConstraint","value":"cpuSocket"},{"name":"Vincolo ramType","constraint":"EqualsConstraint","value":"ramType"},{"name":"Vincolo alimentazione","constraint":"MaxConstraint","type":"INTERNAL","value":"power"}],"attributesMap":{"generation":"9","tdp":"45","cpuFrequency":"2.4","cacheSize":"16","hasIntegratedGraphicCard":"true","name":"i9-9980HK","cpuSocket":"1440","power":"45","ramSize":"128","ramType":"ddr4"},"typeComponent":"cpu"},{"constraintList":[{"name":"Vincolo ramSize","constraint":"DimensionConstraint","type":"EXTERNAL","value":"ramSize"},{"name":"Vincolo cpuSocket","constraint":"EqualsConstraint","value":"cpuSocket"},{"name":"Vincolo ramType","constraint":"EqualsConstraint","value":"ramType"},{"name":"Vincolo alimentazione","constraint":"MaxConstraint","type":"INTERNAL","value":"power"}],"attributesMap":{"generation":"3","tdp":"95","cpuFrequency":"3.2","cacheSize":"32","hasIntegratedGraphicCard":"false","name":"RYZEN 5 3600X","cpuSocket":"am4","power":"95","ramSize":"128","ramType":"ddr4"},"typeComponent":"cpu"},{"constraintList":[{"name":"Vincolo formFactor","constraint":"EqualsConstraint","value":"formFactor"},{"name":"Vincolo graphicCardLength","constraint":"DimensionConstraint","type":"EXTERNAL","value":"graphicCardLength"}],"attributesMap":{"formFactor":"atx","name":"Cougar MX330","graphicCardLength":"350"},"typeComponent":"case"},{"constraintList":[{"name":"Vincolo formFactor","constraint":"EqualsConstraint","value":"formFactor"},{"name":"Vincolo graphicCardLength","constraint":"DimensionConstraint","type":"EXTERNAL","value":"graphicCardLength"}],"attributesMap":{"formFactor":"atx","name":"NZXT H510","graphicCardLength":"381"},"typeComponent":"case"},{"constraintList":[{"name":"Vincolo formFactor","constraint":"EqualsConstraint","value":"formFactor"},{"name":"Vincolo graphicCardLength","constraint":"DimensionConstraint","type":"EXTERNAL","value":"graphicCardLength"}],"attributesMap":{"formFactor":"micro atx","name":"DIYPC MA01","graphicCardLength":"315"},"typeComponent":"case"},{"constraintList":[{"name":"Vincolo cpuSocket","constraint":"EqualsConstraint","value":"cpuSocket"}],"attributesMap":{"tdp":"180","name":"DIYPC MA01","cpuSocket":"am4"},"typeComponent":"cooler"},{"constraintList":[{"name":"Vincolo cpuSocket","constraint":"EqualsConstraint","value":"cpuSocket"}],"attributesMap":{"tdp":"205","name":"Noctua NH-U12S","cpuSocket":"1151"},"typeComponent":"cooler"},{"constraintList":[{"name":"Vincolo cpuSocket","constraint":"EqualsConstraint","value":"cpuSocket"}],"attributesMap":{"tdp":"260","name":"Deepcool CASTLE 360EX","cpuSocket":"1140"},"typeComponent":"cooler"},{"constraintList":[{"name":"Vincolo cpuSocket","constraint":"EqualsConstraint","value":"cpuSocket"}],"attributesMap":{"tdp":"240","name":"Asus ROG RYUJIN","cpuSocket":"1151"},"typeComponent":"cooler"},{"constraintList":[{"name":"Vincolo alimentazione","constraint":"MaxConstraint","type":"EXTERNAL","value":"power"}],"attributesMap":{"name":"Corsair RM 750","power":"750"},"typeComponent":"power"},{"constraintList":[{"name":"Vincolo alimentazione","constraint":"MaxConstraint","type":"EXTERNAL","value":"power"}],"attributesMap":{"name":"EVGA 500 W 80+","power":"500"},"typeComponent":"power"},{"constraintList":[{"name":"Vincolo alimentazione","constraint":"MaxConstraint","type":"EXTERNAL","value":"power"}],"attributesMap":{"name":"HEC 200 W Mini ITX","power":"200"},"typeComponent":"power"},{"constraintList":[{"name":"Vincolo alimentazione","constraint":"MaxConstraint","type":"EXTERNAL","value":"power"}],"attributesMap":{"name":"GameMax GM 2000","power":"2000"},"typeComponent":"power"},{"constraintList":[{"name":"Vincolo storagePortVersion","constraint":"EqualsConstraint","value":"storagePortVersion"}],"attributesMap":{"portVersion":"sata3","size":"1000","name":"seagate barracuda","type":"hdd"},"typeComponent":"massStorage"},{"constraintList":[{"name":"Vincolo storagePortVersion","constraint":"EqualsConstraint","value":"storagePortVersion"}],"attributesMap":{"portVersion":"sata3","size":"4000","name":"westerdigital wd40","type":"hdd"},"typeComponent":"massStorage"},{"constraintList":[{"name":"Vincolo storagePortVersion","constraint":"EqualsConstraint","value":"storagePortVersion"}],"attributesMap":{"portVersion":"sata3","size":"500","name":"samsung 860 evo","type":"ssd"},"typeComponent":"massStorage"},{"constraintList":[{"name":"Vincolo cpuSocket","constraint":"EqualsConstraint","value":"cpuSocket"},{"name":"Vincolo ramType","constraint":"EqualsConstraint","value":"ramType"},{"name":"Vincolo ramSize","constraint":"DimensionConstraint","type":"EXTERNAL","value":"ramSize"},{"name":"Vincolo formFactor","constraint":"EqualsConstraint","value":"formFactor"},{"name":"Vincolo storagePortVersion","constraint":"EqualsConstraint","value":"storagePortVersion"},{"name":"Vincolo alimentazione","constraint":"MaxConstraint","type":"INTERNAL","value":"power"},{"name":"Vincolo ramSlotCount","constraint":"DimensionConstraint","type":"EXTERNAL","value":"ramSlotCount"}],"attributesMap":{"ramFrequency":"3200","biosVersion":"3803","ramSlotCount":"2","usbPortsCount":"6","hdmiPortsCount":"1","formFactor":"micro atx","name":"asus prime a32m-k","pciSlotCount":"1","cpuSocket":"am4","power":"60","ramType":"ddr4","ramSize":"32"},"typeComponent":"mobo"},{"constraintList":[{"name":"Vincolo cpuSocket","constraint":"EqualsConstraint","value":"cpuSocket"},{"name":"Vincolo ramType","constraint":"EqualsConstraint","value":"ramType"},{"name":"Vincolo ramSize","constraint":"DimensionConstraint","type":"EXTERNAL","value":"ramSize"},{"name":"Vincolo formFactor","constraint":"EqualsConstraint","value":"formFactor"},{"name":"Vincolo storagePortVersion","constraint":"EqualsConstraint","value":"storagePortVersion"},{"name":"Vincolo alimentazione","constraint":"MaxConstraint","type":"INTERNAL","value":"power"},{"name":"Vincolo ramSlotCount","constraint":"DimensionConstraint","type":"EXTERNAL","value":"ramSlotCount"}],"attributesMap":{"ramFrequency":"4266","biosVersion":"1401","ramSlotCount":"4","usbPortsCount":"7","hdmiPortsCount":"1","formFactor":"atx","name":"asus prime z390-1","pciSlotCount":"2","cpuSocket":"1151","power":"60","ramType":"ddr4","ramSize":"64"},"typeComponent":"mobo"},{"constraintList":[{"name":"Vincolo cpuSocket","constraint":"EqualsConstraint","value":"cpuSocket"},{"name":"Vincolo ramType","constraint":"EqualsConstraint","value":"ramType"},{"name":"Vincolo ramSize","constraint":"DimensionConstraint","type":"EXTERNAL","value":"ramSize"},{"name":"Vincolo formFactor","constraint":"EqualsConstraint","value":"formFactor"},{"name":"Vincolo storagePortVersion","constraint":"EqualsConstraint","value":"storagePortVersion"},{"name":"Vincolo alimentazione","constraint":"MaxConstraint","type":"INTERNAL","value":"power"},{"name":"Vincolo ramSlotCount","constraint":"DimensionConstraint","type":"EXTERNAL","value":"ramSlotCount"}],"attributesMap":{"ramFrequency":"3300","biosVersion":"2.9","ramSlotCount":"4","usbPortsCount":"6","hdmiPortsCount":"1","formFactor":"atx","name":"msi z97 gaming 3","pciSlotCount":"2","cpuSocket":"1150","power":"70","ramType":"ddr3","ramSize":"32"},"typeComponent":"mobo"},{"constraintList":[{"name":"Vincolo ramType","constraint":"EqualsConstraint","value":"ramType"},{"name":"Vincolo ramSlotCount","constraint":"DimensionConstraint","type":"INTERNAL","value":"ramSlotCount"},{"name":"Vincolo ramSize","constraint":"DimensionConstraint","type":"INTERNAL","value":"ramSize"}],"attributesMap":{"ramMaxFrequency":"3200","name":"corsair vengeance lpx","ramType":"ddr4","ramSize":"8"},"typeComponent":"ram"},{"constraintList":[{"name":"Vincolo ramType","constraint":"EqualsConstraint","value":"ramType"},{"name":"Vincolo ramSlotCount","constraint":"DimensionConstraint","type":"INTERNAL","value":"ramSlotCount"},{"name":"Vincolo ramSize","constraint":"DimensionConstraint","type":"INTERNAL","value":"ramSize"}],"attributesMap":{"ramMaxFrequency":"1600","name":"hyperx fury","ramType":"ddr3","ramSize":"8"},"typeComponent":"ram"},{"constraintList":[{"name":"Vincolo ramType","constraint":"EqualsConstraint","value":"ramType"},{"name":"Vincolo ramSlotCount","constraint":"DimensionConstraint","type":"INTERNAL","value":"ramSlotCount"},{"name":"Vincolo ramSize","constraint":"DimensionConstraint","type":"INTERNAL","value":"ramSize"}],"attributesMap":{"ramMaxFrequency":"3600","name":"gskill trident z","ramType":"ddr4","ramSize":"16"},"typeComponent":"ram"},{"constraintList":[{"name":"Vincolo graphicCardLength","constraint":"DimensionConstraint","type":"INTERNAL","value":"graphicCardLength"},{"name":"Vincolo pciSlotCount","constraint":"DimensionConstraint","type":"INTERNAL","value":"pciSlotCount"}],"attributesMap":{"graphicCardFrameBuffer":"1","graphicCardFrequency":"0.954","graphicCardMemoryFrequency":"1.6","name":"zotac geforce gt-710","power":"19","coreCount":"1","graphicCardLength":"147"},"typeComponent":"gpu"},{"constraintList":[{"name":"Vincolo graphicCardLength","constraint":"DimensionConstraint","type":"INTERNAL","value":"graphicCardLength"},{"name":"Vincolo pciSlotCount","constraint":"DimensionConstraint","type":"INTERNAL","value":"pciSlotCount"}],"attributesMap":{"graphicCardFrameBuffer":"3","graphicCardFrequency":"1.032","graphicCardMemoryFrequency":"6.008","name":"Gigabyte GeForce GTX 660 Ti","power":"150","coreCount":"1","graphicCardLength":"403"},"typeComponent":"gpu"},{"constraintList":[{"name":"Vincolo graphicCardLength","constraint":"DimensionConstraint","type":"INTERNAL","value":"graphicCardLength"},{"name":"Vincolo pciSlotCount","constraint":"DimensionConstraint","type":"INTERNAL","value":"pciSlotCount"}],"attributesMap":{"graphicCardFrameBuffer":"2","graphicCardFrequency":"0.954","graphicCardMemoryFrequency":"1.8","name":"asus geforce gt 710","power":"75","coreCount":"1","graphicCardLength":"167"},"typeComponent":"gpu"},{"constraintList":[{"name":"Vincolo graphicCardLength","constraint":"DimensionConstraint","type":"INTERNAL","value":"graphicCardLength"},{"name":"Vincolo pciSlotCount","constraint":"DimensionConstraint","type":"INTERNAL","value":"pciSlotCount"}],"attributesMap":{"graphicCardFrameBuffer":"8","graphicCardFrequency":"1.845","graphicCardMemoryFrequency":"14","name":"msi geforce rtx 2080 super","power":"75","coreCount":"1","graphicCardLength":"330"},"typeComponent":"gpu"}]}
+{
+    "components": [
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo ramSize",
+                    "constraint": "DimensionConstraint",
+                    "type": "EXTERNAL",
+                    "value": "ramSize"
+                },
+                {
+                    "name": "Vincolo cpuSocket",
+                    "constraint": "EqualsConstraint",
+                    "value": "cpuSocket"
+                },
+                {
+                    "name": "Vincolo ramType",
+                    "constraint": "EqualsConstraint",
+                    "value": "ramType"
+                },
+                {
+                    "name": "Vincolo alimentazione",
+                    "constraint": "MaxConstraint",
+                    "type": "INTERNAL",
+                    "value": "power"
+                }
+            ],
+            "attributesMap": {
+                "generation": "9",
+                "tdp": "65",
+                "cpuFrequency": "2.9",
+                "cacheSize": "9",
+                "hasIntegratedGraphicCard": "true",
+                "name": "I5-9400F",
+                "cpuSocket": "1151",
+                "power": "65",
+                "ramSize": "128",
+                "ramType": "ddr4"
+            },
+            "typeComponent": "cpu"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo ramSize",
+                    "constraint": "DimensionConstraint",
+                    "type": "EXTERNAL",
+                    "value": "ramSize"
+                },
+                {
+                    "name": "Vincolo cpuSocket",
+                    "constraint": "EqualsConstraint",
+                    "value": "cpuSocket"
+                },
+                {
+                    "name": "Vincolo ramType",
+                    "constraint": "EqualsConstraint",
+                    "value": "ramType"
+                },
+                {
+                    "name": "Vincolo alimentazione",
+                    "constraint": "MaxConstraint",
+                    "type": "INTERNAL",
+                    "value": "power"
+                }
+            ],
+            "attributesMap": {
+                "generation": "9",
+                "tdp": "25",
+                "cpuFrequency": "1.9",
+                "cacheSize": "9",
+                "hasIntegratedGraphicCard": "true",
+                "name": "i7-9850HL",
+                "cpuSocket": "1440",
+                "power": "25",
+                "ramSize": "64",
+                "ramType": "ddr4"
+            },
+            "typeComponent": "cpu"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo ramSize",
+                    "constraint": "DimensionConstraint",
+                    "type": "EXTERNAL",
+                    "value": "ramSize"
+                },
+                {
+                    "name": "Vincolo cpuSocket",
+                    "constraint": "EqualsConstraint",
+                    "value": "cpuSocket"
+                },
+                {
+                    "name": "Vincolo ramType",
+                    "constraint": "EqualsConstraint",
+                    "value": "ramType"
+                },
+                {
+                    "name": "Vincolo alimentazione",
+                    "constraint": "MaxConstraint",
+                    "type": "INTERNAL",
+                    "value": "power"
+                }
+            ],
+            "attributesMap": {
+                "generation": "9",
+                "tdp": "65",
+                "cpuFrequency": "3.6",
+                "cacheSize": "6",
+                "hasIntegratedGraphicCard": "true",
+                "name": "i3-9100F",
+                "cpuSocket": "1151",
+                "power": "65",
+                "ramSize": "64",
+                "ramType": "ddr4"
+            },
+            "typeComponent": "cpu"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo ramSize",
+                    "constraint": "DimensionConstraint",
+                    "type": "EXTERNAL",
+                    "value": "ramSize"
+                },
+                {
+                    "name": "Vincolo cpuSocket",
+                    "constraint": "EqualsConstraint",
+                    "value": "cpuSocket"
+                },
+                {
+                    "name": "Vincolo ramType",
+                    "constraint": "EqualsConstraint",
+                    "value": "ramType"
+                },
+                {
+                    "name": "Vincolo alimentazione",
+                    "constraint": "MaxConstraint",
+                    "type": "INTERNAL",
+                    "value": "power"
+                }
+            ],
+            "attributesMap": {
+                "generation": "9",
+                "tdp": "45",
+                "cpuFrequency": "2.4",
+                "cacheSize": "16",
+                "hasIntegratedGraphicCard": "true",
+                "name": "i9-9980HK",
+                "cpuSocket": "1440",
+                "power": "45",
+                "ramSize": "128",
+                "ramType": "ddr4"
+            },
+            "typeComponent": "cpu"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo ramSize",
+                    "constraint": "DimensionConstraint",
+                    "type": "EXTERNAL",
+                    "value": "ramSize"
+                },
+                {
+                    "name": "Vincolo cpuSocket",
+                    "constraint": "EqualsConstraint",
+                    "value": "cpuSocket"
+                },
+                {
+                    "name": "Vincolo ramType",
+                    "constraint": "EqualsConstraint",
+                    "value": "ramType"
+                },
+                {
+                    "name": "Vincolo alimentazione",
+                    "constraint": "MaxConstraint",
+                    "type": "INTERNAL",
+                    "value": "power"
+                }
+            ],
+            "attributesMap": {
+                "generation": "3",
+                "tdp": "95",
+                "cpuFrequency": "3.2",
+                "cacheSize": "32",
+                "hasIntegratedGraphicCard": "false",
+                "name": "RYZEN 5 3600X",
+                "cpuSocket": "am4",
+                "power": "95",
+                "ramSize": "128",
+                "ramType": "ddr4"
+            },
+            "typeComponent": "cpu"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo formFactor",
+                    "constraint": "EqualsConstraint",
+                    "value": "formFactor"
+                },
+                {
+                    "name": "Vincolo graphicCardLength",
+                    "constraint": "DimensionConstraint",
+                    "type": "EXTERNAL",
+                    "value": "graphicCardLength"
+                }
+            ],
+            "attributesMap": {
+                "formFactor": "atx",
+                "name": "Cougar MX330",
+                "graphicCardLength": "350"
+            },
+            "typeComponent": "case"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo formFactor",
+                    "constraint": "EqualsConstraint",
+                    "value": "formFactor"
+                },
+                {
+                    "name": "Vincolo graphicCardLength",
+                    "constraint": "DimensionConstraint",
+                    "type": "EXTERNAL",
+                    "value": "graphicCardLength"
+                }
+            ],
+            "attributesMap": {
+                "formFactor": "atx",
+                "name": "NZXT H510",
+                "graphicCardLength": "381"
+            },
+            "typeComponent": "case"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo formFactor",
+                    "constraint": "EqualsConstraint",
+                    "value": "formFactor"
+                },
+                {
+                    "name": "Vincolo graphicCardLength",
+                    "constraint": "DimensionConstraint",
+                    "type": "EXTERNAL",
+                    "value": "graphicCardLength"
+                }
+            ],
+            "attributesMap": {
+                "formFactor": "micro atx",
+                "name": "DIYPC MA01",
+                "graphicCardLength": "315"
+            },
+            "typeComponent": "case"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo cpuSocket",
+                    "constraint": "EqualsConstraint",
+                    "value": "cpuSocket"
+                }
+            ],
+            "attributesMap": {
+                "tdp": "180",
+                "name": "DIYPC MA01",
+                "cpuSocket": "am4"
+            },
+            "typeComponent": "cooler"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo cpuSocket",
+                    "constraint": "EqualsConstraint",
+                    "value": "cpuSocket"
+                }
+            ],
+            "attributesMap": {
+                "tdp": "205",
+                "name": "Noctua NH-U12S",
+                "cpuSocket": "1151"
+            },
+            "typeComponent": "cooler"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo cpuSocket",
+                    "constraint": "EqualsConstraint",
+                    "value": "cpuSocket"
+                }
+            ],
+            "attributesMap": {
+                "tdp": "260",
+                "name": "Deepcool CASTLE 360EX",
+                "cpuSocket": "1140"
+            },
+            "typeComponent": "cooler"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo cpuSocket",
+                    "constraint": "EqualsConstraint",
+                    "value": "cpuSocket"
+                }
+            ],
+            "attributesMap": {
+                "tdp": "240",
+                "name": "Asus ROG RYUJIN",
+                "cpuSocket": "1151"
+            },
+            "typeComponent": "cooler"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo alimentazione",
+                    "constraint": "MaxConstraint",
+                    "type": "EXTERNAL",
+                    "value": "power"
+                }
+            ],
+            "attributesMap": {
+                "name": "Corsair RM 750",
+                "power": "750"
+            },
+            "typeComponent": "power"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo alimentazione",
+                    "constraint": "MaxConstraint",
+                    "type": "EXTERNAL",
+                    "value": "power"
+                }
+            ],
+            "attributesMap": {
+                "name": "EVGA 500 W 80+",
+                "power": "500"
+            },
+            "typeComponent": "power"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo alimentazione",
+                    "constraint": "MaxConstraint",
+                    "type": "EXTERNAL",
+                    "value": "power"
+                }
+            ],
+            "attributesMap": {
+                "name": "HEC 200 W Mini ITX",
+                "power": "200"
+            },
+            "typeComponent": "power"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo alimentazione",
+                    "constraint": "MaxConstraint",
+                    "type": "EXTERNAL",
+                    "value": "power"
+                }
+            ],
+            "attributesMap": {
+                "name": "GameMax GM 2000",
+                "power": "2000"
+            },
+            "typeComponent": "power"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo storagePortVersion",
+                    "constraint": "EqualsConstraint",
+                    "value": "storagePortVersion"
+                }
+            ],
+            "attributesMap": {
+                "portVersion": "sata3",
+                "size": "1000",
+                "name": "seagate barracuda",
+                "type": "hdd"
+            },
+            "typeComponent": "massStorage"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo storagePortVersion",
+                    "constraint": "EqualsConstraint",
+                    "value": "storagePortVersion"
+                }
+            ],
+            "attributesMap": {
+                "portVersion": "sata3",
+                "size": "4000",
+                "name": "westerdigital wd40",
+                "type": "hdd"
+            },
+            "typeComponent": "massStorage"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo storagePortVersion",
+                    "constraint": "EqualsConstraint",
+                    "value": "storagePortVersion"
+                }
+            ],
+            "attributesMap": {
+                "portVersion": "sata3",
+                "size": "500",
+                "name": "samsung 860 evo",
+                "type": "ssd"
+            },
+            "typeComponent": "massStorage"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo cpuSocket",
+                    "constraint": "EqualsConstraint",
+                    "value": "cpuSocket"
+                },
+                {
+                    "name": "Vincolo ramType",
+                    "constraint": "EqualsConstraint",
+                    "value": "ramType"
+                },
+                {
+                    "name": "Vincolo ramSize",
+                    "constraint": "DimensionConstraint",
+                    "type": "EXTERNAL",
+                    "value": "ramSize"
+                },
+                {
+                    "name": "Vincolo formFactor",
+                    "constraint": "EqualsConstraint",
+                    "value": "formFactor"
+                },
+                {
+                    "name": "Vincolo storagePortVersion",
+                    "constraint": "EqualsConstraint",
+                    "value": "storagePortVersion"
+                },
+                {
+                    "name": "Vincolo alimentazione",
+                    "constraint": "MaxConstraint",
+                    "type": "INTERNAL",
+                    "value": "power"
+                },
+                {
+                    "name": "Vincolo ramSlotCount",
+                    "constraint": "DimensionConstraint",
+                    "type": "EXTERNAL",
+                    "value": "ramSlotCount"
+                }
+            ],
+            "attributesMap": {
+                "ramFrequency": "3200",
+                "biosVersion": "3803",
+                "ramSlotCount": "2",
+                "usbPortsCount": "6",
+                "hdmiPortsCount": "1",
+                "formFactor": "micro atx",
+                "name": "asus prime a32m-k",
+                "pciSlotCount": "1",
+                "cpuSocket": "am4",
+                "power": "60",
+                "ramType": "ddr4",
+                "ramSize": "32"
+            },
+            "typeComponent": "mobo"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo cpuSocket",
+                    "constraint": "EqualsConstraint",
+                    "value": "cpuSocket"
+                },
+                {
+                    "name": "Vincolo ramType",
+                    "constraint": "EqualsConstraint",
+                    "value": "ramType"
+                },
+                {
+                    "name": "Vincolo ramSize",
+                    "constraint": "DimensionConstraint",
+                    "type": "EXTERNAL",
+                    "value": "ramSize"
+                },
+                {
+                    "name": "Vincolo formFactor",
+                    "constraint": "EqualsConstraint",
+                    "value": "formFactor"
+                },
+                {
+                    "name": "Vincolo storagePortVersion",
+                    "constraint": "EqualsConstraint",
+                    "value": "storagePortVersion"
+                },
+                {
+                    "name": "Vincolo alimentazione",
+                    "constraint": "MaxConstraint",
+                    "type": "INTERNAL",
+                    "value": "power"
+                },
+                {
+                    "name": "Vincolo ramSlotCount",
+                    "constraint": "DimensionConstraint",
+                    "type": "EXTERNAL",
+                    "value": "ramSlotCount"
+                }
+            ],
+            "attributesMap": {
+                "ramFrequency": "4266",
+                "biosVersion": "1401",
+                "ramSlotCount": "4",
+                "usbPortsCount": "7",
+                "hdmiPortsCount": "1",
+                "formFactor": "atx",
+                "name": "asus prime z390-1",
+                "pciSlotCount": "2",
+                "cpuSocket": "1151",
+                "power": "60",
+                "ramType": "ddr4",
+                "ramSize": "64"
+            },
+            "typeComponent": "mobo"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo cpuSocket",
+                    "constraint": "EqualsConstraint",
+                    "value": "cpuSocket"
+                },
+                {
+                    "name": "Vincolo ramType",
+                    "constraint": "EqualsConstraint",
+                    "value": "ramType"
+                },
+                {
+                    "name": "Vincolo ramSize",
+                    "constraint": "DimensionConstraint",
+                    "type": "EXTERNAL",
+                    "value": "ramSize"
+                },
+                {
+                    "name": "Vincolo formFactor",
+                    "constraint": "EqualsConstraint",
+                    "value": "formFactor"
+                },
+                {
+                    "name": "Vincolo storagePortVersion",
+                    "constraint": "EqualsConstraint",
+                    "value": "storagePortVersion"
+                },
+                {
+                    "name": "Vincolo alimentazione",
+                    "constraint": "MaxConstraint",
+                    "type": "INTERNAL",
+                    "value": "power"
+                },
+                {
+                    "name": "Vincolo ramSlotCount",
+                    "constraint": "DimensionConstraint",
+                    "type": "EXTERNAL",
+                    "value": "ramSlotCount"
+                }
+            ],
+            "attributesMap": {
+                "ramFrequency": "3300",
+                "biosVersion": "2.9",
+                "ramSlotCount": "4",
+                "usbPortsCount": "6",
+                "hdmiPortsCount": "1",
+                "formFactor": "atx",
+                "name": "msi z97 gaming 3",
+                "pciSlotCount": "2",
+                "cpuSocket": "1150",
+                "power": "70",
+                "ramType": "ddr3",
+                "ramSize": "32"
+            },
+            "typeComponent": "mobo"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo ramType",
+                    "constraint": "EqualsConstraint",
+                    "value": "ramType"
+                },
+                {
+                    "name": "Vincolo ramSlotCount",
+                    "constraint": "DimensionConstraint",
+                    "type": "INTERNAL",
+                    "value": "ramSlotCount"
+                },
+                {
+                    "name": "Vincolo ramSize",
+                    "constraint": "DimensionConstraint",
+                    "type": "INTERNAL",
+                    "value": "ramSize"
+                }
+            ],
+            "attributesMap": {
+                "ramMaxFrequency": "3200",
+                "name": "corsair vengeance lpx",
+                "ramType": "ddr4",
+                "ramSize": "8"
+            },
+            "typeComponent": "ram"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo ramType",
+                    "constraint": "EqualsConstraint",
+                    "value": "ramType"
+                },
+                {
+                    "name": "Vincolo ramSlotCount",
+                    "constraint": "DimensionConstraint",
+                    "type": "INTERNAL",
+                    "value": "ramSlotCount"
+                },
+                {
+                    "name": "Vincolo ramSize",
+                    "constraint": "DimensionConstraint",
+                    "type": "INTERNAL",
+                    "value": "ramSize"
+                }
+            ],
+            "attributesMap": {
+                "ramMaxFrequency": "1600",
+                "name": "hyperx fury",
+                "ramType": "ddr3",
+                "ramSize": "8"
+            },
+            "typeComponent": "ram"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo ramType",
+                    "constraint": "EqualsConstraint",
+                    "value": "ramType"
+                },
+                {
+                    "name": "Vincolo ramSlotCount",
+                    "constraint": "DimensionConstraint",
+                    "type": "INTERNAL",
+                    "value": "ramSlotCount"
+                },
+                {
+                    "name": "Vincolo ramSize",
+                    "constraint": "DimensionConstraint",
+                    "type": "INTERNAL",
+                    "value": "ramSize"
+                }
+            ],
+            "attributesMap": {
+                "ramMaxFrequency": "3600",
+                "name": "gskill trident z",
+                "ramType": "ddr4",
+                "ramSize": "16"
+            },
+            "typeComponent": "ram"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo graphicCardLength",
+                    "constraint": "DimensionConstraint",
+                    "type": "INTERNAL",
+                    "value": "graphicCardLength"
+                },
+                {
+                    "name": "Vincolo pciSlotCount",
+                    "constraint": "DimensionConstraint",
+                    "type": "INTERNAL",
+                    "value": "pciSlotCount"
+                }
+            ],
+            "attributesMap": {
+                "graphicCardFrameBuffer": "1",
+                "graphicCardFrequency": "0.954",
+                "graphicCardMemoryFrequency": "1.6",
+                "name": "zotac geforce gt-710",
+                "power": "19",
+                "coreCount": "1",
+                "graphicCardLength": "147"
+            },
+            "typeComponent": "gpu"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo graphicCardLength",
+                    "constraint": "DimensionConstraint",
+                    "type": "INTERNAL",
+                    "value": "graphicCardLength"
+                },
+                {
+                    "name": "Vincolo pciSlotCount",
+                    "constraint": "DimensionConstraint",
+                    "type": "INTERNAL",
+                    "value": "pciSlotCount"
+                }
+            ],
+            "attributesMap": {
+                "graphicCardFrameBuffer": "3",
+                "graphicCardFrequency": "1.032",
+                "graphicCardMemoryFrequency": "6.008",
+                "name": "Gigabyte GeForce GTX 660 Ti",
+                "power": "150",
+                "coreCount": "1",
+                "graphicCardLength": "403"
+            },
+            "typeComponent": "gpu"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo graphicCardLength",
+                    "constraint": "DimensionConstraint",
+                    "type": "INTERNAL",
+                    "value": "graphicCardLength"
+                },
+                {
+                    "name": "Vincolo pciSlotCount",
+                    "constraint": "DimensionConstraint",
+                    "type": "INTERNAL",
+                    "value": "pciSlotCount"
+                }
+            ],
+            "attributesMap": {
+                "graphicCardFrameBuffer": "2",
+                "graphicCardFrequency": "0.954",
+                "graphicCardMemoryFrequency": "1.8",
+                "name": "asus geforce gt 710",
+                "power": "75",
+                "coreCount": "1",
+                "graphicCardLength": "167"
+            },
+            "typeComponent": "gpu"
+        },
+        {
+            "constraintList": [
+                {
+                    "name": "Vincolo graphicCardLength",
+                    "constraint": "DimensionConstraint",
+                    "type": "INTERNAL",
+                    "value": "graphicCardLength"
+                },
+                {
+                    "name": "Vincolo pciSlotCount",
+                    "constraint": "DimensionConstraint",
+                    "type": "INTERNAL",
+                    "value": "pciSlotCount"
+                }
+            ],
+            "attributesMap": {
+                "graphicCardFrameBuffer": "8",
+                "graphicCardFrequency": "1.845",
+                "graphicCardMemoryFrequency": "14",
+                "name": "msi geforce rtx 2080 super",
+                "power": "75",
+                "coreCount": "1",
+                "graphicCardLength": "330"
+            },
+            "typeComponent": "gpu"
+        }
+    ]
+}
