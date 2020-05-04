@@ -125,7 +125,7 @@ public class JSONUtil {
 		constraintList = new ArrayList<Constraint>();
 		map = new HashMap<>();
 		in = new Scanner(System.in);
-		JSON_PATH = "ConfigurazionePC/src/model/util/JSON/components.json";
+		JSON_PATH = "ContenitoreFile/components.json";
 	}
 
 	public void addComponent() {
