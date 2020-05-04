@@ -91,6 +91,12 @@ import model.component.constraint.MaxConstraint;
  * Vincoli: power
  * _ name
  * _ power
+ * 
+ * - MASSSTORAGE
+ * _ name
+ * _ type
+ * _ portVersion
+ * _ size
  */
 
 
@@ -106,7 +112,6 @@ public class JSONUtil {
 		constraintList = new ArrayList<Constraint>();
 		map = new HashMap<>();
 		in = new Scanner(System.in);
-		// JSON_PATH = "src/components.json";
 		JSON_PATH = "ConfigurazionePC/src/model/util/JSON/components.json";
 	}
 
@@ -265,8 +270,6 @@ public class JSONUtil {
 			
 			if(constraintList.get(i).getConstraintType() != null) {
 				JSONListObj.put("type", constraintList.get(i).getConstraintType().name());
-			}else {
-				System.out.println("UGUALE A NULL");
 			}
 			
 			JSONListObj.put("constraint", constraintList.get(i).getClass().getSimpleName());
