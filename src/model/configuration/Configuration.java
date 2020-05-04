@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.component.Component;
-import model.component.constraint.Constraint;
+import model.component.constraint.ConstraintChecker;
+import model.component.constraint.InterfaceConstraintChecker;
 
 /**
  * @author Capici Alessandro ,Frenkli Buzhiqi
@@ -45,15 +46,16 @@ public class Configuration {
 	 * @return true if the component will respect constraint,false if the component will not respect constraint
 	 */
 	private boolean check(Component c) {
-		boolean flag = true; 
+		/*boolean flag = true; 
 		List<Constraint> listConstraint = c.getConstraints();
 		for (Constraint constraint : listConstraint) {
 			if (!constraint.checkList(addedComponents)) {
 				flag = false;
 				break;
 			}
-		}
-		return flag;
+		}*/
+		InterfaceConstraintChecker cc = new ConstraintChecker();
+		return cc.check(c, addedComponents);
 	}
 
 	/**

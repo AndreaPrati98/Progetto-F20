@@ -3,7 +3,11 @@ package model.component.constraint;
 import java.util.List;
 
 import model.component.Component;
-//Cic
+/**
+ * 
+ * @author Guglielmo
+ *
+ */
 public class EqualsConstraint implements Constraint {
 
 	private String name;
@@ -30,7 +34,7 @@ public class EqualsConstraint implements Constraint {
 	//valore diverso rispetto al this.
 	//Se esiste --> False
 	//Se non esiste --> True
-	@Override
+	/*@Override
 	public boolean checkList(List<Component> components) {
 		
 		String myName = this.getConstraintName();
@@ -56,7 +60,10 @@ public class EqualsConstraint implements Constraint {
 		//Se ho controllato tutti e nessuno è incompatibile con i miei vincoli
 		//allora è ok
 		return true;
-	}
+	}*/
+	
+	
+	
 
 	@Override
 	public String getValue() {
@@ -68,6 +75,29 @@ public class EqualsConstraint implements Constraint {
 	public ConstraintType getConstraintType() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	/**
+	 * Controlla che tutti i vincoli con lo stesso nome abbiano valore uguale.
+	 * 
+	 * @param the list of constraints that it has to respect
+	 * @return true if the component will respect the constraint,false if it will
+	 *         not respect the costraint
+	 */
+	@Override
+	public boolean checkList(List<Constraint> constraints) {
+		String myName = this.name;
+		String myValue = this.value;
+		
+		for(Constraint constr : constraints) {
+			if(constr.getConstraintName().equals(myName)){
+				if(constr.getValue().equals(myValue)){
+					return false;
+				}					
+			}						
+		}		
+				
+		return false;
 	}
 
 

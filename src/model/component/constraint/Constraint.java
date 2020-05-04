@@ -9,9 +9,9 @@ import java.util.List;
  *
  */
 public interface Constraint {
-
+	
 	String getConstraintName();
-	boolean checkList(List<Component> components);
+	boolean checkList(List<Constraint> constraints);
 	String getValue();
 	ConstraintType getConstraintType();
 	
