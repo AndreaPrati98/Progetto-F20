@@ -1,6 +1,6 @@
 package model.component.constraint;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import model.component.Component;
@@ -88,7 +88,7 @@ public class DimensionConstraint implements Constraint {
 	 * @param externalConstraintType type:{@link ConstraintType}
 	 * @return dimension's list
 	 */
-	@SuppressWarnings("unlikely-arg-type")
+	
 	/*private List<Double> getIEDimension(List<Component> component, ConstraintType externalConstraintType) {
 		List<Double> dim = new ArrayList<Double>();
 		List<Constraint> lista;
@@ -128,8 +128,7 @@ public class DimensionConstraint implements Constraint {
 	 * rispetto agli opportuni valori massimi o minimi.
 	 * 
 	 * @param component type:{@link Component}
-	 * @return true if the component will respect the constraint,false if it will
-	 *         not respect the costraint
+	 * @return true if the component will respect the constraint,false if it will not respect the costraint
 	 */
 	@Override
 	public boolean checkList(List<Constraint> constraints) {
