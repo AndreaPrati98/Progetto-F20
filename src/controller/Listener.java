@@ -32,21 +32,29 @@ public class Listener implements ActionListener {
 		String[] bufferSplit = null;
 		String buffer = null;
 		String type = null;
-		buffer = view.getComponentJList().getSelectedValue();
-		bufferSplit = buffer.split("--");
-		type = bufferSplit[0];
-		buffer = bufferSplit[1];
-		bufferSplit = buffer.split(":");
+		
 		if (e.getSource().equals(view.getAddComponentButton())) {
+			buffer = view.getComponentJList().getSelectedValue();
+			bufferSplit = buffer.split("--");
+			type = bufferSplit[0];
+			buffer = bufferSplit[1];
+			bufferSplit = buffer.split(":");
 			if (model.addComponent(findComponent(type, bufferSplit[1]))) {
 				view.getInfoLabel().setText("Componente aggiunto");
 				view.getListModelAdded().addElement(view.getComponentJList().getSelectedValue());
 			} else {
 				view.getInfoLabel().setText("Componente incompatibile");
 			}
-		}
-
+		}	
+		
 		if (e.getSource().equals(view.getRemoveComponentButtont())) {
+			buffer = view.getChosenJList().getSelectedValue();
+			bufferSplit = buffer.split("--");
+			type = bufferSplit[0];
+			buffer = bufferSplit[1];
+			bufferSplit = buffer.split(":");
+			System.out.println(findComponent(type, bufferSplit[1]));
+			model.getConfiguration().removeComponent(findComponent(type, bufferSplit[1]));
 			view.getListModelAdded().removeElementAt(view.getChosenJList().getSelectedIndex());
 		}
 

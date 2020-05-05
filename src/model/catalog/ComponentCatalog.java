@@ -1,5 +1,6 @@
 package model.catalog;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.component.Component;
@@ -14,8 +15,8 @@ public class ComponentCatalog {
 	private List<Component> componentList;
 	
 	public ComponentCatalog() {
-		//componentList = new ArrayList<Component>();
-		componentList = (new JSONUtil()).getComponents();
+		componentList = new ArrayList<Component>();
+		componentList.addAll((new JSONUtil()).getComponents());
 	}
 	
 	/**

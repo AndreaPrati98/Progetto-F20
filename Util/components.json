@@ -494,18 +494,18 @@
                 {
                     "name": "Vincolo ramType",
                     "constraint": "EqualsConstraint",
-                    "value": "ramType"
+                    "value": "ddr4"
                 },
                 {
                     "name": "Vincolo ramSize",
                     "constraint": "DimensionConstraint",
                     "type": "EXTERNAL",
-                    "value": "ramSize"
+                    "value": "64"
                 },
                 {
                     "name": "Vincolo formFactor",
                     "constraint": "EqualsConstraint",
-                    "value": "ddr4"
+                    "value": "atx"
                 },
                 {
                     "name": "Vincolo storagePortVersion",
@@ -617,14 +617,14 @@
                     "name": "Vincolo ramSize",
                     "constraint": "DimensionConstraint",
                     "type": "INTERNAL",
-                    "value": "8"
+                    "value": "800"
                 }
             ],
             "attributesMap": {
                 "ramMaxFrequency": "3200",
                 "name": "corsair vengeance lpx",
                 "ramType": "ddr4",
-                "ramSize": "8"
+                "ramSize": "800"
             },
             "typeComponent": "ram"
         },

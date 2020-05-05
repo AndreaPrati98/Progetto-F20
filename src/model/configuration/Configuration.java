@@ -33,9 +33,17 @@ public class Configuration {
 	 * */
 	public boolean addComponent(Component c) {
 		if (check(c)) {
-			addedComponents.add(c);
+			addedComponents.add(c);		
 			return true;
 		} else {
+			return false;
+		}
+	}
+	
+	public boolean removeComponent(Component c) {
+		if(addedComponents.remove(c)) {
+			return true;
+		}else {
 			return false;
 		}
 	}
