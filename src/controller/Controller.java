@@ -33,8 +33,10 @@ public class Controller {
 	}
 
 	private void addListener() {
-		view.getAddComponentButton().addActionListener(new Listener(view, model));
-		view.getRemoveComponentButtont().addActionListener(new Listener(view, model));
+		Listener listener=new Listener(view, model);
+		view.getAddComponentButton().addActionListener(listener);
+		view.getRemoveComponentButtont().addActionListener(listener);
+		view.getCheckButton().addActionListener(listener);
 	}
 
 }

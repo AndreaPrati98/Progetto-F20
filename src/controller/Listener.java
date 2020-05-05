@@ -57,6 +57,14 @@ public class Listener implements ActionListener {
 			model.getConfiguration().removeComponent(findComponent(type, bufferSplit[1]));
 			view.getListModelAdded().removeElementAt(view.getChosenJList().getSelectedIndex());
 		}
+		
+		if (e.getSource().equals(view.getCheckButton())) {
+			if (model.checkConf()) {
+				view.getInfoLabel().setText("CONFIGURAZIONE VALIDA");
+			}else {
+				view.getInfoLabel().setText("CONFIGURAZIONE NON VALIDA");
+			}
+		}
 
 	}
 

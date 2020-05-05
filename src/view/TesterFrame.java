@@ -32,18 +32,13 @@ import javax.swing.ScrollPaneConstants;
 @SuppressWarnings("serial")
 public class TesterFrame extends JFrame {
 
-	// si parte dal presupposto che sia unica la configurazione che stiamo creando
-
-	public static enum TypeList {
-		NEW_COMPONENT_LIST, ADDED_COMPONENT_LIST;
-	}
-
 	private Container content;
 	private JPanel addingRemovingComponent;
 	private JPanel terminal;
 	private JPanel managingConfiguration;
 	private JSplitPane choiceOfComponents;
 	private JButton addComponentButton;
+	private JButton checkButton;
 	private JButton removeComponentButtont;
 	private JLabel infoLabel;
 	private JList<String> componentJList;
@@ -72,6 +67,7 @@ public class TesterFrame extends JFrame {
 		componentJList = new JList<String>(listModelCatalog);
 		chosenJList = new JList<String>(listModelAdded);
 		addComponentButton = new JButton("AGGIUNGI COMPONENTE");
+		checkButton = new JButton("CHECK");
 		removeComponentButtont = new JButton("RIMUOVI COMPONENTE");
 		infoLabel = new JLabel("Qui visualizzerai le informazioni sulla configurazione che stai creando");
 		
@@ -80,9 +76,10 @@ public class TesterFrame extends JFrame {
 		
 		graphicsfunction();
 		
-		addingRemovingComponent.setLayout(new GridLayout(2,1));
+		addingRemovingComponent.setLayout(new GridLayout(3,1));
 		addingRemovingComponent.add(addComponentButton);
 		addingRemovingComponent.add(removeComponentButtont);
+		addingRemovingComponent.add(checkButton);
 		
 		managingConfiguration.setLayout(new GridLayout(1,2));
 		managingConfiguration.add(addingRemovingComponent);
@@ -111,6 +108,10 @@ public class TesterFrame extends JFrame {
 		addComponentButton.setBackground(Color.WHITE);
 		addComponentButton.setForeground(Color.BLACK);
 		addComponentButton.setFont(new Font("Arial",22,16));
+		
+		checkButton.setBackground(Color.WHITE);
+		checkButton.setForeground(Color.BLACK);
+		checkButton.setFont(new Font("Arial",22,16));
 		
 		removeComponentButtont.setBackground(Color.WHITE);
 		removeComponentButtont.setForeground(Color.BLACK);
@@ -264,6 +265,9 @@ public class TesterFrame extends JFrame {
 
 	public DefaultListModel<String> getListModelAdded() {
 		return listModelAdded;
+	}
+	public JButton getCheckButton() {
+		return checkButton;
 	}
 
 	
