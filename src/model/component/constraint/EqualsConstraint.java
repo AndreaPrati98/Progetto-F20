@@ -91,13 +91,13 @@ public class EqualsConstraint implements Constraint {
 		
 		for(Constraint constr : constraints) {
 			if(constr.getConstraintName().equals(myName)){
-				if(constr.getValue().equals(myValue)){
+				if(!constr.getValue().equals(myValue)){
 					return false;
 				}					
 			}						
 		}		
 				
-		return false;
+		return true;
 	}
 
 
