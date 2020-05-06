@@ -42,13 +42,7 @@ public class Configurator {
 		return catalog;
 	}
 	
-	/**
-	 * @param neededComponent - List of the essential components that you must have in your configuration
-	 * */
-	public void createConfiguration(List<String> neededComponents) {
-		configuration = new Configuration(neededComponents);
-
-	}
+	
 	/**
 	 * @param comp - Component that you would like to add.
 	 * @return 
