@@ -5,5 +5,5 @@ import model.component.Component;
 
 public interface InterfaceConstraintChecker {
 
-	boolean check(Component newComponent, List<Component> oldComponents);
+	List<Constraint> check(Component newComponent, List<Component> oldComponents);
 }

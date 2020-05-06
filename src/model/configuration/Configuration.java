@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.component.Component;
+import model.component.constraint.Constraint;
 import model.component.constraint.ConstraintChecker;
+import model.component.constraint.ConstraintType;
+import model.component.constraint.DimensionConstraint;
 import model.component.constraint.InterfaceConstraintChecker;
 
 /**
@@ -15,6 +18,8 @@ public class Configuration {
 	private List<String> neededComponents; // lista di elementi obbligatori per far si che un pc si possa accendere
 											// (Lista da stabilire)
 	private List<Component> addedComponents;
+	
+	private List<Constraint> constraintErrors;
 	/**
 	 * 
 	 * @param neededComponents
@@ -32,11 +37,22 @@ public class Configuration {
 	 * 
 	 * */
 	public boolean addComponent(Component c) {
-		if (check(c)) {
-			addedComponents.add(c);		
+		constraintErrors = check(c);
+		/*
+		if(check(c)) {
+			addedComponents.add(c);
+			return true;
+		}else {
+			return false;
+		}
+		*/
+		
+		if (constraintErrors.isEmpty()) {
+			addedComponents.add(c);	
 			return true;
 		} else {
 			return false;
+			//return new DimensionConstraint("PROVA", "10", ConstraintType.EXTERNAL);
 		}
 	}
 	
@@ -53,7 +69,7 @@ public class Configuration {
 	 * @param c type:{@link Component}
 	 * @return true if the component will respect constraint,false if the component will not respect constraint
 	 */
-	private boolean check(Component c) {
+	private List<Constraint> check(Component c) {
 //		boolean flag = true; 
 //		List<Constraint> listConstraint = c.getConstraints();
 //		for (Constraint constraint : listConstraint) {
@@ -65,6 +81,7 @@ public class Configuration {
 		InterfaceConstraintChecker cc = new ConstraintChecker();
 		return cc.check(c, addedComponents);
 	}
+	
 
 	/**
 	 * se il numero dei componenti aggiunti è minore del numero di quelli necessari restituisco subito false
@@ -107,6 +124,18 @@ public class Configuration {
 	 */
 	public List<Component> getAddedComponents() {
 		return addedComponents;
+	}
+	
+	public List<Constraint> getConstraintErrors() {
+		return constraintErrors;
+	}
+	
+	public String getConstraintErrorsNames() {
+		String s = "";
+		for(Constraint c:constraintErrors) {
+			s+=c.getConstraintName() + " ";
+		}
+		return s;
 	}
 
 	@Override

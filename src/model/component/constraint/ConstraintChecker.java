@@ -9,14 +9,15 @@ import model.component.Component;
  *
  */
 public class ConstraintChecker implements InterfaceConstraintChecker {
-
 	
 	public ConstraintChecker() {
 	}
 	
 	@Override
-	public boolean check(Component newComponent, List<Component> oldComponents) {
-				
+	public List<Constraint> check(Component newComponent, List<Component> oldComponents) {
+
+		List<Constraint> constraintErrors = new ArrayList<Constraint>();
+		
 		//Creo una lista totale di tutti i vincoli già presenti nelle vecchie componenti
 		//facendo una append alla lista iniziale vuota
 		List<Constraint> oldConstraints = new ArrayList<Constraint>();
@@ -32,11 +33,14 @@ public class ConstraintChecker implements InterfaceConstraintChecker {
 		for(Constraint constr : listNewConstraint){
 			boolean correct = constr.checkList(oldConstraints);
 			if(!correct) {
-				return false;
+				//return false
+				constraintErrors.add(constr);
 			}
 		}		
+		//return true
+		return constraintErrors;
 		
-		return true;
+		
 	}
 
 	
