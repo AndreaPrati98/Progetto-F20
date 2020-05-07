@@ -7,7 +7,9 @@ import java.util.Map;
 import model.component.Component;
 import model.component.constraint.Constraint;
 import model.component.constraint.ConstraintChecker;
+import model.component.constraint.ConstraintType;
 import model.component.constraint.InterfaceConstraintChecker;
+import model.component.constraint.MaxConstraint;
 
 /**
  * @author Capici Alessandro ,Frenkli Buzhiqi
@@ -57,6 +59,10 @@ public class Configuration {
 					addedComponents.add(c); // se non è un componente singolo lo posso agiungere
 					getSingleComponents().replace(c.getTypeComponent(), true);
 				} else {
+					/**
+					 * Messaggio d'errore
+					 */
+					constraintErrors.add(new MaxConstraint("Single Component", "1", ConstraintType.INTERNAL));
 					return false; // se quel componente è singolo ed era gia stato aggiunto non lo posso
 									// riaggiungere
 				}
