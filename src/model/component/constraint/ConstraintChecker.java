@@ -5,7 +5,8 @@ import java.util.List;
 
 import model.component.Component;
 /**
- * @author Guglielmo e Irene S.
+ * @author Guglielmo 
+ * @author Irene S.
  *
  */
 public class ConstraintChecker implements InterfaceConstraintChecker {
