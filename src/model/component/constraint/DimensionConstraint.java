@@ -136,7 +136,7 @@ public class DimensionConstraint implements Constraint {
 		String myName = this.name;
 		double myValue = Double.parseDouble(this.value);
 		
-		if(this.constraintType.equals(ConstraintType.EXTERNAL)) {
+		if(this.constraintType == ConstraintType.EXTERNAL) {
 			//Se sono esterno controllo tutti gli interni
 			//con lo stesso nome			
 			for(Constraint constr : constraints) {
