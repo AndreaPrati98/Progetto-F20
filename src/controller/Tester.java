@@ -17,12 +17,10 @@ public class Tester {
 		neededComponents.add("cpu");
 		neededComponents.add("ram");
 		neededComponents.add("mobo");
-		neededComponents.add("gpu");
 		
 		Map<String,Boolean> singleComponents = new HashMap<String,Boolean>();
 		singleComponents.put("cpu", false);
 		singleComponents.put("mobo", false);
-		singleComponents.put("power", false);
 		singleComponents.put("case", false);
 		
 		
