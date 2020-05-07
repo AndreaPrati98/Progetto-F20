@@ -38,26 +38,28 @@ public class Configuration {
 	 * aggiunta del componente scelto nella lista dei componenti solo se compatibile
 	 * 
 	 * @param c type:{@link Component} Component that you would like to add.
-	 * @return true if the component have been added, false if the component
-	 * 		   haven't been added or it was already added before
+	 * @return true if the component have been added, false if the component haven't
+	 *         been added or it was already added before
 	 * @see Component
 	 * 
 	 */
 	public boolean addComponent(Component c) {
 		constraintErrors = check(c);
-
-		/*
-		 * if(check(c)) { addedComponents.add(c); return true; }else { return false; }
-		 */
 		if (constraintErrors.isEmpty()) {
 			/**
 			 * checking if the component it's a "single component or not"
 			 */
-			if (!getSingleComponents().get(c.getTypeComponent())) {
-				addedComponents.add(c); //se non è un componente singolo lo posso agiungere
-				getSingleComponents().replace(c.getTypeComponent(), true);
-			}else {
-				return false; //se quel componente è singolo ed era gia stato aggiunto non lo posso riaggiungere
+			if (!getSingleComponents().containsKey(c.getTypeComponent())) {
+				addedComponents.add(c);
+				return true;
+			} else {
+				if (!getSingleComponents().get(c.getTypeComponent())) {
+					addedComponents.add(c); // se non è un componente singolo lo posso agiungere
+					getSingleComponents().replace(c.getTypeComponent(), true);
+				} else {
+					return false; // se quel componente è singolo ed era gia stato aggiunto non lo posso
+									// riaggiungere
+				}
 			}
 			return true;
 		} else {
@@ -96,9 +98,9 @@ public class Configuration {
 	}
 
 	/**
-	 * se il numero dei componenti aggiunti � minore del numero di quelli necessari
-	 * restituisco subito false altrimenti con il doppio ciclo controllo se gli
-	 * elementi di neededComponent sono contenuti tutti in added component
+	 * se il numero dei componenti aggiunti � minore del numero di quelli
+	 * necessari restituisco subito false altrimenti con il doppio ciclo controllo
+	 * se gli elementi di neededComponent sono contenuti tutti in added component
 	 * 
 	 * @return true added components contains essential components
 	 */
@@ -140,9 +142,10 @@ public class Configuration {
 	public List<Component> getAddedComponents() {
 		return addedComponents;
 	}
+
 	/**
 	 * 
-	 * @return 
+	 * @return
 	 */
 
 	public List<Constraint> getConstraintErrors() {
@@ -156,7 +159,7 @@ public class Configuration {
 		}
 		return s;
 	}
-	
+
 	/**
 	 * 
 	 * @return
