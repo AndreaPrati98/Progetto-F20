@@ -77,6 +77,9 @@ public class Configuration {
 
 	public boolean removeComponent(Component c) {
 		if (addedComponents.remove(c)) {
+			if (singleComponents.containsKey(c.getTypeComponent()) && singleComponents.get(c.getTypeComponent())) {
+				singleComponents.replace(c.getTypeComponent(),false);
+			}
 			return true;
 		} else {
 			return false;
