@@ -41,17 +41,11 @@ public class MaxConstraint implements Constraint {
 	}
 
 	/**
-	 * Se questo vincolo è esterno controllo che la somma dei valori tutti i vincoli interni 
-	 * dello stesso tipo sia minore o uguale del valore di questo vincolo.
-	 * Se questo vincolo è interno calcolo la somma di tutti i vincoli interni di questo tipo,
-	 * compreso questo. Se c'è un vincolo esterno di questo tipo confronto il valore della somma
-	 * trovata con il valore del vincolo esterno.
+	 * Check if this Constraint is compatible with the list of others constraints given
 	 * 
-	 * @param component type:{@link Component}
-	 * @return true if the component will respect the constraint,false if it will
-	 *         not respect the costraint
-	 */
-	
+	 * @param Constraint type:{@link Constraint}
+	 * @return true if the component will respect the constraint,false if it will not respect the costraint
+	 */	
 	@Override
 	public boolean checkList(List<Constraint> constraints) {
 		

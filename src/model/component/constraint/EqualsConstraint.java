@@ -78,11 +78,10 @@ public class EqualsConstraint implements Constraint {
 	}
 
 	/**
-	 * Controlla che tutti i vincoli con lo stesso nome abbiano valore uguale.
+	 * Check if this Constraint is compatible with the list of others constraints given
 	 * 
-	 * @param the list of constraints that it has to respect
-	 * @return true if the component will respect the constraint,false if it will
-	 *         not respect the costraint
+	 * @param Constraint type:{@link Constraint}
+	 * @return true if the component will respect the constraint,false if it will not respect the costraint
 	 */
 	@Override
 	public boolean checkList(List<Constraint> constraints) {

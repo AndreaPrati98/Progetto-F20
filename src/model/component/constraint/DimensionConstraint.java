@@ -123,11 +123,9 @@ public class DimensionConstraint implements Constraint {
 	}
 
 	/**
-	 * Vede se il nuovo componente e conforme alle compatibilità ,controllando prima
-	 * se deve essere inserito o deve ospitare e poi maggiorandolo o minorandolo
-	 * rispetto agli opportuni valori massimi o minimi.
+	 * Check if this Constraint is compatible with the list of others constraints given
 	 * 
-	 * @param component type:{@link Component}
+	 * @param Constraint type:{@link Constraint}
 	 * @return true if the component will respect the constraint,false if it will not respect the costraint
 	 */
 	@Override
