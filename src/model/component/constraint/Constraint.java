@@ -9,15 +9,21 @@ import java.util.List;
  */
 public interface Constraint {
 	
+	/**
+	 * The method to get the name of the object that implements the
+	 * constraint interface.
+	 * 
+	 * @return the name of the constraint
+	 */	
 	String getConstraintName();
 	/**
-	 * Controlla che i Constraint accettati come parametri siano tutti compatibili
-	 * con il contraint che sta eseguendo questo metodo
+	 * Check that the Constraint given as parameters are all compatible
+	 * with the contraint that is executing this method.
 	 * 
-	 * @param constraints - lista ({@link List}) di vincoli che vogliamo controllare fra loro
+	 * @param constraints - lista ({@link List}) of constraints that we want to check each others
 	 * 
-	 * @return true - se sono tutti compatibili <br>
-	 * 			false - se non tutti i vincoli sono compatibili
+	 * @return true - if are all compatibles. <br>
+	 * 			false - if there is at least one that's not compatible.
 	 */
 	boolean checkList(List<Constraint> constraints);
 	String getValue();
