@@ -6,7 +6,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
-import java.util.LinkedList;
 //import java.util.List;
 
 import javax.swing.DefaultListModel;
@@ -27,6 +26,7 @@ import javax.swing.ScrollPaneConstants;
  * @author Andrea
  * @author Irene R.
  * @author Stefano
+ * @author Capici Alessandro
  *
  */
 @SuppressWarnings("serial")
@@ -46,14 +46,14 @@ public class TesterFrame extends JFrame {
 	private DefaultListModel<String> listModelCatalog;
 	private DefaultListModel<String> listModelAdded;
 
-	// Queste due liste servono solo ad aggiornare le JList (non conosco altri modi)
-	private LinkedList<String> bufferComponent;
-	private LinkedList<String> bufferNewComponent;
+	// Queste due liste servono solo ad aggiornare le JList (non conosco altri modi)<---- si fa con le list model
+//	private LinkedList<String> bufferComponent;
+//	private LinkedList<String> bufferNewComponent;
 
 	public TesterFrame(String title) {
 		super(title);
-		this.bufferComponent = new LinkedList<String>();
-		this.bufferNewComponent = new LinkedList<String>();
+//		this.bufferComponent = new LinkedList<String>();
+//		this.bufferNewComponent = new LinkedList<String>();
 		this.initialPosition();
 		
 		content = this.getContentPane();
