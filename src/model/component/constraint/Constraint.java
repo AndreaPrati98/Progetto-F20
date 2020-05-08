@@ -26,7 +26,22 @@ public interface Constraint {
 	 * 			false - if there is at least one that's not compatible.
 	 */
 	boolean checkList(List<Constraint> constraints);
+	
+	/**
+	 * The method to get the value of the object that implements the
+	 * constraint interface.
+	 * 
+	 * @return the value of the contraint as a String.
+	 */
 	String getValue();
+	
+
+	/**
+	 * The method to get the ConstraintType of the object that implements the
+	 * constraint interface.
+	 * 
+	 * @return the value of the contraint as a String.
+	 */
 	ConstraintType getConstraintType();
 	
 }
