@@ -1,0 +1,8 @@
+controller
+model.catalog
+model.component
+model.component.constraint
+model.configuration
+model.configurator
+model.util
+view
