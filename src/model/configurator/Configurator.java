@@ -6,7 +6,6 @@ import java.util.List;
 import model.catalog.ComponentCatalog;
 import model.component.Component;
 import model.configuration.Configuration;
-import model.customer.Customer;
 
 /**
  * 
@@ -17,7 +16,6 @@ import model.customer.Customer;
 public class Configurator {
 
 	private ComponentCatalog catalog;
-	private Customer customer;
 	private Configuration configuration;
 
 	public Configurator(ComponentCatalog catalog,Configuration configuration) {
@@ -87,14 +85,6 @@ public class Configurator {
 	public String toString() {
 		return "System [configuration=" + configuration + "]";
 	}
-	/**
-	 * @return customer - returns the customer
-	 * @see {@link Customer}
-	 * */
-	public Customer getCustomer() {
-		return customer;
-	}
-	
-	
+
 
 }
