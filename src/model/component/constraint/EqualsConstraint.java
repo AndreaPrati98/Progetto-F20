@@ -29,41 +29,6 @@ public class EqualsConstraint implements Constraint {
 		// TODO Auto-generated method stub
 		return name;
 	}
-		
-	//Controlla se esiste almeno un vincolo che abbia nome uguale ma 
-	//valore diverso rispetto al this.
-	//Se esiste --> False
-	//Se non esiste --> True
-	/*@Override
-	public boolean checkList(List<Component> components) {
-		
-		String myName = this.getConstraintName();
-	
-		//Ciclo esterno per prendere ogni componente della lista
-		for(Component comp : components) {			
-			List<Constraint> constraints = comp.getConstraints();
-			//Ciclo interno per controllare i vincoli dell'i-esimo componente
-			for(Constraint constr : constraints) {
-				//Controllo se io (vincolo) e il j-esimo vincolo abbiamo lo stesso nome
-				if(constr.getConstraintName().equals(myName)){
-					//Se abbiamo lo stesso nome, ma attributi divesi (verificabile
-					//col metodo equals di object che controlla l'uguaglianza tra tutti 
-					//gli attributi), se siamo diversi ho trovato almeno un vincolo
-					//con cui non sono compatibile
-					if(!constr.equals(this)) {
-						return false;
-					}					
-				}						
-			}				
-		}
-		
-		//Se ho controllato tutti e nessuno è incompatibile con i miei vincoli
-		//allora è ok
-		return true;
-	}*/
-	
-	
-	
 
 	@Override
 	public String getValue() {
@@ -78,8 +43,7 @@ public class EqualsConstraint implements Constraint {
 	}
 
 	/**
-	 * Controlla che tutti i vincoli con lo stesso nome abbiano valore uguale.
-	 * 
+	 * Check that every constraint with the same name have the same value
 	 * @param the list of constraints that it has to respect
 	 * @return true if the component will respect the constraint,false if it will
 	 *         not respect the costraint

@@ -22,97 +22,14 @@ import model.component.constraint.EqualsConstraint;
 import model.component.constraint.MaxConstraint;
 
 /**
- * Class used to interact with a json file
+ * Class used to interact with a json file 
+ * Use addComponent() to add a custom or known
+ * component, getComponents() to read from a json file
+ * 
  * @author Cristian
  *
  */
 
-/*
- * MAPPA DEGLI ATTRIBUTI E LISTA VINCOLI
- * 
- * - CPU:
- * Vincoli: cpuSocket, ramType, power, ramSize
- * _ name
- * _ cpuFrequency
- * _ ramSize
- * _ ramType
- * _ hasIntegratedGraphicCard
- * _ generation
- * _ cpuSocket
- * _ tdp
- * _ power
- * _ cacheSize
- * 
- * 
- * RAM:
- * Vincoli: ramType, ramSlotCount, ramSize (cpu e mobo)
- * _ name
- * _ ramType
- * _ ramFrequency
- * _ ramSize
- * 
- * MOBO:
- * Vincoli: cpuSocket, ramType, ramSize, formFactor, storagePortVersion, power
- * _ name
- * _ cpuSocket
- * _ ramType
- * _ ramFrequency
- * _ pciSlotCount
- * _ storagePortVersion
- * _ usbPortsCount
- * _ hdmiPortsCount
- * _ ramSlotCount
- * _ biosVersion
- * _ formFactor
- * _ power
- * 
- * GRAPHIC CARD (gpu)
- * Vincoli: graphicCardLength, pciSlotCount
- * _ name
- * _ graphicCardFrequency
- * _ graphicCardMemoryFrequency
- * _ graphicCardLength
- * _ coreCount
- * _ graphicCardFrameBuffer
- * _ power
- * 
- * - CASE
- * Vincoli: formFactor, graphicCardLength
- * _ name
- * _ graphicCardLength
- * _ formFactor
- * 
- * - COOLER
- * Vincoli: cpuSocket
- * _ name
- * _ cpuSocket
- * _ tdp
- * 
- * - POWER
- * Vincoli: power
- * _ name
- * _ power
- * 
- * - MASSSTORAGE
- * Vincoli: storagePortVersion
- * _ name
- * _ type
- * _ storagePortVersion
- * _ size
- */
-
-/* TEST GETCOMPONENTS
-JSONUtil j = new JSONUtil();
-
-for(Component c:j.getComponents()) {
-	System.out.println("TIPO: " + c.getTypeComponent() + " NOME: " + c.getAttributesMap().get("name"));
-	System.out.println("VINCOLI:");
-	for(Constraint v: c.getConstraints()) {
-		System.out.println("Nome: " + v.getConstraintName() + " Valore: " + v.getValue() + " Tipo: " + v.getConstraintType() + " Constr:" + v.getClass().getSimpleName());
-	}
-	System.out.println();
-}
-*/
 public class JSONUtil {
 
 	private String typeComponent;
@@ -196,21 +113,22 @@ public class JSONUtil {
 	}
 
 	/**
-	 * @param typeComponent - the component you want to search 
+	 * @param typeComponent
+	 *            - the component you want to search
 	 * @return a list containing every component that is typeComponent
 	 */
 	public List<Component> getComponents(String typeComponent) {
 		List<Component> finalList = new ArrayList<Component>();
 		List<Component> list = getComponents();
-		
-		for(Component c : list) {
-			if(c.getTypeComponent().equals(typeComponent)) {
+
+		for (Component c : list) {
+			if (c.getTypeComponent().equals(typeComponent)) {
 				finalList.add(c);
 			}
 		}
 		return finalList;
 	}
-	
+
 	/**
 	 * @return a list containing every component
 	 */
@@ -239,9 +157,9 @@ public class JSONUtil {
 				internalObject = (JSONObject) internalArray.get(j);
 				constraintName = (String) internalObject.get("name");
 				constraintValue = (String) internalObject.get("value");
-				if(internalObject.get("type") != null) {
+				if (internalObject.get("type") != null) {
 					constraintType = ConstraintType.valueOf((String) internalObject.get("type"));
-				}			
+				}
 				constraint = (String) internalObject.get("constraint");
 				switch (constraint) {
 				case "DimensionConstraint":
@@ -280,13 +198,13 @@ public class JSONUtil {
 			JSONListObj = new JSONObject();
 			JSONListObj.put("name", constraintList.get(i).getConstraintName());
 			JSONListObj.put("value", constraintList.get(i).getValue());
-			
-			if(constraintList.get(i).getConstraintType() != null) {
+
+			if (constraintList.get(i).getConstraintType() != null) {
 				JSONListObj.put("type", constraintList.get(i).getConstraintType().name());
 			}
-			
+
 			JSONListObj.put("constraint", constraintList.get(i).getClass().getSimpleName());
-			
+
 			JSONList.add(JSONListObj);
 		}
 
@@ -377,24 +295,21 @@ public class JSONUtil {
 		}
 
 		return (JSONArray) jsonObject.get("components");
-		
+
 	}
 
 	private HashMap<String, String> addCpu() {
 		HashMap<String, String> map = new HashMap<>();
 
-		// - Nome, frequenzaCPU, maxRamConsentita
-		//Vincoli: cpuSocket, ramType, power
-		
 		System.out.println("Inserisci il nome: ");
 		map.put("name", in.nextLine());
-		
+
 		System.out.println("Inserisci la frequenza: ");
 		map.put("cpuFrequency", in.nextLine());
-		
+
 		System.out.println("Inserisci la massima Ram consentita: ");
 		map.put("ramSize", in.nextLine());
-		
+
 		System.out.println("Inserisci il tipo di Ram supportata: ");
 		map.put("ramType", in.nextLine());
 
@@ -424,13 +339,12 @@ public class JSONUtil {
 	}
 
 	private HashMap<String, String> addRam() {
-		// - Nome
-		//Vincoli: ramType, slot
+
 		HashMap<String, String> map = new HashMap<>();
 
 		System.out.println("Inserisci il nome: ");
 		map.put("name", in.nextLine());
-		
+
 		System.out.println("Inserisci il tipo di RAM: ");
 		map.put("ramType", in.nextLine());
 
@@ -444,23 +358,21 @@ public class JSONUtil {
 	}
 
 	private HashMap<String, String> addMobo() {
-		// - nome, slotPCI
-		//Vincoli, cpuSocket, ramType, formFactor, power
-		//aggiungere storageportversion
+
 		HashMap<String, String> map = new HashMap<>();
 
 		System.out.println("Inserisci il nome: ");
 		map.put("name", in.nextLine());
-		
+
 		System.out.println("Inserisci il socket per lo slot della cpu: ");
 		map.put("cpuSocket", in.nextLine());
-		
+
 		System.out.println("Inserisci il tipo di ram supportata");
 		map.put("ramType", in.nextLine());
-		
+
 		System.out.println("Inserisci la max ram supportata");
 		map.put("ramSize", in.nextLine());
-		
+
 		System.out.println("Inserisci la massima frequenza della ram: ");
 		map.put("ramFrequency", in.nextLine());
 
@@ -489,19 +401,17 @@ public class JSONUtil {
 	}
 
 	private HashMap<String, String> addGraphicCard() {
-		// - nome, frequenza, velocit� memoria, PCIexpress
-		//Vincoli graphicCardLength, pciexpress
 		HashMap<String, String> map = new HashMap<>();
 
 		System.out.println("Inserisci il nome: ");
 		map.put("name", in.nextLine());
-		
+
 		System.out.println("Inserisci la frequenza: ");
 		map.put("graphicCardFrequency", in.nextLine());
-		
+
 		System.out.println("Inserisci la velocit� della memoria: ");
 		map.put("graphicCardMemoryFrequency", in.nextLine());
-		
+
 		System.out.println("Inserisci la lunghezza della scheda: ");
 		map.put("graphicCardLength", in.nextLine());
 
@@ -518,13 +428,12 @@ public class JSONUtil {
 	}
 
 	private HashMap<String, String> addCase() {
-		// -Nome
-		//Vincoli formFactor, grapHLength
+
 		HashMap<String, String> map = new HashMap<>();
 
 		System.out.println("Inserisci il nome: ");
 		map.put("name", in.nextLine());
-		
+
 		System.out.println("Inserisci il form factor: ");
 		map.put("formFactor", in.nextLine());
 
@@ -535,13 +444,12 @@ public class JSONUtil {
 	}
 
 	private HashMap<String, String> addCool() {
-		// - Nome
-		//Vincoli cpuSocket
+
 		HashMap<String, String> map = new HashMap<>();
 
 		System.out.println("Inserisci il nome: ");
 		map.put("name", in.nextLine());
-		
+
 		System.out.println("Inserisci il socket CPU: ");
 		map.put("cpuSocket", in.nextLine());
 
@@ -552,13 +460,12 @@ public class JSONUtil {
 	}
 
 	private HashMap<String, String> addPow() {
-		// - Nome
-		//Vincoli power
+
 		HashMap<String, String> map = new HashMap<>();
 
 		System.out.println("Inserisci il nome: ");
 		map.put("name", in.nextLine());
-		
+
 		System.out.println("Inserisci la potenza: ");
 		map.put("power", in.nextLine());
 

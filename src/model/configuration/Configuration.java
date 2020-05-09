@@ -16,18 +16,18 @@ import model.component.constraint.MaxConstraint;
  */
 
 public class Configuration {
-	private List<String> neededComponents; // lista di elementi obbligatori per far si che un pc si possa accendere
-											// (Lista da stabilire)
+	private List<String> neededComponents; // list of required components in a configuration
+											
 	private List<Component> addedComponents;
 
-	private Map<String, Boolean> singleComponents; // mappa con componenti che possono essere aggiunte in sovrannumero,
-													// da definire meglio in futuro
+	private Map<String, Boolean> singleComponents; //map containing components that can't be added more than once
 
 	private List<Constraint> constraintErrors;
 
 	/**
 	 * 
-	 * @param neededComponents {@link Configuration}
+	 * @param neededComponents
+	 *            {@link Configuration}
 	 * @param singleComponents
 	 */
 	public Configuration(List<String> neededComponents, Map<String, Boolean> singleComponents) {
@@ -39,7 +39,8 @@ public class Configuration {
 	/**
 	 * aggiunta del componente scelto nella lista dei componenti solo se compatibile
 	 * 
-	 * @param c type:{@link Component} Component that you would like to add.
+	 * @param c
+	 *            type:{@link Component} Component that you would like to add.
 	 * @return true if the component have been added, false if the component haven't
 	 *         been added or it was already added before
 	 * @see Component
@@ -56,21 +57,19 @@ public class Configuration {
 				return true;
 			} else {
 				if (!getSingleComponents().get(c.getTypeComponent())) {
-					addedComponents.add(c); // se non è un componente singolo lo posso agiungere
+					addedComponents.add(c); // i can add it, only if it is a single component
 					getSingleComponents().replace(c.getTypeComponent(), true);
 				} else {
 					/**
 					 * Messaggio d'errore
 					 */
 					constraintErrors.add(new MaxConstraint("Single Component", "1", ConstraintType.INTERNAL));
-					return false; // se quel componente è singolo ed era gia stato aggiunto non lo posso
-									// riaggiungere
+					return false; // if the component is single, than it can't be added again
 				}
 			}
 			return true;
 		} else {
 			return false;
-			// return new DimensionConstraint("PROVA", "10", ConstraintType.EXTERNAL);
 		}
 
 	}
@@ -78,7 +77,7 @@ public class Configuration {
 	public boolean removeComponent(Component c) {
 		if (addedComponents.remove(c)) {
 			if (singleComponents.containsKey(c.getTypeComponent()) && singleComponents.get(c.getTypeComponent())) {
-				singleComponents.replace(c.getTypeComponent(),false);
+				singleComponents.replace(c.getTypeComponent(), false);
 			}
 			return true;
 		} else {
@@ -87,21 +86,14 @@ public class Configuration {
 	}
 
 	/**
-	 * se anche solo un vincolo non � rispettato esco dal ciclo restituendo false
+	 * se anche solo un vincolo non � rispettato esco dal ciclo restituendo false
 	 * 
-	 * @param c type:{@link Component}
+	 * @param c
+	 *            type:{@link Component}
 	 * @return true if the component will respect constraint,false if the component
 	 *         will not respect constraint
 	 */
 	private List<Constraint> check(Component c) {
-//		boolean flag = true; 
-//		List<Constraint> listConstraint = c.getConstraints();
-//		for (Constraint constraint : listConstraint) {
-//			if (!constraint.checkList(addedComponents)) {
-//				flag = false;
-//				break;
-//			}
-//		}
 		InterfaceConstraintChecker cc = new ConstraintChecker();
 		return cc.check(c, addedComponents);
 	}
@@ -124,13 +116,13 @@ public class Configuration {
 					}
 				}
 				if (!flag) {
-					return flag; // se la configurazione non � funzionante ritorno subito flag al programma,
-									// senza curarmi delle altre componenti
+					return flag;
+					//if the configuration is not working, return flag without considering other components
 				}
-				flag = false; // reimposto il flag a false per quando ripartira' il ciclo
+				flag = false; //reset flag for future use
 			}
 			flag = true;
-			return flag; // se tutto fila liscio ritorno il flag = true
+			return flag; //if everything is ok, return true
 
 		}
 		return flag;

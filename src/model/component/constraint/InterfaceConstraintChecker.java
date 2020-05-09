@@ -7,13 +7,13 @@ public interface InterfaceConstraintChecker {
 
 
 	/**
-	 * Estrae i {@link Constraint} non rispettati a partire dalla lista dei componenti gia aggiunti
-	 * e controlla che siano compatibili con i Constrint del nuovo componente
+	 * Gets {@link Constraint} not respected from already added components list, and check if they are compatible 
+	 * with new component's constraint.
 	 * 
 	 * @param newComponent
 	 * @param oldComponents
 	 * 
-	 * @return La lista di Constraint non rispettati
+	 * @return list of constraints not followed
 	 * 
 	 * @see Constraint
 	 * @see Component 
