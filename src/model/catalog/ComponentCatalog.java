@@ -13,7 +13,7 @@ import model.util.JSONUtil;
 public class ComponentCatalog {
 
 	private List<Component> componentList;
-	
+
 	public ComponentCatalog() {
 		componentList = new ArrayList<Component>();
 		componentList.addAll((new JSONUtil()).getComponents());
@@ -22,8 +22,8 @@ public class ComponentCatalog {
 	/**
 	 * 
 	 * @param newComponent - the component you want to add 
-	 * @return false - if the componentList already conains this component or newComponent is null
-	 * @return true - if is alright
+	 * @return false - if the componentList already contains this component or newComponent is null,true - if is ok
+	 * 
 	 */
 	public boolean addComponent(Component newComponent){
 		if(!componentList.contains(newComponent) && (newComponent != null)) {
@@ -36,8 +36,8 @@ public class ComponentCatalog {
 	/**
 	 * 
 	 * @param remComponent - the component you want to remove 
-	 * @return false - if the componentList already conains this component or newComponent is null
-	 * @return true - if is alright
+	 * @return false - if the componentList already contains this component or newComponent is null,true - if is ok
+	 * 
 	 */
 	public boolean removeComponent(Component remComponent) {
 		if(!componentList.contains(remComponent) && (remComponent != null)) {
@@ -62,6 +62,10 @@ public class ComponentCatalog {
 		}
 		return s.toString();
 	}
+	/**
+	 * 
+	 * @return list of component
+	 */
 	
 	public List<Component> getComponentList() {
 		return componentList;

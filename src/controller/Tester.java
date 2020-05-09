@@ -12,6 +12,7 @@ import view.TesterFrame;
 
 public class Tester {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		List<String> neededComponents=new ArrayList<String>();
 		neededComponents.add("cpu");
