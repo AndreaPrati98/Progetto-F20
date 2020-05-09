@@ -32,20 +32,20 @@ public class Configurator {
 	}
 	
 	/**
-	 *@overloading 
-	 *@param componentType - The filter of your search
-	 * */
+	 * 
+	 * @param compnentType
+	 * @return
+	 */
 	public ComponentCatalog getCatalog(String compnentType) {
 		return catalog;
 	}
 	
 	
 	/**
-	 * @param comp - Component that you would like to add.
-	 * @return 
-	 * @see {@link Configuration}
 	 * 
-	 * */
+	 * @param comp {@link Component}
+	 * @return true and false
+	 */
 	public boolean addComponent(Component comp) {
 		return configuration.addComponent(comp);
 	}
