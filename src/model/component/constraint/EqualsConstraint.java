@@ -1,8 +1,6 @@
 package model.component.constraint;
 
 import java.util.List;
-
-import model.component.Component;
 /**
  * 
  * @author Guglielmo

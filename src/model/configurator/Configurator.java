@@ -5,7 +5,6 @@ import java.util.List;
 
 import model.catalog.ComponentCatalog;
 import model.component.Component;
-import model.component.constraint.Constraint;
 import model.configuration.Configuration;
 import model.customer.Customer;
 
