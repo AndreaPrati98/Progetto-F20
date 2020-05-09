@@ -25,14 +25,12 @@ public class Tester {
 		singleComponents.put("mobo", false);
 		singleComponents.put("case", false);
 		
-		SqliteDB db = new SqliteDB();
-		
-		User u = new User("Frenkli", "Buzhiqi", "frenkli98@gmail.com", "12345678");
-		
-		//db.insertUserToDB(u);
-		db.getUsersFromDB();
-		db.closeConnection();
-		
+		/** TEST FUNZIONAMENTO CONNESSIONE DATABASE, ANDATO A BUON FINE
+		 * SqliteDB db = new SqliteDB();
+		   User u = new User("Frenkli", "Buzhiqi", "frenkli98@gmail.com", "12345678");
+		   db.getUsersFromDB();
+		   db.closeConnection();
+		 */
 		
 		ComponentCatalog catalog = new ComponentCatalog();
 		Configuration configuration=new Configuration(neededComponents,singleComponents);
