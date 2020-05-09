@@ -8,6 +8,8 @@ import java.util.Map;
 import model.catalog.ComponentCatalog;
 import model.configuration.Configuration;
 import model.configurator.Configurator;
+import model.db.SqliteDB;
+import model.db.User;
 import view.TesterFrame;
 
 public class Tester {
@@ -23,6 +25,12 @@ public class Tester {
 		singleComponents.put("mobo", false);
 		singleComponents.put("case", false);
 		
+		 //Test database connection and simple query printing
+		 SqliteDB db = new SqliteDB();
+		 User u = new User("Nome2", "Cognome2", "email2", "psw2");
+		 //db.insertUserToDB(u);
+		 db.getUsersFromDB();
+		 db.closeConnection();
 		
 		ComponentCatalog catalog = new ComponentCatalog();
 		Configuration configuration=new Configuration(neededComponents,singleComponents);
