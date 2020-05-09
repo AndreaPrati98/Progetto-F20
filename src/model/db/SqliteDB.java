@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import model.component.Component;
+
 /**
  * @author Frenkli Buzhiqi
  */
@@ -13,6 +15,9 @@ public class SqliteDB {
 	Connection c = null;
 	Statement stmt = null;
 	
+	/**
+	 * Estabilishing Connection
+	 */
 	public SqliteDB(){
 		
 		try {
@@ -27,12 +32,16 @@ public class SqliteDB {
 		
 	}
 	
+	/**
+	 * Displays user datas from "User" table in projectDatabase.sqlite
+	 * @return
+	 */
 	public void getUsersFromDB() {
 		try {
 			this.stmt = c.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM Users");
 			
-			while(rs.next()) {
+			while(rs.next()) { //printing table rows until table finishes
 				String firstName = rs.getString("firstName");
 				String lastName = rs.getString("lastName");
 				String email = rs.getString("email");
@@ -46,6 +55,12 @@ public class SqliteDB {
 		}
 	}
 	
+	/**
+	 * Inserts user to "User" table in projectDatabase.sqlite
+	 * @param u type:{@link User}
+	 * @return
+	 */
+	
 	public void insertUserToDB(User u) {
 		try {
 			this.stmt = c.createStatement();
@@ -55,6 +70,11 @@ public class SqliteDB {
 			//System.out.println("Error: " + e.getMessage());
 		}
 	}
+	
+	/**
+	 * Closes connection
+	 * @return
+	 */
 	
 	public void closeConnection() {
 		try {
