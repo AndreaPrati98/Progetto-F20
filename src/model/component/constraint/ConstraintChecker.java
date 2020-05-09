@@ -17,8 +17,9 @@ public class ConstraintChecker implements InterfaceConstraintChecker {
 	}
 
 	@Override
-	/**Creo una lista totale di tutti i vincoli già presenti nelle vecchie componenti
-	 * facendo una append alla lista iniziale vuota
+	/**
+	 * Creates a list containing every constraint already contained in old components,
+	 * starting from an empty list
 	 * @return {@link Constraint}
 	 */
 	public List<Constraint> check(Component newComponent, List<Component> oldComponents) {
@@ -31,17 +32,14 @@ public class ConstraintChecker implements InterfaceConstraintChecker {
 			oldConstraints.addAll(tmpConstraintList);
 		}
 
-		// Passo a
 		List<Constraint> listNewConstraint = newComponent.getConstraints();
 
 		for (Constraint constr : listNewConstraint) {
 			boolean correct = constr.checkList(oldConstraints);
 			if (!correct) {
-				// return false
 				constraintErrors.add(constr);
 			}
 		}
-		// return true
 		return constraintErrors;
 
 	}
