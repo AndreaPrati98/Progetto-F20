@@ -90,6 +90,8 @@ public class Component {
 	/**
 	 * 
 	 * @return price  dd
+	 * 
+	 * 
 	 */
 	
 	public double getPrice() {
