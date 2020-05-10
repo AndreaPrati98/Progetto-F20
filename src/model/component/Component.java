@@ -91,7 +91,7 @@ public class Component {
 	 * 
 	 * @return price  dd 
 	 * 
-	 * 
+	 * @desc fornisce indicazioni relative al prezzo amazon
 	 */
 	
 	public double getPrice() {
