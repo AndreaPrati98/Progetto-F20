@@ -25,7 +25,7 @@
       <br>
 
       <div class="container"><!--inizio form regisrazione-->
-         <form id="SignUpForm" align="center" method="POST"> <!-- metodo post per invio dati acquisiti -->
+         <form id="SignUpForm" action="/datiregistrazionepostati.html" align="center" method="POST"> <!-- metodo post per invio dati acquisiti -->
             <div class="row">
                <div class="input-field col s6">
                   <input id="FirstName" name="FirstName" type="text" class="validate">
