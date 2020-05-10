@@ -8,12 +8,14 @@ import model.component.constraint.Constraint;
 /**
  * 
  * @author Capici Alessandro
+ * @co_author Cic
+ * @co_author Ste
  *
  */
 public class Component {
 
 	private String typeComponent;
-	private List<Constraint> constraintList;//non è meglio una mappa??
+	private List<Constraint> constraintList;//non ï¿½ meglio una mappa??
 	private Map<String, String> attributesMap;
 
 	public Component(String typeComponent, List<Constraint> constraintList, Map<String, String> attributesMap) {
@@ -83,6 +85,15 @@ public class Component {
 	public String toString() {
 		return "Component [typeComponent=" + typeComponent + ", constraintList=" + constraintList + ", attributesMap="
 				+ attributesMap + "]";
+	}
+	
+	/**
+	 * 
+	 * @return price
+	 */
+	
+	public double getPrice() {
+		return Double.parseDouble(attributesMap.get("price"));
 	}
 	
 	

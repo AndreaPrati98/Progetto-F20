@@ -13,6 +13,8 @@ import model.component.constraint.MaxConstraint;
 
 /**
  * @author Capici Alessandro ,Frenkli Buzhiqi
+ * @co_author Stefano
+ * @co_author Cic
  */
 
 public class Configuration {
@@ -180,6 +182,19 @@ public class Configuration {
 	@Override
 	public String toString() {
 		return "Configuration [addedComponents=" + addedComponents + "]";
+	}
+	
+	/**
+	 * 
+	 * @return totalPrice
+	 */
+	
+	public double getTotalPrice() {
+		double totalPrice=0;
+		for(Component c : this.getAddedComponents()) {
+			totalPrice += c.getPrice();
+		}
+		return totalPrice;
 	}
 
 }
