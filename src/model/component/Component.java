@@ -93,6 +93,7 @@ public class Component {
 	 */
 	
 	public double getPrice() {
+		
 		return Double.parseDouble(attributesMap.get("price"));
 	}
 	
