@@ -12,13 +12,11 @@ public class GetRegisterServlet  extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
 		String name = request.getParameter("FirstName");
 		String lastname = request.getParameter("LastName");
 		request.setAttribute("nome", name);
 		request.setAttribute("cognome", lastname);
-		request.getRequestDispatcher("WEB-INF/datiregistrazionepostati.jsp").forward(request, response);;
-		
+		request.getRequestDispatcher("WEB-INF/datiregistrazionepostati.jsp").forward(request, response);;	
 	}
 	
 

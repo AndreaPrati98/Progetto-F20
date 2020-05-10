@@ -7,7 +7,7 @@
 
 	<servlet>
 		<servlet-name>HelloWorldServlet</servlet-name>
-		<servlet-class>jetty.HelloWorldServlet</servlet-class>
+		<servlet-class>servlet.HelloWorldServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
@@ -15,15 +15,30 @@
 		<url-pattern>index.html</url-pattern>
 	</servlet-mapping>
 	
+	
 	<servlet>
 		<servlet-name>RegisterServlet</servlet-name>
-		<servlet-class>jetty.RegisterServlet</servlet-class>
+		<servlet-class>servlet.RegisterServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>RegisterServlet</servlet-name>
 		<url-pattern>registrazione.html</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>GetRegisterServlet</servlet-name>
+		<servlet-class>servlet.GetRegisterServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>GetRegisterServlet</servlet-name>
+		<url-pattern>datiregistrazionepostati.html</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
 	
 
 
