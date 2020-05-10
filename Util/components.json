@@ -35,7 +35,8 @@
                 "cpuSocket": "1151",
                 "power": "65",
                 "ramSize": "128",
-                "ramType": "ddr4"
+                "ramType": "ddr4",
+                "price": "159.99"
             },
             "typeComponent": "cpu"
         },
@@ -74,7 +75,8 @@
                 "cpuSocket": "1440",
                 "power": "25",
                 "ramSize": "64",
-                "ramType": "ddr4"
+                "ramType": "ddr4",
+                "price" : "395.00"
             },
             "typeComponent": "cpu"
         },
@@ -113,7 +115,8 @@
                 "cpuSocket": "1151",
                 "power": "65",
                 "ramSize": "64",
-                "ramType": "ddr4"
+                "ramType": "ddr4",
+                "price" : "90.24"
             },
             "typeComponent": "cpu"
         },
@@ -152,7 +155,8 @@
                 "cpuSocket": "1440",
                 "power": "45",
                 "ramSize": "128",
-                "ramType": "ddr4"
+                "ramType": "ddr4",
+                "price": "554.55"
             },
             "typeComponent": "cpu"
         },
@@ -191,7 +195,8 @@
                 "cpuSocket": "am4",
                 "power": "95",
                 "ramSize": "128",
-                "ramType": "ddr4"
+                "ramType": "ddr4",
+                "price": "201.99"
             },
             "typeComponent": "cpu"
         },
@@ -212,7 +217,8 @@
             "attributesMap": {
                 "formFactor": "atx",
                 "name": "Cougar MX330",
-                "graphicCardLength": "350"
+                "graphicCardLength": "350",
+                "price":  "48.80"
             },
             "typeComponent": "case"
         },
@@ -233,7 +239,8 @@
             "attributesMap": {
                 "formFactor": "atx",
                 "name": "NZXT H510",
-                "graphicCardLength": "381"
+                "graphicCardLength": "381",
+                "price": "78.49"
             },
             "typeComponent": "case"
         },
@@ -254,7 +261,8 @@
             "attributesMap": {
                 "formFactor": "micro atx",
                 "name": "DIYPC MA01",
-                "graphicCardLength": "315"
+                "graphicCardLength": "315",
+                "price": "34.31"
             },
             "typeComponent": "case"
         },
@@ -269,7 +277,8 @@
             "attributesMap": {
                 "tdp": "180",
                 "name": "DIYPC MA01",
-                "cpuSocket": "am4"
+                "cpuSocket": "am4",
+                "price": "34.31"
             },
             "typeComponent": "cooler"
         },
@@ -284,7 +293,8 @@
             "attributesMap": {
                 "tdp": "205",
                 "name": "Noctua NH-U12S",
-                "cpuSocket": "1151"
+                "cpuSocket": "1151",
+                "price": "69.90"
             },
             "typeComponent": "cooler"
         },
@@ -299,7 +309,8 @@
             "attributesMap": {
                 "tdp": "260",
                 "name": "Deepcool CASTLE 360EX",
-                "cpuSocket": "1140"
+                "cpuSocket": "1140",
+                "price": "144.99"
             },
             "typeComponent": "cooler"
         },
@@ -314,7 +325,8 @@
             "attributesMap": {
                 "tdp": "240",
                 "name": "Asus ROG RYUJIN",
-                "cpuSocket": "1151"
+                "cpuSocket": "1151",
+                "price": "239.99"
             },
             "typeComponent": "cooler"
         },
@@ -329,7 +341,8 @@
             ],
             "attributesMap": {
                 "name": "Corsair RM 750",
-                "power": "750"
+                "power": "750",
+                "price": "154.95"
             },
             "typeComponent": "power"
         },
@@ -344,7 +357,8 @@
             ],
             "attributesMap": {
                 "name": "EVGA 500 W 80+",
-                "power": "500"
+                "power": "500",
+                "price": "51.94"
             },
             "typeComponent": "power"
         },
@@ -359,7 +373,8 @@
             ],
             "attributesMap": {
                 "name": "HEC 200 W Mini ITX",
-                "power": "200"
+                "power": "200",
+                "price": "51.94"
             },
             "typeComponent": "power"
         },
@@ -374,7 +389,8 @@
             ],
             "attributesMap": {
                 "name": "GameMax GM 2000",
-                "power": "2000"
+                "power": "2000",
+                "price": "187.57"
             },
             "typeComponent": "power"
         },
@@ -390,7 +406,8 @@
                 "portVersion": "sata3",
                 "size": "1000",
                 "name": "seagate barracuda",
-                "type": "hdd"
+                "type": "hdd",
+                "price": "64.95"
             },
             "typeComponent": "massStorage"
         },
@@ -405,8 +422,9 @@
             "attributesMap": {
                 "portVersion": "sata3",
                 "size": "4000",
-                "name": "westerdigital wd40",
-                "type": "hdd"
+                "name": "westerndigital wd40",
+                "type": "hdd",
+                "price": "105.80"
             },
             "typeComponent": "massStorage"
         },
@@ -422,7 +440,8 @@
                 "portVersion": "sata3",
                 "size": "500",
                 "name": "samsung 860 evo",
-                "type": "ssd"
+                "type": "ssd",
+                "price": "88.98"
             },
             "typeComponent": "massStorage"
         },
@@ -480,7 +499,8 @@
                 "cpuSocket": "am4",
                 "power": "60",
                 "ramType": "ddr4",
-                "ramSize": "32"
+                "ramSize": "32",
+                "price": "57.49"
             },
             "typeComponent": "mobo"
         },
@@ -596,7 +616,8 @@
                 "cpuSocket": "1150",
                 "power": "70",
                 "ramType": "ddr3",
-                "ramSize": "32"
+                "ramSize": "32",
+                "price": "79.19"
             },
             "typeComponent": "mobo"
         },
@@ -624,7 +645,8 @@
                 "ramMaxFrequency": "3200",
                 "name": "corsair vengeance lpx",
                 "ramType": "ddr4",
-                "ramSize": "800"
+                "ramSize": "800",
+                "price": "98.57"
             },
             "typeComponent": "ram"
         },
@@ -652,7 +674,8 @@
                 "ramMaxFrequency": "1600",
                 "name": "hyperx fury",
                 "ramType": "ddr3",
-                "ramSize": "8"
+                "ramSize": "8",
+                "price": "97.99"
             },
             "typeComponent": "ram"
         },
@@ -680,7 +703,8 @@
                 "ramMaxFrequency": "3600",
                 "name": "gskill trident z",
                 "ramType": "ddr4",
-                "ramSize": "16"
+                "ramSize": "16",
+                "price": "141.07"
             },
             "typeComponent": "ram"
         },
@@ -706,7 +730,8 @@
                 "name": "zotac geforce gt-710",
                 "power": "19",
                 "coreCount": "1",
-                "graphicCardLength": "147"
+                "graphicCardLength": "147",
+                "price": "42.50"
             },
             "typeComponent": "gpu"
         },
@@ -732,7 +757,8 @@
                 "name": "Gigabyte GeForce GTX 660 Ti",
                 "power": "150",
                 "coreCount": "1",
-                "graphicCardLength": "403"
+                "graphicCardLength": "403",
+                "price": "169.99"
             },
             "typeComponent": "gpu"
         },
@@ -758,7 +784,8 @@
                 "name": "asus geforce gt 710",
                 "power": "75",
                 "coreCount": "1",
-                "graphicCardLength": "167"
+                "graphicCardLength": "167",
+                "price": "64.99" 
             },
             "typeComponent": "gpu"
         },
@@ -784,7 +811,8 @@
                 "name": "msi geforce rtx 2080 super",
                 "power": "75",
                 "coreCount": "1",
-                "graphicCardLength": "330"
+                "graphicCardLength": "330",
+                "price": "892.86"
             },
             "typeComponent": "gpu"
         }
