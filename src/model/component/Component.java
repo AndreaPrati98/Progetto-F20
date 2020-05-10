@@ -77,8 +77,6 @@ public class Component {
 	}
 
 
-
-
 	@Override
 	public String toString() {
 		return "Component [typeComponent=" + typeComponent + ", constraintList=" + constraintList + ", attributesMap="
