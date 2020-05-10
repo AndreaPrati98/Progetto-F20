@@ -185,10 +185,9 @@ public class Configuration {
 	}
 	
 	/**
-	 * 
+	 *  ritorna il prezzo totale della configurazione i prezzi sono di amazon 
 	 * @return totalPrice
 	 */
-	
 	public double getTotalPrice() {
 		double totalPrice=0;
 		for(Component c : this.getAddedComponents()) {
