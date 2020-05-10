@@ -89,7 +89,7 @@ public class Component {
 	
 	/**
 	 * 
-	 * @return price  nnn
+	 * @return price  
 	 */
 	
 	public double getPrice() {
