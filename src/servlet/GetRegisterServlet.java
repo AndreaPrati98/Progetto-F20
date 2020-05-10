@@ -1,9 +1,25 @@
 package servlet;
 
-public class GetRegisterServlet {
+import java.io.IOException;
 
-	public GetRegisterServlet() {
-		// TODO Auto-generated constructor stub
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class GetRegisterServlet  extends HttpServlet{
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+
+		String name = request.getParameter("FirstName");
+		String lastname = request.getParameter("LastName");
+		request.setAttribute("nome", name);
+		request.setAttribute("cognome", lastname);
+		request.getRequestDispatcher("WEB-INF/datiregistrazionepostati.jsp").forward(request, response);;
+		
 	}
+	
 
 }
