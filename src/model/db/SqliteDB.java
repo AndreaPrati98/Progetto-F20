@@ -64,7 +64,7 @@ public class SqliteDB {
 			stmt.executeQuery("INSERT INTO Users (firstName, lastName, email, password)" +
 							  "VALUES ('" + u.getFirstName() + "','" + u.getLastName() + "','" + u.getEmail() + "','" + u.getPassword() + "')");
 		} catch (Exception e) {
-			//System.out.println("Error: " + e.getMessage());
+			System.out.println("Error: " + e.getMessage());
 		}
 	}
 	
