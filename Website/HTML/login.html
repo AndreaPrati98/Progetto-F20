@@ -17,7 +17,7 @@
          <div class="nav-wrapper">
            <a class="left brand-logo">Progetto-F20</a>
            <ul class="right">
-             <li>Registrazione </li>
+             <li>Login </li>
           </ul>
          </div>
       </nav><!--fine della navbar-->
@@ -26,36 +26,21 @@
 
       <div class="container"><!--inizio form regisrazione-->
          <form id="SignUpForm" align="center" method="POST"> <!-- metodo post per invio dati acquisiti -->
-            <div class="row">
-               <div class="input-field col s6">
-                  <input id="FirstName" name="FirstName" type="text" class="validate">
-                  <label for="FirstName">Nome</label>
-               </div>
-               <div class="input-field col s6">
-                  <input id="LastName" name="LastName" type="text" class="validate">
-                  <label for="LastName">Cognome</label>
-               </div>
-            </div>
             <div class="center container">
-               <div class="input-field col s8">
+               <div class="input-field col s5">
                   <input id="Email" name="Email" type="text" class="validate">
                   <label for="Email">Email</label>
                </div>
             </div>
-            <br>
-            <div class="row">
-               <div class="input-field col s6">
+            <div class="center container">
+               <div class="input-field col s5">
                   <input id="Password" name="Password" type="password" class="validate">
                   <label for="Password">Password</label>
-               </div>
-               <div class="input-field col s6">
-                  <input id="RipetiPassword" name="RipetiPassword" type="password" class="validate">
-                  <label for="RipetiPassword">Ripeti Password</label>
                </div>
             </div>
             <div class="center container">
                 <button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="submitForm">
-                    SignUp
+                    Login
                     <i class="material-icons right">done</i>
                 </button>
                 <button class="btn waves-effect waves-light" type="reset" id="resetForm">
