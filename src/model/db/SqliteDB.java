@@ -30,7 +30,7 @@ public class SqliteDB {
 	}
 	
 	/**
-	 * Displays user datas from "User" table in projectDatabase.sqlite
+	 * Displays user data from "User" table in projectDatabase.sqlite
 	 * @return
 	 */
 	public void getUsersFromDB() {
