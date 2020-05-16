@@ -61,7 +61,7 @@ public class SqliteDB {
 	public void insertUserToDB(User u) {
 		try {
 			this.stmt = c.createStatement();
-			stmt.executeQuery("INSERT INTO Users (firstName, lastName, email, password)" +
+			stmt.executeUpdate("INSERT INTO Users (firstName, lastName, email, password)" +
 							  "VALUES ('" + u.getFirstName() + "','" + u.getLastName() + "','" + u.getEmail() + "','" + u.getPassword() + "')");
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
