@@ -28,7 +28,7 @@ public class Tester {
 		 //Test database connection and simple query printing
 		 SqliteDB db = new SqliteDB();
 		 User u = new User("Nome1", "Cognome1", "email1", "psw1");
-		 //db.insertUserToDB(u);
+		 db.insertUserToDB(u);
 		 db.getUsersFromDB();
 		 db.closeConnection();
 		
