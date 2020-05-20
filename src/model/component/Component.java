@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import model.component.constraint.Constraint;
+import model.component.performanceAlgorithms.InterfacePerformanceEstimator;
+import model.component.performanceAlgorithms.PerformanceEstimatorFactory;
 
 /**
  * 
@@ -17,11 +19,13 @@ public class Component {
 	private String typeComponent;
 	private List<Constraint> constraintList;//non � meglio una mappa??
 	private Map<String, String> attributesMap;
+	private double performanceIndex;
 
 	public Component(String typeComponent, List<Constraint> constraintList, Map<String, String> attributesMap) {
 		this.setTypeComponent(typeComponent);
 		this.constraintList = constraintList;
 		this.attributesMap=attributesMap;
+		performanceIndex = -1; // starebbe a significare "indice non calcolato" oppure "indice non calcolabile"
 	}
 
 	
@@ -97,6 +101,16 @@ public class Component {
 		return Double.parseDouble(attributesMap.get("price"));
 	}
 	
+	public Double getPerformanceIndex() {
+		if(performanceIndex == -1) {
+			PerformanceEstimatorFactory fact = new PerformanceEstimatorFactory();
+			InterfacePerformanceEstimator perfEstim = fact.getPerformanceEstimator(typeComponent);
+			performanceIndex = perfEstim.computePerformance(attributesMap);
+			
+		}
+		return performanceIndex;
+		
+	}
 	
 
 }
