@@ -4,6 +4,12 @@
     margin-right: auto;
 }
 
+.homeImg{
+    width: auto*70%;
+    height: auto;
+    object-fit: contain;
+}
+
 .rowCaseTable{
     border: 0;
 }
