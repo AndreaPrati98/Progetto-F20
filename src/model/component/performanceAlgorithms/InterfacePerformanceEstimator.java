@@ -10,6 +10,12 @@ import java.util.Map;
  */
 public interface InterfacePerformanceEstimator {
 
+	/**
+	 * Compute an index method based on the attributes inside the map
+	 * 
+	 * @param componentAttributes
+	 * @return index of performance
+	 */
 	public double computePerformance(Map<String, String> componentAttributes);
 	
 }
