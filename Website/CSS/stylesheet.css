@@ -4,6 +4,10 @@
     margin-right: auto;
 }
 
+body{
+ 	height: 3000px;
+}
+
 .homeImg{
     width: auto*70%;
     height: auto;
