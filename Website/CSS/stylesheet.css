@@ -45,3 +45,15 @@ body{
 .rowCoolerTable{
     border: 0;
 }
+
+#resetBtn{
+    background-color: #d32f2f;
+}
+
+#saveBtn{
+    background-color: #00c853;
+}
+
+#checkBtn{
+    background-color: #0097a7;
+}
