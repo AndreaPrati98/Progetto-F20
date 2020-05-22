@@ -101,12 +101,20 @@ public class Component {
 		return Double.parseDouble(attributesMap.get("price"));
 	}
 	
+	/**
+	 * 
+	 * @return a performance index between 0 and 100 
+	 * or -1 if it is not possible to compute the performance index
+	 */
 	public Double getPerformanceIndex() {
 		if(performanceIndex == -1) {
 			PerformanceEstimatorFactory fact = new PerformanceEstimatorFactory();
 			InterfacePerformanceEstimator perfEstim = fact.getPerformanceEstimator(typeComponent);
-			performanceIndex = perfEstim.computePerformance(attributesMap);
-			
+			if(perfEstim==null) {
+				performanceIndex = -1;
+			} else {
+				performanceIndex = perfEstim.computePerformance(attributesMap);
+			}
 		}
 		return performanceIndex;
 		
