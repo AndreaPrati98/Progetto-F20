@@ -1,11 +1,13 @@
 #collapsibleConfiguration{
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 87%;
+}
+
+.widthElement{
+    width: 87%;
 }
 
 body{
- 	height: 3000px;
+  height: 3000px;
 }
 
 .homeImg{
@@ -49,9 +51,20 @@ body{
 #resetBtn{
     background-color: #d32f2f;
 }
+#pollBtn{
+    background-color: #fbc02d;
+}
 
 #saveBtn{
     background-color: #00c853;
+}
+#confBtn{
+    background-color: #90a4ae;
+}
+
+.bottomPosition{
+    position: absolute; 
+    bottom: 0px;
 }
 
 #checkBtn{
