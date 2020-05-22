@@ -26,7 +26,7 @@ public class PerformanceEstimatorFactory {
 			return new CasePerformanceEstimator();
 			
 		}  else if (typeOfComponent.equalsIgnoreCase("massStorage")) {
-			return new MassStoravePerformanceEstimator();
+			return new MassStoragePerformanceEstimator();
 			
 		}  else {
 			return null;
