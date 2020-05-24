@@ -47,15 +47,31 @@ public class Component {
 		attributesMap.replace(key, attributes);
 		return true;
 	}
-
+	
+	/**
+	 * 
+	 * @param attribute
+	 */
 	public void setAttribute(Attribute attribute) {
 		attributesMap.put(attribute.getName(), attribute);
 	}
 	
+	/**
+	 * 
+	 * @param name of the attribute
+	 * @return the attribute with the given name
+	 */
 	public Attribute getAttributeByName(String name) {
 		return attributesMap.get(name);
 	}
 	
+	/**
+	 * 
+	 * @param name
+	 * @return the value of the attribute with the given name
+	 *
+	 */
+	// Questo metodo può essere utile per i performance estimator
 	public String getAttributeValueByName(String name) {
 		return attributesMap.get(name).getValue();
 	}
