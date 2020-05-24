@@ -1,5 +1,5 @@
 package model.component.constraint;
 
-public enum ConstraintType {
+public enum ConstraintCategory {
 	INTERNAL,EXTERNAL
 }
