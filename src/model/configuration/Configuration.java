@@ -6,6 +6,7 @@ import java.util.Map;
 
 import model.component.Component;
 import model.component.constraint.Constraint;
+import model.component.constraint.ConstraintCategory;
 import model.component.constraint.ConstraintChecker;
 import model.component.constraint.ConstraintType;
 import model.component.constraint.InterfaceConstraintChecker;
@@ -64,7 +65,7 @@ public class Configuration {
 					/**
 					 * Messaggio d'errore
 					 */
-					constraintErrors.add(new MaxConstraint("Single Component", "1", ConstraintType.INTERNAL));
+					constraintErrors.add(new MaxConstraint("Single Component", "1", ConstraintCategory.INTERNAL));
 					return false; // se quel componente è singolo ed era gia stato aggiunto non lo posso
 									// riaggiungere
 				}
