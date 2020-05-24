@@ -126,10 +126,7 @@ public class Component {
 			if(perfEstim==null) {
 				performanceIndex = -1;
 			} else {
-				//performanceIndex = perfEstim.computePerformance(attributesMap);
-				/*
-				 * DECOMMENTARE QUANDO AVREMO AGGIUSTATO I PERFORMANCE ESTIMATOR CON GLI ATTRIBUTE
-				 */
+				performanceIndex = perfEstim.computePerformance(attributesMap);
 			}
 		}
 		return performanceIndex;

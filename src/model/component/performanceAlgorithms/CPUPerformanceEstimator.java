@@ -2,6 +2,8 @@ package model.component.performanceAlgorithms;
 
 import java.util.Map;
 
+import model.component.Attribute;
+
 /**
  * 
  * @author Andrea
@@ -35,7 +37,7 @@ public class CPUPerformanceEstimator implements InterfacePerformanceEstimator {
 	 *
 	 */
 	@Override
-	public double computePerformance(Map<String, String> componentAttributes) throws NullPointerException {
+	public double computePerformance(Map<String, Attribute> componentAttributes) throws NullPointerException {
 		
 		
 		// Controllo giusto per sicurezza
@@ -43,17 +45,17 @@ public class CPUPerformanceEstimator implements InterfacePerformanceEstimator {
 			throw new NullPointerException("Invalid instance of componentAttributes");
 		}
 		
-		String ramType = componentAttributes.get("ramType");
-		double clock = Double.parseDouble(componentAttributes.get("cpuFrequency"));
+		String ramType = componentAttributes.get("ramType").getValue();
+		double clock = Double.parseDouble(componentAttributes.get("cpuFrequency").getValue());
 		int numberOfCore; // non ce l'abbiamo ancora nel JSON
 		int numberOfThread; // non ce l'abbiamo ancora nel JSON		
 		int cacheSize;
 		
 		try {
-			clock = Double.parseDouble(componentAttributes.get("cpuFrequency"));
-			numberOfCore = Integer.parseInt(componentAttributes.get("numberOfCore")); 
-			numberOfThread = Integer.parseInt(componentAttributes.get("numberOfThread")); 
-			cacheSize = Integer.parseInt(componentAttributes.get("cacheSize"));
+			clock = Double.parseDouble(componentAttributes.get("cpuFrequency").getValue());
+			numberOfCore = Integer.parseInt(componentAttributes.get("numberOfCore").getValue()); 
+			numberOfThread = Integer.parseInt(componentAttributes.get("numberOfThread").getValue()); 
+			cacheSize = Integer.parseInt(componentAttributes.get("cacheSize").getValue());
 			
 		} catch (NumberFormatException e) {
 			e.printStackTrace();

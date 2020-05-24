@@ -2,6 +2,8 @@ package model.component.performanceAlgorithms;
 
 import java.util.Map;
 
+import model.component.Attribute;
+
 /**
  * 
  * @author Irene S
@@ -12,15 +14,15 @@ public class MassStoragePerformanceEstimator implements InterfacePerformanceEsti
 	private static final double MAX_POINT_TYPE = 50;
 	
 	@Override
-	public double computePerformance(Map<String, String> componentAttributes) {
+	public double computePerformance(Map<String, Attribute> componentAttributes) {
 		/*
 		 * Considera i seguenti parametri:
 		 * size
 		 * type
 		 * 
 		 */
-		String sizeString = componentAttributes.get("size");
-		String type = componentAttributes.get("type");
+		String sizeString = componentAttributes.get("size").getValue();
+		String type = componentAttributes.get("type").getValue();
 		if(type == null) {
 			return -1;
 		}
