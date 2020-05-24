@@ -17,35 +17,21 @@ import model.component.performanceAlgorithms.PerformanceEstimatorFactory;
 public class Component {
 
 	private String typeComponent;
-	private List<Constraint> constraintList;//non � meglio una mappa??
-	private Map<String, String> attributesMap;
+	//private List<Constraint> constraintList;//non � meglio una mappa??
+	private Map<String, Attribute> attributesMap;
 	private double performanceIndex;
 
-	public Component(String typeComponent, List<Constraint> constraintList, Map<String, String> attributesMap) {
+	public Component(String typeComponent, List<Constraint> constraintList, Map<String, Attribute> attributesMap) {
 		this.setTypeComponent(typeComponent);
-		this.constraintList = constraintList;
 		this.attributesMap=attributesMap;
 		performanceIndex = -1; // starebbe a significare "indice non calcolato" oppure "indice non calcolabile"
 	}
-
-	
-	
-	/**
-	 * 
-	 * @return constraint's list
-	 */
-	public List<Constraint> getConstraints() {
-		// TODO Auto-generated method stub
-		return this.constraintList;
-	}
-
-
 
 	/**
 	 * 
 	 * @return attributes map
 	 */
-	public Map<String, String> getAttributesMap() {
+	public Map<String, Attribute> getAttributesMap() {
 		return attributesMap;
 	}
 
@@ -57,12 +43,22 @@ public class Component {
 	 * @param attributes type:String
 	 * @return true if attributesMap 's attributes will be replace
 	 */
-	public boolean setAttributesMap(String key, String attributes) {
+	public boolean replaceAttribute(String key, Attribute attributes) {
 		attributesMap.replace(key, attributes);
 		return true;
 	}
 
-
+	public void setAttribute(Attribute attribute) {
+		attributesMap.put(attribute.getName(), attribute);
+	}
+	
+	public Attribute getAttributeByName(String name) {
+		return attributesMap.get(name);
+	}
+	
+	public String getAttributeValueByName(String name) {
+		return attributesMap.get(name).getValue();
+	}
 
 	/**
 	 * 
@@ -82,13 +78,14 @@ public class Component {
 		this.typeComponent = typeComponent;
 	}
 
-
+	
+	
 	@Override
 	public String toString() {
-		return "Component [typeComponent=" + typeComponent + ", constraintList=" + constraintList + ", attributesMap="
-				+ attributesMap + "]";
+		return "Component [typeComponent=" + typeComponent + ", attributesMap=" + attributesMap + ", performanceIndex="
+				+ performanceIndex + "]";
 	}
-	
+
 	/**
 	 * 
 	 * @return price  dd 
@@ -98,7 +95,7 @@ public class Component {
 	
 	public double getPrice() {
 		
-		return Double.parseDouble(attributesMap.get("price"));
+		return Double.parseDouble(attributesMap.get("price").getValue());
 	}
 	
 	/**
@@ -113,7 +110,10 @@ public class Component {
 			if(perfEstim==null) {
 				performanceIndex = -1;
 			} else {
-				performanceIndex = perfEstim.computePerformance(attributesMap);
+				//performanceIndex = perfEstim.computePerformance(attributesMap);
+				/*
+				 * DECOMMENTARE QUANDO AVREMO AGGIUSTATO I PERFORMANCE ESTIMATOR CON GLI ATTRIBUTE
+				 */
 			}
 		}
 		return performanceIndex;
