@@ -99,7 +99,7 @@ public class DimensionConstraint extends AbstractConstraint {
 		for(Attribute newAttribute : newAttributesToCheck) {
 			//Eseguo un ciclo interno diverso a seconda della categoria dell'attribute
 			
-			//Se il newAttribute è internal deve essere minore di tutti gli externa
+			//Se il newAttribute è internal deve essere minore di tutti gli external
 			if(newAttribute.getConstraintCategory() == ConstraintCategory.INTERNAL) {
 				for(Attribute oldExternalAttribute : externalAttributesFilteredList) {
 					double newInternalValue = Double.parseDouble(newAttribute.getValue()); 
