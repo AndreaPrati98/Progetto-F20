@@ -16,7 +16,7 @@ public class PersistenceFacade {
 	
 	
 	static public PersistenceFacade getIstance(){
-		if(facade==null){
+		if(facade == null){
 			RdbOperation rdbOp = new RdbOperation();
 			facade = new PersistenceFacade(rdbOp);			
 		}
