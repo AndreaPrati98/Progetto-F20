@@ -1,8 +1,13 @@
 package model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import model.component.Component;
+import model.component.constraint.AbstractConstraint;
+import model.component.constraint.DimensionConstraint;
+import model.component.constraint.EqualsConstraint;
+import model.component.constraint.MaxConstraint;
 
 public class PersistenceFacade {
 	
@@ -28,4 +33,21 @@ public class PersistenceFacade {
 	public List<Component> getAllComponent(){
 		return cdao.getAllComponent();
 	}
+	
+	public List<AbstractConstraint> getAllConstraints(){
+		//Codice di prova
+		List<AbstractConstraint> list = new ArrayList<AbstractConstraint>();
+		AbstractConstraint c1 = new MaxConstraint("tdp");
+		AbstractConstraint c2 = new EqualsConstraint("tdp");
+		AbstractConstraint c3 = new DimensionConstraint("tdp");
+		list.add(c1);
+		list.add(c2);
+		list.add(c3);
+		
+		if(list.isEmpty())
+			return null;
+		
+		return list;
+	}
+	
 }
