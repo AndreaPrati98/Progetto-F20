@@ -6,7 +6,7 @@ import model.component.Component;
 
 public class PersistenceFacade {
 	
-	private ComponentDAO cdao;
+	private InterfaceComponentDAO cdao;
 	private static PersistenceFacade facade;
 	
 	
