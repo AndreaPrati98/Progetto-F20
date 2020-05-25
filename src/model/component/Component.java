@@ -2,8 +2,6 @@ package model.component;
 
 import java.util.List;
 import java.util.Map;
-
-import model.component.constraint.Constraint;
 import model.component.performanceAlgorithms.InterfacePerformanceEstimator;
 import model.component.performanceAlgorithms.PerformanceEstimatorFactory;
 
@@ -21,7 +19,7 @@ public class Component {
 	private Map<String, Attribute> attributesMap;
 	private double performanceIndex;
 
-	public Component(String typeComponent, List<Constraint> constraintList, Map<String, Attribute> attributesMap) {
+	public Component(String typeComponent, /*List<Constraint> constraintList,*/ Map<String, Attribute> attributesMap) {
 		this.setTypeComponent(typeComponent);
 		this.attributesMap=attributesMap;
 		performanceIndex = -1; // starebbe a significare "indice non calcolato" oppure "indice non calcolabile"

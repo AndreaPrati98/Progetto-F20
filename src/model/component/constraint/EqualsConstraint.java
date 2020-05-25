@@ -1,78 +1,23 @@
 package model.component.constraint;
 
 import java.util.List;
+
+import model.component.Attribute;
+import model.component.Component;
 /**
  * 
  * @author Guglielmo
  *
  */
-public class EqualsConstraint implements Constraint {
-
-	private String name;
-	private String value;
+public class EqualsConstraint extends AbstractConstraint {
 	
 	/**
 	 * 
 	 * @param name
 	 * @param value
 	 */
-	public EqualsConstraint(String name, String value) {
-		super();
-		this.name = name;
-		this.value = value;
-	}
-
-	@Override
-	public String getConstraintName() {
-		// TODO Auto-generated method stub
-		return name;
-	}
-		
-	//Controlla se esiste almeno un vincolo che abbia nome uguale ma 
-	//valore diverso rispetto al this.
-	//Se esiste --> False
-	//Se non esiste --> True
-	/*@Override
-	public boolean checkList(List<Component> components) {
-		
-		String myName = this.getConstraintName();
-	
-		//Ciclo esterno per prendere ogni componente della lista
-		for(Component comp : components) {			
-			List<Constraint> constraints = comp.getConstraints();
-			//Ciclo interno per controllare i vincoli dell'i-esimo componente
-			for(Constraint constr : constraints) {
-				//Controllo se io (vincolo) e il j-esimo vincolo abbiamo lo stesso nome
-				if(constr.getConstraintName().equals(myName)){
-					//Se abbiamo lo stesso nome, ma attributi divesi (verificabile
-					//col metodo equals di object che controlla l'uguaglianza tra tutti 
-					//gli attributi), se siamo diversi ho trovato almeno un vincolo
-					//con cui non sono compatibile
-					if(!constr.equals(this)) {
-						return false;
-					}					
-				}						
-			}				
-		}
-		
-		//Se ho controllato tutti e nessuno è incompatibile con i miei vincoli
-		//allora è ok
-		return true;
-	}*/
-	
-	
-	
-
-	@Override
-	public String getValue() {
-		// TODO Auto-generated method stub
-		return value;
-	}
-
-	@Override
-	public ConstraintType getConstraintType() {
-		// TODO Auto-generated method stub
-		return null;
+	public EqualsConstraint(String name) {
+		super(name);
 	}
 
 	/**
@@ -81,21 +26,31 @@ public class EqualsConstraint implements Constraint {
 	 * @param Constraint type:{@link Constraint}
 	 * @return true if the component will respect the constraint,false if it will not respect the costraint
 	 */
+
 	@Override
-	public boolean checkList(List<Constraint> constraints) {
-		String myName = this.name;
-		String myValue = this.value;
-		
-		for(Constraint constr : constraints) {
-			if(constr.getConstraintName().equals(myName)){
-				if(!constr.getValue().equals(myValue)){
-					return false;
-				}					
-			}						
-		}		
+	public boolean checkList(List<Component> oldCheckedComponents, Component componentToCheck) {
+		List<Attribute> oldAttributesAlreadyChecked = this.selectAttributeSameName(oldCheckedComponents);
+		List<Attribute> newAttributesToCheck = this.selectAttributeSameName(componentToCheck);
 				
+		//Se una delle due liste è null, significa che una delle due non aveva componenti con attributi
+		//che fossero da controllare da questo vincolo, quindi non può andare in conflitto con l'altra lista
+		//quindi per questo vincolo è tutto ok
+		if(oldAttributesAlreadyChecked == null || newAttributesToCheck == null)
+			return true;
+		
+		//Devo fare un doppio ciclo for per iterare sulla lista dei nuovi attributi esternamente e poi
+		//uno interno per iterare sulla lista di vecchi attributi.
+		//Controllo i nuovi sui vecchi per ridurre le iterazioni necessarie
+		//Arrivato a questo punto ho già filtrato gli attributi per nome relativo a questo vincolo, 
+		//quindi devo controllare solo che abbiano valore diverso per dire che sono incompatibili
+		for(Attribute newAttribute : newAttributesToCheck) {
+			for(Attribute oldAttribute : oldAttributesAlreadyChecked) {
+				if(newAttribute.getValue() != oldAttribute.getValue())
+					return false;				
+			}			
+		}
+		
 		return true;
 	}
-
 
 }
