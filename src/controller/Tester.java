@@ -25,8 +25,7 @@ public class Tester {
 		singleComponents.put("case", false);
 		
 		ComponentCatalog catalog = new ComponentCatalog();
-		System.out.println(catalog.getComponentList().size());
-		System.out.println(catalog);
+	
 		
 	}
 
