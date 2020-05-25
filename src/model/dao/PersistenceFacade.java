@@ -29,8 +29,6 @@ public class PersistenceFacade {
 		this.cdao = new ComponentDAO(dbop);
 	}
 
-	
-
 	public List<Component> getAllComponent(){
 		return cdao.getAllComponent();
 	}
