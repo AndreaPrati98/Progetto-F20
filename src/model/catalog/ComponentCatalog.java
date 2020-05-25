@@ -16,8 +16,8 @@ public class ComponentCatalog {
 	private List<Component> componentList;
 	private PersistenceFacade pf;
 	
-	public ComponentCatalog(RdbOperation dbop) {
-		pf= new PersistenceFacade(dbop);
+	public ComponentCatalog() {
+		pf= PersistenceFacade.getIstance();
 		componentList = new ArrayList<Component>();
 		componentList=pf.getAllComponent();
 		//componentList.addAll((new JSONUtil()).getComponents());
