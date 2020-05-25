@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import model.catalog.ComponentCatalog;
+import model.component.Component;
 import model.configuration.Configuration;
 import model.configurator.Configurator;
 import model.dao.RdbOperation;
@@ -25,7 +26,11 @@ public class Tester {
 		singleComponents.put("case", false);
 		
 		ComponentCatalog catalog = new ComponentCatalog();
-	
+		
+		for (Component c : catalog.getComponentList()) {
+			System.out.println(c.getAttributesMap().get("modello").getValue());
+		}
+		
 		
 	}
 

@@ -10,11 +10,11 @@ import java.util.Map;
 import model.component.Attribute;
 import model.component.Component;
 
-public class ComponentDAO implements InterfaceComponentDAO {
+public class RdbComponentDAO implements InterfaceComponentDAO {
 
 	private RdbOperation dbop;
 
-	public ComponentDAO(RdbOperation dbop) {
+	public RdbComponentDAO(RdbOperation dbop) {
 		this.dbop = dbop;
 	}
 
@@ -36,6 +36,13 @@ public class ComponentDAO implements InterfaceComponentDAO {
 				nome = rs.getString("Name");
 				valore = rs.getString("AttValue");
 				
+				if (!bufferModel.equals(modello)) {
+					first = false;
+					typeBuffer = tipo;
+					listComponent.add(new Component(typeBuffer, map));
+					map = new HashMap<String, Attribute>();
+				}
+				
 				if (!first) {
 					map.put("modello", new Attribute("modello", modello, false, true));
 					map.put("prezzo", new Attribute("prezzo", prezzo, false, true));
@@ -43,7 +50,7 @@ public class ComponentDAO implements InterfaceComponentDAO {
 					typeBuffer = tipo;
 					first = true;
 				}
-				
+
 				if (!bufferModel.equals(modello)) {
 					first = false;
 					typeBuffer = tipo;
@@ -53,12 +60,11 @@ public class ComponentDAO implements InterfaceComponentDAO {
 
 				at = new Attribute(nome, valore, true, true);
 				map.put(nome, at);
-				// System.out.println(firstName + " " + lastName + " " + " " + email + " " +
-				// password + " " + pas);
 
 			}
 			listComponent.add(new Component(typeBuffer, map));
-
+			listComponent.remove(0);
+			
 			return listComponent;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

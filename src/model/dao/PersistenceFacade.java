@@ -26,7 +26,7 @@ public class PersistenceFacade {
 
 	private PersistenceFacade(RdbOperation dbop) {
 		//Non sarebbe meglio che sia una factory a restituirmi il DAO corretto? (roba puramente da pattern)
-		this.cdao = new ComponentDAO(dbop);
+		this.cdao = new RdbComponentDAO(dbop);
 	}
 
 	public List<Component> getAllComponent(){
