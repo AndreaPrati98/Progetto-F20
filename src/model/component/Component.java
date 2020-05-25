@@ -1,7 +1,7 @@
 package model.component;
 
-import java.util.List;
 import java.util.Map;
+
 import model.component.performanceAlgorithms.InterfacePerformanceEstimator;
 import model.component.performanceAlgorithms.PerformanceEstimatorFactory;
 
@@ -9,13 +9,12 @@ import model.component.performanceAlgorithms.PerformanceEstimatorFactory;
  * 
  * @author Capici Alessandro
  * @co_author Cic
- * @co_author Ste
  *
  */
 public class Component {
 
 	private String typeComponent;
-	//private List<Constraint> constraintList;//non � meglio una mappa??
+	//private List<Constraint> constraintList;//
 	private Map<String, Attribute> attributesMap;
 	private double performanceIndex;
 
@@ -96,7 +95,7 @@ public class Component {
 	
 	@Override
 	public String toString() {
-		return "Component [typeComponent=" + typeComponent + ", attributesMap=" + attributesMap + ", performanceIndex="
+		return "\nComponent [typeComponent=" + typeComponent + ", attributesMap=" + attributesMap + ", performanceIndex="
 				+ performanceIndex + "]";
 	}
 

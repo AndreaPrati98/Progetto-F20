@@ -8,8 +8,7 @@ import java.util.Map;
 import model.catalog.ComponentCatalog;
 import model.configuration.Configuration;
 import model.configurator.Configurator;
-import model.db.SqliteDB;
-import model.db.User;
+import model.dao.RdbOperation;
 import view.TesterFrame;
 
 public class Tester {
@@ -25,18 +24,16 @@ public class Tester {
 		singleComponents.put("mobo", false);
 		singleComponents.put("case", false);
 		
-		 //Test database connection and simple query printing
-		 SqliteDB db = new SqliteDB();
-		 User u = new User("Nome1", "Cognome1", "email1", "psw1");
-		 //db.insertUserToDB(u);
-		 db.getUsersFromDB();
-		 db.closeConnection();
+		RdbOperation rdbo=new RdbOperation();
+
+		ComponentCatalog catalog = new ComponentCatalog(rdbo);
+		System.out.println(catalog.getComponentList().size());
+		System.out.println(catalog);
 		
-		ComponentCatalog catalog = new ComponentCatalog();
-		Configuration configuration=new Configuration(neededComponents,singleComponents);
-		Configurator model = new Configurator(catalog,configuration);
-		TesterFrame view = new TesterFrame("Prova");
-		Controller controller = new Controller(view, model);
+//		Configuration configuration=new Configuration(neededComponents,singleComponents);
+//		Configurator model = new Configurator(catalog,configuration);
+//		TesterFrame view = new TesterFrame("Prova");
+//		Controller controller = new Controller(view, model);
 
 	}
 

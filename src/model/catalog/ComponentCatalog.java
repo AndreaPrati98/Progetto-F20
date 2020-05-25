@@ -4,19 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.component.Component;
+import model.dao.PersistenceFacade;
+import model.dao.RdbOperation;
 import model.util.JSONUtil;
 /**
  * Here is where we have the list of all components 
- * @author Andrea
+ * @author Alessandro Capici
  *
  */
 public class ComponentCatalog {
 
 	private List<Component> componentList;
+	private PersistenceFacade pf;
 	
-	public ComponentCatalog() {
+	public ComponentCatalog(RdbOperation dbop) {
+		pf= new PersistenceFacade(dbop);
 		componentList = new ArrayList<Component>();
-		componentList.addAll((new JSONUtil()).getComponents());
+		componentList=pf.getAllComponent();
+		//componentList.addAll((new JSONUtil()).getComponents());
 	}
 	
 	/**
