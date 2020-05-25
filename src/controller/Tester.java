@@ -30,6 +30,7 @@ public class Tester {
 		System.out.println(catalog.getComponentList().size());
 		System.out.println(catalog);
 		
+		
 //		Configuration configuration=new Configuration(neededComponents,singleComponents);
 //		Configurator model = new Configurator(catalog,configuration);
 //		TesterFrame view = new TesterFrame("Prova");
