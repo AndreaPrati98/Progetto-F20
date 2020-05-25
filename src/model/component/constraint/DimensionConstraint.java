@@ -90,6 +90,11 @@ public class DimensionConstraint extends AbstractConstraint {
 		List<Attribute> internalAttributesFilteredList = this.filterAttributesList(oldAttributesAlreadyChecked, ConstraintCategory.INTERNAL);
 		List<Attribute> externalAttributesFilteredList = this.filterAttributesList(oldAttributesAlreadyChecked, ConstraintCategory.EXTERNAL);
 		
+		//Per prima cosa controllo che nessuna delle due lista sia nulla, poichè in tal caso sicuramente
+		//i componenti sono compatibili poichè o non esistono ancora internal o non esistono external
+		
+		if(internalAttributesFilteredList == null || externalAttributesFilteredList == null)
+			return true;
 		
 		for(Attribute newAttribute : newAttributesToCheck) {
 			//Eseguo un ciclo interno diverso a seconda della categoria dell'attribute
