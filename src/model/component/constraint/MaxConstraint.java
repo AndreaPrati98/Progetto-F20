@@ -1,7 +1,9 @@
 package model.component.constraint;
 
+
 import java.util.List;
 
+import model.component.Attribute;
 import model.component.Component;
 
 /**
@@ -10,34 +12,11 @@ import model.component.Component;
  *
  */
 
-public class MaxConstraint implements Constraint {
+public class MaxConstraint extends AbstractConstraint {
 	private String name;
-	private String value;
-	private ConstraintType constraintType;
 	
-	public MaxConstraint(String name, String value, ConstraintType constraintType) {
-		super();
-		this.name = name;
-		this.value = value;
-		this.constraintType = constraintType;
-	}
-	
-	@Override
-	public String getConstraintName() {
-		return this.name;
-	}
-	
-	
-	
-
-	@Override
-	public String getValue() {
-		return value;
-	}
-
-	@Override
-	public ConstraintType getConstraintType() {
-		return constraintType;
+	public MaxConstraint(String name) {
+		super(name);
 	}
 
 	/**
@@ -46,7 +25,7 @@ public class MaxConstraint implements Constraint {
 	 * @param Constraint type:{@link Constraint}
 	 * @return true if the component will respect the constraint,false if it will not respect the costraint
 	 */	
-	@Override
+	/*@Override
 	public boolean checkList(List<Constraint> constraints) {
 		
 		String myName = this.name;
@@ -104,6 +83,79 @@ public class MaxConstraint implements Constraint {
 			
 			return true;
 		}		
+	}*/
+	
+	
+
+	@Override
+	public boolean checkList(List<Component> oldCheckedComponents, Component componentToCheck) {
+		List<Attribute> oldAttributesAlreadyChecked = this.selectAttributeSameName(oldCheckedComponents);
+		List<Attribute> newAttributesToCheck = this.selectAttributeSameName(componentToCheck);
+		
+		//Se una delle due liste è null, significa che una delle due non aveva componenti con attributi
+		//che fossero da controllare da questo vincolo, quindi non può andare in conflitto con l'altra lista
+		//quindi per questo vincolo è tutto ok
+		if(oldAttributesAlreadyChecked == null || newAttributesToCheck == null)
+			return true;
+		
+
+		//Filtro per dividerli in liste
+		List<Attribute> internalAttributesFilteredList = this.filterAttributesList(oldAttributesAlreadyChecked, ConstraintCategory.INTERNAL);
+		List<Attribute> externalAttributesFilteredList = this.filterAttributesList(oldAttributesAlreadyChecked, ConstraintCategory.EXTERNAL);
+		
+		
+		//Per prima cosa controllo che nessuna delle due lista sia nulla, poichè in tal caso sicuramente
+		//i componenti sono compatibili poichè o non esistono ancora internal o non esistono external
+				
+		if(internalAttributesFilteredList == null || externalAttributesFilteredList == null)
+			return true;
+		
+		
+		//La prima cosa che faccio è cercare qual è il vero massimizzatore prendendo il valore più basso
+		//tra gli n massimi.
+		//Per farlo ciclo su tutti gli external (sia nuovi che vecchi) per cercare il vero 
+		//massimizzatore. Se il massimizzatore non cè ritorno true, quindi faccio subito questo controllo
+		
+		//La newAttributesToCheck è una lista, ma in realtà in un componente non posso avere  un 
+		//attribute che è sia external che un internal per lo stesso MaxConstraint.
+		//Di conseguenza quella lista ha un solo elemento
+		
+		Attribute newAttribute = newAttributesToCheck.get(0);
+		
+		//Copio le liste filtrate dei vecchi componenti in delle nuove (potrebbe essere inutile)
+		List<Attribute> listWhereToFindTheMax =  externalAttributesFilteredList;
+		List<Attribute> listOfInternalToCheckTheMax =  internalAttributesFilteredList;
+		 
+		//Devo capire dove collocare il nuovo attribute del nuovo componente
+		if(newAttribute.getConstraintCategory() == ConstraintCategory.EXTERNAL)
+			listWhereToFindTheMax.add(newAttribute);
+		else if(newAttribute.getConstraintCategory() == ConstraintCategory.INTERNAL)
+			listOfInternalToCheckTheMax.add(newAttribute);
+			
+		//Cerco l'attributo massimizzatore
+		Attribute maximizzatorAttribute = listWhereToFindTheMax.get(0);
+		
+		for(Attribute attribute : listWhereToFindTheMax){
+		   double value = Double.parseDouble(attribute.getValue());
+		   double maxValue = Double.parseDouble(maximizzatorAttribute.getValue());
+		   
+			if(value > maxValue)
+				maximizzatorAttribute = attribute;
+		}		
+		
+		//Ora ho trovato il vero massimizzatore
+		//Ora ciclo su tutti gli internal per capire se rispettano il massimizzatore
+		double maxValue = Double.parseDouble(maximizzatorAttribute.getValue());
+		for(Attribute internalAttribute : listOfInternalToCheckTheMax){
+			double internalValue = Double.parseDouble(internalAttribute.getValue());
+			if(internalValue > maxValue)
+				return false;
+		}
+		
+		
+		return true;
 	}
+
+	
 
 }
