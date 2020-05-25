@@ -26,7 +26,7 @@ public class Tester {
 		singleComponents.put("case", false);
 		
 		ComponentCatalog catalog = new ComponentCatalog();
-		
+		System.out.println(catalog.getComponentList().size());
 		for (Component c : catalog.getComponentList()) {
 			System.out.println(c.getAttributesMap().get("modello").getValue());
 		}
