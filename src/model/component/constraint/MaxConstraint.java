@@ -138,20 +138,22 @@ public class MaxConstraint extends AbstractConstraint {
 		for(Attribute attribute : listWhereToFindTheMax){
 		   double value = Double.parseDouble(attribute.getValue());
 		   double maxValue = Double.parseDouble(maximizzatorAttribute.getValue());
-		   
-			if(value > maxValue)
+		   //Devo prendere il min(max1,max2)
+			if(value < maxValue)
 				maximizzatorAttribute = attribute;
 		}		
 		
 		//Ora ho trovato il vero massimizzatore
 		//Ora ciclo su tutti gli internal per capire se rispettano il massimizzatore
 		double maxValue = Double.parseDouble(maximizzatorAttribute.getValue());
+		double sum = 0.0;
 		for(Attribute internalAttribute : listOfInternalToCheckTheMax){
 			double internalValue = Double.parseDouble(internalAttribute.getValue());
-			if(internalValue > maxValue)
-				return false;
+			sum += internalValue;
 		}
 		
+		if(sum > maxValue)
+			return false; 
 		
 		return true;
 	}
