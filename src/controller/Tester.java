@@ -24,9 +24,7 @@ public class Tester {
 		singleComponents.put("mobo", false);
 		singleComponents.put("case", false);
 		
-		RdbOperation rdbo=new RdbOperation();
-
-		ComponentCatalog catalog = new ComponentCatalog(rdbo);
+		ComponentCatalog catalog = new ComponentCatalog();
 		System.out.println(catalog.getComponentList().size());
 		System.out.println(catalog);
 		
