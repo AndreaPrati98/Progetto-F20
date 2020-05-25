@@ -13,7 +13,6 @@ import model.component.constraint.MaxConstraint;
 
 /**
  * @author Capici Alessandro ,Frenkli Buzhiqi
- * @co_author Stefano
  * @co_author Cic
  */
 

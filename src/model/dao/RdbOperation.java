@@ -81,19 +81,20 @@ public class RdbOperation {
 		}
 		return null;
 	}
-	
+
 	public ResultSet getConfigurationByEmail(String email) {
 		try {
 			stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT *\r\n" + "FROM Configuration\r\n" + "WHERE EmailU='" + email + "'");
+			ResultSet rs = stmt
+					.executeQuery("SELECT *\r\n" + "FROM Configuration\r\n" + "WHERE EmailU='" + email + "'");
 			return rs;
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
 		}
 		return null;
 	}
-	
-	public boolean addConfiguration(int id, String name,String email) {
+
+	public boolean addConfiguration(int id, String name, String email) {
 		String sql = "INSERT INTO Configuration(Id,Name,EmailU) VALUES(?,?,?)";
 		PreparedStatement ps;
 		try {
@@ -107,6 +108,18 @@ public class RdbOperation {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return false;
+
+	}
+
+	public boolean updateConfiguration(int id, String name, String email) {
+
+		return false;
+
+	}
+
+	public boolean removeConfiguration(int id) {
+
 		return false;
 
 	}
