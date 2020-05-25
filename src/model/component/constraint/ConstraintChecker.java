@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.component.Component;
+import model.dao.PersistenceFacade;
 /**
  * @author Guglielmo Cassini
  * @author Irene Schimperna
@@ -47,9 +48,17 @@ public class ConstraintChecker implements InterfaceConstraintChecker {
 //			}
 //		}		
 		//return true
-		return null;
 		
+		PersistenceFacade facade = PersistenceFacade.getIstance();
+		List<AbstractConstraint> listOfConstraints = facade.getAllConstraints();
+		List<AbstractConstraint> listOfConstraintsThatAreViolated = new ArrayList<AbstractConstraint>();
 		
+		for(AbstractConstraint constraint : listOfConstraints) {
+			if(!constraint.checkList(oldComponents, newComponent))
+				listOfConstraintsThatAreViolated.add(constraint);
+		}		
+		
+		return listOfConstraintsThatAreViolated;		
 	}
 
 	
