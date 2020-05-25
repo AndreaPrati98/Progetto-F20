@@ -43,7 +43,7 @@ public class Listener implements ActionListener {
 				view.getInfoLabel().setText("Componente aggiunto");
 				view.getListModelAdded().addElement(view.getComponentJList().getSelectedValue());
 			} else {
-				view.getInfoLabel().setText("Componente incompatibile: " + model.getConfiguration().getConstraintErrorsNames());
+			//	view.getInfoLabel().setText("Componente incompatibile: " + model.getConfiguration().getConstraintErrorsNames());
 			}
 		}	
 		

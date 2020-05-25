@@ -6,7 +6,6 @@ import java.util.List;
 import model.component.Component;
 import model.dao.PersistenceFacade;
 import model.dao.RdbOperation;
-import model.util.JSONUtil;
 /**
  * Here is where we have the list of all components 
  * @author Alessandro Capici
