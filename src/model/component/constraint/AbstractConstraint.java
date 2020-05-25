@@ -102,6 +102,9 @@ public abstract class AbstractConstraint {
 			}			
 		}
 		
+		if(filteredList.isEmpty())
+			return null;
+		
 		return filteredList;		
 	}
 	
