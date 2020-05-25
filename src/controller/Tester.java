@@ -30,7 +30,6 @@ public class Tester {
 		System.out.println(catalog.getComponentList().size());
 		System.out.println(catalog);
 		
-		
 	}
 
 }
