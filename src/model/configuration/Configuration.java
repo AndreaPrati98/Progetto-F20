@@ -5,10 +5,9 @@ import java.util.List;
 import java.util.Map;
 
 import model.component.Component;
-import model.component.constraint.Constraint;
+import model.component.constraint.AbstractConstraint;
 import model.component.constraint.ConstraintCategory;
 import model.component.constraint.ConstraintChecker;
-import model.component.constraint.ConstraintType;
 import model.component.constraint.InterfaceConstraintChecker;
 import model.component.constraint.MaxConstraint;
 
@@ -26,7 +25,7 @@ public class Configuration {
 	private Map<String, Boolean> singleComponents; // mappa con componenti che possono essere aggiunte in sovrannumero,
 													// da definire meglio in futuro
 
-	private List<Constraint> constraintErrors;
+	private List<AbstractConstraint> constraintErrors;
 
 	/**
 	 * 
@@ -49,7 +48,7 @@ public class Configuration {
 	 * 
 	 */
 	public boolean addComponent(Component c) {
-		constraintErrors = check(c);
+		//constraintErrors = check(c);
 		if (constraintErrors.isEmpty()) {
 			/**
 			 * checking if the component it's a "single component or not"
@@ -65,7 +64,7 @@ public class Configuration {
 					/**
 					 * Messaggio d'errore
 					 */
-					constraintErrors.add(new MaxConstraint("Single Component", "1", ConstraintCategory.INTERNAL));
+					constraintErrors.add(new MaxConstraint("Single Component"));
 					return false; // se quel componente è singolo ed era gia stato aggiunto non lo posso
 									// riaggiungere
 				}
@@ -96,7 +95,7 @@ public class Configuration {
 	 * @return true if the component will respect constraint,false if the component
 	 *         will not respect constraint
 	 */
-	private List<Constraint> check(Component c) {
+	private List<AbstractConstraint> check(Component c) {
 //		boolean flag = true; 
 //		List<Constraint> listConstraint = c.getConstraints();
 //		for (Constraint constraint : listConstraint) {
@@ -160,17 +159,10 @@ public class Configuration {
 	 * @return
 	 */
 
-	public List<Constraint> getConstraintErrors() {
+	public List<AbstractConstraint> getConstraintErrors() {
 		return constraintErrors;
 	}
 
-	public String getConstraintErrorsNames() {
-		String s = "";
-		for (Constraint c : constraintErrors) {
-			s += c.getConstraintName() + " ";
-		}
-		return s;
-	}
 
 	/**
 	 * 

@@ -18,5 +18,5 @@ public interface InterfaceConstraintChecker {
 	 * @see Constraint
 	 * @see Component 
 	 */
-	List<Constraint> check(Component newComponent, List<Component> oldComponents);
+	List<AbstractConstraint> check(Component newComponent, List<Component> oldComponents);
 }
