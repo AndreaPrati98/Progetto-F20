@@ -1,9 +1,6 @@
 package controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import model.catalog.ComponentCatalog;
 import model.component.Component;
@@ -30,7 +27,7 @@ public class Tester {
 		for (Component c : catalog.getComponentList()) {
 			System.out.println(c.getAttributesMap().get("modello").getValue());
 		}
-		
+		System.out.println(catalog.getComponentList().size());
 		
 	}
 
