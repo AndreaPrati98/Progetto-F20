@@ -35,6 +35,7 @@ public class ApplicationServer {
 
 	    public void stop() throws Exception {
 	        server.stop();
+	        
 	    }
 	  
 	    private void addStaticFileServing(ServletContextHandler handler) {
