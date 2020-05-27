@@ -51,12 +51,6 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 					first = true;
 				}
 
-				if (!bufferModel.equals(modello)) {
-					first = false;
-					typeBuffer = tipo;
-					listComponent.add(new Component(typeBuffer, map));
-					map = new HashMap<String, Attribute>();
-				}
 
 				at = new Attribute(nome, valore, true, true);
 				map.put(nome, at);
