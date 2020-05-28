@@ -3,7 +3,6 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.Servlet;
 
 import servlet.ApplicationServer;
 import servlet.HomeServlet;
@@ -16,13 +15,8 @@ public class Tester {
 		List<MyServlet> servlet = new ArrayList<MyServlet>();
 		servlet.add(new HomeServlet("home","/"));
 		servlet.add(new RegisterServlet("register", "/sign-in"));
-		try {
-			new ApplicationServer(8080, servlet).start();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		new ApplicationServer(8080, servlet).start();
+	
 		
 		
 		

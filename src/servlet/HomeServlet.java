@@ -14,6 +14,7 @@ import org.rythmengine.Rythm;
  *
  */
 
+@SuppressWarnings("serial")
 public class HomeServlet extends MyServlet{
 	
 	public HomeServlet(String name, String path) {

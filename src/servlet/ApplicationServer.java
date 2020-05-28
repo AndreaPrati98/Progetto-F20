@@ -26,7 +26,7 @@ public class ApplicationServer {
 		this.servlet = servlet;
 	}
 
-	public void start() throws Exception {
+	public void start(){
 		initTemplateEngine();
 		server = new Server(port);
 		ServletContextHandler handler = new ServletContextHandler();
@@ -35,11 +35,21 @@ public class ApplicationServer {
 		}
 		addStaticFileServing(handler);
 		server.setHandler(handler);
-		server.start();
+		try {
+			server.start();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	public void stop() throws Exception {
-		server.stop();
+	public void stop(){
+		try {
+			server.stop();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
  *
  */
 
+@SuppressWarnings("serial")
 public abstract class MyServlet extends HttpServlet {
 	private String name;
 	private String path;
