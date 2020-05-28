@@ -1,9 +1,9 @@
 package servlet;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-import javax.servlet.Servlet;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.DefaultServlet;
@@ -11,12 +11,17 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.rythmengine.Rythm;
 
+/**
+ * 
+ * @author Capici Alessandro
+ *
+ */
 public class ApplicationServer {
 	private int port;
-	private Servlet servlet;
+	private List<MyServlet> servlet;
 	private Server server;
 
-	public ApplicationServer(int port, Servlet servlet) {
+	public ApplicationServer(int port, List<MyServlet> servlet) {
 		this.port = port;
 		this.servlet = servlet;
 	}
@@ -25,7 +30,9 @@ public class ApplicationServer {
 		initTemplateEngine();
 		server = new Server(port);
 		ServletContextHandler handler = new ServletContextHandler();
-		handler.addServlet(new ServletHolder(servlet), "/");
+		for (MyServlet servlet2 : servlet) {
+			handler.addServlet(new ServletHolder(servlet2), servlet2.getPath());
+		}
 		addStaticFileServing(handler);
 		server.setHandler(handler);
 		server.start();
