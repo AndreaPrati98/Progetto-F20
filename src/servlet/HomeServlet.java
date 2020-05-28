@@ -16,4 +16,8 @@ public class HomeServlet extends HttpServlet{
 		response.getWriter().write(Rythm.render("home.rtm"));
 	}
 
+	@Override
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		response.getWriter().write(Rythm.render("sign-in.rtm"));
+	}
 }

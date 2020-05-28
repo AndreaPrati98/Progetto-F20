@@ -40,7 +40,7 @@ public class ApplicationServer {
 		ServletHolder holderPwd = new ServletHolder("default", new DefaultServlet());
 		holderPwd.setInitParameter("dirAllowed", "false");
 		holderPwd.setInitParameter("pathInfoOnly", "true");
-		handler.addServlet(holderPwd, "/statics/*");
+		handler.addServlet(holderPwd, "/util/*");
 	}
 
 	private void initTemplateEngine() {
