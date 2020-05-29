@@ -24,5 +24,11 @@ public class RegisterServlet extends MyServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		response.getWriter().write(Rythm.render("sign-in.rtm"));
 	}
+	
+	@Override
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		
+		response.getWriter().write(Rythm.render("sign-in.rtm"));
+	}
 
 }

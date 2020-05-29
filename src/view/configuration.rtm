@@ -1,5 +1,8 @@
-<!-- Frenkli Buzhiqi -->
-
+<!-- Frenkli Buzhiqi Alessandro Capici -->
+@args() {
+	List<model.component.Component> componentlist,
+	List<String> type
+}
 <html>
 <head>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -40,420 +43,65 @@
     <div class="row">
         <div class="col s7">
             <ul class="collapsible" id="collapsibleConfiguration">
-                <li>
-                    <div class="collapsible-header"><i class='fas fa-mobile' style='font-size:20px'></i>Case</div>
-                    <div class="collapsible-body" id="caseMenu">
-                        <span>
-                            <form action="#"> <!-- da definire -->
-                                <table id="caseTable">
-                                    <tr class="rowCaseTable">
-                                        <th>
-                                            <label>
-                                                <input name="groupCase" type="radio" id="radioCase1" class="radioCase"/>
-                                                <span>Case 1</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupCase" type="radio" id="radioCase2" class="radioCase"/>
-                                                <span>Case 2</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupCase" type="radio" id="radioCase3" class="radioCase"/>
-                                                <span>Case 3</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                    <tr class="rowCaseTable">
-                                        <th>
-                                            <label>
-                                                <input name="groupCase" type="radio" id="radioCase4" class="radioCase"/>
-                                                <span>Case 4</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input  name="groupCase"type="radio" id="radioCase5" class="radioCase"/>
-                                                <span>Case 5</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupCase" type="radio" id="radioCase6" class="radioCase"/>
-                                                <span>Case 6</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                </table>
-                            </form>
-                        </span>
-                    </div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">developer_board</i>Motherboard</div>
-                    <div class="collapsible-body" id="moboMenu">
-                        <span>
-                            <form action="#"> <!-- da definire -->
-                                <table id="moboTable">
-                                    <tr class="rowMoboTable">
-                                        <th>
-                                            <label>
-                                                <input name="groupMobo" type="radio" id="radioMobo1" class="radioMobo"/>
-                                                <span>Mobo 1</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupMobo" type="radio" id="radioMobo2" class="radioMobo"/>
-                                                <span>Mobo 2</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupMobo" type="radio" id="radioMobo3" class="radioMobo"/>
-                                                <span>Mobo 3</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                    <tr class="rowMoboTable">
-                                        <th>
-                                            <label>
-                                                <input name="groupMobo" type="radio" id="radioMobo4" class="radioMobo"/>
-                                                <span>Mobo 4</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupMobo" type="radio" id="radioMobo5" class="radioMobo"/>
-                                                <span>Mobo 5</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupMobo" type="radio" id="radioMobo6" class="radioMobo"/>
-                                                <span>Mobo 6</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                </table>
-                            </form>
-                        </span>
-                    </div>
-                </li>
-                <li>
-                    <div class="collapsible-header"><i class='fas fa-microchip' style='font-size:20px'></i>CPU</div>
-                    <div class="collapsible-body" id="cpuMenu">
-                        <span>
-                            <form action="#"> <!-- da definire -->
-                                <table id="cpuTable">
-                                    <tr class="rowCpuTable">
-                                        <th>
-                                            <label>
-                                                <input name="groupCpu" type="radio" id="radioCpu1" class="radioCpu"/>
-                                                <span>Cpu 1</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupCpu" type="radio" id="radioCpu2" class="radioCpu"/>
-                                                <span>Cpu 2</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupCpu" type="radio" id="radioCpu3" class="radioCpu"/>
-                                                <span>Cpu 3</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                    <tr class="rowCpuTable">
-                                        <th>
-                                            <label>
-                                                <input name="groupCpu" type="radio" id="radioCpu4" class="radioCpu"/>
-                                                <span>Cpu 4</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupCpu" type="radio" id="radioCpu5" class="radioCpu"/>
-                                                <span>Cpu 5</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupCpu" type="radio" id="radioCpu6" class="radioCpu"/>
-                                                <span>Cpu 6</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                </table>
-                            </form>
-                        </span>
-                    </div>
-                </li>
-                <li>
-                    <a href="#!" class="collection-item"><span class="badge">1</span></a>
-                    <div class="collapsible-header"><i class='fas fa-memory' style='font-size:20px'></i>RAM</div>
-                    <div class="collapsible-body" id="ramMenu">
-                        <span>
-                            <form action="#"> <!-- da definire -->
-                                <table id="ramTable">
-                                    <tr class="rowRamTable">
-                                        <th>
-                                            <label>
-                                                <input type="checkbox" id="checkRam1" class="checkRam"/>
-                                                <span>Ram 1</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input type="checkbox" id="checkRam2" class="checkRam"/>
-                                                <span>Ram 2</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input type="checkbox" id="checkRam3" class="checkRam"/>
-                                                <span>Ram 3</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                    <tr class="rowRamTable">
-                                        <th>
-                                            <label>
-                                                <input type="checkbox" id="checkRam4" class="checkRam"/>
-                                                <span>Ram 4</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input type="checkbox" id="checkRam5" class="checkRam"/>
-                                                <span>Ram 5</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input type="checkbox" id="checkRam6" class="checkRam"/>
-                                                <span>Ram 6</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                </table>
-                            </form>
-                        </span>
-                    </div>
-                </li>
-                <li>
-                    <a href="#!" class="collection-item"><span class="badge">1</span></a>
-                    <div class="collapsible-header"><i class='fas fa-hdd' style='font-size:20px'></i>Storage</div>
-                    <div class="collapsible-body" id="storageMenu">
-                        <span>
-                            <form action="#"> <!-- da definire -->
-                                <table id="StorageTable">
-                                    <tr class="rowStorageTable">
-                                        <th>
-                                            <label>
-                                                <input type="checkbox" id="checkStorage1" class="checkStorage"/>
-                                                <span>Storage 1</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input type="checkbox" id="checkStorage2" class="checkStorage"/>
-                                                <span>Storage 2</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input type="checkbox" id="checkStorage3" class="checkStorage"/>
-                                                <span>Storage 3</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                    <tr class="rowStorageTable">
-                                        <th>
-                                            <label>
-                                                <input type="checkbox" id="checkStorage4" class="checkStorage"/>
-                                                <span>Storage 4</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input type="checkbox" id="checkSto5age1" class="checkStorage"/>
-                                                <span>Storage 5</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input type="checkbox" id="checkStorage6" class="checkStorage"/>
-                                                <span>Storage 6</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                </table>
-                            </form>
-                        </span>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="collapsible-header"><i class='fas fa-plug' style='font-size:20px'></i>Power</div>
-                    <div class="collapsible-body" id="powerMenu">
-                        <span>
-                            <form action="#"> <!-- da definire -->
-                                <table id="powerTable">
-                                    <tr class="rowPowerTable">
-                                        <th>
-                                            <label>
-                                                <input name="groupPower" type="radio" id="radioPower1" class="radioPower"/>
-                                                <span>Power 1</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupPower" type="radio" id="radioPower2" class="radioPower"/>
-                                                <span>Power 2</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupPower" type="radio" id="radioPower3" class="radioPower"/>
-                                                <span>Power 3</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                    <tr class="rowPowerTable">
-                                        <th>
-                                            <label>
-                                                <input name="groupPower" type="radio" id="radioPower4" class="radioPower"/>
-                                                <span>Power 4</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupPower" type="radio" id="radioPower5" class="radioPower"/>
-                                                <span>Power 5</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupPower" type="radio" id="radioPower6" class="radioPower"/>
-                                                <span>Power 6</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                </table>
-                            </form>
-                        </span>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">videogame_asset</i>Graphic Card</div>
-                    <div class="collapsible-body" id="gpuMenu">
-                        <span>
-                            <form action="#"> <!-- da definire -->
-                                <table id="gpuTable">
-                                    <tr class="rowGpuTable">
-                                        <th>
-                                            <label>
-                                                <input name="groupGpu" type="radio" id="radioGraphicCard1" class="radioGraphicCardr"/>
-                                                <span>GraphicCard 1</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupGpu" type="radio" id="radioGraphicCard2" class="radioGraphicCard"/>
-                                                <span>GraphicCard 2</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupGpu" type="radio" id="radioGraphicCard3" class="radioGraphicCard"/>
-                                                <span>GraphicCard 3</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                    <tr class="rowGpuTable">
-                                        <th>
-                                            <label>
-                                                <input name="groupGpu" type="radio" id="radioGraphicCard4" class="radioGraphicCard"/>
-                                                <span>GraphicCard 4</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupGpu" type="radio" id="radioGraphicCard5" class="radioGraphicCard"/>
-                                                <span>GraphicCard 5</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupGpu" type="radio" id="radioGraphicCard6" class="radioGraphicCard"/>
-                                                <span>GraphicCard 6</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                </table>
-                            </form>
-                        </span>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="collapsible-header"><i class="material-icons">ac_unit</i>Cooler</div>
-                    <div class="collapsible-body" id="coolerMenu">
-                        <span>
-                            <form action="#"> <!-- da definire -->
-                                <table id="CoolerTable">
-                                    <tr class="rowCoolerTable">
-                                        <th>
-                                            <label>
-                                                <input name="groupCooler" type="radio" id="radioCooler1" class="radioCooler"/>
-                                                <span>Cooler 1</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupCooler" type="radio" id="radioCooler2" class="radioCooler"/>
-                                                <span>Cooler 2</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupCooler" type="radio" id="radioCooler3" class="radioCooler"/>
-                                                <span>Cooler 3</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                    <tr class="rowCoolerTable">
-                                        <th>
-                                            <label>
-                                                <input name="groupCooler" type="radio" id="radioCooler4" class="radioCooler"/>
-                                                <span>Cooler 4</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupCooler" type="radio" id="radioCooler5" class="radioCooler"/>
-                                                <span>Cooler 5</span>
-                                            </label>
-                                        </th>
-                                        <th>
-                                            <label>
-                                                <input name="groupCooler" type="radio" id="radioCooler6" class="radioCooler"/>
-                                                <span>Cooler 6</span>
-                                            </label>
-                                        </th>
-                                    </tr>
-                                </table>
-                            </form>
-                        </span>
-                    </div>
-                </li>
-
+	        @for (String tipo:type) {
+				<li>
+				@if(tipo.equals("case")){
+	        		<div class="collapsible-header"><i class='fas fa-mobile' style='font-size:20px'></i>Case</div>
+	        		<div class="collapsible-body" id="caseMenu">
+	        		<span>
+	               	<form action="#">
+	                <table id="caseTable">
+	        	}
+		        @if(tipo.equals("mobo")){
+		        	<div class="collapsible-header"><i class="material-icons">developer_board</i>Motherboard</div>
+		            <div class="collapsible-body" id="moboMenu">
+		        }
+		        @if(tipo.equals("cpu")){
+		        	<div class="collapsible-header"><i class='fas fa-microchip' style='font-size:20px'></i>CPU</div>
+		            <div class="collapsible-body" id="cpuMenu">
+		        }
+		        @if(tipo.equals("ram")){
+		        	<a href="#!" class="collection-item"><span class="badge">1</span></a>
+		            <div class="collapsible-header"><i class='fas fa-memory' style='font-size:20px'></i>RAM</div>
+		            <div class="collapsible-body" id="ramMenu">
+		        }
+		        @if(tipo.equals("massStorage")){
+		        	 <a href="#!" class="collection-item"><span class="badge">1</span></a>
+		             <div class="collapsible-header"><i class='fas fa-hdd' style='font-size:20px'></i>Storage</div>
+		             <div class="collapsible-body" id="storageMenu">
+		        }
+		        @if(tipo.equals("power")){
+		        	<div class="collapsible-header"><i class='fas fa-plug' style='font-size:20px'></i>Power</div>
+		            <div class="collapsible-body" id="powerMenu">
+		        } 
+		        @if(tipo.equals("gpu")){
+		        	<div class="collapsible-header"><i class="material-icons">videogame_asset</i>Graphic Card</div>
+		            <div class="collapsible-body" id="gpuMenu">
+		        }
+		        @if(tipo.equals("cooler")){
+		        	<div class="collapsible-header"><i class="material-icons">ac_unit</i>Cooler</div>
+		            <div class="collapsible-body" id="coolerMenu">
+		        }
+	        	<tr class="row@(tipo)Table">
+		        @for(model.component.Component cl:componentlist){
+		        	<th>
+			           <label>
+			            	@if(tipo.equals("ram") || tipo.equals("massStorage")){
+		        				<input type="checkbox" id="check@(tipo)" class="check@(tipo)"/>
+		        			}
+		        	 		else{
+		        	 			<input name="group@(tipo)" type="radio" id="radio@(tipo)1" class="radio@(tipo)"/>
+		        	 		}
+			                @if(cl.getTypeComponent().equals(tipo)){
+			                    <span>@(cl.getAttributesMap().get("modello").getValue())</span>
+			                }
+			            </label>
+			          </th>                
+			     	  	   
+		        }    
+	        </tr> 
+	        </li>           
+	   } 
             </ul>
             <a class="waves-effect waves-light btn" id="confBtn"><i class="material-icons left">widgets</i>Get Configuration</a>
             <form action="#">
@@ -535,8 +183,15 @@
         </div>
     </div>
 </footer>
+<script>
+$(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {edge:'right'});
+});
+</script>
 </body>
 
 </html>
-<script src="../JS/collapsibleScript.js"></script>
-<script src="../JS/sidenavScript.js"></script>

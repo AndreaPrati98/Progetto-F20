@@ -36,11 +36,12 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 				nome = rs.getString("Name");
 				valore = rs.getString("AttValue");
 				
+
 				if (!bufferModel.equals(modello)) {
 					first = false;
-					typeBuffer = tipo;
 					listComponent.add(new Component(typeBuffer, map));
 					map = new HashMap<String, Attribute>();
+					typeBuffer = tipo;
 				}
 				
 				if (!first) {
@@ -51,6 +52,8 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 					first = true;
 				}
 
+				
+				
 
 				at = new Attribute(nome, valore, true, true);
 				map.put(nome, at);
@@ -58,7 +61,6 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 			}
 			listComponent.add(new Component(typeBuffer, map));
 			listComponent.remove(0);
-			
 			return listComponent;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

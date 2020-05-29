@@ -70,7 +70,7 @@
                 </div>
             </div>
             <div class="center container">
-                <button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="submitForm">
+                <button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="submitForm" method="post">
                     Sign-in
                     <i class="material-icons right">done</i>
                 </button>
