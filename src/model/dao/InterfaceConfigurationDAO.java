@@ -15,6 +15,6 @@ public interface InterfaceConfigurationDAO {
 
 	public boolean removeConfiguration(int confId);
 
-	public boolean addUsers(String name,String cognome, String email,int i);
+	public boolean addUsers(String name,String cognome, String email,String i);
 
 }

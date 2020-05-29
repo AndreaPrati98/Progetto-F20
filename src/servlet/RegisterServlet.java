@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +45,17 @@ public class RegisterServlet extends MyServlet {
 			flag=false;
 			response.getWriter().write(Rythm.render("sign-in.rtm",flag));
 		}
-		pf.addUser(nome, cognome, mail, psw.hashCode());
+		MessageDigest digest;
+		try {
+			digest = MessageDigest.getInstance("SHA-256");
+			digest.reset();
+			digest.update(psw.getBytes("utf8"));
+			psw=String.format("%064x", new BigInteger(1, digest.digest()));
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		pf.addUser(nome, cognome, mail, psw);
 		Mail m=new Mail(mail);
 		response.getWriter().write(Rythm.render("sign-in.rtm",true));
 	}

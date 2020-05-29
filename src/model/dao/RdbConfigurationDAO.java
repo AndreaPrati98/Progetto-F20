@@ -49,7 +49,7 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO{
 	}
 
 	@Override
-	public boolean addUsers(String name, String cognome, String email, int password) {
+	public boolean addUsers(String name, String cognome, String email, String password) {
 		// TODO Auto-generated method stub
 		return dbop.addUser(name, cognome, email, password);
 	}

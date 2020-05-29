@@ -94,7 +94,7 @@ public class RdbOperation {
 		return null;
 	}
 
-	public boolean addUser(String name,String cognome, String email,int password) {
+	public boolean addUser(String name,String cognome, String email,String password) {
 		String sql = "INSERT INTO Users(firstName,lastName,email,password) VALUES(?,?,?,?)";
 		PreparedStatement ps;
 		try {
@@ -102,7 +102,7 @@ public class RdbOperation {
 			ps.setString(1, name);
 			ps.setString(2, cognome);
 			ps.setString(3, email);
-			ps.setInt(4, password);
+			ps.setString(4, password);
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {

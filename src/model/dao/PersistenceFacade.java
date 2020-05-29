@@ -73,9 +73,9 @@ public class PersistenceFacade {
 
 	}
 	
-	public boolean addUser(String name,String cognome, String email,int i) {
+	public boolean addUser(String name,String cognome, String email,String password) {
 
-		return confdao.addUsers(name, cognome, email, i);
+		return confdao.addUsers(name, cognome, email, password);
 
 	}
 
