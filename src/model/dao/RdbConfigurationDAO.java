@@ -19,7 +19,7 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO{
 		return null;
 
 	}
-
+	
 	public Configuration getConfigurationByEmail(String email) {
 
 		ResultSet rs = dbop.getConfigurationByEmail(email);
@@ -46,6 +46,12 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO{
 
 	
 
+	}
+
+	@Override
+	public boolean addUsers(String name, String cognome, String email, int password) {
+		// TODO Auto-generated method stub
+		return dbop.addUser(name, cognome, email, password);
 	}
 
 }

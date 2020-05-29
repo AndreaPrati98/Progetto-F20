@@ -25,5 +25,7 @@
 	<classpathentry kind="lib" path="Util/JAR/jetty-server-9.4.28.v20200408.jar"/>
 	<classpathentry kind="lib" path="Util/JAR/jetty-util-9.4.28.v20200408.jar"/>
 	<classpathentry kind="lib" path="Util/JAR/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="Util/JAR/javax.mail.jar"/>
+	<classpathentry kind="lib" path="Util/JAR/activation.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

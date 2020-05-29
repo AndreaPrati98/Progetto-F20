@@ -1,6 +1,8 @@
 
-<!-- Frenkli Buzhiqi -->
-
+<!-- Frenkli Buzhiqi Alessandro Capici Ripari Irene -->
+@args(){
+	Boolean flag
+}
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -31,10 +33,10 @@
     </nav><!--fine della navbar-->
 
     <ul class="sidenav" id="mobile-nav">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="sign-in.html">Sign-in</a></li>
-        <li><a href="configuration.html">Configuration</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/sign-in">Sign-in</a></li>
+        <li><a href="/configuration">Configuration</a></li>
     </ul>
 
 
@@ -69,6 +71,10 @@
                     <label for="RipetiPassword">Ripeti Password</label>
                 </div>
             </div>
+            @if(!flag){
+            	<h3>Compilare bene il form</h3>
+            	<br>
+            }
             <div class="center container">
                 <button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="submitForm" method="post">
                     Sign-in

@@ -94,6 +94,25 @@ public class RdbOperation {
 		return null;
 	}
 
+	public boolean addUser(String name,String cognome, String email,int password) {
+		String sql = "INSERT INTO Users(firstName,lastName,email,password) VALUES(?,?,?,?)";
+		PreparedStatement ps;
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, cognome);
+			ps.setString(3, email);
+			ps.setInt(4, password);
+			ps.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+
+	}
+	
 	public boolean addConfiguration(int id, String name, String email) {
 		String sql = "INSERT INTO Configuration(Id,Name,EmailU) VALUES(?,?,?)";
 		PreparedStatement ps;
