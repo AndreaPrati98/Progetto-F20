@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.rythmengine.Rythm;
 
 import model.dao.PersistenceFacade;
-import util.Mail;
+import statics.Mail;
 /**
  * 
  * @author Capici Alessandro

@@ -1,4 +1,4 @@
-package util;
+package statics;
 
 import java.util.Date;
 import java.util.Properties;
