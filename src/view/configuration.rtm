@@ -1,4 +1,4 @@
-<!-- Frenkli Buzhiqi Alessandro Capici -->
+<!-- Frenkli Buzhiqi, Stefano Butera, Alessandro Capici -->
 @args() {
 	List<model.component.Component> componentlist,
 	List<String> type
