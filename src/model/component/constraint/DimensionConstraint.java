@@ -110,8 +110,8 @@ public class DimensionConstraint extends AbstractConstraint {
 					
 				}			
 			}
-			//Se il newAttribute è external deve essere maggiore di tutti gli externa
-			if(newAttribute.getConstraintCategory() == ConstraintCategory.INTERNAL) {
+			//Se il newAttribute è external deve essere maggiore di tutti gli intenal
+			if(newAttribute.getConstraintCategory() == ConstraintCategory.EXTERNAL) {
 				for(Attribute oldInternalAttribute : internalAttributesFilteredList) {
 					double newExternallValue = Double.parseDouble(newAttribute.getValue()); 
 					double oldInternalValue = Double.parseDouble(oldInternalAttribute.getValue()); 
