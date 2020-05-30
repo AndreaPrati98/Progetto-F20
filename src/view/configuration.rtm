@@ -96,28 +96,27 @@
 		            <form action="#">
 	                <table id="coolerTable">
 		        }
-	        	<tr class="row@(tipo)Table">
-	        	<th>
+	        	
 		        @for(model.component.Component cl:componentlist){
-		        	
-			           <label>
-			            	@if(tipo.equals("ram") || tipo.equals("massStorage")){
-		        				<input type="checkbox" id="check@(tipo)" class="check@(tipo)"/>
-		        			}
-		        	 		else{
-		        	 			<input name="group@(tipo)" type="radio" id="radio@(tipo)1" class="radio@(tipo)"/>
-		        	 		}
-			                @if(cl.getTypeComponent().equals(tipo)){
-			                    <span>@(cl.getAttributesMap().get("modello").getValue())</span>
-			                }
-			            </label>
-			                          
-			     	  	   
-		        }</th>    
-	        </tr> 
+		        	@if(cl.getTypeComponent().equals(tipo)){
+		        		<tr class="row@(tipo)Table">
+	        				<th>
+		        				<label>
+							    	@if(tipo.equals("ram") || tipo.equals("massStorage")){
+							    		<input name="group@(tipo)" type="checkbox" id="check@(tipo)" class="check@(tipo)"/>
+						       		}else{
+						        	 	<input name="group@(tipo)" type="radio" id="radio@(tipo)1" class="radio@(tipo)"/>
+						        	}
+				        			<span>@(cl.getAttributesMap().get("modello").getValue())</span>
+				                </label>
+			            	</th>    
+	        			</tr> 
+	        		 }
+			     }
 	        </table>
 	        </form>
 	        </span>
+	        </div>
 	        </li>           
 	   } 
             </ul>
