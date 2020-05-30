@@ -24,6 +24,7 @@ public class ConfigurationServlet extends MyServlet {
 		List<String> type=new ArrayList<String>();
 		
 		type.add("cpu");
+		type.add("case");
 		type.add("mobo");
 		type.add("ram");
 		type.add("massStorage");
