@@ -97,8 +97,9 @@
 	                <table id="coolerTable">
 		        }
 	        	<tr class="row@(tipo)Table">
+	        	<th>
 		        @for(model.component.Component cl:componentlist){
-		        	<th>
+		        	
 			           <label>
 			            	@if(tipo.equals("ram") || tipo.equals("massStorage")){
 		        				<input type="checkbox" id="check@(tipo)" class="check@(tipo)"/>
@@ -110,9 +111,9 @@
 			                    <span>@(cl.getAttributesMap().get("modello").getValue())</span>
 			                }
 			            </label>
-			          </th>                
+			                          
 			     	  	   
-		        }    
+		        }</th>    
 	        </tr> 
 	        </table>
 	        </form>
