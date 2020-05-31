@@ -31,7 +31,7 @@ public class MassStoragePerformanceEstimator implements InterfacePerformanceEsti
 		try {
 			size = Integer.parseInt(sizeString);
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return -1;
 		}
 		
