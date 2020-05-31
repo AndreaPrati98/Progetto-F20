@@ -22,9 +22,9 @@ public class ConfigurationServlet extends MyServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		ComponentCatalog catalog = new ComponentCatalog();
 		List<String> type=new ArrayList<String>();
-		
-		type.add("cpu");
 		type.add("case");
+		type.add("cpu");
+		
 		type.add("mobo");
 		type.add("ram");
 		type.add("massStorage");
