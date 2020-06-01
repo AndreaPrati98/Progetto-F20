@@ -38,6 +38,13 @@
 		</div>
 	</nav>
 
+	<ul class="sidenav" id="mobile-nav">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="sign-in.html">Sign-in</a></li>
+        <li><a href="configuration.html">Configuration</a></li>
+    </ul>
+
 	<div class="center">
 		<div class="col 7">
 			<ul class="collapsible" id="collapsible">
@@ -46,13 +53,13 @@
 					<div class="collapsible-body">
 						<span>
 							<div class="row">
-								<form class="col s12">
+								<form class="formAddComponent" id="formAddComponent" align="center" method="POST">
 									<div class="row">
-										<div class="input-field col s4">
+										<div class="input-field col s6">
 											<input name="component_type" type="text" class="validate">
 											<label for="component">Inserisci tipo componente</label>
 										</div>
-										<div class="input-field col s4">
+										<div class="input-field col s6">
 											<input name="model" type="text" class="validate">
 											<label for="model">Modello componente</label>
 										</div>
@@ -66,12 +73,12 @@
 											<input name="valore"class="validate" type="text">
 											<label for="component">Valore Attributo</label>
 										</div>
-										<div class="input-field col s2">
+										<div class="input-field col s4">
 											<div class="row">
-												<div class="input-field col s6">
+												<div class="input-field col s4">
 													vincolo
 												</div>
-												<div class="input-field col s6">
+												<div class="input-field col s4">
 													visibile
 												</div>
 											</div>
@@ -138,15 +145,12 @@
 </body>
 </html>
 <script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function() {
-	var elems = document.querySelectorAll('.collapsible');
-	var instances = M.Collapsible.init(elems, options);
-});
-
-// Or with jQuery
-
 $(document).ready(function(){
 	$('.collapsible').collapsible();
+});
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, {edge:'right'});
 });
 
 </script>
