@@ -10,6 +10,9 @@
 	#addComponentBtn{
 		background-color: #0097a7;
 	}
+	#removeComponentBtn{
+		background-color: #d32f2f;
+	}
 	</style>
 	<title>Administrator</title>
 	<!-- link CSS -->
@@ -107,6 +110,24 @@
 			<div class="collapsible-header"><i class="material-icons">delete</i>Remove Component</div>
 			<div class="collapsible-body">
 				<span>
+					<div class="container">
+						<form id="removeComponentForm" align="center" method="POST">
+							<div class="container" id="typeAndNameComponentInRemove">
+								<div class="input-field col s5">
+									<input id="typeComponentInRemove" name="typeComponentInRemove" type="text" class="validate">
+									<label for="typeComponentInRemove">Component Type</label>
+								</div>
+								<div class="input-field col s5">
+									<input id="modelComponentInRemove" name="modelComponentInRemove" type="text" class="validate">
+									<label for="modelComponentInRemove">Component Model</label>
+								</div>
+							</div>
+							<br>
+							<div class="center container">
+								<a class="waves-effect waves-light btn" id="removeComponentBtn">Remove</a>
+							</div>
+						</form>
+					</div>
 				</span>
 			</div>
 		</li>
