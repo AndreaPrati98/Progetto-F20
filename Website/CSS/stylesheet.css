@@ -2,6 +2,12 @@
     width: 87%;
 }
 
+#expandableCollapsible{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .widthElement{
     width: 87%;
 }
@@ -63,7 +69,7 @@ body{
 }
 
 .bottomPosition{
-    position: absolute; 
+    position: absolute;
     bottom: 0px;
 }
 
@@ -78,7 +84,7 @@ body{
     position: relative;
 }
 html,body{
-    margin:0; 
+    margin:0;
     padding: 0;
     height: 100%
 }

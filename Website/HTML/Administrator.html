@@ -2,10 +2,13 @@
 <html>
 <head>
 	<style>
-	#collapsible{
-		width: 50%;
+	#expandableCollapsible{
+		width: 60%;
 		margin-left: auto;
 		margin-right: auto;
+	}
+	#addComponentBtn{
+		background-color: #0097a7;
 	}
 	</style>
 	<title>Administrator</title>
@@ -39,118 +42,85 @@
 	</nav>
 
 	<ul class="sidenav" id="mobile-nav">
-        <li><a href="home.html">Home</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="sign-in.html">Sign-in</a></li>
-        <li><a href="configuration.html">Configuration</a></li>
-    </ul>
+		<li><a href="home.html">Home</a></li>
+		<li><a href="login.html">Login</a></li>
+		<li><a href="sign-in.html">Sign-in</a></li>
+		<li><a href="configuration.html">Configuration</a></li>
+	</ul>
 
-	<div class="center">
-		<div class="col 7">
-			<ul class="collapsible" id="collapsible">
-				<li>
-					<div class="collapsible-header"><i class="material-icons">note_add</i>Aggiungi componente</div>
-					<div class="collapsible-body">
-						<span>
-							<div class="row">
-								<form class="formAddComponent" id="formAddComponent" align="center" method="POST">
-									<div class="row">
-										<div class="input-field col s6">
-											<input name="component_type" type="text" class="validate">
-											<label for="component">Inserisci tipo componente</label>
-										</div>
-										<div class="input-field col s6">
-											<input name="model" type="text" class="validate">
-											<label for="model">Modello componente</label>
-										</div>
-									</div>
-									<div class="row">
-										<div class="input-field col s4">
-											<input name="nome_att"class="validate" type="text">
-											<label for="component">Nome Attributo</label>
-										</div>
-										<div class="input-field col s4">
-											<input name="valore"class="validate" type="text">
-											<label for="component">Valore Attributo</label>
-										</div>
-										<div class="input-field col s4">
-											<div class="row">
-												<div class="input-field col s4">
-													vincolo
-												</div>
-												<div class="input-field col s4">
-													visibile
-												</div>
-											</div>
-											<div class="row">
-												<div class="input-field col s6">
-													<div class="switch">
-														<label>
-															No
-															<input type="checkbox">
-															<span class="lever"></span>
-															Si
-														</label>
-													</div>
-												</div>
-												<div class="input-field col s6">
-													<div class="switch">
-														<label>
-															No
-															<input type="checkbox">
-															<span class="lever"></span>
-															Si
-														</label>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="input-field col s1">
-											<a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
-										</div>
-									</div>
-									<div class="row" align="centre">
-										<div class="input-field col s12">
-											<a class="waves-effect waves-light btn-small">Aggiungi</a>
-										</div>
-									</div>
-								</form>
-							</div>
-						</span>
-					</div>
-				</li>
-				<li>
-					<div class="collapsible-header"><i class="material-icons">delete</i>Rimuovi componente</div>
-					<div class="collapsible-body">
-						<span>
-							<div class="input-field col s3">
-								<input name="component_type" type="text" class="validate">
-								<label for="component">Inserisci tipo componente</label>
-							</div>
-							<div class="input-field col s3">
-								<input name="model" type="text" class="validate">
-								<label for="model">Modello componente</label>
-							</div>
-							<div class="row" align="centre">
-								<div class="input-field col s12">
-									<a class="waves-effect waves-light btn-small">Rimuovi</a>
+	<ul class="collapsible expandable" id="expandableCollapsible">
+		<li>
+			<div class="collapsible-header"><i class="material-icons">add_box</i>Add Component</div>
+			<div class="collapsible-body">
+				<span>
+					<div class="container">
+						<form id="addComponentForm" align="center" method="POST">
+							<div class="row" id="typeAndNameComponent">
+								<div class="input-field col s6">
+									<input id="typeComponent" name="typeComponent" type="text" class="validate">
+									<label for="typeComponent">Component Type</label>
+								</div>
+								<div class="input-field col s6">
+									<input id="modelComponent" name="modelComponent" type="text" class="validate">
+									<label for="modelComponent">Component Model</label>
 								</div>
 							</div>
-						</span>
+							<div class="container" id="nameAndValueAttribute">
+								<div class="input-field col s5">
+									<input id="attributeName" name="attributeName" type="text" class="validate">
+									<label for="attributeName">Attribute Name</label>
+								</div>
+								<div class="input-field col s5">
+									<input id="attributeValue" name="attributeValue" type="text" class="validate">
+									<label for="attributeValue">Attribute Value</label>
+								</div>
+							</div>
+							<div class="switch">
+								<label>
+									NotConstr.
+									<input type="checkbox" id="constraintSwitch">
+									<span class="lever"></span>
+									Constr.
+								</label>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<label>
+									NotVis.
+									<input type="checkbox" id="visibleSwitch">
+									<span class="lever"></span>
+									Vis.
+								</label>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<a class="btn-floating waves-effect waves-light amber darken-3" id="addAttributeBtn">
+									<i class="material-icons">add</i>
+								</a>
+							</div>
+							<br>
+							<div class="center container">
+								<a class="waves-effect waves-light btn" id="addComponentBtn">Add</a>
+							</div>
+						</form>
 					</div>
-				</li>
-			</ul>
-		</div>
-	</div>
+				</span>
+			</div>
+		</li>
+		<li>
+			<div class="collapsible-header"><i class="material-icons">delete</i>Remove Component</div>
+			<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+		</li>
+	</ul>
+
+
 </body>
 </html>
 <script type="text/javascript">
-$(document).ready(function(){
-	$('.collapsible').collapsible();
+var elem = document.querySelector('.collapsible.expandable');
+var instance = M.Collapsible.init(elem, {
+	accordion: false
 });
+
 document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, {edge:'right'});
+	var elems = document.querySelectorAll('.sidenav');
+	var instances = M.Sidenav.init(elems, {edge:'right'});
 });
 
 </script>
