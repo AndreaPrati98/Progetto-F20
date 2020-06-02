@@ -62,16 +62,6 @@ public class Component {
 		return attributesMap.get(name);
 	}
 	
-	/**
-	 * 
-	 * @param name
-	 * @return the value of the attribute with the given name
-	 *
-	 */
-	// Questo metodo può essere utile per i performance estimator
-	public String getAttributeValueByName(String name) {
-		return attributesMap.get(name).getValue();
-	}
 
 	/**
 	 * 
