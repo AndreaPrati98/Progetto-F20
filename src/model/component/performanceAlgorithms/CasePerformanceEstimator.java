@@ -22,6 +22,11 @@ public class CasePerformanceEstimator implements InterfacePerformanceEstimator {
 		 */
 		
 		Attribute att = componentAttributes.get("formFactor");
+		
+		if(att == null) {
+			throw new NullPointerException("Invalid instance of Attribute");			
+		}
+		
 		String formFactor = att.getValue();
 		
 		if(formFactor == "atx") {
