@@ -11,6 +11,7 @@ import java.sql.Statement;
  * 
  * @author Alessandro Capici
  * @author Cristian Garau
+ * @author Andrea
  *
  */
 
@@ -38,6 +39,9 @@ public class RdbOperation {
 		return stmt;
 	}
 
+	/*
+	 * QUERY COMPONENT RELATION
+	 */
 	public ResultSet getAllComponents() {
 		try {
 			stmt = c.createStatement();
@@ -69,6 +73,28 @@ public class RdbOperation {
 
 		return false;
 
+	}
+	
+	/*
+	 * QUERY ATTRIBUTE RELATION
+	 */
+	public ResultSet getAttributeByComponent(String model, String typeOfComponet) {
+		String sql = "select * " + 
+					"from Attribute " + 
+					"where TypeofC = '"+ typeOfComponet +"' and ModelofC = '"+ model +"'";
+		
+		ResultSet rs = null;
+		try {
+		
+			rs = stmt.executeQuery(sql);
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println("Error: "+ e.getMessage());
+		}
+		
+		return rs;		
+		
 	}
 
 	public ResultSet getConfiguration(String confId) {
