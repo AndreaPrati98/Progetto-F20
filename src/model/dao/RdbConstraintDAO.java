@@ -55,15 +55,14 @@ public class RdbConstraintDAO implements InterfaceCostraintDAO {
 	}
 
 	@Override
-	public boolean addNewConstraint(AbstractConstraint constraint) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean addNewConstraint(String name, String type) {
+		
+		return dbop.addNewConstraint(name, type);
 	}
 
 	@Override
-	public boolean removeConstraint(String name, String typeOfComponent) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean removeConstraint(String name) {
+		return dbop.RemoveConstraint(name);
 	}
 
 }

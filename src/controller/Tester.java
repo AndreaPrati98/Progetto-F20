@@ -3,6 +3,7 @@ package controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.dao.PersistenceFacade;
 import servlet.ApplicationServer;
 import servlet.ConfigurationServlet;
 import servlet.HomeServlet;
@@ -17,7 +18,7 @@ public class Tester {
 		servlet.add(new RegisterServlet("register", "/sign-in"));
 		servlet.add(new ConfigurationServlet("configuration", "/configuration"));
 		new ApplicationServer(8080, servlet).start();
-
+		
 
 		
 //		ComponentCatalog catalog = new ComponentCatalog();

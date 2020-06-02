@@ -155,4 +155,36 @@ public class RdbOperation {
 		return null;
 		
 	}
+	
+	public boolean addNewConstraint(String name, String type) {
+		String sql = "INSERT INTO Bound(Name,Type) VALUES(?,?)";
+		PreparedStatement ps;
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, type);
+			ps.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean RemoveConstraint(String name) {
+		String sql = "DELETE FROM Bound WHERE Name = ?";
+
+		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
+
+			// set the corresponding param
+			pstmt.setString(1, name);
+			// execute the delete statement
+			pstmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
+	}
 }

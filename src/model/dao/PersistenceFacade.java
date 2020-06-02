@@ -39,21 +39,6 @@ public class PersistenceFacade {
 		return cdao.getAllComponent();
 	}
 
-	public List<AbstractConstraint> getAllConstraints() {
-		// Codice di prova
-		List<AbstractConstraint> list = new ArrayList<AbstractConstraint>();
-		AbstractConstraint c1 = new MaxConstraint("tdp");
-		AbstractConstraint c2 = new EqualsConstraint("tdp");
-		AbstractConstraint c3 = new DimensionConstraint("tdp");
-		list.add(c1);
-		list.add(c2);
-		list.add(c3);
-
-		if (list.isEmpty())
-			return null;
-
-		return list;
-	}
 
 	public Configuration getConfiguration(String confId) {
 
@@ -97,19 +82,19 @@ public class PersistenceFacade {
 		return cosdao.getConstraint(name, typeOfComponent);
 	}*/
 
-	public List<AbstractConstraint> getAllConstraint() {
+	public List<AbstractConstraint> getAllConstraints() {
 
 		return cosdao.getAllConstraints();
 	}
 
-	public boolean addNewConstraint(AbstractConstraint constraint) {
+	public boolean addNewConstraint(String name, String type) {
 
-		return cosdao.addNewConstraint(constraint);
+		return cosdao.addNewConstraint(name, type);
 	}
 
-	public boolean removeConstraint(String name, String typeOfComponent) {
+	public boolean removeConstraint(String name) {
 
-		return cosdao.removeConstraint(name, typeOfComponent);
+		return cosdao.removeConstraint(name);
 	}
 
 }
