@@ -90,10 +90,12 @@ public class PersistenceFacade {
 		return confdao.removeConfiguration(confId);
 
 	}
-
+	
+	// Tanto il constraintChecker legge tutti i constraint, non ne legge uno solo
+	/*
 	public AbstractConstraint getConstraint(String name, String typeOfComponent) {
 		return cosdao.getConstraint(name, typeOfComponent);
-	}
+	}*/
 
 	public List<AbstractConstraint> getAllConstraint() {
 
