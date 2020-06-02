@@ -1,5 +1,6 @@
 package model.component;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import model.component.performanceAlgorithms.InterfacePerformanceEstimator;
@@ -13,11 +14,25 @@ import model.component.performanceAlgorithms.PerformanceEstimatorFactory;
  */
 public class Component {
 
+	private String model;
 	private String typeComponent;
 	//private List<Constraint> constraintList;//
 	private Map<String, Attribute> attributesMap;
 	private double performanceIndex;
 
+	public Component(String model, String typeOfComponent) {
+		this.model = model;
+		this.typeComponent = typeOfComponent;
+		performanceIndex = -1;
+		attributesMap = new HashMap<String, Attribute>();
+	
+	}
+	
+	public Component(String model, String typeOfComponent, Map<String, Attribute> attributesMap) {
+		this(model, typeOfComponent);
+		this.attributesMap = attributesMap;
+	}
+	
 	public Component(String typeComponent, /*List<Constraint> constraintList,*/ Map<String, Attribute> attributesMap) {
 		this.setTypeComponent(typeComponent);
 		this.attributesMap=attributesMap;
