@@ -46,7 +46,7 @@ public class PersistenceFacade {
 
 	}
 
-	public Configuration getConfigurationByEmail(String email) {
+	public List<Configuration> getConfigurationByEmail(String email) {
 
 		return confdao.getConfigurationByEmail(email);
 

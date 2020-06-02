@@ -1,13 +1,15 @@
 package model.dao;
 
 
+import java.util.List;
+
 import model.configuration.Configuration;
 
 public interface InterfaceConfigurationDAO {
 
 	public Configuration getConfiguration(String confId);
 
-	public Configuration getConfigurationByEmail(String email);
+	public List<Configuration> getConfigurationByEmail(String email);
 
 	public boolean addConfiguration(int id, String name, String email);
 
@@ -15,6 +17,6 @@ public interface InterfaceConfigurationDAO {
 
 	public boolean removeConfiguration(int confId);
 
-	public boolean addUsers(String name,String cognome, String email,String i);
+	public boolean addUsers(String name,String cognome, String email,String password);
 
 }
