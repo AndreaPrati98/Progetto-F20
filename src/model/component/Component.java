@@ -9,7 +9,8 @@ import model.component.performanceAlgorithms.PerformanceEstimatorFactory;
 /**
  * 
  * @author Capici Alessandro
- * @co_author Cic
+ * @author Cic
+ * @author Andrea
  *
  */
 public class Component {
