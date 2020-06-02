@@ -5,6 +5,7 @@ import model.component.constraint.ConstraintCategory;
 /**
  * 
  * @author Irene S
+ * @author Andrea
  *
  */
 public class Attribute {
@@ -13,15 +14,6 @@ public class Attribute {
 	private ConstraintCategory constraintCategory;
 	
 	
-	public Attribute(String name, String value, boolean isBinding, boolean isPresentable,
-			ConstraintCategory constraintCategory) {
-		super();
-		this.name = name;
-		this.value = value;
-		this.isBinding = isBinding;
-		this.isPresentable = isPresentable;
-		this.constraintCategory = constraintCategory;
-	}
 	
 	public Attribute(String name, String value, boolean isBinding, boolean isPresentable) {
 		super();
@@ -29,6 +21,13 @@ public class Attribute {
 		this.value = value;
 		this.isBinding = isBinding;
 		this.isPresentable = isPresentable;
+	}
+
+	public Attribute(String name, String value, boolean isBinding, boolean isPresentable,
+			ConstraintCategory constraintCategory) {
+		this(name, value, isBinding, isPresentable);
+		this.constraintCategory = constraintCategory;
+		
 	}
 
 	public String getName() {
