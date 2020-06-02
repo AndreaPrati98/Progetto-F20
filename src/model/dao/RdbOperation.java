@@ -142,4 +142,17 @@ public class RdbOperation {
 		return false;
 
 	}
+	
+	public ResultSet getAllConstraints() {
+		try {
+			stmt = c.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM Bound");
+			return rs;
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		
+		return null;
+		
+	}
 }
