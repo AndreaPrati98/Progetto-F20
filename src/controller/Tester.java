@@ -17,7 +17,7 @@ public class Tester {
 		servlet.add(new HomeServlet("home","/"));
 		servlet.add(new RegisterServlet("register", "/sign-in"));
 		servlet.add(new ConfigurationServlet("configuration", "/configuration/*"));
-		new ApplicationServer(8084, servlet).start();
+		new ApplicationServer(8080, servlet).start();
 //		ComponentCatalog cc = new ComponentCatalog();
 //		System.out.println(cc.getComponentList());
 
