@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.rythmengine.Rythm;
 
+import controller.ServletController;
 import model.catalog.ComponentCatalog;
 
 @SuppressWarnings("serial")
@@ -35,7 +36,36 @@ public class ConfigurationServlet extends MyServlet {
 		response.getWriter().write(Rythm.render("configuration.rtm",catalog.getComponentList(),type));
 	}
 	
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		response.getWriter().write(Rythm.render("sign-in.rtm"));
+		
+		ServletController controller = ServletController.getIstance();
+		//Prende solo /add anche se il path completo è /configuration/add
+		if(request.getPathInfo().equals("/add")){
+			String modelOfComponentToInsert = request.getParameter("model");			
+			//Facciamo l'inserimento con i controlli con le classi che abbiamo
+			boolean allOk = controller.addToConfiguration(modelOfComponentToInsert);	
+			
+			if(allOk){
+				response.getWriter().write("Andato tutto bene");
+			}else{
+				response.getWriter().write("Andato tutto male");
+			}
+			
+			//Ti fai restituire l'oggetto via codice, il Component
+			//
+		}else if(request.getPathInfo().equals("/remove")){
+			String modelOfComponentToInsert = request.getParameter("model");			
+			//Facciamo l'inserimento con i controlli con le classi che abbiamo
+			boolean allOk = controller.removeFromConfiguration(modelOfComponentToInsert);
+			
+			if(allOk){
+				response.getWriter().write("Andato tutto bene");
+			}else{
+				response.getWriter().write("Andato tutto male");
+			}
+		}
+		//Fa altre cose
+		
 	}
 }

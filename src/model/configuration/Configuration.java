@@ -34,6 +34,7 @@ public class Configuration {
 	public Configuration(List<String> neededComponents, Map<String, Boolean> singleComponents) {
 		this.neededComponents = neededComponents;
 		this.singleComponents = singleComponents;
+		this.constraintErrors = new ArrayList<AbstractConstraint>();
 		addedComponents = new ArrayList<Component>();
 	}
 
