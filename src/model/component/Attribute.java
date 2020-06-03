@@ -5,6 +5,7 @@ import model.component.constraint.ConstraintCategory;
 /**
  * 
  * @author Irene S
+ * @author Andrea Prati
  *
  */
 public class Attribute {
@@ -13,15 +14,6 @@ public class Attribute {
 	private ConstraintCategory constraintCategory;
 	
 	
-	public Attribute(String name, String value, boolean isBinding, boolean isPresentable,
-			ConstraintCategory constraintCategory) {
-		super();
-		this.name = name;
-		this.value = value;
-		this.isBinding = isBinding;
-		this.isPresentable = isPresentable;
-		this.constraintCategory = constraintCategory;
-	}
 	
 	public Attribute(String name, String value, boolean isBinding, boolean isPresentable) {
 		super();
@@ -29,6 +21,19 @@ public class Attribute {
 		this.value = value;
 		this.isBinding = isBinding;
 		this.isPresentable = isPresentable;
+	}
+
+	public Attribute(String name, String value, boolean isBinding, boolean isPresentable,
+			String constraintCategory) {
+		this(name, value, isBinding, isPresentable);
+		
+		// L'ho fatto così se no avrei dovuto far vedere al CompoenntDAO l'enum ConstraintCategory
+		for (ConstraintCategory elem : ConstraintCategory.values()) {
+			String categoryElem = elem.name();
+			if(categoryElem.equalsIgnoreCase(constraintCategory))
+				this.constraintCategory = elem;
+		}
+		
 	}
 
 	public String getName() {
@@ -69,6 +74,13 @@ public class Attribute {
 
 	public void setConstraintCategory(ConstraintCategory constraintCategory) {
 		this.constraintCategory = constraintCategory;
+	}
+
+	@Override
+	public String toString() {
+		return "\n\tAttribute:\n"
+				+ "\t"+"name= " + name + "\n\t"+"value= " + value + "\n\t"+"isBinding= " + isBinding + "\n\t"+"isPresentable= "
+				+ isPresentable + "\n\t"+"constraintCategory= " + constraintCategory + "\n";
 	}
 	
 	

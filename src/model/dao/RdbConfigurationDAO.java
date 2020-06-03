@@ -1,6 +1,7 @@
 package model.dao;
 
 import java.sql.ResultSet;
+import java.util.List;
 
 import model.configuration.Configuration;
 
@@ -20,10 +21,12 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO{
 
 	}
 	
-	public Configuration getConfigurationByEmail(String email) {
+	public List<Configuration> getConfigurationByEmail(String email) {
 
 		ResultSet rs = dbop.getConfigurationByEmail(email);
-
+		
+		
+		
 		return null;
 
 	}

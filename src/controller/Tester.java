@@ -19,10 +19,11 @@ public class Tester {
 		new ApplicationServer(8080, servlet).start();
 
 
-		
-//		ComponentCatalog catalog = new ComponentCatalog();
-//		
-//		for (Component c : catalog.getComponentList()) {
+//		ComponentCatalog cata = new ComponentCatalog();
+//		System.out.println(cata.toString());
+ 		
+
+		//		for (Component c : catalog.getComponentList()) {
 //			System.out.println(c.getTypeComponent()+"  "+c.getAttributesMap().get("modello").getValue());
 //		}
 //	System.out.println(catalog.getComponentList().size());

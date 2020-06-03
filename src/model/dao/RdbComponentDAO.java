@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import model.component.Attribute;
 import model.component.Component;
@@ -18,55 +17,59 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 		this.dbop = dbop;
 	}
 
-	@Override
 	public List<Component> getAllComponent() {
-		ResultSet rs = dbop.getAllComponents();
-		List<Component> listComponent = new ArrayList<Component>();
-		Map<String, Attribute> map = new HashMap<String, Attribute>();
-		Attribute at = null;
-		String bufferModel = "";
-		String typeBuffer = "";
-		String tipo, modello, prezzo, nome, valore;
-		boolean first = false;
+		ResultSet allComp = dbop.getAllComponents();
+		ResultSet comp;
+		
+		ArrayList<Component> c = new ArrayList<>();
+		HashMap<String, Attribute> attributes;
+		Attribute a;
+		
+		String model, typeOfComponent, stringPrice;
+		String nameStdAtt, attValue, constraintName, category;
+		boolean isPresentable, isBinding;
+		double price = -1; // settato a -1 perchè è un valore non valido
+		
 		try {
-			while (rs.next()) { // printing table rows until table finishes
-				tipo = rs.getString("TypeofC");
-				modello = rs.getString("Model");
-				prezzo = rs.getString("Price");
-				nome = rs.getString("Name");
-				valore = rs.getString("AttValue");
+			while(allComp.next()) {
+				attributes = new HashMap<>();
+				model = allComp.getString("Model");
+				typeOfComponent = allComp.getString("TypeofC");
+				stringPrice = allComp.getString("Price");
+				comp = dbop.getAttributesByComponent(model, typeOfComponent);
 				
-
-				if (!bufferModel.equals(modello)) {
-					first = false;
-					listComponent.add(new Component(typeBuffer, map));
-					map = new HashMap<String, Attribute>();
-					typeBuffer = tipo;
+				while(comp.next()) {
+					nameStdAtt = comp.getString("NameStdAtt");
+					attValue = comp.getString("AttValue");
+					constraintName = comp.getString("ConstraintName");
+					category = comp.getString("Category");
+					isPresentable = Boolean.parseBoolean(comp.getString("IsPresentable"));
+					if(constraintName == null) {
+						isBinding = false;
+//						System.out.println("NON È VINCOLANTE " + isBinding);
+					} else {
+						isBinding = true;
+//						System.out.println("È VINCOLANTE " + isBinding);
+					}
+					
+					a = new Attribute(nameStdAtt, attValue, isBinding, isPresentable, category);
+					attributes.put(nameStdAtt, a);
 				}
 				
-				if (!first) {
-					map.put("modello", new Attribute("modello", modello, false, true));
-					map.put("prezzo", new Attribute("prezzo", prezzo, false, true));
-					bufferModel = modello;
-					typeBuffer = tipo;
-					first = true;
+				try {
+					price = Double.parseDouble(stringPrice);
+				} catch (NumberFormatException e) {
+					e.printStackTrace();
 				}
-
-				
-				
-
-				at = new Attribute(nome, valore, true, true);
-				map.put(nome, at);
-
+				c.add(new Component(model, typeOfComponent, price, attributes));
 			}
-			listComponent.add(new Component(typeBuffer, map));
-			listComponent.remove(0);
-			return listComponent;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
-	}
 
+		
+		return c;
+	}
+	
 }

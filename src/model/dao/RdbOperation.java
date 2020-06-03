@@ -11,6 +11,7 @@ import java.sql.Statement;
  * 
  * @author Alessandro Capici
  * @author Cristian Garau
+ * @author Andrea
  *
  */
 
@@ -38,17 +39,19 @@ public class RdbOperation {
 		return stmt;
 	}
 
+	/*
+	 * QUERY COMPONENT RELATION
+	 */
 	public ResultSet getAllComponents() {
+		ResultSet rs = null;
+		Statement s;
 		try {
-			stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT c.TypeofC,Model,Price,Name,AttValue\r\n"
-					+ "FROM Component as c join Attribute \r\n" + "WHERE c.Model=ModelofC");
-
-			return rs;
-		} catch (Exception e) {
+			s = c.createStatement();
+			rs = s.executeQuery("SELECT * FROM Component");
+		} catch (SQLException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
-		return null;
+		return rs;
 
 	}
 
@@ -69,6 +72,30 @@ public class RdbOperation {
 
 		return false;
 
+	}
+	
+	/*
+	 * QUERY ATTRIBUTE RELATION
+	 */
+	
+	public ResultSet getAttributesByComponent(String model, String typeOfComponent) {
+		Statement s;
+		String sql = "select attribute.TypeofC, Attribute.ModelofC, Attribute.NameStdAtt, Attribute.AttValue, StandardAttribute.ConstraintName, StandardAttribute.Category, StandardAttribute.IsPresentable\r\n" + 
+				"from Attribute, StandardAttribute\r\n" + 
+				"where attribute.TypeofC = '" + typeOfComponent + "' and attribute.ModelofC = '" + model + "'\r\n" + 
+				"and StandardAttribute.TypeOfComponent = '" + typeOfComponent + "'\r\n" + 
+				"and StandardAttribute.Name = Attribute.NameStdAtt\r\n";
+		ResultSet rs = null;
+		try {
+			s = c.createStatement();
+			rs = s.executeQuery(sql);
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println("Error: "+ e.getMessage());
+		}
+		
+		return rs;	
 	}
 
 	public ResultSet getConfiguration(String confId) {
@@ -141,5 +168,50 @@ public class RdbOperation {
 
 		return false;
 
+	}
+	
+	public ResultSet getAllConstraints() {
+		try {
+			stmt = c.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM Bound");
+			return rs;
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		
+		return null;
+		
+	}
+	
+	public boolean addNewConstraint(String name, String type) {
+		String sql = "INSERT INTO Bound(Name,Type) VALUES(?,?)";
+		PreparedStatement ps;
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, type);
+			ps.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean RemoveConstraint(String name) {
+		String sql = "DELETE FROM Bound WHERE Name = ?";
+
+		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
+
+			// set the corresponding param
+			pstmt.setString(1, name);
+			// execute the delete statement
+			pstmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
 	}
 }

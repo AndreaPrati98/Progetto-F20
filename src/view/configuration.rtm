@@ -55,51 +55,68 @@
 		        @if(tipo.equals("mobo")){
 		        	<div class="collapsible-header"><i class="material-icons">developer_board</i>Motherboard</div>
 		            <div class="collapsible-body" id="moboMenu">
+		            <form action="#">
+	                <table id="moboTable">
 		        }
 		        @if(tipo.equals("cpu")){
 		        	<div class="collapsible-header"><i class='fas fa-microchip' style='font-size:20px'></i>CPU</div>
 		            <div class="collapsible-body" id="cpuMenu">
+		            <form action="#">
+	                <table id="cpuTable">
 		        }
 		        @if(tipo.equals("ram")){
 		        	<a href="#!" class="collection-item"><span class="badge">1</span></a>
 		            <div class="collapsible-header"><i class='fas fa-memory' style='font-size:20px'></i>RAM</div>
 		            <div class="collapsible-body" id="ramMenu">
+		            <form action="#">
+	                <table id="ramTable">
 		        }
 		        @if(tipo.equals("massStorage")){
 		        	 <a href="#!" class="collection-item"><span class="badge">1</span></a>
 		             <div class="collapsible-header"><i class='fas fa-hdd' style='font-size:20px'></i>Storage</div>
 		             <div class="collapsible-body" id="storageMenu">
+		             <form action="#">
+	                <table id="massStorageTable">
 		        }
 		        @if(tipo.equals("power")){
 		        	<div class="collapsible-header"><i class='fas fa-plug' style='font-size:20px'></i>Power</div>
 		            <div class="collapsible-body" id="powerMenu">
+		            <form action="#">
+	                <table id="powerTable">
 		        } 
 		        @if(tipo.equals("gpu")){
 		        	<div class="collapsible-header"><i class="material-icons">videogame_asset</i>Graphic Card</div>
 		            <div class="collapsible-body" id="gpuMenu">
+		            <form action="#">
+	                <table id="gpuTable">
 		        }
 		        @if(tipo.equals("cooler")){
 		        	<div class="collapsible-header"><i class="material-icons">ac_unit</i>Cooler</div>
 		            <div class="collapsible-body" id="coolerMenu">
+		            <form action="#">
+	                <table id="coolerTable">
 		        }
-	        	<tr class="row@(tipo)Table">
+	        	
 		        @for(model.component.Component cl:componentlist){
-		        	<th>
-			           <label>
-			            	@if(tipo.equals("ram") || tipo.equals("massStorage")){
-		        				<input type="checkbox" id="check@(tipo)" class="check@(tipo)"/>
-		        			}
-		        	 		else{
-		        	 			<input name="group@(tipo)" type="radio" id="radio@(tipo)1" class="radio@(tipo)"/>
-		        	 		}
-			                @if(cl.getTypeComponent().equals(tipo)){
-			                    <span>@(cl.getAttributesMap().get("modello").getValue())</span>
-			                }
-			            </label>
-			          </th>                
-			     	  	   
-		        }    
-	        </tr> 
+		        	@if(cl.getTypeComponent().equals(tipo)){
+		        		<tr class="row@(tipo)Table">
+	        				<th>
+		        				<label>
+							    	@if(tipo.equals("ram") || tipo.equals("massStorage")){
+							    		<input name="group@(tipo)" type="checkbox" id="check@(tipo)" class="check@(tipo)"/>
+						       		}else{
+						        	 	<input name="group@(tipo)" type="radio" id="radio@(tipo)1" class="radio@(tipo)"/>
+						        	}
+				        			<span>@(cl.getAttributesMap().get("modello").getValue())</span>
+				                </label>
+			            	</th>    
+	        			</tr> 
+	        		 }
+			     }
+	        </table>
+	        </form>
+	        </span>
+	        </div>
 	        </li>           
 	   } 
             </ul>

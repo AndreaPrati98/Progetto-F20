@@ -1,5 +1,6 @@
 package model.component;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import model.component.performanceAlgorithms.InterfacePerformanceEstimator;
@@ -8,16 +9,37 @@ import model.component.performanceAlgorithms.PerformanceEstimatorFactory;
 /**
  * 
  * @author Capici Alessandro
- * @co_author Cic
+ * @author Cic
+ * @author Andrea
  *
  */
 public class Component {
 
+	private String model;
 	private String typeComponent;
+	private double price;
 	//private List<Constraint> constraintList;//
 	private Map<String, Attribute> attributesMap;
 	private double performanceIndex;
 
+	public Component(String model, String typeOfComponent) {
+		this.model = model;
+		this.typeComponent = typeOfComponent;
+		performanceIndex = -1;
+		attributesMap = new HashMap<String, Attribute>();
+	
+	}
+	
+	public Component(String model, String typeOfComponent, Map<String, Attribute> attributesMap) {
+		this(model, typeOfComponent);
+		this.attributesMap = attributesMap;
+	}
+	
+	public Component(String model, String typeOfComponent, double price, Map<String, Attribute> attributesMap) {
+		this(model, typeOfComponent, attributesMap);
+		this.price = price;
+	}
+	
 	public Component(String typeComponent, /*List<Constraint> constraintList,*/ Map<String, Attribute> attributesMap) {
 		this.setTypeComponent(typeComponent);
 		this.attributesMap=attributesMap;
@@ -62,16 +84,6 @@ public class Component {
 		return attributesMap.get(name);
 	}
 	
-	/**
-	 * 
-	 * @param name
-	 * @return the value of the attribute with the given name
-	 *
-	 */
-	// Questo metodo può essere utile per i performance estimator
-	public String getAttributeValueByName(String name) {
-		return attributesMap.get(name).getValue();
-	}
 
 	/**
 	 * 
@@ -95,8 +107,9 @@ public class Component {
 	
 	@Override
 	public String toString() {
-		return "\nComponent [typeComponent=" + typeComponent + ", attributesMap=" + attributesMap + ", performanceIndex="
-				+ performanceIndex + "]";
+		return "\nComponent:\n"
+				+ "\t"+"[ model= "+ model +"\n\t"+"typeComponent= " + typeComponent + "\n\t"+"attributesMap= \n" + attributesMap + "\n\t"+"performanceIndex= "
+				+ performanceIndex + "]\n";
 	}
 
 	/**
@@ -108,7 +121,7 @@ public class Component {
 	
 	public double getPrice() {
 		
-		return Double.parseDouble(attributesMap.get("price").getValue());
+		return price;
 	}
 	
 	/**
