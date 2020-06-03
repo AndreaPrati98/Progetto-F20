@@ -56,8 +56,8 @@ public class RegisterServlet extends MyServlet {
 			e.printStackTrace();
 		}
 		//pf.addUser(nome, cognome, mail, psw);
-		Mail m=new Mail(mail,nome);
-		response.getWriter().write(Rythm.render("sign-in.rtm",true));
+		//Mail m=new Mail(mail,nome);
+		response.getWriter().write(Rythm.render("profile.rtm",nome,cognome,mail));
 	}
 
 }
