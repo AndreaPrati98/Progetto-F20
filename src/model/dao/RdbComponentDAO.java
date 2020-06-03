@@ -51,7 +51,7 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 						isBinding = true;
 					}
 					
-					a = new Attribute(nameStdAtt, attValue, isPresentable, isBinding);
+					a = new Attribute(nameStdAtt, attValue, isPresentable, isBinding, category);
 					attributes.put(nameStdAtt, a);
 				}
 				
