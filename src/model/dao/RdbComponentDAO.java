@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import model.component.Attribute;
 import model.component.Component;
@@ -47,11 +46,13 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 					isPresentable = Boolean.parseBoolean(comp.getString("IsPresentable"));
 					if(constraintName == null) {
 						isBinding = false;
-					}else {
+//						System.out.println("NON È VINCOLANTE " + isBinding);
+					} else {
 						isBinding = true;
+//						System.out.println("È VINCOLANTE " + isBinding);
 					}
 					
-					a = new Attribute(nameStdAtt, attValue, isPresentable, isBinding, category);
+					a = new Attribute(nameStdAtt, attValue, isBinding, isPresentable, category);
 					attributes.put(nameStdAtt, a);
 				}
 				
