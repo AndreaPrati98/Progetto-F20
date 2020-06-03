@@ -24,9 +24,15 @@ public class Attribute {
 	}
 
 	public Attribute(String name, String value, boolean isBinding, boolean isPresentable,
-			ConstraintCategory constraintCategory) {
+			String constraintCategory) {
 		this(name, value, isBinding, isPresentable);
-		this.constraintCategory = constraintCategory;
+		
+		// L'ho fatto così se no avrei dovuto far vedere al CompoenntDAO l'enum ConstraintCategory
+		for (ConstraintCategory elem : ConstraintCategory.values()) {
+			String categoryElem = elem.name();
+			if(categoryElem.equalsIgnoreCase(constraintCategory))
+				this.constraintCategory = elem;
+		}
 		
 	}
 
