@@ -26,16 +26,17 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 		HashMap<String, Attribute> attributes;
 		Attribute a;
 		
-		String model, typeOfComponent, price;
+		String model, typeOfComponent, stringPrice;
 		String nameStdAtt, attValue, constraintName, category;
 		boolean isPresentable, isBinding;
+		double price = -1; // settato a -1 perchè è un valore non valido
 		
 		try {
 			while(allComp.next()) {
 				attributes = new HashMap<>();
 				model = allComp.getString("Model");
 				typeOfComponent = allComp.getString("TypeofC");
-				price = allComp.getString("Price");
+				stringPrice = allComp.getString("Price");
 				comp = dbop.getAttributesByComponent(model, typeOfComponent);
 				
 				while(comp.next()) {
@@ -52,6 +53,12 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 					
 					a = new Attribute(nameStdAtt, attValue, isPresentable, isBinding);
 					attributes.put(nameStdAtt, a);
+				}
+				
+				try {
+					price = Double.parseDouble(stringPrice);
+				} catch (NumberFormatException e) {
+					e.printStackTrace();
 				}
 				c.add(new Component(model, typeOfComponent, price, attributes));
 			}
