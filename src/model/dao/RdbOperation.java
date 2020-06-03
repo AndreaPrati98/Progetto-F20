@@ -42,11 +42,26 @@ public class RdbOperation {
 	/*
 	 * QUERY COMPONENT RELATION
 	 */
+	/*
 	public ResultSet getAllComponents() {
 		try {
 			stmt = c.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT c.TypeofC,Model,Price,Name,AttValue\r\n"
 					+ "FROM Component as c join Attribute \r\n" + "WHERE c.Model=ModelofC");
+
+			return rs;
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		return null;
+
+	}
+	*/
+	public ResultSet getAllComponents() {
+		try {
+			stmt = c.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT *\r\n"
+					+ "FROM Component");
 
 			return rs;
 		} catch (Exception e) {
@@ -78,10 +93,31 @@ public class RdbOperation {
 	/*
 	 * QUERY ATTRIBUTE RELATION
 	 */
-	public ResultSet getAttributeByComponent(String model, String typeOfComponet) {
+	
+	public ResultSet getAttributesByComponent(String model, String typeOfComponent) {
+		String sql = "select attribute.TypeofC, Attribute.ModelofC, Attribute.NameStdAtt, Attribute.AttValue, StandardAttribute.ConstraintName, StandardAttribute.Category, StandardAttribute.IsPresentable\r\n" + 
+				"from Attribute, StandardAttribute\r\n" + 
+				"where attribute.TypeofC = '" + typeOfComponent + "' and attribute.ModelofC = '" + model + "'\r\n" + 
+				"and StandardAttribute.TypeOfComponent = '" + typeOfComponent + "'\r\n" + 
+				"and StandardAttribute.Name = Attribute.NameStdAtt\r\n";
+		ResultSet rs = null;
+		try {
+		
+			rs = stmt.executeQuery(sql);
+
+		} catch (SQLException e) {
+			// TODO: handle exception
+			System.out.println("Error: "+ e.getMessage());
+		}
+		
+		return rs;	
+	}
+	
+	/*
+	public ResultSet getAttributeByComponent(String model, String typeOfComponent) {
 		String sql = "select * " + 
 					"from Attribute " + 
-					"where TypeofC = '"+ typeOfComponet +"' and ModelofC = '"+ model +"'";
+					"where TypeofC = '"+ typeOfComponent +"' and ModelofC = '"+ model +"'";
 		
 		ResultSet rs = null;
 		try {
@@ -96,6 +132,7 @@ public class RdbOperation {
 		return rs;		
 		
 	}
+	*/
 
 	public ResultSet getConfiguration(String confId) {
 		try {
