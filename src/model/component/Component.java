@@ -17,7 +17,7 @@ public class Component {
 
 	private String model;
 	private String typeComponent;
-	private String price;
+	private double price;
 	//private List<Constraint> constraintList;//
 	private Map<String, Attribute> attributesMap;
 	private double performanceIndex;
@@ -35,7 +35,7 @@ public class Component {
 		this.attributesMap = attributesMap;
 	}
 	
-	public Component(String model, String typeOfComponent, String price, Map<String, Attribute> attributesMap) {
+	public Component(String model, String typeOfComponent, double price, Map<String, Attribute> attributesMap) {
 		this(model, typeOfComponent, attributesMap);
 		this.price = price;
 	}
@@ -121,7 +121,7 @@ public class Component {
 	
 	public double getPrice() {
 		
-		return Double.parseDouble(attributesMap.get("price").getValue());
+		return price;
 	}
 	
 	/**
