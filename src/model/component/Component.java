@@ -17,6 +17,7 @@ public class Component {
 
 	private String model;
 	private String typeComponent;
+	private String price;
 	//private List<Constraint> constraintList;//
 	private Map<String, Attribute> attributesMap;
 	private double performanceIndex;
@@ -32,6 +33,11 @@ public class Component {
 	public Component(String model, String typeOfComponent, Map<String, Attribute> attributesMap) {
 		this(model, typeOfComponent);
 		this.attributesMap = attributesMap;
+	}
+	
+	public Component(String model, String typeOfComponent, String price, Map<String, Attribute> attributesMap) {
+		this(model, typeOfComponent, attributesMap);
+		this.price = price;
 	}
 	
 	public Component(String typeComponent, /*List<Constraint> constraintList,*/ Map<String, Attribute> attributesMap) {

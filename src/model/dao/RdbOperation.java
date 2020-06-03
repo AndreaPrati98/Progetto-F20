@@ -42,21 +42,6 @@ public class RdbOperation {
 	/*
 	 * QUERY COMPONENT RELATION
 	 */
-	/*
-	public ResultSet getAllComponents() {
-		try {
-			stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT c.TypeofC,Model,Price,Name,AttValue\r\n"
-					+ "FROM Component as c join Attribute \r\n" + "WHERE c.Model=ModelofC");
-
-			return rs;
-		} catch (Exception e) {
-			System.out.println("Error: " + e.getMessage());
-		}
-		return null;
-
-	}
-	*/
 	public ResultSet getAllComponents() {
 		try {
 			stmt = c.createStatement();
@@ -112,27 +97,6 @@ public class RdbOperation {
 		
 		return rs;	
 	}
-	
-	/*
-	public ResultSet getAttributeByComponent(String model, String typeOfComponent) {
-		String sql = "select * " + 
-					"from Attribute " + 
-					"where TypeofC = '"+ typeOfComponent +"' and ModelofC = '"+ model +"'";
-		
-		ResultSet rs = null;
-		try {
-		
-			rs = stmt.executeQuery(sql);
-
-		} catch (SQLException e) {
-			// TODO: handle exception
-			System.out.println("Error: "+ e.getMessage());
-		}
-		
-		return rs;		
-		
-	}
-	*/
 
 	public ResultSet getConfiguration(String confId) {
 		try {
