@@ -5,7 +5,7 @@ import model.component.constraint.ConstraintCategory;
 /**
  * 
  * @author Irene S
- * @author Andrea
+ * @author Andrea Prati
  *
  */
 public class Attribute {
@@ -68,6 +68,13 @@ public class Attribute {
 
 	public void setConstraintCategory(ConstraintCategory constraintCategory) {
 		this.constraintCategory = constraintCategory;
+	}
+
+	@Override
+	public String toString() {
+		return "\n\tAttribute:\n"
+				+ "\t"+"name= " + name + "\n\t"+"value= " + value + "\n\t"+"isBinding= " + isBinding + "\n\t"+"isPresentable= "
+				+ isPresentable + "\n\t"+"constraintCategory= " + constraintCategory + "\n";
 	}
 	
 	

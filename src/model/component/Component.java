@@ -108,7 +108,7 @@ public class Component {
 	@Override
 	public String toString() {
 		return "\nComponent:\n"
-				+ "\t"+"[typeComponent= " + typeComponent + "\n\t"+"attributesMap= " + attributesMap + "\n\t"+"performanceIndex= "
+				+ "\t"+"[ model= "+ model +"\n\t"+"typeComponent= " + typeComponent + "\n\t"+"attributesMap= \n" + attributesMap + "\n\t"+"performanceIndex= "
 				+ performanceIndex + "]\n";
 	}
 
