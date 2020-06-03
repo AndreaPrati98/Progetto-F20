@@ -43,16 +43,15 @@ public class RdbOperation {
 	 * QUERY COMPONENT RELATION
 	 */
 	public ResultSet getAllComponents() {
+		ResultSet rs = null;
+		Statement s;
 		try {
-			stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT *\r\n"
-					+ "FROM Component");
-
-			return rs;
-		} catch (Exception e) {
+			s = c.createStatement();
+			rs = s.executeQuery("SELECT * FROM Component");
+		} catch (SQLException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
-		return null;
+		return rs;
 
 	}
 
@@ -80,6 +79,7 @@ public class RdbOperation {
 	 */
 	
 	public ResultSet getAttributesByComponent(String model, String typeOfComponent) {
+		Statement s;
 		String sql = "select attribute.TypeofC, Attribute.ModelofC, Attribute.NameStdAtt, Attribute.AttValue, StandardAttribute.ConstraintName, StandardAttribute.Category, StandardAttribute.IsPresentable\r\n" + 
 				"from Attribute, StandardAttribute\r\n" + 
 				"where attribute.TypeofC = '" + typeOfComponent + "' and attribute.ModelofC = '" + model + "'\r\n" + 
@@ -87,8 +87,8 @@ public class RdbOperation {
 				"and StandardAttribute.Name = Attribute.NameStdAtt\r\n";
 		ResultSet rs = null;
 		try {
-		
-			rs = stmt.executeQuery(sql);
+			s = c.createStatement();
+			rs = s.executeQuery(sql);
 
 		} catch (SQLException e) {
 			// TODO: handle exception

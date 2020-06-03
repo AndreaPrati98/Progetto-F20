@@ -44,7 +44,6 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 					constraintName = comp.getString("ConstraintName");
 					category = comp.getString("Category");
 					isPresentable = Boolean.parseBoolean(comp.getString("IsPresentable"));
-					
 					if(constraintName == null) {
 						isBinding = false;
 					}else {
