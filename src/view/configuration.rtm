@@ -81,22 +81,23 @@
 		        @for(model.component.Component cl:componentlist){
 		        	@if(cl.getTypeComponent().equals(tipo)){
 		        		<tr class="row@(tipo)Table" >
-	        				<th >
+	        				<th>
 		        				<label>
 							    	<input name="group@(tipo)" type="checkbox" id="@(cl.getModel())" class="check@(tipo) selection"/>
 				        			<span>
-				        				<td>@(cl.getModel())</td>
-				        				<td name="@(cl.getModel())_price"> @(cl.getPrice())$</td>
+				        				@(cl.getModel())
+				        				name="@(cl.getModel())_price"> @(cl.getPrice())$
 				        			@for(Map.Entry<String,model.component.Attribute> entry : cl.getAttributesMap().entrySet()) {
         								@if(!entry.getValue().isPresentable()){
-        									<td>@(entry.getValue().getName()) : @(entry.getValue().getValue())</td>  
+        									@(entry.getValue().getName()) : @(entry.getValue().getValue())  
         								}
     								}
 				        			</span>
 				                </label>
 			            	</th>    
 	        			</tr> 
-	        		 }
+	        		  
+	        		}
 			     }
 	        </table>
 	        </form>
