@@ -27,6 +27,15 @@
 		width: 40%;
 		align-items: center;
 	}
+	#addComponentBtn{
+		background-color: #0097a7;
+	}
+	#removeComponentBtn{
+		background-color: #d32f2f;
+	}
+	#addAttributeBtn{
+		background-color: #43a047;
+	}
 	</style>
 	<title>Administrator</title>
 	<!-- link additional CSS file -->
@@ -94,6 +103,7 @@
 				<br>
 				<div class="input-field col s14">
 					<select>
+						<option value="" disabled selected>Select a component</option>
 						<option value="1">Cpu</option>
 						<option value="2">Mobo</option>
 						<option value="3">Case</option>
