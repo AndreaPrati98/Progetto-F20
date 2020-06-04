@@ -114,7 +114,7 @@ public class CPUPerformanceEstimator implements InterfacePerformanceEstimator {
 			
 		}
 		
-		if(numberOfThread != 0) {
+		if(numberOfThread > numberOfCore) {
 			index += CPUPerformanceEstimator.MAX_POINT_THREAD;
 		
 		}
