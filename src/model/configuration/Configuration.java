@@ -17,6 +17,7 @@ import model.component.constraint.MaxConstraint;
  */
 
 public class Configuration {
+	private String name;
 	private List<String> neededComponents; // lista di elementi obbligatori per far si che un pc si possa accendere
 											// (Lista da stabilire)
 	private List<Component> addedComponents;
@@ -189,4 +190,13 @@ public class Configuration {
 		return totalPrice;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	
 }
