@@ -41,7 +41,7 @@
         <li><a href="login.html">Login</a></li>
         <li><a href="sign-in.html">Sign-in</a></li>
         <li><a href="configuration.html">Configuration</a></li>
-    </ul>; 
+    </ul>
     <div class="row">
         <div class="col s7">
             <ul class="collapsible" id="collapsibleConfiguration">
