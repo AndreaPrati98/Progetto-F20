@@ -15,18 +15,16 @@ import servlet.RegisterServlet;
 public class Tester {
 
 	public static void main(String[] args) {
-//		
-//		List<MyServlet> servlet = new ArrayList<MyServlet>();
-//		servlet.add(new HomeServlet("home","/"));
-//		servlet.add(new RegisterServlet("register", "/sign-in"));
-//		servlet.add(new ConfigurationServlet("configuration", "/configuration/*"));
-//		new ApplicationServer(8080, servlet).start();
-//		ComponentCatalog cc = new ComponentCatalog();
-//		System.out.println(cc.getComponentList());
+		
+		List<MyServlet> servlet = new ArrayList<MyServlet>();
+		servlet.add(new HomeServlet("home","/"));
+		servlet.add(new RegisterServlet("register", "/sign-in"));
+		servlet.add(new ConfigurationServlet("configuration", "/configuration/*"));
+		new ApplicationServer(8080, servlet).start();
 		
 		// Questo va fatto all'avvio per inizializzare gli id da usare per le configurazioni
-//		PersistenceFacade pf = PersistenceFacade.getIstance();
-//		Configuration.setLastUsedId(pf.getLastUsedId());
+		PersistenceFacade pf = PersistenceFacade.getIstance();
+		Configuration.setLastUsedId(pf.getLastUsedId());
 
 		
 //		ComponentCatalog cata = new ComponentCatalog();

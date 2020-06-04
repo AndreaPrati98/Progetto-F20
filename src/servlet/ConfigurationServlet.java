@@ -48,8 +48,12 @@ public class ConfigurationServlet extends MyServlet {
 			
 			if(allOk){
 				response.getWriter().write("Andato tutto bene");
+				controller.printConf();
+				System.out.println("b");
 			}else{
 				response.getWriter().write("Andato tutto male");
+				controller.printConf();
+				System.out.println("m");
 			}
 			
 			//Ti fai restituire l'oggetto via codice, il Component
@@ -61,8 +65,12 @@ public class ConfigurationServlet extends MyServlet {
 			
 			if(allOk){
 				response.getWriter().write("Andato tutto bene");
+				controller.printConf();
+				System.out.println("b");
 			}else{
 				response.getWriter().write("Andato tutto male");
+				controller.printConf();
+				System.out.println("m");
 			}
 		}
 		//Fa altre cose
