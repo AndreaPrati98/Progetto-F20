@@ -1,15 +1,12 @@
 package model.dao;
 
-import java.sql.ResultSet;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import model.component.Component;
 import model.component.constraint.AbstractConstraint;
-import model.component.constraint.DimensionConstraint;
-import model.component.constraint.EqualsConstraint;
-import model.component.constraint.MaxConstraint;
 import model.configuration.Configuration;
+import model.customer.Customer;
 
 public class PersistenceFacade {
 
@@ -52,9 +49,9 @@ public class PersistenceFacade {
 
 	}
 
-	public boolean addConfiguration(int id, String name, String email) {
+	public boolean addConfiguration(Configuration conf,Customer user) {
 
-		return confdao.addConfiguration(id, name, email);
+		return confdao.addConfiguration(conf,user);
 
 	}
 	
@@ -64,9 +61,9 @@ public class PersistenceFacade {
 
 	}
 
-	public boolean updateConfiguration(int id, String name, String email) {
+	public boolean updateConfiguration(Configuration conf, Customer user) {
 
-		return confdao.updateConfiguration(id, name, email);
+		return confdao.updateConfiguration(conf ,user);
 
 	}
 

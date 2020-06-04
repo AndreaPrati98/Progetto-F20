@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 /**
  * 
@@ -101,7 +102,9 @@ public class RdbOperation {
 	public ResultSet getConfiguration(String confId) {
 		try {
 			stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT *\r\n" + "FROM Configuration\r\n" + "WHERE id='" + confId + "'");
+			ResultSet rs = stmt.executeQuery("SELECT*\n" + 
+					"FROM ElementConfiguration NATURAL join Configuration\n" + 
+					"where Id="+confId);
 			return rs;
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
@@ -113,12 +116,47 @@ public class RdbOperation {
 		try {
 			stmt = c.createStatement();
 			ResultSet rs = stmt
-					.executeQuery("SELECT *\r\n" + "FROM Configuration\r\n" + "WHERE EmailU='" + email + "'");
+					.executeQuery("SELECT*\n" + 
+							"FROM ElementConfiguration NATURAL join Configuration\n" + 
+							"where EmailU="+email);
 			return rs;
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
 		}
 		return null;
+	}
+	
+	
+	public boolean addConfiguration(int id,String name, String email,List<String> Type,List<String> Model) {
+		String sql = "INSERT INTO Configuration(Id,Name,EmailU) VALUES(?,?,?)";
+		PreparedStatement ps;
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.setString(2, name);
+			ps.setString(3, email);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+		sql = "INSERT INTO ElementConfiguration(TypeofC, ModelofC, Id) VALUES(?,?,?)";
+		for (int i = 0; i < Type.size(); i++) {
+			try {
+				ps = c.prepareStatement(sql);
+				ps.setString(1, Type.get(i));
+				ps.setString(2, Model.get(i));
+				ps.setInt(3, id);
+				ps.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return false;
+			}
+		}
+		return true;
+
 	}
 
 	public boolean addUser(String name,String cognome, String email,String password) {
@@ -140,31 +178,30 @@ public class RdbOperation {
 
 	}
 	
-	public boolean addConfiguration(int id, String name, String email) {
-		String sql = "INSERT INTO Configuration(Id,Name,EmailU) VALUES(?,?,?)";
-		PreparedStatement ps;
-		try {
-			ps = c.prepareStatement(sql);
-			ps.setInt(1, id);
-			ps.setString(2, name);
-			ps.setString(3, email);
-			ps.executeUpdate();
+	public boolean removeConfiguration(int id) {
+		String sql = "DELETE FROM ElementConfiguration WHERE Id = ?";
+		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
+
+			// set the corresponding param
+			pstmt.setInt(1, id);
+			// execute the delete statement
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+		
+		sql = "DELETE FROM Configuration WHERE Id = ?";
+		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
+
+			// set the corresponding param
+			pstmt.setInt(1, id);
+			// execute the delete statement
+			pstmt.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
-		return false;
-
-	}
-
-	public boolean updateConfiguration(int id, String name, String email) {
-
-		return false;
-
-	}
-
-	public boolean removeConfiguration(int id) {
 
 		return false;
 

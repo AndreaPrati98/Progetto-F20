@@ -66,6 +66,11 @@ public class ServletController {
 		return configurator.removeComponent(component);
 	}
 	
+	public Map<String,List<Component>> getConfiguration(){
+		
+		return null;
+		
+	}
 	
 
 }

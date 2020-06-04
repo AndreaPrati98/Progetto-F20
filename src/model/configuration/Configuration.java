@@ -1,6 +1,7 @@
 package model.configuration;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,7 +18,10 @@ import model.component.constraint.MaxConstraint;
  */
 
 public class Configuration {
+	private static int  id =3;
+
 	private String name;
+	
 	private List<String> neededComponents; // lista di elementi obbligatori per far si che un pc si possa accendere
 											// (Lista da stabilire)
 	private List<Component> addedComponents;
@@ -32,11 +36,25 @@ public class Configuration {
 	 * @param neededComponents {@link Configuration}
 	 * @param singleComponents
 	 */
+	public Configuration() {
+		this.neededComponents = new ArrayList<String>();
+		this.singleComponents = new HashMap<String, Boolean>();
+		this.constraintErrors = new ArrayList<AbstractConstraint>();
+		addedComponents = new ArrayList<Component>();
+	}
+	
 	public Configuration(List<String> neededComponents, Map<String, Boolean> singleComponents) {
 		this.neededComponents = neededComponents;
 		this.singleComponents = singleComponents;
 		this.constraintErrors = new ArrayList<AbstractConstraint>();
 		addedComponents = new ArrayList<Component>();
+	}
+	
+	public Configuration(List<Component> addedComponents ) {
+		this.addedComponents=addedComponents;
+		this.neededComponents = new ArrayList<String>();
+		this.singleComponents = new HashMap<String, Boolean>();
+		this.constraintErrors = new ArrayList<AbstractConstraint>();
 	}
 
 	/**
@@ -138,6 +156,11 @@ public class Configuration {
 		}
 		return flag;
 	}
+	
+	public boolean addComponentWithoutChecking(Component c) {
+		this.addedComponents.add(c);
+		return true;
+	}
 
 	/**
 	 * 
@@ -197,6 +220,9 @@ public class Configuration {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	public static int getId() {
+		return id;
+	}
 	
 }

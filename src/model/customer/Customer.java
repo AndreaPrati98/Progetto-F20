@@ -15,6 +15,8 @@ public class Customer {
 
 	//public static int MAX_NUMBER_OF_CONFIGURATIONS = 5;
 	
+	private String email;
+	
 	//private String name;
 	private List<Configuration> configurationList;
 	@SuppressWarnings("unused")
@@ -27,6 +29,14 @@ public class Customer {
 	
 	public List<Configuration> getConfigurationList() {
 		return configurationList;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	/*

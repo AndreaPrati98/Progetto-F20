@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.catalog.ComponentCatalog;
+import model.dao.PersistenceFacade;
 import servlet.ApplicationServer;
 import servlet.ConfigurationServlet;
 import servlet.HomeServlet;
@@ -13,14 +14,16 @@ import servlet.RegisterServlet;
 public class Tester {
 
 	public static void main(String[] args) {
-		List<MyServlet> servlet = new ArrayList<MyServlet>();
-		servlet.add(new HomeServlet("home","/"));
-		servlet.add(new RegisterServlet("register", "/sign-in"));
-		servlet.add(new ConfigurationServlet("configuration", "/configuration/*"));
-		new ApplicationServer(8080, servlet).start();
+//		
+//		List<MyServlet> servlet = new ArrayList<MyServlet>();
+//		servlet.add(new HomeServlet("home","/"));
+//		servlet.add(new RegisterServlet("register", "/sign-in"));
+//		servlet.add(new ConfigurationServlet("configuration", "/configuration/*"));
+//		new ApplicationServer(8080, servlet).start();
 //		ComponentCatalog cc = new ComponentCatalog();
 //		System.out.println(cc.getComponentList());
 
+		
 //		ComponentCatalog cata = new ComponentCatalog();
 //		System.out.println(cata.toString());
  		
