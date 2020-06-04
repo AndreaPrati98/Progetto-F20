@@ -42,7 +42,8 @@ public class ConfigurationServlet extends MyServlet {
 		ServletController controller = ServletController.getIstance();
 		//Prende solo /add anche se il path completo è /configuration/add
 		if(request.getPathInfo().equals("/add")){
-			String modelOfComponentToInsert = request.getParameter("model");			
+			String modelOfComponentToInsert = request.getParameter("model");
+			System.out.println("Voglio inserire il modello "+modelOfComponentToInsert);
 			//Facciamo l'inserimento con i controlli con le classi che abbiamo
 			boolean allOk = controller.addToConfiguration(modelOfComponentToInsert);	
 			
@@ -59,9 +60,10 @@ public class ConfigurationServlet extends MyServlet {
 			//Ti fai restituire l'oggetto via codice, il Component
 			//
 		}else if(request.getPathInfo().equals("/remove")){
-			String modelOfComponentToInsert = request.getParameter("model");			
+			String modelOfComponentToRemove = request.getParameter("model");	
+			System.out.println("Sto facendo la rimozione di "+modelOfComponentToRemove);
 			//Facciamo l'inserimento con i controlli con le classi che abbiamo
-			boolean allOk = controller.removeFromConfiguration(modelOfComponentToInsert);
+			boolean allOk = controller.removeFromConfiguration(modelOfComponentToRemove);
 			
 			if(allOk){
 				response.getWriter().write("Andato tutto bene");
