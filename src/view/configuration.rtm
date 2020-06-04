@@ -88,7 +88,7 @@
 				        				<td>@(cl.getModel())</td>
 				        				<td name="@(cl.getModel())_price"> @(cl.getPrice())$</td>
 				        			@for(Map.Entry<String,model.component.Attribute> entry : cl.getAttributesMap().entrySet()) {
-        								@if(!entry.getValue().isPresentable()){
+        								@if(entry.getValue().isPresentable()){
         									<td>@(entry.getValue().getName()) : @(entry.getValue().getValue())</td>  
         								}
     								}
