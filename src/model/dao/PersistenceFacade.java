@@ -37,7 +37,7 @@ public class PersistenceFacade {
 	}
 
 
-	public Configuration getConfiguration(String confId) {
+	public Configuration getConfiguration(int confId) {
 
 		return confdao.getConfiguration(confId);
 
@@ -92,6 +92,10 @@ public class PersistenceFacade {
 	public boolean removeConstraint(String name) {
 
 		return cosdao.removeConstraint(name);
+	}
+	
+	public int getLastUsedId() {
+		return confdao.getLastUsedId();
 	}
 
 }

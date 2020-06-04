@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.catalog.ComponentCatalog;
+import model.configuration.Configuration;
 import model.dao.PersistenceFacade;
 import servlet.ApplicationServer;
 import servlet.ConfigurationServlet;
@@ -22,6 +23,10 @@ public class Tester {
 //		new ApplicationServer(8080, servlet).start();
 //		ComponentCatalog cc = new ComponentCatalog();
 //		System.out.println(cc.getComponentList());
+		
+		// Questo va fatto all'avvio per inizializzare gli id da usare per le configurazioni
+//		PersistenceFacade pf = PersistenceFacade.getIstance();
+//		Configuration.setLastUsedId(pf.getLastUsedId());
 
 		
 //		ComponentCatalog cata = new ComponentCatalog();

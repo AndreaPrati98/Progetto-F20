@@ -251,4 +251,17 @@ public class RdbOperation {
 		}
 		return false;
 	}
+	
+	public ResultSet getLastUsedId() {
+		String sql = "SELECT max(Id) as maxId\r\nFROM Configuration";
+		try {
+			stmt = c.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			return rs;
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		return null;
+		
+	}
 }

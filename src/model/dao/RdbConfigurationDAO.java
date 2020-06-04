@@ -115,5 +115,19 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 		// TODO Auto-generated method stub
 		return dbop.addUser(name, cognome, email, password);
 	}
-
+	
+	public int getLastUsedId() {
+		ResultSet rs = dbop.getLastUsedId();
+		int id = 0;		//cosi' se il result set e' vuoto perche' non ci sono id prendo 0 come ultimo id usato
+		
+		try {
+			while (rs.next()) {
+				id = rs.getInt("maxId");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return id;
+	}
 }
