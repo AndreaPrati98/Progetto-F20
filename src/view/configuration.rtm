@@ -76,7 +76,7 @@
 		        
 		        <div class="collapsible-body"  id="@(tipo)Menu">
 		        <span>
-	        	<form action="#">
+	        	<form action="#" style="overflow: auto">
 	            <table id="@(tipo)Table" >
 		        @for(model.component.Component cl:componentlist){
 		        	@if(cl.getTypeComponent().equals(tipo)){
@@ -84,16 +84,23 @@
 	        				<th>
 		        				<label>
 							    	<input name="group@(tipo)" type="checkbox" id="@(cl.getModel())" class="check@(tipo) selection"/>
-				        			<span>
-				        				@(cl.getModel())
-				        				name="@(cl.getModel())_price"> @(cl.getPrice())$
-				        			@for(Map.Entry<String,model.component.Attribute> entry : cl.getAttributesMap().entrySet()) {
-        								@if(!entry.getValue().isPresentable()){
-        									@(entry.getValue().getName()) : @(entry.getValue().getValue())  
-        								}
-    								}
-				        			</span>
-				                </label>
+				        			<span></span>
+				        		</label>
+				        	</th>
+				        	<th>
+				        		Model <hr>
+				        		@(cl.getModel())
+				        	</th>	
+				        	<th>
+				        		Price <hr>
+				        		<span name="@(cl.getModel())_price"> @(cl.getPrice())</span>$
+				        	</th>
+				        	@for(Map.Entry<String,model.component.Attribute> entry : cl.getAttributesMap().entrySet()) {
+								@if(!entry.getValue().isPresentable()){
+									<th>@(entry.getValue().getName()) <hr> @(entry.getValue().getValue())</th> 
+								}
+							}
+		        	    
 			            	</th>    
 	        			</tr> 
 	        		  
@@ -209,7 +216,7 @@ function add(modelString){
   posting.done(function(data) {
     if(data == 'Andato tutto bene'){
      	alert("ok post");
-     	var price=parseFloat($("td[name="+modelString+"_price]").text());
+     	var price=parseFloat($("span[name="+modelString+"_price]").text());
      	var totalPrice=parseFloat($("#totalPrice").text());
      	totalPrice=totalPrice+price;
      	$("#totalPrice").text(totalPrice);
@@ -228,7 +235,7 @@ function remove(modelString,listItemParent){
   posting.done(function(data) {
 		if(data == 'Andato tutto bene'){
 			alert("ok remove "+modelString);
-			var price=parseFloat($("td[name="+modelString+"_price]").text());
+			var price=parseFloat($("span[name="+modelString+"_price]").text());
      		var totalPrice=parseFloat($("#totalPrice").text());
      		totalPrice=totalPrice-price;
      		$("#totalPrice").text(totalPrice);
