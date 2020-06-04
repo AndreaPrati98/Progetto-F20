@@ -99,7 +99,7 @@ public class RdbOperation {
 		return rs;	
 	}
 
-	public ResultSet getConfiguration(String confId) {
+	public ResultSet getConfiguration(int confId) {
 		try {
 			stmt = c.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT*\n" + 

@@ -8,7 +8,7 @@ import model.customer.Customer;
 
 public interface InterfaceConfigurationDAO {
 
-	public Configuration getConfiguration(String confId);
+	public Configuration getConfiguration(int confId);
 
 	public List<Configuration> getConfigurationByEmail(String email);
 
