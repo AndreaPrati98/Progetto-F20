@@ -8,7 +8,7 @@ import model.configuration.Configuration;
 import model.configurator.Configurator;
 /**
  * 
- * @author Andrea
+ * @author Andrea 
  *
  */
 public class Customer {
@@ -40,8 +40,8 @@ public class Customer {
 	}
 	
 	/*
-	 * I metodi di add e di remove configuration non li ho fatti perchè mi sembra abbia più senso che 
-	 * la responsabilità di farlo l'abbia system e non il cliente direttamente dalla propria classe, ne parliamo alla riunione
+	 * I metodi di add e di remove configuration non li ho fatti perchï¿½ mi sembra abbia piï¿½ senso che 
+	 * la responsabilitï¿½ di farlo l'abbia system e non il cliente direttamente dalla propria classe, ne parliamo alla riunione
 	 */
 	
 }

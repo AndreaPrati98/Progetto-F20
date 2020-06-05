@@ -8,6 +8,8 @@ import javax.xml.catalog.Catalog;
 
 import model.catalog.ComponentCatalog;
 import model.configuration.Configuration;
+import model.configurator.Configurator;
+import model.customer.Customer;
 import model.dao.PersistenceFacade;
 import servlet.ApplicationServer;
 import servlet.ConfigurationServlet;
@@ -44,7 +46,8 @@ public class inizializationHome {
 		System.out.println(confMr.getAddedComponents());
 		System.out.println(confMr.getTotalPrice());
 		pf.addUser("Stefano","Butera","stefano.butera01@universitadipavia.it","root",true);
-		pf.addConfiguration(confMr,)
+		
+		pf.addConfiguration(confMr, new Customer());
 		System.out.println(confMr.checkConf());
 		
 		
