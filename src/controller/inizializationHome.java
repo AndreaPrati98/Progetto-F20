@@ -15,27 +15,28 @@ import servlet.HomeServlet;
 import servlet.MyServlet;
 import servlet.RegisterServlet;
 
-public class tester2 {
+public class inizializationHome {
 
-	public tester2() {
-		// TODO Auto-generated constructor stub
-	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		List<MyServlet> servlet = new ArrayList<MyServlet>();
-		servlet.add(new HomeServlet("home","/"));
-		servlet.add(new RegisterServlet("register", "/sign-in"));
-		servlet.add(new ConfigurationServlet("configuration", "/configuration/*"));
-		new ApplicationServer(8082, servlet).start();
 		
+		
+		System.out.println("prova");
 		// Questo va fatto all'avvio per inizializzare gli id da usare per le configurazioni
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		Configuration.setLastUsedId(pf.getLastUsedId());
-		ComponentCatalog provaCat = new ComponentCatalog();
-		Configuration confMR = new Configuration(); 
-		Component comp1 = provaCat.getComponentByModel(")
-
+		ComponentCatalog CatHome = new ComponentCatalog();
+		Configuration confMr = new Configuration(); 
+		confMr.setName("MrBlockchain_edition");
+		confMr.addComponent(CatHome.getComponentByModel("Deepcool_CASTLE_360EX"));
+		System.out.println("Deepcool_CASTLE_360EX aggiunto con successo ");
+		System.out.println(confMr.getAddedComponents().toString());
+		
+		
+	
 	}
+	
+	
 
 }
