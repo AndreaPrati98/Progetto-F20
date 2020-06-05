@@ -2,6 +2,9 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
+
+import javax.xml.catalog.Catalog;
 
 import model.catalog.ComponentCatalog;
 import model.configuration.Configuration;
@@ -12,10 +15,14 @@ import servlet.HomeServlet;
 import servlet.MyServlet;
 import servlet.RegisterServlet;
 
-public class Tester {
+public class tester2 {
+
+	public tester2() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public static void main(String[] args) {
-		
+		// TODO Auto-generated method stub
 		List<MyServlet> servlet = new ArrayList<MyServlet>();
 		servlet.add(new HomeServlet("home","/"));
 		servlet.add(new RegisterServlet("register", "/sign-in"));
@@ -25,23 +32,9 @@ public class Tester {
 		// Questo va fatto all'avvio per inizializzare gli id da usare per le configurazioni
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		Configuration.setLastUsedId(pf.getLastUsedId());
+		ComponentCatalog provaCat = new ComponentCatalog();
 		
-		
-		
-		
-		
-//		ComponentCatalog cata = new ComponentCatalog();
-//		System.out.println(cata.toString());
- 		
 
-		//		for (Component c : catalog.getComponentList()) {
-//			System.out.println(c.getTypeComponent()+"  "+c.getAttributesMap().get("modello").getValue());
-//		}
-//	System.out.println(catalog.getComponentList().size());
-		
-		
-		
-		
 	}
 
 }
