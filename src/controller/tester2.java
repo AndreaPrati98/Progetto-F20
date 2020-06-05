@@ -33,7 +33,8 @@ public class tester2 {
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		Configuration.setLastUsedId(pf.getLastUsedId());
 		ComponentCatalog provaCat = new ComponentCatalog();
-		
+		Configuration confMR = new Configuration(); 
+		Component comp1 = provaCat.getComponentByModel(")
 
 	}
 
