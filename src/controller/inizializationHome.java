@@ -30,8 +30,28 @@ public class inizializationHome {
 		Configuration confMr = new Configuration(); 
 		confMr.setName("MrBlockchain_edition");
 		confMr.addComponent(CatHome.getComponentByModel("Deepcool_CASTLE_360EX"));
-		System.out.println("Deepcool_CASTLE_360EX aggiunto con successo ");
-		System.out.println(confMr.getAddedComponents().toString());
+		confMr.addComponent(CatHome.getComponentByModel("i9-9980HK"));
+		confMr.addComponent(CatHome.getComponentByModel("seagate_barracuda"));
+		confMr.addComponent(CatHome.getComponentByModel("seagate_barracuda"));
+		confMr.addComponent(CatHome.getComponentByModel("Gigabyte_GeForce_GTX_660_Ti"));
+		confMr.addComponent(CatHome.getComponentByModel("Gigabyte_GeForce_GTX_660_Ti"));
+		confMr.addComponent(CatHome.getComponentByModel("Cougar_MX330"));
+		confMr.addComponent(CatHome.getComponentByModel("Corsair_RM_750"));
+		confMr.addComponent(CatHome.getComponentByModel("Corsair_RM_750"));
+		confMr.addComponent(CatHome.getComponentByModel("corsair_vengeance_lpx"));
+		confMr.addComponent(CatHome.getComponentByModel("corsair_vengeance_lpx"));
+		confMr.addComponent(CatHome.getComponentByModel("asus_prime_z390-1"));
+		System.out.println(confMr.getAddedComponents());
+		System.out.println(confMr.getTotalPrice());
+		pf.addUser("Stefano","Butera","stefano.butera01@universitadipavia.it","root",true);
+		pf.addConfiguration(confMr,)
+		System.out.println(confMr.checkConf());
+		
+		
+		
+		
+		
+		
 		
 		
 	
