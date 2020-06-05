@@ -69,7 +69,22 @@ public class ComponentCatalog {
 	
 	public List<Component> getComponentList() {
 		return componentList;
+	}
 	
+	/**
+	 * 
+	 * @param model
+	 * @return the Component with the specified model
+	 */
+	public Component getComponentByModel(String model) {
+		
+		for(Component c : componentList) {
+			if(c.getModel().equals(model)) {
+				return c;
+			}
+		}
+		
+		return null;
 	}
 	
 	

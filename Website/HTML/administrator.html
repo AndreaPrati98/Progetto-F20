@@ -2,10 +2,30 @@
 <html>
 <head>
 	<style>
-	#expandableCollapsible{
-		width: 60%;
-		margin-left: auto;
-		margin-right: auto;
+	* {
+		box-sizing: border-box;
+	}
+	.column {
+		float: left;
+		width: 33.33%;
+		padding: 10px;
+		height: 300px;
+	}
+	.row:after {
+		content: "";
+		display: table;
+		clear: both;
+	}
+	#mainTitle{
+		text-align: center;
+	}
+	.columnsTitle{
+		text-align: center;
+	}
+	.collection{
+		text-align: center;
+		width: 40%;
+		align-items: center;
 	}
 	#addComponentBtn{
 		background-color: #0097a7;
@@ -13,11 +33,15 @@
 	#removeComponentBtn{
 		background-color: #d32f2f;
 	}
+	#addAttributeBtn{
+		background-color: #43a047;
+	}
 	</style>
 	<title>Administrator</title>
 	<!-- link additional CSS file -->
 	<!--<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css"> -->
 	<!-- Compiled and minified CSS -->
+
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<!-- sidenav script -->
@@ -28,6 +52,7 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Import materialize.css-->
 	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"  media="screen,projection"/>
+
 </head>
 <body>
 	<nav class="  cyan darken-2">
@@ -51,99 +76,63 @@
 		<li><a href="configuration.html">Configuration</a></li>
 	</ul>
 
-	<ul class="collapsible expandable" id="expandableCollapsible">
-		<li>
-			<div class="collapsible-header"><i class="material-icons">add_box</i>Add Component</div>
-			<div class="collapsible-body">
-				<span>
-					<div class="container">
-						<form id="addComponentForm" align="center" method="POST">
-							<div class="row" id="typeAndNameComponent">
-								<div class="input-field col s6">
-									<input id="typeComponent" name="typeComponent" type="text" class="validate">
-									<label for="typeComponent">Component Type</label>
-								</div>
-								<div class="input-field col s6">
-									<input id="modelComponent" name="modelComponent" type="text" class="validate">
-									<label for="modelComponent">Component Model</label>
-								</div>
-							</div>
-							<div class="row" id="nameAndValueAttribute">
-								<div class="input-field col s3">
-									<input id="attributeName" name="attributeName" type="text" class="validate">
-									<label for="attributeName">Attribute Name</label>
-								</div>
-								<div class="input-field col s3">
-									<input id="attributeValue" name="attributeValue" type="text" class="validate">
-									<label for="attributeValue">Attribute Value</label>
-								</div>
-								&nbsp;&nbsp;
-								<div class="switch">
-									<label>
-										Const:
-										<input type="checkbox" id="constraintSwitch">
-										<span class="lever"></span>
-									</label>
-									&nbsp;&nbsp;&nbsp;
-									<label>
-										Vis:
-										<input type="checkbox" id="visibleSwitch">
-										<span class="lever"></span>
-									</label>
-									&nbsp;&nbsp;&nbsp;
-									<a class="btn-floating waves-effect waves-light amber darken-3" id="addAttributeBtn">
-										<i class="material-icons">add</i>
-									</a>
-								</div>
-							</div>
-							<br>
-							<div class="center container">
-								<a class="waves-effect waves-light btn" id="addComponentBtn">Add</a>
-							</div>
-						</form>
-					</div>
-				</span>
-			</div>
-		</li>
-		<li>
-			<div class="collapsible-header"><i class="material-icons">delete</i>Remove Component</div>
-			<div class="collapsible-body">
-				<span>
-					<div class="container">
-						<form id="removeComponentForm" align="center" method="POST">
-							<div class="container" id="typeAndNameComponentInRemove">
-								<div class="input-field col s5">
-									<input id="typeComponentInRemove" name="typeComponentInRemove" type="text" class="validate">
-									<label for="typeComponentInRemove">Component Type</label>
-								</div>
-								<div class="input-field col s5">
-									<input id="modelComponentInRemove" name="modelComponentInRemove" type="text" class="validate">
-									<label for="modelComponentInRemove">Component Model</label>
-								</div>
-							</div>
-							<br>
-							<div class="center container">
-								<a class="waves-effect waves-light btn" id="removeComponentBtn">Remove</a>
-							</div>
-						</form>
-					</div>
-				</span>
-			</div>
-		</li>
-	</ul>
 
+	<h2 id="mainTitle">Managing Page</h2>
+
+	<div class="row">
+		<div class="column">
+			<h5 class="columnsTitle">Existing components</h5>
+			<br><br>
+			<ul class="collection">
+				<li class="collection-item">Cpu</li>
+				<li class="collection-item">Mobo</li>
+				<li class="collection-item">Case</li>
+				<li class="collection-item">ecc</li>
+			</ul>
+		</div>
+		<div class="column">
+			<h5 class="columnsTitle">Operations</h5>
+			<br><br>
+			<p>
+				Add a new type of component &nbsp;&nbsp;&nbsp;
+				<a class="waves-effect waves-light btn" id="addComponentBtn">Add</a>
+			</p>
+			<br><br>
+			<p>
+				<h6>Manage existing components</h6>
+				<br>
+				<div class="input-field col s14">
+					<select>
+						<option value="" disabled selected>Select a component</option>
+						<option value="1">Cpu</option>
+						<option value="2">Mobo</option>
+						<option value="3">Case</option>
+					</select>
+					<label>Existing Components</label>
+				</div>
+			</p>
+			<br><br><br>
+			<p>
+				Remove selected component &nbsp;&nbsp;&nbsp;
+				<a class="waves-effect waves-light btn" id="removeComponentBtn">Remove</a>
+			</p>
+			<br>
+			<p>
+				Add standard attribute to selected component &nbsp;&nbsp;&nbsp;
+				<a class="waves-effect waves-light btn" id="addAttributeBtn">Add Attr.</a>
+			</p>
+		</div>
+		<div class="column">
+			<h5 class="columnsTitle">Updates</h5>
+			<p>qui ci saranno i vari form in base a quello che premo nella colonna di operations</p>
+		</div>
+	</div>
 
 </body>
 </html>
+
 <script type="text/javascript">
-var elem = document.querySelector('.collapsible.expandable');
-var instance = M.Collapsible.init(elem, {
-	accordion: false
+$(document).ready(function(){
+	$('select').formSelect();
 });
-
-document.addEventListener('DOMContentLoaded', function() {
-	var elems = document.querySelectorAll('.sidenav');
-	var instances = M.Sidenav.init(elems, {edge:'right'});
-});
-
 </script>

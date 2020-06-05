@@ -142,6 +142,10 @@ public class Component {
 		return performanceIndex;
 		
 	}
+
+	public String getModel() {
+		return model;
+	}
 	
 
 }

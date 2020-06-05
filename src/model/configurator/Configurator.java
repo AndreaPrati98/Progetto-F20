@@ -52,6 +52,10 @@ public class Configurator {
 		return configuration.addComponent(comp);
 	}
 	
+	public boolean removeComponent(Component comp) {
+		return configuration.removeComponent(comp);
+	}
+	
 	/**
 	 * @return true - if the configuration is valid
 	 * @return false - if the configuration is not valid

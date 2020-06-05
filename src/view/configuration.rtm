@@ -16,6 +16,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"  media="screen,projection"/>
+
+
 </head>
 
 <body>
@@ -46,72 +48,63 @@
 	        @for (String tipo:type) {
 				<li>
 				@if(tipo.equals("case")){
-	        		<div class="collapsible-header"><i class='fas fa-mobile' style='font-size:20px'></i>Case</div>
-	        		<div class="collapsible-body" id="caseMenu">
-	        		<span>
-	               	<form action="#">
-	                <table id="caseTable">
+	        		<div class="collapsible-header " style='font-size:20px '><i class='fas fa-mobile'></i>Case</div>
 	        	}
 		        @if(tipo.equals("mobo")){
 		        	<div class="collapsible-header"><i class="material-icons">developer_board</i>Motherboard</div>
-		            <div class="collapsible-body" id="moboMenu">
-		            <form action="#">
-	                <table id="moboTable">
 		        }
 		        @if(tipo.equals("cpu")){
 		        	<div class="collapsible-header"><i class='fas fa-microchip' style='font-size:20px'></i>CPU</div>
-		            <div class="collapsible-body" id="cpuMenu">
-		            <form action="#">
-	                <table id="cpuTable">
 		        }
 		        @if(tipo.equals("ram")){
 		        	<a href="#!" class="collection-item"><span class="badge">1</span></a>
 		            <div class="collapsible-header"><i class='fas fa-memory' style='font-size:20px'></i>RAM</div>
-		            <div class="collapsible-body" id="ramMenu">
-		            <form action="#">
-	                <table id="ramTable">
 		        }
 		        @if(tipo.equals("massStorage")){
 		        	 <a href="#!" class="collection-item"><span class="badge">1</span></a>
 		             <div class="collapsible-header"><i class='fas fa-hdd' style='font-size:20px'></i>Storage</div>
-		             <div class="collapsible-body" id="storageMenu">
-		             <form action="#">
-	                <table id="massStorageTable">
 		        }
 		        @if(tipo.equals("power")){
 		        	<div class="collapsible-header"><i class='fas fa-plug' style='font-size:20px'></i>Power</div>
-		            <div class="collapsible-body" id="powerMenu">
-		            <form action="#">
-	                <table id="powerTable">
 		        } 
 		        @if(tipo.equals("gpu")){
 		        	<div class="collapsible-header"><i class="material-icons">videogame_asset</i>Graphic Card</div>
-		            <div class="collapsible-body" id="gpuMenu">
-		            <form action="#">
-	                <table id="gpuTable">
 		        }
 		        @if(tipo.equals("cooler")){
 		        	<div class="collapsible-header"><i class="material-icons">ac_unit</i>Cooler</div>
-		            <div class="collapsible-body" id="coolerMenu">
-		            <form action="#">
-	                <table id="coolerTable">
 		        }
-	        	
+		        
+		        <div class="collapsible-body"  id="@(tipo)Menu">
+		        <span>
+	        	<form action="#" style="overflow: auto">
+	            <table id="@(tipo)Table" >
 		        @for(model.component.Component cl:componentlist){
 		        	@if(cl.getTypeComponent().equals(tipo)){
-		        		<tr class="row@(tipo)Table">
+		        		<tr class="row@(tipo)Table" >
 	        				<th>
 		        				<label>
-							    	@if(tipo.equals("ram") || tipo.equals("massStorage")){
-							    		<input name="group@(tipo)" type="checkbox" id="check@(tipo)" class="check@(tipo)"/>
-						       		}else{
-						        	 	<input name="group@(tipo)" type="radio" id="radio@(tipo)1" class="radio@(tipo)"/>
-						        	}
-				        			<span>@(cl.getAttributesMap().get("modello").getValue())</span>
-				                </label>
+							    	<input name="group@(tipo)" type="checkbox" id="@(cl.getModel())" class="check@(tipo) selection"/>
+				        			<span></span>
+				        		</label>
+				        	</th>
+				        	<th>
+				        		Model <hr>
+				        		@(cl.getModel())
+				        	</th>	
+				        	<th>
+				        		Price <hr>
+				        		<span name="@(cl.getModel())_price"> @(cl.getPrice())</span>$
+				        	</th>
+				        	@for(Map.Entry<String,model.component.Attribute> entry : cl.getAttributesMap().entrySet()) {
+								@if(entry.getValue().isPresentable()){
+									<th>@(entry.getValue().getName()) <hr> @(entry.getValue().getValue())</th> 
+								}
+							}
+		        	    
 			            	</th>    
 	        			</tr> 
-	        		 }
+	        		  
+	        		}
 			     }
 	        </table>
 	        </form>
@@ -143,7 +136,7 @@
     </div>
     <div class="col s5">
         <p>
-            <h2>Price: 0$</h2>
+            <h2>Price:<label id="totalPrice" style='font-size:55px ; color: black;'> 0 </label>$</h2>
         </p>
         <p>
             <h2>Performance</h2>
@@ -169,10 +162,6 @@
 <br>
 <ul class="collection with-header">
     <li class="collection-header"><h4>Added Components</h4></li>
-    <li class="collection-item"><div>mobo<a href="#!" class="secondary-content"><i class="material-icons">go</i></a></div></li>
-    <li class="collection-item"><div>cpu<a href="#!" class="secondary-content"><i class="material-icons">go</i></a></div></li>
-    <li class="collection-item"><div>case<a href="#!" class="secondary-content"><i class="material-icons">go</i></a></div></li>
-    <li class="collection-item"><div>ram<a href="#!" class="secondary-content"><i class="material-icons">go</i></a></div></li>
 </ul>
 <br>
 <footer class=" cyan darken-2">
@@ -208,6 +197,53 @@ document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems, {edge:'right'});
 });
+
+$('.selection').change(function() {
+    let modelString = $(this).attr('id');	 
+    if (this.checked) {
+        add(modelString);
+    } else {
+         let listItemParent = $('.collection').find( "li[name='"+modelString+"']" );
+         console.log(listItemParent);
+         remove(modelString,listItemParent);
+    }
+});
+function add(modelString){
+  let dataToSend = "";
+  alert("ok click");
+  let posting = $.post( "/configuration/add", {model: modelString});
+  
+  posting.done(function(data) {
+    if(data == 'Andato tutto bene'){
+     	alert("ok post");
+     	var price=parseFloat($("span[name="+modelString+"_price]").text());
+     	var totalPrice=parseFloat($("#totalPrice").text());
+     	totalPrice=totalPrice+price;
+     	$("#totalPrice").text(totalPrice);
+	    var addedComponentHtmlList = $(".collection");
+	    addedComponentHtmlList.append("<li class='collection-item' name='"+modelString+"'><div>"+modelString+"<a href='#!' class='secondary-content'></a></div></li>");
+	 }else{
+	 	$('#'+modelString).prop("checked", false);
+	 }
+  });
+}
+
+function remove(modelString,listItemParent){
+  let dataToSend = "";
+  alert("ok click");
+  let posting = $.post( "/configuration/remove", {model: modelString});
+  posting.done(function(data) {
+		if(data == 'Andato tutto bene'){
+			alert("ok remove "+modelString);
+			var price=parseFloat($("span[name="+modelString+"_price]").text());
+     		var totalPrice=parseFloat($("#totalPrice").text());
+     		totalPrice=totalPrice-price;
+     		$("#totalPrice").text(totalPrice);
+	    	listItemParent.remove();	
+		}
+  });
+  
+}
 </script>
 </body>
 

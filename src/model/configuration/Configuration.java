@@ -1,12 +1,12 @@
 package model.configuration;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import model.component.Component;
 import model.component.constraint.AbstractConstraint;
-import model.component.constraint.ConstraintCategory;
 import model.component.constraint.ConstraintChecker;
 import model.component.constraint.InterfaceConstraintChecker;
 import model.component.constraint.MaxConstraint;
@@ -17,6 +17,11 @@ import model.component.constraint.MaxConstraint;
  */
 
 public class Configuration {
+	private static int lastUsedId;
+	private int id;
+
+	private String name;
+	
 	private List<String> neededComponents; // lista di elementi obbligatori per far si che un pc si possa accendere
 											// (Lista da stabilire)
 	private List<Component> addedComponents;
@@ -27,14 +32,50 @@ public class Configuration {
 	private List<AbstractConstraint> constraintErrors;
 
 	/**
-	 * 
-	 * @param neededComponents {@link Configuration}
-	 * @param singleComponents
+	 * Create an empty new configuration, with a never used id
 	 */
+	public Configuration() {
+		this.neededComponents = new ArrayList<String>();
+		this.singleComponents = new HashMap<String, Boolean>();
+		this.constraintErrors = new ArrayList<AbstractConstraint>();
+		addedComponents = new ArrayList<Component>();
+		lastUsedId++;
+		this.id=lastUsedId;
+	}
+	
+	// Questa andra' tolta quando gestiremo i neededComponent e i singleComponent tramite vincoli
 	public Configuration(List<String> neededComponents, Map<String, Boolean> singleComponents) {
 		this.neededComponents = neededComponents;
 		this.singleComponents = singleComponents;
+		this.constraintErrors = new ArrayList<AbstractConstraint>();
 		addedComponents = new ArrayList<Component>();
+	}
+	
+	/**
+	 * Create an empty configuration with a given id.
+	 * This constructor is used when the configuration is downloaded from the database
+	 * @param id
+	 */
+	public Configuration(int id) {
+		this.neededComponents = new ArrayList<String>();
+		this.singleComponents = new HashMap<String, Boolean>();
+		this.constraintErrors = new ArrayList<AbstractConstraint>();
+		addedComponents = new ArrayList<Component>();
+		this.id=id;
+	}
+	
+	/**
+	 * Create a configuration with a given id and some components.
+	 * This constructor is used when the configuration is downloaded from the database.
+	 * @param id
+	 * @param addedComponents
+	 */
+	public Configuration(int id, List<Component> addedComponents) {
+		this.addedComponents=addedComponents;
+		this.neededComponents = new ArrayList<String>();
+		this.singleComponents = new HashMap<String, Boolean>();
+		this.constraintErrors = new ArrayList<AbstractConstraint>();
+		this.id=id;
 	}
 
 	/**
@@ -136,6 +177,11 @@ public class Configuration {
 		}
 		return flag;
 	}
+	
+	public boolean addComponentWithoutChecking(Component c) {
+		this.addedComponents.add(c);
+		return true;
+	}
 
 	/**
 	 * 
@@ -187,5 +233,23 @@ public class Configuration {
 		}
 		return totalPrice;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public static void setLastUsedId(int id) {
+		lastUsedId = id;
+	}
+
+	public int getId() {
+		return id;
+	}
+	
+	
 
 }
