@@ -80,13 +80,5 @@ public class Customer {
 	 * la responsabilit� di farlo l'abbia system e non il cliente direttamente dalla propria classe, ne parliamo alla riunione
 	 */
 	
-	/*
-	 * non c'era il costruttore che avesse questi campi e mi serviva
-	 */
-	public Customer(String nome , String cognome , String email , boolean isAdmin) {
-		this.cognome=cognome;
-		this.nome=nome;
-		this.email=email;
-		this.isAdmin=isAdmin;
-	}
+	
 }
