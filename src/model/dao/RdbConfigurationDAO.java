@@ -92,7 +92,8 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 		return dbop.addConfiguration(conf.getId(), conf.getName(), user.getEmail(), type, model);
 
 	}
-
+	
+	// Sistemare in modo che tutto viene fatto in modo atomico
 	public boolean updateConfiguration(Configuration conf, Customer user) {
 		boolean flag1 = this.removeConfiguration(conf.getId());
 		boolean flag2 = false;
