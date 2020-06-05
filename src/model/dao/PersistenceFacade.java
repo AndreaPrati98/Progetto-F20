@@ -13,6 +13,8 @@ public class PersistenceFacade {
 	private InterfaceComponentDAO cdao;
 	private InterfaceConfigurationDAO confdao;
 	private InterfaceCostraintDAO cosdao;
+	private InterfaceUserDAO udao;
+	
 	private static PersistenceFacade facade;
 
 	static public PersistenceFacade getIstance() {
@@ -30,6 +32,7 @@ public class PersistenceFacade {
 		this.cdao = new RdbComponentDAO(dbop);
 		this.confdao = new RdbConfigurationDAO(dbop);
 		this.cosdao = new RdbConstraintDAO(dbop);
+		this.udao=new RdbUserDAO(dbop);
 	}
 
 	public List<Component> getAllComponent() {
@@ -57,8 +60,15 @@ public class PersistenceFacade {
 	
 	public boolean addUser(String name,String cognome, String email,String password, boolean isAdmin) {
 
-		return confdao.addUsers(name, cognome, email, password,isAdmin);
+		return udao.addUsers(name, cognome, email, password,isAdmin);
 
+	}
+	
+	public Customer getUser(String email) {
+		Customer c=udao.getCustomer(email);
+		c.setConfigurationList(this.getConfigurationByEmail(email));
+		return c;
+		
 	}
 
 	public boolean updateConfiguration(Configuration conf, Customer user) {

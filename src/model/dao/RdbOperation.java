@@ -153,6 +153,19 @@ public class RdbOperation {
 		return true;
 
 	}
+	
+	
+	public ResultSet getUser(String email) {
+		try {
+			stmt = c.createStatement();
+			ResultSet rs = stmt.executeQuery(
+					"SELECT*\n" + "FROM User where email=" + email);
+			return rs;
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		return null;
+	}
 
 	public boolean addUser(String name, String cognome, String email, String password, boolean isAdmin) {
 		String sql = "INSERT INTO User(firstName,lastName,email,password,isAdmin) VALUES(?,?,?,?,?)";

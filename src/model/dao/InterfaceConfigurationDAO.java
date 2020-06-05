@@ -17,8 +17,6 @@ public interface InterfaceConfigurationDAO {
 	public boolean updateConfiguration(Configuration conf, Customer user);
 
 	public boolean removeConfiguration(int confId);
-
-	public boolean addUsers(String name,String cognome, String email,String password, boolean isAdmin);
 	
 	public int getLastUsedId();
 
