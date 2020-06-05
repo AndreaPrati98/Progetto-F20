@@ -74,18 +74,17 @@ public class RdbOperation {
 		return false;
 
 	}
-	
+
 	/*
 	 * QUERY ATTRIBUTE RELATION
 	 */
-	
+
 	public ResultSet getAttributesByComponent(String model, String typeOfComponent) {
 		Statement s;
-		String sql = "select attribute.TypeofC, Attribute.ModelofC, Attribute.NameStdAtt, Attribute.AttValue, StandardAttribute.ConstraintName, StandardAttribute.Category, StandardAttribute.IsPresentable\r\n" + 
-				"from Attribute, StandardAttribute\r\n" + 
-				"where attribute.TypeofC = '" + typeOfComponent + "' and attribute.ModelofC = '" + model + "'\r\n" + 
-				"and StandardAttribute.TypeOfComponent = '" + typeOfComponent + "'\r\n" + 
-				"and StandardAttribute.Name = Attribute.NameStdAtt\r\n";
+		String sql = "select attribute.TypeofC, Attribute.ModelofC, Attribute.NameStdAtt, Attribute.AttValue, StandardAttribute.ConstraintName, StandardAttribute.Category, StandardAttribute.IsPresentable\r\n"
+				+ "from Attribute, StandardAttribute\r\n" + "where attribute.TypeofC = '" + typeOfComponent
+				+ "' and attribute.ModelofC = '" + model + "'\r\n" + "and StandardAttribute.TypeOfComponent = '"
+				+ typeOfComponent + "'\r\n" + "and StandardAttribute.Name = Attribute.NameStdAtt\r\n";
 		ResultSet rs = null;
 		try {
 			s = c.createStatement();
@@ -93,18 +92,17 @@ public class RdbOperation {
 
 		} catch (SQLException e) {
 			// TODO: handle exception
-			System.out.println("Error: "+ e.getMessage());
+			System.out.println("Error: " + e.getMessage());
 		}
-		
-		return rs;	
+
+		return rs;
 	}
 
 	public ResultSet getConfiguration(int confId) {
 		try {
 			stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT*\n" + 
-					"FROM ElementConfiguration NATURAL join Configuration\n" + 
-					"where Id="+confId);
+			ResultSet rs = stmt.executeQuery(
+					"SELECT*\n" + "FROM ElementConfiguration NATURAL join Configuration\n" + "where Id=" + confId);
 			return rs;
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
@@ -115,19 +113,16 @@ public class RdbOperation {
 	public ResultSet getConfigurationByEmail(String email) {
 		try {
 			stmt = c.createStatement();
-			ResultSet rs = stmt
-					.executeQuery("SELECT*\n" + 
-							"FROM ElementConfiguration NATURAL join Configuration\n" + 
-							"where EmailU="+email);
+			ResultSet rs = stmt.executeQuery(
+					"SELECT*\n" + "FROM ElementConfiguration NATURAL join Configuration\n" + "where EmailU=" + email);
 			return rs;
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
 		}
 		return null;
 	}
-	
-	
-	public boolean addConfiguration(int id,String name, String email,List<String> Type,List<String> Model) {
+
+	public boolean addConfiguration(int id, String name, String email, List<String> Type, List<String> Model) {
 		String sql = "INSERT INTO Configuration(Id,Name,EmailU) VALUES(?,?,?)";
 		PreparedStatement ps;
 		try {
@@ -159,8 +154,8 @@ public class RdbOperation {
 
 	}
 
-	public boolean addUser(String name,String cognome, String email,String password) {
-		String sql = "INSERT INTO Users(firstName,lastName,email,password) VALUES(?,?,?,?)";
+	public boolean addUser(String name, String cognome, String email, String password, boolean isAdmin) {
+		String sql = "INSERT INTO User(firstName,lastName,email,password,isAdmin) VALUES(?,?,?,?,?)";
 		PreparedStatement ps;
 		try {
 			ps = c.prepareStatement(sql);
@@ -168,6 +163,11 @@ public class RdbOperation {
 			ps.setString(2, cognome);
 			ps.setString(3, email);
 			ps.setString(4, password);
+			if (isAdmin) {
+				ps.setInt(5, 1);
+			} else {
+				ps.setInt(5, 0);
+			}
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
@@ -177,7 +177,7 @@ public class RdbOperation {
 		return false;
 
 	}
-	
+
 	public boolean removeConfiguration(int id) {
 		String sql = "DELETE FROM ElementConfiguration WHERE Id = ?";
 		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
@@ -190,7 +190,7 @@ public class RdbOperation {
 			System.out.println(e.getMessage());
 			return false;
 		}
-		
+
 		sql = "DELETE FROM Configuration WHERE Id = ?";
 		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
 
@@ -206,7 +206,7 @@ public class RdbOperation {
 		return false;
 
 	}
-	
+
 	public ResultSet getAllConstraints() {
 		try {
 			stmt = c.createStatement();
@@ -215,11 +215,11 @@ public class RdbOperation {
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
 		}
-		
+
 		return null;
-		
+
 	}
-	
+
 	public boolean addNewConstraint(String name, String type) {
 		String sql = "INSERT INTO Bound(Name,Type) VALUES(?,?)";
 		PreparedStatement ps;
@@ -235,7 +235,7 @@ public class RdbOperation {
 		}
 		return false;
 	}
-	
+
 	public boolean RemoveConstraint(String name) {
 		String sql = "DELETE FROM Bound WHERE Name = ?";
 
@@ -251,7 +251,7 @@ public class RdbOperation {
 		}
 		return false;
 	}
-	
+
 	public ResultSet getLastUsedId() {
 		String sql = "SELECT max(Id) as maxId\r\nFROM Configuration";
 		try {
@@ -262,6 +262,6 @@ public class RdbOperation {
 			System.out.println("Error: " + e.getMessage());
 		}
 		return null;
-		
+
 	}
 }

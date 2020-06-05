@@ -111,9 +111,9 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 	}
 
 	@Override
-	public boolean addUsers(String name, String cognome, String email, String password) {
+	public boolean addUsers(String name, String cognome, String email, String password, boolean isAdmin) {
 		// TODO Auto-generated method stub
-		return dbop.addUser(name, cognome, email, password);
+		return dbop.addUser(name, cognome, email, password, isAdmin);
 	}
 	
 	public int getLastUsedId() {
