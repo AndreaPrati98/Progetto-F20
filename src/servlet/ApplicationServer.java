@@ -55,6 +55,7 @@ public class ApplicationServer {
 
 	private void addStaticFileServing(ServletContextHandler handler) {
 		ServletHolder holderPwd = new ServletHolder("default", new DefaultServlet());
+		//holderPwd.setInitParameter("resourceBase", "Website/*");
 		holderPwd.setInitParameter("dirAllowed", "false");
 		holderPwd.setInitParameter("pathInfoOnly", "true");
 		handler.addServlet(holderPwd, "/statics/*");

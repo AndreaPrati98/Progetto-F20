@@ -14,7 +14,8 @@ import model.configurator.Configurator;
 public class Customer {
 
 	//public static int MAX_NUMBER_OF_CONFIGURATIONS = 5;
-	
+	private String name;
+	private String surname;
 	private String email;
 	private String nome;
 	private String cognome;
@@ -25,6 +26,14 @@ public class Customer {
 	private List<Configuration> configurationList;
 	@SuppressWarnings("unused")
 	private Configurator facadeController;
+	
+	public Customer(String name,String surname,String email,boolean isAdmin) {
+		this.email=email;
+		this.name=name;
+		this.setSurname(surname);
+		this.isAdmin=isAdmin;
+		configurationList = new ArrayList<Configuration>();
+	}
 	
 	public Customer(Configurator system) {
 		configurationList = new ArrayList<Configuration>();
@@ -43,6 +52,28 @@ public class Customer {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public void setConfigurationList(List<Configuration> configurationList) {
+		this.configurationList = configurationList;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+	
+	
 	
 	/*
 	 * I metodi di add e di remove configuration non li ho fatti perch� mi sembra abbia pi� senso che 
