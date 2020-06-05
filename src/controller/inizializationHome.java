@@ -91,8 +91,10 @@ public class inizializationHome {
 		
 		
 		
+		
 		/*
-		 * mi da degli errori di SQL che non capisco ho fatto il check e funziona
+		 * mi da degli errori di SQL che non capisco ho fatto il check non funziona il caricamento delle configurazioni 
+		 * 
 		 */
 	
 	}
