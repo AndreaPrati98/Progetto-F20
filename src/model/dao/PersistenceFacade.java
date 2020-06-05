@@ -49,9 +49,9 @@ public class PersistenceFacade {
 
 	}
 
-	public boolean addConfiguration(Configuration conf,Object object) {
+	public boolean addConfiguration(Configuration conf,Customer user) {
 
-		return confdao.addConfiguration(conf,object);
+		return confdao.addConfiguration(conf,user);
 
 	}
 	
