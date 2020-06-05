@@ -96,7 +96,7 @@
 				        		<span name="@(cl.getModel())_price"> @(cl.getPrice())</span>$
 				        	</th>
 				        	@for(Map.Entry<String,model.component.Attribute> entry : cl.getAttributesMap().entrySet()) {
-								@if(!entry.getValue().isPresentable()){
+								@if(entry.getValue().isPresentable()){
 									<th>@(entry.getValue().getName()) <hr> @(entry.getValue().getValue())</th> 
 								}
 							}
