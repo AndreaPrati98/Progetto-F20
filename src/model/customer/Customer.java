@@ -8,7 +8,7 @@ import model.configuration.Configuration;
 import model.configurator.Configurator;
 /**
  * 
- * @author Andrea
+ * @author Andrea  e stepa
  *
  */
 public class Customer {
@@ -17,6 +17,10 @@ public class Customer {
 	private String name;
 	private String surname;
 	private String email;
+	private String nome;
+	private String cognome;
+	
+	
 	private boolean isAdmin;
 	//private String name;
 	private List<Configuration> configurationList;
@@ -35,6 +39,7 @@ public class Customer {
 		configurationList = new ArrayList<Configuration>();
 		facadeController = system;
 	}
+	
 	
 	public List<Configuration> getConfigurationList() {
 		return configurationList;
@@ -71,8 +76,9 @@ public class Customer {
 	
 	
 	/*
-	 * I metodi di add e di remove configuration non li ho fatti perchè mi sembra abbia più senso che 
-	 * la responsabilità di farlo l'abbia system e non il cliente direttamente dalla propria classe, ne parliamo alla riunione
+	 * I metodi di add e di remove configuration non li ho fatti perchï¿½ mi sembra abbia piï¿½ senso che 
+	 * la responsabilitï¿½ di farlo l'abbia system e non il cliente direttamente dalla propria classe, ne parliamo alla riunione
 	 */
+	
 	
 }
