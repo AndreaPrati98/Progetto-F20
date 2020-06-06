@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +34,13 @@ public class ConfigurationServlet extends MyServlet {
 		type.add("power");
 		type.add("gpu");
 		
-		response.getWriter().write(Rythm.render("configuration.rtm",catalog.getComponentList(),type));
+		System.out.println("ConfigurationServlet");
+		//RequestDispatcher rd =  request.getRequestDispatcher("/provaImmagine.jsp");
+		//rd.forward(request, response);
+		System.out.println("Shit");
+
+		//response.getWriter().write("MERDA");
+		response.getWriter().write(Rythm.render("configuration.html",catalog.getComponentList(),type));
 	}
 	
 	

@@ -1,5 +1,6 @@
 package servlet;
 
+import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,12 +30,14 @@ public class ApplicationServer {
 	public void start(){
 		initTemplateEngine();
 		server = new Server(port);
-		ServletContextHandler handler = new ServletContextHandler();
+		ServletContextHandler handler = new ServletContextHandler();		
+		
 		for (MyServlet servlet2 : servlet) {
 			handler.addServlet(new ServletHolder(servlet2), servlet2.getPath());
 		}
 		addStaticFileServing(handler);
-		server.setHandler(handler);
+		server.setHandler(handler);		
+		
 		try {
 			server.start();
 		} catch (Exception e) {
@@ -55,7 +58,7 @@ public class ApplicationServer {
 
 	private void addStaticFileServing(ServletContextHandler handler) {
 		ServletHolder holderPwd = new ServletHolder("default", new DefaultServlet());
-		//holderPwd.setInitParameter("resourceBase", "Website/*");
+		holderPwd.setInitParameter("resourceBase", "./Website");
 		holderPwd.setInitParameter("dirAllowed", "false");
 		holderPwd.setInitParameter("pathInfoOnly", "true");
 		handler.addServlet(holderPwd, "/statics/*");
