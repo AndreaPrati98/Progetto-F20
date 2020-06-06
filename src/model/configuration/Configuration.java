@@ -88,32 +88,44 @@ public class Configuration {
 	 * 
 	 */
 	public boolean addComponent(Component c) {
-		//constraintErrors = check(c);
-		if (constraintErrors.isEmpty()) {
-			/**
-			 * checking if the component it's a "single component or not"
-			 */
-			if (!getSingleComponents().containsKey(c.getTypeComponent())) {
-				addedComponents.add(c);
-				return true;
-			} else {
-				if (!getSingleComponents().get(c.getTypeComponent())) {
-					addedComponents.add(c); // se non è un componente singolo lo posso agiungere
-					getSingleComponents().replace(c.getTypeComponent(), true);
-				} else {
-					/**
-					 * Messaggio d'errore
-					 */
-					constraintErrors.add(new MaxConstraint("Single Component"));
-					return false; // se quel componente è singolo ed era gia stato aggiunto non lo posso
-									// riaggiungere
-				}
-			}
+		//Di volta in volta tengo traccia solo degli errori avuti all'ultimo tentativo di inserimento
+		constraintErrors.clear();
+		
+		InterfaceConstraintChecker checker = new ConstraintChecker();
+		constraintErrors = checker.check(c, addedComponents);
+		if(constraintErrors.isEmpty()) {
+			addedComponents.add(c);
 			return true;
 		} else {
 			return false;
-			// return new DimensionConstraint("PROVA", "10", ConstraintType.EXTERNAL);
 		}
+		
+//		//constraintErrors = check(c);
+//		if (constraintErrors.isEmpty()) {
+//			/**
+//			 * checking if the component it's a "single component or not"
+//			 */
+//			if (!getSingleComponents().containsKey(c.getTypeComponent())) {
+//				addedComponents.add(c);
+//				return true;
+//			} else {
+//				if (!getSingleComponents().get(c.getTypeComponent())) {
+//					addedComponents.add(c); // se non è un componente singolo lo posso agiungere
+//					getSingleComponents().replace(c.getTypeComponent(), true);
+//				} else {
+//					/**
+//					 * Messaggio d'errore
+//					 */
+//					constraintErrors.add(new MaxConstraint("Single Component"));
+//					return false; // se quel componente è singolo ed era gia stato aggiunto non lo posso
+//									// riaggiungere
+//				}
+//			}
+//			return true;
+//		} else {
+//			return false;
+//			// return new DimensionConstraint("PROVA", "10", ConstraintType.EXTERNAL);
+//		}
 
 	}
 

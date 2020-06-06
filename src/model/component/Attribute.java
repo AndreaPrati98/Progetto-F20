@@ -108,6 +108,10 @@ public class Attribute {
 	}
 
 	public String getConstraintName() {
+		//Questo if mi serve se no ottengo NullPointerException
+		if(constraintName==null) {
+			return "";
+		}
 		return constraintName;
 	}
 
@@ -115,7 +119,8 @@ public class Attribute {
 	public String toString() {
 		return "\n\tAttribute:\n"
 				+ "\t"+"name= " + name + "\n\t"+"value= " + value + "\n\t"+"isBinding= " + isBinding + "\n\t"+"isPresentable= "
-				+ isPresentable + "\n\t"+"constraintCategory= " + constraintCategory + "\n";
+				+ isPresentable + "\n\t"+"constraintCategory= " + constraintCategory + "\n\t"+"constraintName= "
+				+ constraintName + "\n";
 	}
 	
 	

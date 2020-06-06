@@ -13,7 +13,6 @@ import model.component.Component;
  */
 public class DimensionConstraint extends AbstractConstraint {
 
-	private String name;
 
 	/**
 	 * 
@@ -25,11 +24,11 @@ public class DimensionConstraint extends AbstractConstraint {
 		super(name);
 	}
 	
-	@Override
-	public String getConstraintName() {
-		// TODO Auto-generated method stub
-		return name;
-	}
+//	@Override
+//	public String getConstraintName() {
+//		// TODO Auto-generated method stub
+//		return name;
+//	}
 
 	/**
 	 * Check if this Constraint is compatible with the list of others constraints given
