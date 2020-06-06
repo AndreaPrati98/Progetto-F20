@@ -29,7 +29,6 @@ public class EqualsConstraint extends AbstractConstraint {
 
 	@Override
 	public boolean checkList(List<Component> oldCheckedComponents, Component componentToCheck) {
-		System.out.println("Controllo constraint "+super.getConstraintName());
 		List<Attribute> oldAttributesAlreadyChecked = this.selectAttributeSameName(oldCheckedComponents);
 		List<Attribute> newAttributesToCheck = this.selectAttributeSameName(componentToCheck);
 				
@@ -37,7 +36,6 @@ public class EqualsConstraint extends AbstractConstraint {
 		//che fossero da controllare da questo vincolo, quindi non può andare in conflitto con l'altra lista
 		//quindi per questo vincolo è tutto ok
 		if(oldAttributesAlreadyChecked == null || newAttributesToCheck == null) {
-			System.out.println("Una delle due liste e' nulla");
 			return true;
 		}
 		//Devo fare un doppio ciclo for per iterare sulla lista dei nuovi attributi esternamente e poi
@@ -48,7 +46,6 @@ public class EqualsConstraint extends AbstractConstraint {
 		for(Attribute newAttribute : newAttributesToCheck) {
 			for(Attribute oldAttribute : oldAttributesAlreadyChecked) {
 				if(newAttribute.getValue() != oldAttribute.getValue()) {
-					System.out.println(newAttribute.getValue()+ "!="+ oldAttribute.getValue());
 					return false;	
 				}
 			}			

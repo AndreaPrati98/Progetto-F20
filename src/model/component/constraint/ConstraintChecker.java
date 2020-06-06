@@ -25,7 +25,6 @@ public class ConstraintChecker implements InterfaceConstraintChecker {
 	 */
 	@Override
 	public List<AbstractConstraint> check(Component newComponent, List<Component> oldComponents) {
-		System.out.println("Entro nel constraint checker");
 //		List<Constraint> constraintErrors = new ArrayList<Constraint>();
 //		
 //		//Creo una lista totale di tutti i vincoli già presenti nelle vecchie componenti
@@ -51,11 +50,6 @@ public class ConstraintChecker implements InterfaceConstraintChecker {
 		
 		PersistenceFacade facade = PersistenceFacade.getIstance();
 		List<AbstractConstraint> listOfConstraints = facade.getAllConstraints();
-		System.out.println("I miei constraint:");
-		for(AbstractConstraint constraint : listOfConstraints) {
-			System.out.println(constraint.getConstraintName());
-		}
-		
 		List<AbstractConstraint> listOfConstraintsThatAreViolated = new ArrayList<AbstractConstraint>();
 		
 		for(AbstractConstraint constraint : listOfConstraints) {
@@ -63,14 +57,7 @@ public class ConstraintChecker implements InterfaceConstraintChecker {
 				listOfConstraintsThatAreViolated.add(constraint);
 		}		
 		
-		if(listOfConstraintsThatAreViolated.isEmpty()) {
-			System.out.println("Tutti i vincoli sono rispettati");
-		} else {
-			System.out.println("Vincoli violati:");
-			for(AbstractConstraint c : listOfConstraintsThatAreViolated) {
-				System.out.println(c.getConstraintName());
-			}
-		}
+
 		
 		return listOfConstraintsThatAreViolated;		
 	}
