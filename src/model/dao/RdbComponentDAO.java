@@ -56,7 +56,7 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 //						System.out.println("È VINCOLANTE " + isBinding);
 					}
 
-					a = new Attribute(nameStdAtt, attValue, isBinding, isPresentable, category);
+					a = new Attribute(nameStdAtt, attValue, constraintName, isBinding, isPresentable, category);
 					attributes.put(nameStdAtt, a);
 				}
 
