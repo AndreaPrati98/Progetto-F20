@@ -73,12 +73,11 @@ public abstract class AbstractConstraint {
 
 	protected List<Attribute> selectAttributeSameName(Component componentFromWichExtracts){
 		List<Attribute> list = new ArrayList<Attribute>();
-		Attribute tmpAttribute = componentFromWichExtracts.getAttributeByName(this.name);
+		List<Attribute> tmpAttribute = componentFromWichExtracts.getAttributesByConstraint(this.name);
 		
-		//Per ora abbiamo supposto che esiste un solo attributo per componente con lo stesso nome
-		//del vincolo
+		
 		if(tmpAttribute != null)
-			list.add(tmpAttribute);
+			list.addAll(tmpAttribute);
 		
 		if(list.isEmpty())
 			return null;

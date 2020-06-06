@@ -75,6 +75,7 @@ public class DimensionConstraint extends AbstractConstraint {
 
 	@Override
 	public boolean checkList(List<Component> oldCheckedComponents, Component componentToCheck) {
+		System.out.println("Controllo constraint "+super.getConstraintName());
 		List<Attribute> oldAttributesAlreadyChecked = this.selectAttributeSameName(oldCheckedComponents);
 		List<Attribute> newAttributesToCheck = this.selectAttributeSameName(componentToCheck);
 		
