@@ -13,6 +13,10 @@ public class mainJunitTester {
 			System.out.println(elem.toString());
 		}
 		
+		System.out.println("Test effettuati: "+ result.getRunCount());
+		System.out.println("Test falliti: " + result.getFailureCount());
+		System.out.println("Test con successo " + (result.getRunCount() - result.getFailureCount()));
+		
 	}
 
 }
