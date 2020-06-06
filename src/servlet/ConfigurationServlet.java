@@ -34,12 +34,6 @@ public class ConfigurationServlet extends MyServlet {
 		type.add("power");
 		type.add("gpu");
 		
-		System.out.println("ConfigurationServlet");
-		//RequestDispatcher rd =  request.getRequestDispatcher("/provaImmagine.jsp");
-		//rd.forward(request, response);
-		System.out.println("Shit");
-
-		//response.getWriter().write("MERDA");
 		response.getWriter().write(Rythm.render("configuration.html",catalog.getComponentList(),type));
 	}
 	
