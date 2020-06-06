@@ -75,7 +75,6 @@ public class DimensionConstraint extends AbstractConstraint {
 
 	@Override
 	public boolean checkList(List<Component> oldCheckedComponents, Component componentToCheck) {
-		System.out.println("Controllo dimension constraint "+this.getConstraintName());
 		List<Attribute> oldAttributesAlreadyChecked = this.selectAttributeSameName(oldCheckedComponents);
 		List<Attribute> newAttributesToCheck = this.selectAttributeSameName(componentToCheck);
 		
@@ -83,7 +82,6 @@ public class DimensionConstraint extends AbstractConstraint {
 		//che fossero da controllare da questo vincolo, quindi non può andare in conflitto con l'altra lista
 		//quindi per questo vincolo è tutto ok
 		if(oldAttributesAlreadyChecked == null || newAttributesToCheck == null) {
-			System.out.println("Una lista e' vuota");
 			return true;
 		}
 		//Dovro ciclare su liste di attributi diversi in base al fatto che il nuovo attributo 
@@ -105,7 +103,6 @@ public class DimensionConstraint extends AbstractConstraint {
 					double oldExternalValue = Double.parseDouble(oldExternalAttribute.getValue()); 
 					
 					if(newInternalValue > oldExternalValue) {
-						System.out.println(newInternalValue+ ">"+ oldExternalValue);
 						return false;	
 					}
 				}			
@@ -117,7 +114,6 @@ public class DimensionConstraint extends AbstractConstraint {
 					double oldInternalValue = Double.parseDouble(oldInternalAttribute.getValue()); 
 					
 					if(oldInternalValue > newExternallValue) {
-						System.out.println(oldInternalValue+ ">"+ newExternallValue);
 						return false;
 					}					
 					
@@ -125,7 +121,6 @@ public class DimensionConstraint extends AbstractConstraint {
 			}
 		}
 		
-		System.out.println("Tutti i controlli sono andati a buon fine");
 		return true;
 	}
 }
