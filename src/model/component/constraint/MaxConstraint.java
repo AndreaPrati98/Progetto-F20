@@ -36,10 +36,14 @@ public class MaxConstraint extends AbstractConstraint {
 		if(oldAttributesAlreadyChecked == null || newAttributesToCheck == null)
 			return true;
 		
-
+		//Metto insieme le due liste perchè i max constraint vanno controllati sulla totalità degli attributi
+		//della confugurazione
+		List<Attribute> attributesToCheck = oldAttributesAlreadyChecked;
+		attributesToCheck.addAll(newAttributesToCheck);
+		
 		//Filtro per dividerli in liste
-		List<Attribute> internalAttributesFilteredList = this.filterAttributesList(oldAttributesAlreadyChecked, ConstraintCategory.INTERNAL);
-		List<Attribute> externalAttributesFilteredList = this.filterAttributesList(oldAttributesAlreadyChecked, ConstraintCategory.EXTERNAL);
+		List<Attribute> internalAttributesFilteredList = this.filterAttributesList(attributesToCheck, ConstraintCategory.INTERNAL);
+		List<Attribute> externalAttributesFilteredList = this.filterAttributesList(attributesToCheck, ConstraintCategory.EXTERNAL);
 		
 		
 		//Per prima cosa controllo che nessuna delle due lista sia nulla, poichè in tal caso sicuramente
@@ -54,21 +58,21 @@ public class MaxConstraint extends AbstractConstraint {
 		//Per farlo ciclo su tutti gli external (sia nuovi che vecchi) per cercare il vero 
 		//massimizzatore. Se il massimizzatore non cè ritorno true, quindi faccio subito questo controllo
 		
-		//La newAttributesToCheck è una lista, ma in realtà in un componente non posso avere  un 
-		//attribute che è sia external che un internal per lo stesso MaxConstraint.
-		//Di conseguenza quella lista ha un solo elemento
-		
-		Attribute newAttribute = newAttributesToCheck.get(0);
+//		//La newAttributesToCheck è una lista, ma in realtà in un componente non posso avere  un 
+//		//attribute che è sia external che un internal per lo stesso MaxConstraint.
+//		//Di conseguenza quella lista ha un solo elemento
+//		
+//		Attribute newAttribute = newAttributesToCheck.get(0);
 		
 		//Copio le liste filtrate dei vecchi componenti in delle nuove (potrebbe essere inutile)
 		List<Attribute> listWhereToFindTheMax =  externalAttributesFilteredList;
 		List<Attribute> listOfInternalToCheckTheMax =  internalAttributesFilteredList;
 		 
-		//Devo capire dove collocare il nuovo attribute del nuovo componente
-		if(newAttribute.getConstraintCategory() == ConstraintCategory.EXTERNAL)
-			listWhereToFindTheMax.add(newAttribute);
-		else if(newAttribute.getConstraintCategory() == ConstraintCategory.INTERNAL)
-			listOfInternalToCheckTheMax.add(newAttribute);
+//		//Devo capire dove collocare il nuovo attribute del nuovo componente
+//		if(newAttribute.getConstraintCategory() == ConstraintCategory.EXTERNAL)
+//			listWhereToFindTheMax.add(newAttribute);
+//		else if(newAttribute.getConstraintCategory() == ConstraintCategory.INTERNAL)
+//			listOfInternalToCheckTheMax.add(newAttribute);
 			
 		//Cerco l'attributo massimizzatore
 		Attribute maximizzatorAttribute = listWhereToFindTheMax.get(0);

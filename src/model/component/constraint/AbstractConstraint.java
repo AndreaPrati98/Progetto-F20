@@ -55,12 +55,12 @@ public abstract class AbstractConstraint {
 	 */
 	protected List<Attribute> selectAttributeSameName(List<Component> componentsFromWichExtracts){
 		List<Attribute> list = new ArrayList<Attribute>();
-		Attribute tmpAttribute; 
+		List<Attribute> tmpAttribute; 
 		
 		for(Component c : componentsFromWichExtracts) {	
-			tmpAttribute = c.getAttributeByName(this.name);
-			if(tmpAttribute != null){
-				list.add(tmpAttribute);
+			tmpAttribute = c.getAttributesByConstraint(this.name);
+			if(!tmpAttribute.isEmpty()){
+				list.addAll(tmpAttribute);
 			}
 		}	
 		

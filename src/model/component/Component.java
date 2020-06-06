@@ -1,6 +1,8 @@
 package model.component;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import model.component.performanceAlgorithms.InterfacePerformanceEstimator;
@@ -145,6 +147,17 @@ public class Component {
 
 	public String getModel() {
 		return model;
+	}
+	
+	public List<Attribute> getAttributesByConstraint(String constraintName) {
+		List<Attribute> att = new ArrayList<>();
+		for(Attribute a : attributesMap.values()) {
+			if(a.getConstraintName().equals(constraintName)) {
+				att.add(a);
+			}
+		}
+		
+		return att;
 	}
 	
 
