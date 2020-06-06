@@ -57,6 +57,13 @@ public class ConstraintChecker implements InterfaceConstraintChecker {
 				listOfConstraintsThatAreViolated.add(constraint);
 		}		
 		
+		if(listOfConstraintsThatAreViolated.isEmpty()) {
+			System.out.println("Tutti i constraint sono rispettati");
+		} else {
+			for(AbstractConstraint con : listOfConstraintsThatAreViolated) {
+				System.out.println("Violato constraint "+con.getConstraintName());
+			}
+		}
 
 		
 		return listOfConstraintsThatAreViolated;		
