@@ -9,7 +9,7 @@ import model.component.constraint.ConstraintCategory;
  *
  */
 public class Attribute {
-	private String name, value;
+	private String name, value, constraintName;
 	private boolean isBinding, isPresentable;
 	private ConstraintCategory constraintCategory;
 	
@@ -17,6 +17,13 @@ public class Attribute {
 	//Di conseguemza va cambiato Component (a cui va aggiunto un metodo getAttributesByConstraintName)
 	//e il ConstraintChecker, che non dovrà più usare name ma constraintName
 	
+	/**
+	 * Constructor for not binding attributes, which has no constraintName
+	 * @param name
+	 * @param value
+	 * @param isBinding
+	 * @param isPresentable
+	 */
 	public Attribute(String name, String value, boolean isBinding, boolean isPresentable) {
 		super();
 		this.name = name;
@@ -24,10 +31,32 @@ public class Attribute {
 		this.isBinding = isBinding;
 		this.isPresentable = isPresentable;
 	}
-
-	public Attribute(String name, String value, boolean isBinding, boolean isPresentable,
-			String constraintCategory) {
+	
+	/**
+	 * Constructor for binding attribute, with a reference to an equals constraint
+	 * @param name
+	 * @param value
+	 * @param constraintName
+	 * @param isBinding
+	 * @param isPresentable
+	 */
+	public Attribute(String name, String value, String constraintName, boolean isBinding, boolean isPresentable) {
 		this(name, value, isBinding, isPresentable);
+		this.constraintName=constraintName;
+	}
+	
+	/**
+	 * Constructor for binding attribute, with a reference to a dimension or max constraint
+	 * @param name
+	 * @param value
+	 * @param constraintName
+	 * @param isBinding
+	 * @param isPresentable
+	 * @param constraintCategory
+	 */
+	public Attribute(String name, String value, String constraintName, boolean isBinding, boolean isPresentable,
+			String constraintCategory) {
+		this(name, value, constraintName, isBinding, isPresentable);
 		
 		// L'ho fatto così se no avrei dovuto far vedere al CompoenntDAO l'enum ConstraintCategory
 		for (ConstraintCategory elem : ConstraintCategory.values()) {
@@ -76,6 +105,10 @@ public class Attribute {
 
 	public void setConstraintCategory(ConstraintCategory constraintCategory) {
 		this.constraintCategory = constraintCategory;
+	}
+
+	public String getConstraintName() {
+		return constraintName;
 	}
 
 	@Override
