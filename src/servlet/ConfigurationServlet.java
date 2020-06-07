@@ -22,6 +22,16 @@ public class ConfigurationServlet extends MyServlet {
 	}
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		
+		if(request.getSession().getAttribute("email") == null){
+			response.sendRedirect("/login");		
+			System.out.println("Utente nullo "+ request.getSession().getAttribute("email"));
+			return; 
+		}else {
+			System.out.println("Utente non nullo "+ request.getSession().getAttribute("email"));
+		}
+		
+		
 		ComponentCatalog catalog = new ComponentCatalog();
 		List<String> type=new ArrayList<String>();
 		type.add("case");
