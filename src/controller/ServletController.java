@@ -77,7 +77,7 @@ public class ServletController {
 	}
 
 	public void printConf() {
-
+		for (int i = 0; i < 5; i++) System.out.println(); //Serve a fare spazio biacno
 		System.out.println(configurator.getConfiguration());
 
 	}
