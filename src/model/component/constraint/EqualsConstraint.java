@@ -45,7 +45,7 @@ public class EqualsConstraint extends AbstractConstraint {
 		//quindi devo controllare solo che abbiano valore diverso per dire che sono incompatibili
 		for(Attribute newAttribute : newAttributesToCheck) {
 			for(Attribute oldAttribute : oldAttributesAlreadyChecked) {
-				if(newAttribute.getValue() != oldAttribute.getValue()) {
+				if(!newAttribute.getValue().equals(oldAttribute.getValue())) {
 					return false;	
 				}
 			}			
