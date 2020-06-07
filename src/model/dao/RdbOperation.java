@@ -159,13 +159,31 @@ public class RdbOperation {
 		try {
 			stmt = c.createStatement();
 			ResultSet rs = stmt.executeQuery(
-					"SELECT*\n" + "FROM User where email=" + email);
+					"SELECT*\n" + "FROM User where email='" + email +"'");
 			return rs;
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
 		}
 		return null;
 	}
+	
+	public ResultSet login(String email, String password) {
+		String sql = "SELECT * FROM User WHERE email = ? AND password = ?";
+		PreparedStatement ps;
+		
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setString(1, email);
+			ps.setString(2, password);
+			return ps.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+	
 
 	public boolean addUser(String name, String cognome, String email, String password, boolean isAdmin) {
 		String sql = "INSERT INTO User(firstName,lastName,email,password,isAdmin) VALUES(?,?,?,?,?)";

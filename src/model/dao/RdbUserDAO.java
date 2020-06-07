@@ -43,4 +43,20 @@ public class RdbUserDAO implements InterfaceUserDAO {
 
 		return null;
 	}
+
+	@Override
+	public boolean login(String email, String password) {
+		ResultSet rs = dbop.login(email, password);
+	
+		//Se c'è una riga (quella corretta) il primo next è ok
+		try {
+			if(rs.next())
+				return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		return false;
+	}
 }

@@ -9,6 +9,7 @@ import model.dao.PersistenceFacade;
 import servlet.ApplicationServer;
 import servlet.ConfigurationServlet;
 import servlet.HomeServlet;
+import servlet.LoginServlet;
 import servlet.MyServlet;
 import servlet.RegisterServlet;
 
@@ -20,6 +21,8 @@ public class Tester {
 		servlet.add(new HomeServlet("home","/"));
 		servlet.add(new RegisterServlet("register", "/sign-in"));
 		servlet.add(new ConfigurationServlet("configuration", "/configuration/*"));
+		servlet.add(new LoginServlet("login", "/login"));
+		servlet.add(new LoginServlet("logout", "/logout"));
 		new ApplicationServer(8080, servlet).start();
 		
 		// Questo va fatto all'avvio per inizializzare gli id da usare per le configurazioni

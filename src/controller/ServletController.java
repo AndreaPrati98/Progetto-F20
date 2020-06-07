@@ -1,14 +1,17 @@
 package controller;
 
 import java.util.ArrayList;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import model.customer.*;
 import model.catalog.ComponentCatalog;
 import model.component.Component;
 import model.configuration.Configuration;
 import model.configurator.Configurator;
+import model.dao.PersistenceFacade;
 
 /**
  * 
@@ -22,6 +25,7 @@ public class ServletController {
 
 	public static ServletController controller;
 	Configurator configurator;
+	Customer customer;
 
 	private ServletController() {
 		ComponentCatalog catalog = new ComponentCatalog();
@@ -77,5 +81,17 @@ public class ServletController {
 		System.out.println(configurator.getConfiguration());
 
 	}
+	
+	public boolean login(String email, String password){
+		PersistenceFacade facade = PersistenceFacade.getIstance();
+		//Dovrei avere una funzione di login sulla facade		
+		if(facade.login(email, password)) {			
+			//customer = facade.getUser(email);
+			return true;
+		}
+		
+		return false;
+	}
+	
 
 }

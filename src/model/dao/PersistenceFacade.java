@@ -70,6 +70,11 @@ public class PersistenceFacade {
 		return c;
 		
 	}
+	
+	public boolean login(String email, String password){
+				
+		return udao.login(email, password);
+	}
 
 	public boolean updateConfiguration(Configuration conf, Customer user) {
 
