@@ -1,12 +1,17 @@
 package servlet;
 
+import java.io.File;
 import java.net.URL;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.session.DefaultSessionCache;
+import org.eclipse.jetty.server.session.FileSessionDataStore;
+import org.eclipse.jetty.server.session.SessionCache;
+import org.eclipse.jetty.server.session.SessionHandler;
 import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -30,7 +35,22 @@ public class ApplicationServer {
 	public void start(){
 		initTemplateEngine();
 		server = new Server(port);
+		
+		FileSessionDataStore fileSessionDataStore = new FileSessionDataStore();
+	    File baseDir = new File(System.getProperty("java.io.tmpdir"));
+	    File storeDir = new File(baseDir, "javalin-session-store");
+	    storeDir.mkdir();
+	    fileSessionDataStore.setStoreDir(storeDir);
+	
+		
+		SessionHandler sessionHandler = new SessionHandler();
+	    SessionCache sessionCache = new DefaultSessionCache(sessionHandler);
+	    sessionCache.setSessionDataStore(fileSessionDataStore);
+	    sessionHandler.setSessionCache(sessionCache);
+	    sessionHandler.setHttpOnly(true);
+		
 		ServletContextHandler handler = new ServletContextHandler();		
+		handler.setSessionHandler(sessionHandler);
 		
 		for (MyServlet servlet2 : servlet) {
 			handler.addServlet(new ServletHolder(servlet2), servlet2.getPath());
