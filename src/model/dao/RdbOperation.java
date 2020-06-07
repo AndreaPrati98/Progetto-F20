@@ -65,8 +65,9 @@ public class RdbOperation {
 			pstmt.setString(1, type);
 			pstmt.setString(2, model);
 			// execute the delete statement
-			pstmt.executeUpdate();
-			return true;
+			if(pstmt.executeUpdate()==1) {
+				return true;
+			}	
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
