@@ -52,6 +52,7 @@ public class ConfigurationServlet extends MyServlet {
 		
 		ServletController controller = ServletController.getIstance();
 		//Prende solo /add anche se il path completo è /configuration/add
+				
 		if(request.getPathInfo().equals("/add")){
 			String modelOfComponentToInsert = request.getParameter("model");
 			System.out.println("Voglio inserire il modello "+modelOfComponentToInsert);
