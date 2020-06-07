@@ -9,6 +9,13 @@ import java.util.List;
 import model.component.Attribute;
 import model.component.Component;
 
+/**
+ *
+ * @author Garau
+ * @author Prati
+ *
+ */
+
 public class RdbComponentDAO implements InterfaceComponentDAO {
 
 	private RdbOperation dbop;
@@ -74,5 +81,18 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 
 		return c;
 	}
+	
+	//Update, remove component
+	
+	public boolean removeComponent(String model, String type) {
+		boolean result = dbop.removeComponent(model, type);	
+		return result;
+	}
+	
+	public boolean updateComponent() {
+		return false;
+		
+	}
+	
 
 }
