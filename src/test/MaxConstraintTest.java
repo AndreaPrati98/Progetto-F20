@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.Ignore;
 import org.junit.Test; // importante che sia org.junit.Test
 
-import model.component.constraint.MaxConstraint;
+import main.model.configurator.constraint.MaxConstraint;
 
 /**
  * 
