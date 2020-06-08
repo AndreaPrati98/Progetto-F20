@@ -1,6 +1,6 @@
 <!-- Frenkli Buzhiqi, Stefano Butera, Alessandro Capici -->
 @args() {
-	List<model.component.Component> componentlist,
+	List<main.model.configurator.component.Component> componentlist,
 	List<String> type
 }
 <html>
@@ -77,7 +77,7 @@
 		        <span>
 	        	<form action="#" style="overflow: auto">
 	            <table id="@(tipo)Table" >
-		        @for(model.component.Component cl:componentlist){
+		        @for(main.model.configurator.component.Component cl:componentlist){
 		        	@if(cl.getTypeComponent().equals(tipo)){
 		        		<tr class="row@(tipo)Table" >
 	        				<th>
@@ -94,7 +94,7 @@
 				        		Price <hr>
 				        		<span name="@(cl.getModel())_price"> @(cl.getPrice())</span>$
 				        	</th>
-				        	@for(Map.Entry<String,model.component.Attribute> entry : cl.getAttributesMap().entrySet()) {
+				        	@for(Map.Entry<String,main.model.configurator.component.Attribute> entry : cl.getAttributesMap().entrySet()) {
 								@if(entry.getValue().isPresentable()){
 									<th>@(entry.getValue().getName()) <hr> @(entry.getValue().getValue())</th> 
 								}
