@@ -15,6 +15,8 @@ public class LogoutServlet extends MyServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		String email = (String) request.getSession().getAttribute("email");
+		this.getServletConfig().getServletContext().removeAttribute(email+"_controller");
 		request.getSession().invalidate();
 		response.sendRedirect("/");
 	}
