@@ -19,7 +19,7 @@ public class LoginServlet extends MyServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().write(Rythm.render("login.html"));
+		response.getWriter().write(Rythm.render("login.html", false));
 	}
 
 	@Override
@@ -45,7 +45,9 @@ public class LoginServlet extends MyServlet {
 		    this.getServletConfig().getServletContext().setAttribute(email+"_controller", controller); // add to application context
 			response.sendRedirect("/configuration");
 		} else {
-			response.sendRedirect("/login");
+			//response.sendRedirect("/login");
+			response.getWriter().write(Rythm.render("login.html", true));
+
 		}
 
 	}
