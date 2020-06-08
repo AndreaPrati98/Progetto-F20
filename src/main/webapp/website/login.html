@@ -1,6 +1,8 @@
 
 <!-- Frenkli Buzhiqi -->
-
+@args() {
+	boolean wrongPassword
+}
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -51,9 +53,16 @@
             <div class="center container">
                 <div class="input-field col s5">
                     <input id="Password" name="Password" type="password" class="validate">
-                    <label for="Password">Password</label>
+                    <label for="Password">Password</label>                	
                 </div>
             </div>
+            @if(wrongPassword){
+            <div class="center container">
+                <div class="input-field col s5">
+                       <span class="red-text"><b>Email or password wrong</b></span>        
+                </div>
+            </div>
+            }
             <div class="center container">
                 <button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="submitForm">
                     Login
