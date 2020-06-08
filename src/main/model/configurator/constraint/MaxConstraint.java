@@ -1,10 +1,13 @@
 package main.model.configurator.constraint;
 
-
 import java.util.List;
+
+import org.eclipse.jetty.util.security.Constraint;
 
 import main.model.configurator.component.Attribute;
 import main.model.configurator.component.Component;
+import main.model.configurator.constraint.AbstractConstraint;
+import main.model.configurator.constraint.ConstraintCategory;
 
 /**
  * 
@@ -99,6 +102,18 @@ public class MaxConstraint extends AbstractConstraint {
 		
 		return true;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		boolean areEquals = false;
+		
+		if(this.getConstraintName() == ((MaxConstraint)obj).getConstraintName())
+			areEquals = true;
+		
+		return areEquals;
+	}
+	
+	
 
 	
 
