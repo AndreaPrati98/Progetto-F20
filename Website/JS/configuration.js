@@ -20,10 +20,19 @@ $('.selection').change(function() {
 });
 
 $('#checkBtn').click(function(){
-		checkConfiguration();
-	
+		checkConfiguration();	
 	}
 );
+
+$("#resetBtn").click(function(){
+	//Serve a manipolare solo quelli checkati altrimenti mando più richiesta di rimozione del
+	//dovuto 
+	//TODO
+	//(in realtà non sono riuscito a farlo e quindi brutarlmente invia la richiesta di rimozione al server tutti i componenti anche
+	//se questi non sono stati checkati lol )
+    $(".selection").prop("checked", false);
+    $(".selection").trigger('change');
+});
 
 function checkConfiguration(){
   let dataToSend = "";
