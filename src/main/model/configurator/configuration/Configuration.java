@@ -161,33 +161,33 @@ public class Configuration {
 	}
 
 	/**
-	 * se il numero dei componenti aggiunti � minore del numero di quelli
-	 * necessari restituisco subito false altrimenti con il doppio ciclo controllo
-	 * se gli elementi di neededComponent sono contenuti tutti in added component
 	 * 
 	 * @return true added components contains essential components
 	 */
 	public boolean checkConf() {
-		boolean flag = false;
-		if (addedComponents.size() >= neededComponents.size()) {
-			for (String nc : neededComponents) {
-				for (Component ac : addedComponents) {
-					if (nc.equalsIgnoreCase((ac.getTypeComponent()))) {
-						flag = true;
-						break;
-					}
-				}
-				if (!flag) {
-					return flag; // se la configurazione non � funzionante ritorno subito flag al programma,
-									// senza curarmi delle altre componenti
-				}
-				flag = false; // reimposto il flag a false per quando ripartira' il ciclo
-			}
-			flag = true;
-			return flag; // se tutto fila liscio ritorno il flag = true
-
-		}
-		return flag;
+//		boolean flag = false;
+//		if (addedComponents.size() >= neededComponents.size()) {
+//			for (String nc : neededComponents) {
+//				for (Component ac : addedComponents) {
+//					if (nc.equalsIgnoreCase((ac.getTypeComponent()))) {
+//						flag = true;
+//						break;
+//					}
+//				}
+//				if (!flag) {
+//					return flag; // se la configurazione non � funzionante ritorno subito flag al programma,
+//									// senza curarmi delle altre componenti
+//				}
+//				flag = false; // reimposto il flag a false per quando ripartira' il ciclo
+//			}
+//			flag = true;
+//			return flag; // se tutto fila liscio ritorno il flag = true
+//
+//		}
+//		return flag;
+		InterfaceConstraintChecker cc = new ConstraintChecker();
+		return cc.checkIfComplete(addedComponents);
+		
 	}
 	
 	public boolean addComponentWithoutChecking(Component c) {
@@ -213,7 +213,7 @@ public class Configuration {
 
 	/**
 	 * 
-	 * @return
+	 * @return the abstract constraint error list
 	 */
 
 	public List<AbstractConstraint> getConstraintErrors() {
@@ -260,6 +260,27 @@ public class Configuration {
 
 	public int getId() {
 		return id;
+	}
+	
+	/**
+	 * 
+	 * @return a performance index between 0 and 100 
+	 * or -1 if it is not possible to compute the index
+	 */
+	public double getPerformance() {
+		double performanceIndex = 0;
+		if(addedComponents.isEmpty()) {
+			return -1;
+		}
+		for(Component c : addedComponents) {
+			double cIndex =c.getPerformanceIndex();
+			if(cIndex<0) {
+				return -1;
+			}
+			performanceIndex+=cIndex;
+		}
+		
+		return performanceIndex;
 	}
 	
 	

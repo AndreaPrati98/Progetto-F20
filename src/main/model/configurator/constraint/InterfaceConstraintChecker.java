@@ -20,4 +20,11 @@ public interface InterfaceConstraintChecker {
 	 * @see Component 
 	 */
 	List<AbstractConstraint> check(Component newComponent, List<Component> oldComponents);
+	
+	/**
+	 * 
+	 * @param components in the configuration
+	 * @return true if all needed components are present, false if not all needed components are present
+	 */
+	boolean checkIfComplete(List<Component> components);
 }

@@ -17,6 +17,7 @@ public interface InterfacePerformanceEstimator {
 	 * 
 	 * @param componentAttributes
 	 * @return index of performance
+	 * @throws NullPointerException if cannot find the attributes needed to compute the performance
 	 */
 	public double computePerformance(Map<String, Attribute> componentAttributes);
 	

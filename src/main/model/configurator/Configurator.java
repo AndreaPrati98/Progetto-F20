@@ -1,10 +1,12 @@
 package main.model.configurator;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import main.model.configurator.component.Component;
 import main.model.configurator.configuration.Configuration;
+import main.model.configurator.constraint.AbstractConstraint;
 import main.model.people.costumer.Customer;
 
 /**
@@ -22,7 +24,6 @@ public class Configurator {
 	public Configurator(ComponentCatalog catalog,Configuration configuration) {
 		this.catalog = catalog;
 		this.configuration=configuration;
-
 	}
 	/**
 	 * @return catalog - returns the catalog 
@@ -96,6 +97,32 @@ public class Configurator {
 	 * */
 	public Customer getCustomer() {
 		return customer;
+	}
+	
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @return the last constrinatErrorList that the configurations getted trying to 
+	 * add an incompatible component.
+	 * If returns null means that the last add of a component worked correctly.
+	 */
+	public List<String> getListStringOfConstraintErrors(){
+		List<String> list = new ArrayList<String>();
+		
+		List<AbstractConstraint> costraintErrorsList = configuration.getConstraintErrors();
+		
+		for(AbstractConstraint constraint : costraintErrorsList){
+			list.add(constraint.getConstraintName());
+		}
+		
+		if(list.isEmpty())
+			return null;
+		
+		return list;
 	}
 	
 	
