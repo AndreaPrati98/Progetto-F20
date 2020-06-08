@@ -3,7 +3,7 @@ package test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import org.junit.Test;
+import org.junit.Test; // importante che sia org.junit.Test
 
 
 public class MaxConstraintTest {
