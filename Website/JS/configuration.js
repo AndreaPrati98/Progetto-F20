@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 $('.selection').change(function() {
+	//Svuoto quello che dice o no invalid configuration
+	$("#configurationCheckResultText").text('');
     let modelString = $(this).attr('id');	 
     if (this.checked) {
         add(modelString);
@@ -34,7 +36,6 @@ function checkConfiguration(){
 	//alert('pippo');
 	console.log(convertedData);
 	console.log(convertedData['response']);
-	$("#configurationCheckResultText").text('');
 
 	if(convertedData['response'] == 'ok'){
 		$("#configurationCheckResultText").text('Valid configuration');
