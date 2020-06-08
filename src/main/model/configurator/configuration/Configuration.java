@@ -262,6 +262,25 @@ public class Configuration {
 		return id;
 	}
 	
-	
+	/**
+	 * 
+	 * @return a performance index between 0 and 100 
+	 * or -1 if it is not possible to compute the index
+	 */
+	public double getPerformance() {
+		double performanceIndex = 0;
+		if(addedComponents.isEmpty()) {
+			return -1;
+		}
+		for(Component c : addedComponents) {
+			double cIndex =c.getPerformanceIndex();
+			if(cIndex<0) {
+				return -1;
+			}
+			performanceIndex+=cIndex;
+		}
+		
+		return performanceIndex;
+	}
 
 }
