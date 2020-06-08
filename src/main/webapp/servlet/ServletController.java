@@ -28,6 +28,9 @@ public class ServletController {
 	public ServletController() {
 		ComponentCatalog catalog = new ComponentCatalog();
 		List<String> neededComponents = new ArrayList<String>();
+		
+		//TODO Nella versioe finale questa lista di stringhe deve essere recuperata dal 
+		//db dove nella tabella sono presenti
 		neededComponents.add("cpu");
 		neededComponents.add("mobo");
 		neededComponents.add("ram");
@@ -53,6 +56,13 @@ public class ServletController {
 //		return controller;
 //	}
 
+	/**
+	 * Add the component with the given model to the configuration. 
+	 * 
+	 * @param model
+	 * @return true if the Component with the specified model as parameter is
+	 * added to the configuration
+	 */
 	public boolean addToConfiguration(String model) {
 		ComponentCatalog catalog = configurator.getCatalog();
 		Component component = catalog.getComponentByModel(model);
@@ -61,6 +71,13 @@ public class ServletController {
 		return configurator.addComponent(component);
 	}
 
+	/**
+	 * Remove the component with the given model from the configuration.
+	 * 
+	 * @param model
+	 * @return true if the Component with the specified model as parameter is 
+	 * removed to the configuratio
+	 */
 	public boolean removeFromConfiguration(String model) {
 		ComponentCatalog catalog = configurator.getCatalog();
 		Component component = catalog.getComponentByModel(model);
@@ -73,12 +90,23 @@ public class ServletController {
 		return null;
 	}
 
+	/**
+	 * Debug method for print the configuration
+	 */
 	public void printConf() {
 		for (int i = 0; i < 5; i++) System.out.println(); //Serve a fare spazio biacno
 		System.out.println(configurator.getConfiguration());
 
 	}
 	
+	/**
+	 * Try to log with the given email and password, and if correct retrive the Customer
+	 * inside for the Configurator object.
+	 * 
+	 * @param email
+	 * @param password
+	 * @return true if the login goes right, false otherwise
+	 */
 	public boolean login(String email, String password){
 		PersistenceFacade facade = PersistenceFacade.getIstance();
 		//Dovrei avere una funzione di login sulla facade		
@@ -91,6 +119,12 @@ public class ServletController {
 		return false;
 	}
 	
+	/**
+	 * Check if the configuration is correct relatively at other things like 
+	 * single component.
+	 * 
+	 * @return true if the configuration is correct 
+	 */
 	public boolean checkConfiguration(){
 		return  configurator.checkConf();	
 	}
