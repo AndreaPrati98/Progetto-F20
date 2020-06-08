@@ -17,14 +17,13 @@ import main.services.persistence.PersistenceFacade;
  * @author Ale e Cic
  *
  *         Classe che serve da tramite tra tutti i servlet ed il nostro modello.
- *         Dovendo essere usata da tutti ed avendone bisogno di un unica
- *         istanza, devo averla singleton
+ *         Ne viene istanziata una per ogni utente e viene poi conservata nel context
+ *         handler.
  */
 public class ServletController {
 
 	//public static ServletController controller;
 	Configurator configurator;
-	Customer customer;
 
 	public ServletController() {
 		ComponentCatalog catalog = new ComponentCatalog();
@@ -71,9 +70,7 @@ public class ServletController {
 	}
 
 	public Map<String, List<Component>> getConfiguration() {
-
 		return null;
-
 	}
 
 	public void printConf() {
@@ -85,13 +82,21 @@ public class ServletController {
 	public boolean login(String email, String password){
 		PersistenceFacade facade = PersistenceFacade.getIstance();
 		//Dovrei avere una funzione di login sulla facade		
-		if(facade.login(email, password)) {			
-			//customer = facade.getUser(email);
+		if(facade.login(email, password)) {				
+			//Da testare la login che funzioni, è brutto farlo così, magari lo sposto
+			//configurator.setCustomer(facade.getUser(email));
 			return true;
 		}
 		
 		return false;
 	}
 	
+	public boolean checkConfiguration(){
+		return  configurator.checkConf();	
+	}
+	
+	public List<String> getConstraintErrors(){
+		return configurator.getListStringOfConstraintErrors();
+	}
 
 }

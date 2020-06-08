@@ -213,7 +213,7 @@ public class Configuration {
 
 	/**
 	 * 
-	 * @return
+	 * @return the abstract constraint error list
 	 */
 
 	public List<AbstractConstraint> getConstraintErrors() {
@@ -282,5 +282,7 @@ public class Configuration {
 		
 		return performanceIndex;
 	}
+	
+	
 
 }
