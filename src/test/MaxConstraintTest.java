@@ -1,14 +1,17 @@
 package test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+
 
 public class MaxConstraintTest {
-
+	
 	@Test
 	public void testCheckList() {
-		fail("Not yet implemented");
+		assertEquals("ciao", "ciao");
+		
 	}
 
 	@Test

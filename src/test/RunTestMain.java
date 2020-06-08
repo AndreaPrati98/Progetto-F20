@@ -7,7 +7,6 @@ import org.junit.runner.notification.Failure;
 public class RunTestMain {
 
 	public static void main(String[] args) {
-		
 		Result res = JUnitCore.runClasses(MaxConstraintTest.class);
 		
 		for (Failure failure : res.getFailures()) {
