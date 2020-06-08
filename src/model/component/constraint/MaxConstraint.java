@@ -100,6 +100,18 @@ public class MaxConstraint extends AbstractConstraint {
 		return true;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		boolean areEquals = false;
+		
+		if(this.getConstraintName() == ((MaxConstraint)obj).getConstraintName())
+			areEquals = true;
+		
+		return areEquals;
+	}
+	
+	
+
 	
 
 }
