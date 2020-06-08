@@ -27,5 +27,6 @@
 	<classpathentry kind="lib" path="Util/JAR/junit-4.12.jar"/>
 	<classpathentry kind="lib" path="Util/JAR/javax.mail.jar"/>
 	<classpathentry kind="lib" path="Util/JAR/activation.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
