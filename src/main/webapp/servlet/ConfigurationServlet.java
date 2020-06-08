@@ -23,8 +23,11 @@ public class ConfigurationServlet extends MyServlet {
 	public static final String responseString = "response";
 	public static final String responseOkString = "ok";
 	public static final String responseNotOkString = "not";	
+	public static final String responseToRedirectString = "redirect";	
+	
 	//Chiave per la mappa della risposta quando ho errori
 	public static final String responseErrorString = "error";
+	
 	
 	
 	public ConfigurationServlet(String name, String path) {
@@ -80,7 +83,7 @@ public class ConfigurationServlet extends MyServlet {
 			//Devo fare in modo di inviare di risposta come ajax un erorre
 			//e se trovo quell'errore invio un json che venendo letto lato
 			//client dal javascript poi forza a sloggare e poi loggare.
-			response.sendRedirect("/logout"); 
+			redirectToLogout(request,response);
 			return;
 		}
 		
@@ -94,6 +97,14 @@ public class ConfigurationServlet extends MyServlet {
 		}
 		//Fa altre cose
 		
+	}
+
+	private void redirectToLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
+		responseMapToSend.put(responseString, responseToRedirectString);
+		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
+		String json = responseJsonToSend.toJSONString();	
+		response.getWriter().write(json);	
 	}
 
 	private void check(HttpServletRequest request, HttpServletResponse response, ServletController controller) {

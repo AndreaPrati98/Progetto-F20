@@ -38,6 +38,8 @@ function add(modelString){
      	$("#totalPrice").text(totalPrice);
 	    var addedComponentHtmlList = $(".collection");
 	    addedComponentHtmlList.append("<li class='collection-item' name='"+modelString+"'><div>"+modelString+"<a href='#!' class='secondary-content'></a></div></li>");
+	 }else if(convertedData['response'] == 'redirect'){
+		 window.location.replace("/logout");
 	 }else{
 		alert("Hai violato i segunti vincoli: "+convertedData['error']); 
 	 	$('#'+modelString).prop("checked", false);
@@ -62,7 +64,9 @@ function remove(modelString,listItemParent){
 		totalPrice=totalPrice-price;
 		$("#totalPrice").text(totalPrice);
 		listItemParent.remove();	
-	   }
+	  }else if(convertedData['response'] == 'redirect'){
+			 window.location.replace("/logout");
+	  }
   });
   
 }
