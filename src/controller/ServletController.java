@@ -23,11 +23,11 @@ import model.dao.PersistenceFacade;
  */
 public class ServletController {
 
-	public static ServletController controller;
+	//public static ServletController controller;
 	Configurator configurator;
 	Customer customer;
 
-	private ServletController() {
+	public ServletController() {
 		ComponentCatalog catalog = new ComponentCatalog();
 		List<String> neededComponents = new ArrayList<String>();
 		neededComponents.add("cpu");
@@ -46,13 +46,14 @@ public class ServletController {
 		Configuration configuration = new Configuration(neededComponents, singleComponents);
 		configurator = new Configurator(catalog, configuration);
 	}
-
-	public static ServletController getIstance() {
-		if (controller == null)
-			controller = new ServletController();
-
-		return controller;
-	}
+	
+//
+//	public static ServletController getIstance() {
+//		if (controller == null)
+//			controller = new ServletController();
+//
+//		return controller;
+//	}
 
 	public boolean addToConfiguration(String model) {
 		ComponentCatalog catalog = configurator.getCatalog();

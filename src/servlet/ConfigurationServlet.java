@@ -23,12 +23,13 @@ public class ConfigurationServlet extends MyServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
-		if(request.getSession().getAttribute("email") == null){
+		String email = (String) request.getSession().getAttribute("email");
+		if(email == null){
 			response.sendRedirect("/login");		
-			System.out.println("Utente nullo "+ request.getSession().getAttribute("email"));
+			System.out.println("Utente nullo "+ email);
 			return; 
 		}else {
-			System.out.println("Utente non nullo "+ request.getSession().getAttribute("email"));
+			System.out.println("Utente non nullo "+ email);
 		}
 		
 		
@@ -50,7 +51,24 @@ public class ConfigurationServlet extends MyServlet {
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
-		ServletController controller = ServletController.getIstance();
+		//ServletController controller = (ServletController) request.getSession().getAttribute("controller");
+		String email = (String) request.getSession().getAttribute("email");
+		
+		if(email == null) {
+			response.sendRedirect("/login");		
+			return;
+		}
+			
+			
+		ServletController controller = (ServletController) this.getServletConfig().getServletContext().getAttribute(email+"_controller");
+		//Se il controller è nullo (cosa che non dovrebbe succedere poichè viene istanziato
+		//durante la login, vuol dire che qualcuno sta facendo una cattiva post e quindi lo
+		//redirigo alla logout
+		if(controller== null) {
+			response.sendRedirect("/logout");	
+			return;
+		}
+		
 		//Prende solo /add anche se il path completo è /configuration/add
 				
 		if(request.getPathInfo().equals("/add")){
