@@ -7,4 +7,5 @@ import main.model.configurator.component.Component;
 public interface InterfaceComponentDAO {
 	
 	List<Component> getAllComponent();
+	List<String> getNeededComponents();
 }

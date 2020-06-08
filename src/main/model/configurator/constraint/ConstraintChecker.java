@@ -68,6 +68,31 @@ public class ConstraintChecker implements InterfaceConstraintChecker {
 		
 		return listOfConstraintsThatAreViolated;		
 	}
+	
+	@Override
+	public boolean checkIfComplete(List<Component> components) {
+		PersistenceFacade pf = PersistenceFacade.getIstance();
+		List<String> neededComponents = pf.getNeededComponents();
+		if(neededComponents==null) {
+			System.out.println("Errore nella lettura da db");
+			return false;
+		}
+		for(String neededElem : neededComponents) {
+			if(!(checkIfComponentIsPresent(neededElem, components))) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean checkIfComponentIsPresent(String typeComp, List<Component> components) {
+		for(Component c : components) {
+			if(c.getTypeComponent().equals(typeComp)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	
 	

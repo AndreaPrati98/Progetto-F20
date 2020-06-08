@@ -161,33 +161,33 @@ public class Configuration {
 	}
 
 	/**
-	 * se il numero dei componenti aggiunti � minore del numero di quelli
-	 * necessari restituisco subito false altrimenti con il doppio ciclo controllo
-	 * se gli elementi di neededComponent sono contenuti tutti in added component
 	 * 
 	 * @return true added components contains essential components
 	 */
 	public boolean checkConf() {
-		boolean flag = false;
-		if (addedComponents.size() >= neededComponents.size()) {
-			for (String nc : neededComponents) {
-				for (Component ac : addedComponents) {
-					if (nc.equalsIgnoreCase((ac.getTypeComponent()))) {
-						flag = true;
-						break;
-					}
-				}
-				if (!flag) {
-					return flag; // se la configurazione non � funzionante ritorno subito flag al programma,
-									// senza curarmi delle altre componenti
-				}
-				flag = false; // reimposto il flag a false per quando ripartira' il ciclo
-			}
-			flag = true;
-			return flag; // se tutto fila liscio ritorno il flag = true
-
-		}
-		return flag;
+//		boolean flag = false;
+//		if (addedComponents.size() >= neededComponents.size()) {
+//			for (String nc : neededComponents) {
+//				for (Component ac : addedComponents) {
+//					if (nc.equalsIgnoreCase((ac.getTypeComponent()))) {
+//						flag = true;
+//						break;
+//					}
+//				}
+//				if (!flag) {
+//					return flag; // se la configurazione non � funzionante ritorno subito flag al programma,
+//									// senza curarmi delle altre componenti
+//				}
+//				flag = false; // reimposto il flag a false per quando ripartira' il ciclo
+//			}
+//			flag = true;
+//			return flag; // se tutto fila liscio ritorno il flag = true
+//
+//		}
+//		return flag;
+		InterfaceConstraintChecker cc = new ConstraintChecker();
+		return cc.checkIfComplete(addedComponents);
+		
 	}
 	
 	public boolean addComponentWithoutChecking(Component c) {
