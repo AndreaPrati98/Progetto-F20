@@ -107,9 +107,18 @@ public class ConfigurationServlet extends MyServlet {
 		response.getWriter().write(json);	
 	}
 
-	private void check(HttpServletRequest request, HttpServletResponse response, ServletController controller) {
-		// TODO Auto-generated method stub
+	private void check(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
+		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
 		
+		if(controller.checkConfiguration()) {
+			responseMapToSend.put(responseString, responseOkString);
+		}else{
+			responseMapToSend.put(responseString, responseNotOkString);
+		}
+		
+		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
+		String json = responseJsonToSend.toJSONString();	
+		response.getWriter().write(json);
 	}
 
 	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
