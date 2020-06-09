@@ -25,7 +25,7 @@ public class inizializationHome {
 		
 		
 		System.out.println("prova");
-		// Questo va fatto all'avvio per inizializzare gli id da usare per le configurazioni
+	/*	// Questo va fatto all'avvio per inizializzare gli id da usare per le configurazioni
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		Configuration.setLastUsedId(pf.getLastUsedId());
 		ComponentCatalog CatHome = new ComponentCatalog();
@@ -92,7 +92,7 @@ public class inizializationHome {
 		
 		
 		
-		/*
+		
 		 * mi da degli errori di SQL che non capisco ho fatto il check non funziona il caricamento delle configurazioni 
 		 * 
 		 */
