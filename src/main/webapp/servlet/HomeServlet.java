@@ -16,7 +16,7 @@ import main.services.persistence.PersistenceFacade;
 
 /**
  * 
- * @author Stefano Butera
+ * @author Stefano Butera, alesessandro
  *
  */
 
@@ -32,17 +32,20 @@ public class HomeServlet extends MyServlet{
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-	    response.getWriter().write(Rythm.render("home.rtm"));
-	}
-
-	@Override
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		PersistenceFacade pr = PersistenceFacade.getIstance();
 		Configuration conf1 = pr.getConfiguration(1); // le prime tre configurazioni sono quelle della HOME
 		Configuration conf2 = pr.getConfiguration(2);
 		Configuration conf3 = pr.getConfiguration(3);
-		String val1 = "ste";
-		response.getWriter().write(Rythm.render("sign-in.rtm",val1));
+		
+	
+		
+		response.getWriter().write(Rythm.render("home.rtm",conf1,conf2,conf3));
+	}
+
+	@Override
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		
+		response.getWriter().write(Rythm.render("sign-in.rtm"));
 	}
 	
 	

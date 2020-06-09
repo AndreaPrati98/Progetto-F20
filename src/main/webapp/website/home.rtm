@@ -1,4 +1,10 @@
-<!-- Alessandro Capici -->
+<!-- Alessandro Capici Stefano Butera -->
+@args() {
+	main.model.configurator.configuration.Configuration conf1,
+	main.model.configurator.configuration.Configuration conf2,
+	main.model.configurator.configuration.Configuration conf3,
+	
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,11 +64,11 @@
 				<h3>Descrizone pc</h3>
 				<br>
 				<ul>
-					<h5><b>Nome:</b> @(val1)</h5> <br>
-					<p><li><h4>cpu: ciao sodco </h4></li></p>
-					<p><li><h4>mobo:</h4></li></p>
-					<p><li><h4>gpu:</h4></li></p>
-					<p><li><h4>case:</h4></li></p>
+					@for(main.model.configurator.component.Component cl:conf1.getAddedComponents()){
+					 
+					<p><li> @(cl.getModel())   </h4></li></p>
+					 } 
+					
 					<br>
 					<li><a class="waves-effect waves-light btn">view</a></li>
 				</ul>
@@ -78,10 +84,10 @@
 				<h3>Descrizone pc</h3>
 				<br>
 				<ul>
-					<p><li><h4>cpu:</h4></li></p>
-					<p><li><h4>mobo:</h4></li></p>
-					<p><li><h4>gpu:</h4></li></p>
-					<p><li><h4>case:</h4></li></p>
+					@for(main.model.configurator.component.Component cl:conf2.getAddedComponents()){
+					 
+					<p><li> @(cl.getModel())   </h4></li></p>
+					}
 					<br>
 					<li><a class="waves-effect waves-light btn">View</a></li>
 				</ul>
@@ -112,10 +118,10 @@
 				<h3>Descrizone pc</h3>
 				<br>
 				<ul>
-					<p><li><h4>cpu:</h4></li></p>
-					<p><li><h4>mobo:</h4></li></p>
-					<p><li><h4>gpu:</h4></li></p>
-					<p><li><h4>case:</h4></li></p>
+					@for(main.model.configurator.component.Component cl:conf3.getAddedComponents()){
+					 
+					<p><li> @(cl.getModel())   </h4></li></p>
+					}
 					<br>
 					<li><a class="waves-effect waves-light btn">View</a></li>
 				</ul>
