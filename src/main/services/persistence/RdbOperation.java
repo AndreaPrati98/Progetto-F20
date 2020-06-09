@@ -127,7 +127,7 @@ public class RdbOperation {
 		try {
 			stmt = c.createStatement();
 			ResultSet rs = stmt.executeQuery(
-					"SELECT*\n" + "FROM ElementConfiguration NATURAL join Configuration\n" + "where EmailU=" + email);
+					"SELECT*\n" + "FROM ElementConfiguration NATURAL join Configuration\n" + "where EmailU='" + email+"'");
 			return rs;
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
