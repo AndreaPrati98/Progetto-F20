@@ -28,6 +28,8 @@ public class MaxConstraint extends AbstractConstraint {
 	 * @param Constraint type:{@link Constraint}
 	 * @return true if the component will respect the constraint,false if it will not respect the costraint
 	 */	
+	
+	//Metodo un po' lungo, considera se si può spezzare in sotto metodi
 	@Override
 	public boolean checkList(List<Component> oldCheckedComponents, Component componentToCheck) {
 		List<Attribute> oldAttributesAlreadyChecked = this.selectAttributeSameName(oldCheckedComponents);

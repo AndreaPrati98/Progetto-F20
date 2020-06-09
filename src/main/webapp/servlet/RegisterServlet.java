@@ -31,6 +31,7 @@ public class RegisterServlet extends MyServlet {
 		response.getWriter().write(Rythm.render("sign-in.rtm",true));
 	}
 	
+	//TODO: Forse conviene creare un metodo che cripta così disponibile per tutte le classi
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		boolean flag=true;

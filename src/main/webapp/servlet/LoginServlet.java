@@ -22,6 +22,7 @@ public class LoginServlet extends MyServlet {
 		response.getWriter().write(Rythm.render("login.html", false));
 	}
 
+	//TODO: Creare metodi privati per alleggerire il tutto
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("Email");

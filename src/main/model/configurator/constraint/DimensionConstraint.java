@@ -73,7 +73,8 @@ public class DimensionConstraint extends AbstractConstraint {
 			return true;
 		}
 	}*/
-
+	
+	//Metodo un po' lungo, vedere se si può rifattorizzare spezzando in vari sottometodi
 	@Override
 	public boolean checkList(List<Component> oldCheckedComponents, Component componentToCheck) {
 		List<Attribute> oldAttributesAlreadyChecked = this.selectAttributeSameName(oldCheckedComponents);

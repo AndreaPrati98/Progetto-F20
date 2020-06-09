@@ -61,7 +61,8 @@ public class ConfigurationServlet extends MyServlet {
 		response.getWriter().write(Rythm.render("configuration.html",catalog.getComponentList(),type));
 	}
 	
-	
+	//TODO: Cambiare le stringhe boiler con costanti per i percorsi ed i nomi degli attributi
+	//da recuperare
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		//ServletController controller = (ServletController) request.getSession().getAttribute("controller");
