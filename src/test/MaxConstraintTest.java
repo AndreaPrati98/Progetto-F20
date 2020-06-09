@@ -1,12 +1,20 @@
 package test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test; // importante che sia org.junit.Test
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameter;
 
 import main.model.configurator.constraint.MaxConstraint;
 
@@ -16,8 +24,15 @@ import main.model.configurator.constraint.MaxConstraint;
  *
  */
 
-
 public class MaxConstraintTest {
+	
+	private static int c;
+	
+	@Before
+	public void initialize() {
+		c++;
+		System.out.println(c);
+	}
 	
 	@Test
 	public void testConstructor() {
