@@ -112,7 +112,8 @@ public class ServletController {
 		//Dovrei avere una funzione di login sulla facade		
 		if(facade.login(email, password)) {				
 			//Da testare la login che funzioni, è brutto farlo così, magari lo sposto
-			//configurator.setCustomer(facade.getUser(email));
+			//TODO Aggiustare perchè causa eccezione il recupero dello User
+			configurator.setCustomer(facade.getUser(email));
 			return true;
 		}
 		
@@ -131,6 +132,10 @@ public class ServletController {
 	
 	public List<String> getConstraintErrors(){
 		return configurator.getListStringOfConstraintErrors();
+	}
+	
+	public boolean saveConfiguration(){
+		return configurator.saveConfiguration();
 	}
 
 }

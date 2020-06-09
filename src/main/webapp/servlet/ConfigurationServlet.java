@@ -94,66 +94,12 @@ public class ConfigurationServlet extends MyServlet {
 			remove(request, response, controller);
 		}else if(request.getPathInfo().equals("/check")){
 			check(request, response, controller);
-		}
-		//Fa altre cose
-		
-	}
-
-	private void redirectToLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
-		responseMapToSend.put(responseString, responseToRedirectString);
-		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
-		String json = responseJsonToSend.toJSONString();	
-		response.getWriter().write(json);	
-	}
-
-	private void check(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
-		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
-		
-		if(controller.checkConfiguration()) {
-			responseMapToSend.put(responseString, responseOkString);
-		}else{
-			responseMapToSend.put(responseString, responseNotOkString);
+		}else if(request.getPathInfo().equals("/save")){
+			save(request, response, controller);
 		}
 		
-		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
-		String json = responseJsonToSend.toJSONString();	
-		response.getWriter().write(json);
 	}
-
-	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
-		String modelOfComponentToRemove = request.getParameter("model");	
-		System.out.println("Sto facendo la rimozione di "+modelOfComponentToRemove);
-		
-		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
-		//Facciamo l'inserimento con i controlli con le classi che abbiamo
-		boolean allOk = controller.removeFromConfiguration(modelOfComponentToRemove);
-		String json = "";
-		
-		if(allOk){
-			//Aggiungo i campi alla mappa, poi converto in stringa json
-			responseMapToSend.put(responseString, responseOkString);
-			JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
-			json = responseJsonToSend.toJSONString();					
-			
-			controller.printConf();
-			System.out.println("b");
-		}else{
-			
-			responseMapToSend.put(responseString, responseNotOkString);
-			JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
-			json = responseJsonToSend.toJSONString();
-
-			controller.printConf();
-			System.out.println("m");
-		}
-		
-
-		//Invio la risposta
-		response.getWriter().write(json);
-		
-	}
-
+	
 	private void add(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		//Recupero il modello
 		String modelOfComponentToInsert = request.getParameter("model");
@@ -163,32 +109,119 @@ public class ConfigurationServlet extends MyServlet {
 
 		//Facciamo l'inserimento con i controlli con le classi che abbiamo
 		boolean allOk = controller.addToConfiguration(modelOfComponentToInsert);	
-		
 		String json = "";
 		
 		if(allOk){
-			System.out.println("Aggiunta ha funzionato");
-			
-			//Aggiungo i campi alla mappa, poi converto in stringa json
-			responseMapToSend.put(responseString, responseOkString);
-			JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
-			json = responseJsonToSend.toJSONString();	
-			System.out.println(json);
-			
-			controller.printConf();
-			System.out.println("b");
+			json = getJsonOkResponse();
+			//controller.printConf();
+			System.out.println("Aggiunta andata a buon fine");
 		}else{
-			List<String> listConstraintErrors = controller.getConstraintErrors();
-			responseMapToSend.put(responseString, responseNotOkString);
-			responseMapToSend.put(responseErrorString, listConstraintErrors);
-			JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
-			json = responseJsonToSend.toJSONString();					
 			
-			System.out.println(json);
-			controller.printConf();
-			System.out.println("m");
+			json = getJsonNotOkResponse(controller);
+			//controller.printConf();
+			System.out.println("Aggiunta andata male");
 		}
 		
 		response.getWriter().write(json);
 	}
+	
+	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
+		String modelOfComponentToRemove = request.getParameter("model");	
+		System.out.println("Sto facendo la rimozione di "+modelOfComponentToRemove);
+		
+		//Facciamo l'inserimento con i controlli con le classi che abbiamo
+		boolean allOk = controller.removeFromConfiguration(modelOfComponentToRemove);
+		String json = "";
+		
+		if(allOk){
+			json = getJsonOkResponse();				
+			
+			//controller.printConf();
+			//System.out.println("b");
+		}else{
+			json = getJsonNotOkResponse();				
+			//controller.printConf();
+			//System.out.println("m");
+		}
+		
+		//Invio la risposta
+		response.getWriter().write(json);
+		
+	}
+	
+
+	private void save(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
+		String json = "";
+		if(controller.saveConfiguration()) {
+			json = getJsonOkResponse();
+		}else {
+			json = getJsonNotOkResponse();
+		}
+		
+		System.out.println(json);
+		
+		response.getWriter().write(json);
+	}
+
+	private void redirectToLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String json = getJsonRedirectResponse();	
+		response.getWriter().write(json);	
+	}
+
+	private void check(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
+	
+		String json = "";
+		if(controller.checkConfiguration()) {
+			json = getJsonOkResponse();
+		}else{
+			json = getJsonNotOkResponse();
+		}
+		
+		response.getWriter().write(json);
+	}
+	
+	
+	/**
+	 * Metodo generico quando devo solo scrivere che è andato storto
+	 * @return
+	 */
+	private String getJsonNotOkResponse() {
+		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
+		responseMapToSend.put(responseString, responseNotOkString);
+		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
+		return  responseJsonToSend.toJSONString();
+	}
+	
+	/**
+	 * Metodo che serve per dire che l'add è andata a male perchè ha violato dei contraint
+	 * @return
+	 */
+	private String getJsonNotOkResponse(ServletController controller) {
+		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
+		List<String> listConstraintErrors = controller.getConstraintErrors();
+		
+		responseMapToSend.put(responseString, responseNotOkString);
+		responseMapToSend.put(responseErrorString, listConstraintErrors);
+		
+		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
+		
+		return  responseJsonToSend.toJSONString();
+	}
+	
+	
+	
+	private String getJsonOkResponse() {
+		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
+		responseMapToSend.put(responseString, responseOkString);
+		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
+		return responseJsonToSend.toJSONString();		
+	}
+
+	private String getJsonRedirectResponse() {
+		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
+		responseMapToSend.put(responseString, responseToRedirectString);
+		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
+		return responseJsonToSend.toJSONString();
+	}
+	
 }
