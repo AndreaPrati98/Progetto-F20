@@ -35,23 +35,20 @@ public class HomeServlet extends MyServlet{
 		PersistenceFacade pr = PersistenceFacade.getIstance();
 		Configuration conf1 = pr.getConfiguration(1); // le prime tre configurazioni sono quelle della HOME
 		Configuration conf2 = pr.getConfiguration(2);
-		Configuration conf3 = pr.getConfiguration(3);
-		
-	
-		
+		Configuration conf3 = pr.getConfiguration(3);		
 		response.getWriter().write(Rythm.render("home.rtm",conf1,conf2,conf3));
 	}
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		
 		response.getWriter().write(Rythm.render("sign-in.rtm"));
+		response.sendRedirect("sign-in.rtm");
+		System.out.println("syyd");
 	}
 	
 	
 	
 	
-		
 		
 	}
 	

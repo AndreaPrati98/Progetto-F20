@@ -44,6 +44,7 @@ public class LoginServlet extends MyServlet {
 			request.getSession().setAttribute("email", email);
 		    this.getServletConfig().getServletContext().setAttribute(email+"_controller", controller); // add to application context
 			response.sendRedirect("/configuration");
+			
 		} else {
 			//response.sendRedirect("/login");
 			response.getWriter().write(Rythm.render("login.html", true));
