@@ -8,6 +8,7 @@ import main.model.configurator.component.Component;
 import main.model.configurator.configuration.Configuration;
 import main.model.configurator.constraint.AbstractConstraint;
 import main.model.people.costumer.Customer;
+import main.services.persistence.PersistenceFacade;
 
 /**
  * 
@@ -123,6 +124,11 @@ public class Configurator {
 			return null;
 		
 		return list;
+	}
+	
+	public boolean saveConfiguration(){
+		PersistenceFacade facade = PersistenceFacade.getIstance();
+		return 	facade.addConfiguration(configuration, customer);
 	}
 	
 	

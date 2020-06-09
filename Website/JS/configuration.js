@@ -1,6 +1,7 @@
 $(document).ready(function(){
     $('.collapsible').collapsible();
-  });
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.sidenav');
     var instances = M.Sidenav.init(elems, {edge:'right'});
@@ -33,6 +34,28 @@ $("#resetBtn").click(function(){
     $(".selection").prop("checked", false);
     $(".selection").trigger('change');
 });
+
+$("#saveBtn").click(function(){
+	//Serve a manipolare solo quelli checkati altrimenti mando più richiesta di rimozione del
+	$("#saveBtn").val('true');
+	
+	//Richiesta ajx
+	save();
+	
+});
+
+//TODO Da mettere a posto perchè se faccio la redirezione via codice chiede conferma
+
+//Se l'utente non ha mai schiacciato save, gli dice che perderà i dati se esce dalla pagina.
+//window.onbeforeunload = function() {
+//	console.log('Stiamo uscendo');
+//	if( $("#alreadySaved").val() == 'false'){
+//		//TODO
+//	    return "";
+//	}
+//    return "";
+//}
+
 
 function checkConfiguration(){
   let dataToSend = "";
@@ -109,4 +132,22 @@ function remove(modelString,listItemParent){
 	  }
   });
   
+}
+  
+function save(){
+	let posting = $.post( "/configuration/save");
+	posting.done(function(data) {
+	  var convertedData =  JSON.parse(data);
+	  if(convertedData['response'] == 'ok'){
+			//alert("ok remove "+modelString);
+			alert("Salvata con successo")
+			//window.location.replace("/profile");
+	  }else if(convertedData['response'] == 'redirect'){
+			 window.location.replace("/logout");
+	  }else{
+		  alert("Qualcosa è andato storto");
+	  }
+		
+		
+	});  
 }

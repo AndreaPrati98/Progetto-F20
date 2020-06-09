@@ -43,6 +43,7 @@ public class Configuration {
 		this.id=lastUsedId;
 	}
 	
+	//TODO Non esiste un costruttore che crea la configurazione parte dal nome, farne uno
 	// Questa andra' tolta quando gestiremo i neededComponent e i singleComponent tramite vincoli
 	public Configuration(List<String> neededComponents, Map<String, Boolean> singleComponents) {
 		this.neededComponents = neededComponents;
