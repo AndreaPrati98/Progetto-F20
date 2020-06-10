@@ -11,6 +11,7 @@ import main.webapp.servlet.HomeServlet;
 import main.webapp.servlet.LoginServlet;
 import main.webapp.servlet.LogoutServlet;
 import main.webapp.servlet.MyServlet;
+import main.webapp.servlet.ProfileServlet;
 import main.webapp.servlet.RegisterServlet;
 
 public class TesterServlet {
@@ -23,6 +24,7 @@ public class TesterServlet {
 		servlet.add(new ConfigurationServlet("configuration", "/configuration/*"));
 		servlet.add(new LoginServlet("login", "/login"));
 		servlet.add(new LogoutServlet("logout", "/logout"));
+		servlet.add(new ProfileServlet("profile", "/profile"));
 		new ApplicationServer(8080, servlet).start();
 		
 		// Questo va fatto all'avvio per inizializzare gli id da usare per le configurazioni

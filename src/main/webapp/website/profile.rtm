@@ -1,7 +1,8 @@
 @args() {
 	String nome,
 	String Cognome,
-	String mail
+	String mail,
+	String profilePic
 }
 <html>
 <head>
@@ -33,7 +34,7 @@
 			<h5><b>E-mail:</b> @(mail)</h5>
 		</div>
 		<div class="col s6">
-			<img src="../IMG/yotobi.jpg">
+			<img src="@(profilePic)">
 		</div>
 	</div>
 
