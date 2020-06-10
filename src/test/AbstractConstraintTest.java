@@ -5,11 +5,9 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,7 +15,6 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
-import main.model.configurator.component.Attribute;
 import main.model.configurator.component.Component;
 
 /**
@@ -88,22 +85,81 @@ class AbstractConstraintTest {
 			{"cpuSocket", "1200", "CpuSocket", true, true, null,
 			"cpuSocket", "1200", "CpuSocket", true, true, null},
 		};
-		
+		//List<Object[]> c = Arrays.asList(data);
 		return Arrays.asList(data);
 	}
 	
-	@Before
-	public void initialize() {
-		Map<String, Attribute> attributeMap = new HashMap<String, Attribute>();
-		Attribute att1 = new Attribute(name1, value1, constraintName1, isBinding1, isPresentable1, constraintCategory1);
-		Attribute att2 = new Attribute(name2, value2, constraintName2, isBinding2, isPresentable2, constraintCategory2);
-		attributeMap.put(name1, att1);
-		this.oldComp = new ArrayList<Component>();
-		this.newComp = new Component(""+contatore, ""+contatore, 54, attributeMap);
+	/**
+	 * This method is used to initialize some binding Attributes  
+	 */
+	@BeforeClass
+	public void initializeEqualsAttributes() {
+		/*
+		 * ci serve un esempio di Max, uno di Equals e uno di Dimension.
+		 */
+		
+		//Credo che per il max sia necessario usare più gruppi di questo tipo.
+		Object[][] max = new Object[][] {
+			{"power", "", "Power", true, true, "internal"},
+			{"power", "", "Power", true, true, "external"},
+			{"power", "", "Power", true, true, "internal"},
+			{"power", "", "Power", true, true, "internal"},
+		};
+			
+	}
+	
+	private static ArrayList<Object[]> initializeEqualsList() {
+		/*
+		 * Costruisco così la lista, almeno creo un Component con un 
+		 * attributo solo e riesco a provare il funzionamento dei singoli constraint.
+		 * Qui posso sfruttare il fatto che non ho internal ed external per
+		 * "interlacciare" gli attribti.
+		 */
+		
+		ArrayList<Object[]> buff = new ArrayList<Object[]>();
+		
+		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true});
+		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true});
+		buff.add(new Object[] {"cpuSocket", "1000", "CpuSocket", true, true});
+		buff.add(new Object[] {"cpuSocket", "800", "CpuSocket", true, true});
+		buff.add(new Object[] {"cpuSocket", "1000", "CpuSocket", true, true});
+
+		return buff;		
+	} 
+	
+	private static ArrayList<Object[]> initializeDimensionList() {
+		
+		/*
+		 * Costruisco così la lista, almeno creo un Component con un 
+		 * attributo solo e riesco a provare il funzionamento dei singoli constraint.
+		 * Qui dovrò andare di due in due per la creazione dei component (poichè ho internal
+		 * ed external)
+		 */
+		
+		ArrayList<Object[]> buff = new ArrayList<Object[]>();
+		
+		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
+		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
+		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "external"});
+		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
+		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "external"});
+		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
+		
+		return buff;		
 	}
 	
 	@Test
-	void testCheckList() {
+	void testCheckListMaxConstraint() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	void testCheckListDimensionConstraint() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	void testCheckListEqualsConstraint() {
 		fail("Not yet implemented");
 	}
 
