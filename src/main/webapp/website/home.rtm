@@ -71,7 +71,7 @@
 					 
    
 				<br>
-					<form id="Conf1" align="center" method="POST" action="caricoConf1">
+						<form action="/servlet/HomeServlet" method="post" >
 					<li><imput class="waves-effect waves-light btn" value = @conf1.getId()>View</a></li>
 				  </form>
 				</ul>
@@ -95,7 +95,7 @@
 
         
 					<br>
-					<form id="Conf2" align="center" method="POST" action="caricoConf2">
+						<form action="/servlet/HomeServlet" method="post" >
 					<li><imput class="waves-effect waves-light btn" value = @conf2.getId() >View</a></li>
 				  </form>
 				</ul>
@@ -131,7 +131,7 @@
 					<p><li> @(cl.getModel())   </h4></li></p>
 					}
 					<br>
-					<form id="Conf3" align="center" method="POST" action="caricoConf3">
+					<form action="/servlet/HomeServlet" method="post" >
 					<li><imput class="waves-effect waves-light btn" value = @conf3.getId() >View</a></li>
 				  </form>
 				</ul>
