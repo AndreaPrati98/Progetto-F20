@@ -112,7 +112,10 @@ public class PersistenceFacade {
 
 		return cosdao.removeConstraint(name);
 	}
-	
+	/**
+	 * 
+	 * @return the last id used for the configuration table as an integer.
+	 */
 	public int getLastUsedId() {
 		return confdao.getLastUsedId();
 	}
