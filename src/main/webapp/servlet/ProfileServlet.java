@@ -1,6 +1,7 @@
 package main.webapp.servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -28,10 +29,11 @@ public class ProfileServlet extends MyServlet{
 			Customer c = pf.getUser(email);
 			String name = c.getName();
 			String surname = c.getSurname();
-			String mail = c.getEmail();
 			//Da sostituire
 			String profilePic = "https://images.unsplash.com/photo-1484557985045-edf25e08da73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80";
-			response.getWriter().write(Rythm.render("profile.rtm", name, surname, mail, profilePic));
+			List<Configuration> conf;
+			conf =pf.getConfigurationByEmail(email);
+			response.getWriter().write(Rythm.render("profile.rtm", name, surname, email, profilePic, conf));
 		}else {
 			//altrimenti reindirizzo al login
 			response.sendRedirect("/login");
@@ -40,8 +42,6 @@ public class ProfileServlet extends MyServlet{
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		response.getWriter().write(Rythm.render("sign-in.rtm"));
-	
 		
 	}
 }
