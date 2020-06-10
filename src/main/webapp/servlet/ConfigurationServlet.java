@@ -58,6 +58,11 @@ public class ConfigurationServlet extends MyServlet {
 		type.add("power");
 		type.add("gpu");
 		
+		//Arrivato a questo punto devo istanziare una nuova configurazione
+
+		
+		
+		
 		response.getWriter().write(Rythm.render("configuration.html",catalog.getComponentList(),type));
 	}
 	
@@ -73,9 +78,6 @@ public class ConfigurationServlet extends MyServlet {
 			return;
 		}
 			
-		//Preparo una hash map in cui inserisco i messaggi di ritorno delle funzioni.
-		//Poi la convertirò in json e la invio.
-		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext().getAttribute(email+"_controller");
 		//Se il controller è nullo (cosa che non dovrebbe succedere poichè viene istanziato
 		//durante la login, vuol dire che qualcuno sta facendo una cattiva post e quindi lo

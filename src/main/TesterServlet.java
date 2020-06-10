@@ -24,7 +24,7 @@ public class TesterServlet {
 		servlet.add(new ConfigurationServlet("configuration", "/configuration/*"));
 		servlet.add(new LoginServlet("login", "/login"));
 		servlet.add(new LogoutServlet("logout", "/logout"));
-		new ApplicationServer(8082, servlet).start();
+		new ApplicationServer(8080, servlet).start();
 		
 		// Questo va fatto all'avvio per inizializzare gli id da usare per le configurazioni
 		PersistenceFacade pf = PersistenceFacade.getIstance();
