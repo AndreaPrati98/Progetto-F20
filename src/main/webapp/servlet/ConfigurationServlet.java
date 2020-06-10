@@ -59,7 +59,9 @@ public class ConfigurationServlet extends MyServlet {
 		type.add("gpu");
 		
 		//Arrivato a questo punto devo istanziare una nuova configurazione
-
+		//con un id particolare (ottenuto in qualche modo) e con quell'id
+		//devo pure poter salvare la prima volta il server ed una volta che ho salvato la 
+		//prima volta quella configurazione
 		
 		
 		
