@@ -53,22 +53,21 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 
 		ResultSet rs = dbop.getConfigurationByEmail(email);
 		Map<Integer, Configuration> confMap = new HashMap<>();
-		String ModelofC;
-		int Id;
-		String Name;
-		String Email;
+		String modelofC;
+		int id;
+		String name;
 		List<Configuration> configurations = null;
 		ComponentCatalog catalog = new ComponentCatalog();
 		Component c = null;
 		try {
 			while (rs.next()) {
-				Id = rs.getInt("Id");
-				if (!confMap.containsKey(Id)) {
-					confMap.put(Id, new Configuration(Id));
+				id = rs.getInt("Id");
+				if (!confMap.containsKey(id)) {
+					confMap.put(id, new Configuration(id));
 				}
-				ModelofC = rs.getString("ModelofC");
-				c = catalog.getComponentByModel(ModelofC);
-				confMap.get(Id).addComponentWithoutChecking(c);
+				modelofC = rs.getString("ModelofC");
+				c = catalog.getComponentByModel(modelofC);
+				confMap.get(id).addComponentWithoutChecking(c);
 			}
 
 			configurations = new ArrayList<Configuration>(confMap.values());
