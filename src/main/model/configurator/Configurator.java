@@ -22,6 +22,11 @@ public class Configurator {
 	private Customer customer;
 	private Configuration configuration;
 
+	public Configurator(ComponentCatalog catalog) {
+		super();
+		this.catalog = catalog;
+	}
+	
 	public Configurator(ComponentCatalog catalog,Configuration configuration) {
 		this.catalog = catalog;
 		this.configuration=configuration;
