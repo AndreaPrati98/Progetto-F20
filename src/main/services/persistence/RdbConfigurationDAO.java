@@ -72,7 +72,6 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 			}
 
 			configurations = new ArrayList<Configuration>(confMap.values());
-			System.out.println(configurations.get(0).getName());
 			return configurations;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
