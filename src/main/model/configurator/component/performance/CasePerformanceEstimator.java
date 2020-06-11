@@ -10,36 +10,28 @@ public class CasePerformanceEstimator implements InterfacePerformanceEstimator {
 	
 	@Override
 	public double computePerformance(Map<String, Attribute> componentAttributes) {
-		
 		double index = 0;
 		
-		if(componentAttributes == null) {
-			throw new NullPointerException("Invalid instance of componentAttributes");
-		}
-		
-		/*
-		 * I case hanno 2 standard attribute al momento, solo uno di questi interessa le performance, volendo
-		 */
-		
 		Attribute att = componentAttributes.get("formFactor");
-		
 		if(att == null) {
-			throw new NullPointerException("Invalid instance of Attribute");			
+			return -1;			
 		}
 		
 		String formFactor = att.getValue();
 		
-		if(formFactor == "atx") {
-			index = CasePerformanceEstimator.MAX_POINT_FORM_FACTOR;			
-		} else if (formFactor == "micro-atx") {
-			index = CasePerformanceEstimator.MAX_POINT_FORM_FACTOR * 2/3;			
-		} else if (formFactor == "mini-atx") {
-			index = CasePerformanceEstimator.MAX_POINT_FORM_FACTOR /3;
-		} else if(formFactor == null) {
-			index = -1;
+		return formFactorPerformance(formFactor);
+	}
+	
+	private double formFactorPerformance(String value) {
+		if(value.equals("atx")) {
+			return CasePerformanceEstimator.MAX_POINT_FORM_FACTOR;			
+		} else if (value.equals("micro-atx")) {
+			return CasePerformanceEstimator.MAX_POINT_FORM_FACTOR * 2/3;			
+		} else if (value.equals("mini-atx")) {
+			return CasePerformanceEstimator.MAX_POINT_FORM_FACTOR /3;
+		} else {
+			return -1;
 		}
-		
-		return index;
 	}
 
 }

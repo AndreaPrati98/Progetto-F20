@@ -23,7 +23,7 @@ public class MassStoragePerformanceEstimator implements InterfacePerformanceEsti
 		 */
 		String sizeString = componentAttributes.get("size").getValue();
 		String type = componentAttributes.get("type").getValue();
-		if(type == null) {
+		if(type == null || sizeString == null) {
 			return -1;
 		}
 		
@@ -35,28 +35,32 @@ public class MassStoragePerformanceEstimator implements InterfacePerformanceEsti
 			return -1;
 		}
 		
-		double index = 0;
-		if(type.equalsIgnoreCase("ssd")) {
-			index += MAX_POINT_TYPE;
-		} else if(type.equalsIgnoreCase("hdd")) {
-			index += MAX_POINT_TYPE/2;
-		} else {
-			index += 0;
-		}
+		return typePerformance(type) + sizePerformance(size);
 		
-		if(size>4000) {
-			index += MAX_POINT_SIZE;
-		} else if(size > 2000) {
-			index += 3*MAX_POINT_SIZE/4;
-		} else if(size > 1000) {
-			index += MAX_POINT_SIZE/2;
-		} else if(size > 500) {
-			index += MAX_POINT_SIZE/4;
+	}
+	
+	private double typePerformance(String value) {
+		if(value.equalsIgnoreCase("ssd")) {
+			return MAX_POINT_TYPE;
+		} else if(value.equalsIgnoreCase("hdd")) {
+			return MAX_POINT_TYPE/2;
 		} else {
-			index += 0;
+			return 0;
 		}
-		
-		return index;
+	}
+	
+	private double sizePerformance(int value) {
+		if(value>4000) {
+			return MAX_POINT_SIZE;
+		} else if(value > 2000) {
+			return 3*MAX_POINT_SIZE/4;
+		} else if(value > 1000) {
+			return MAX_POINT_SIZE/2;
+		} else if(value > 500) {
+			return MAX_POINT_SIZE/4;
+		} else {
+			return 0;
+		}
 	}
 
 }
