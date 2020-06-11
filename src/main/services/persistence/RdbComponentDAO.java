@@ -83,13 +83,23 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 	}
 	
 	//Update, remove component
+	public boolean addComponent(String model, String type) {
+		//TODO da implementare
+		return false;
+	}
 	
 	public boolean removeComponent(String model, String type) {
 		boolean result = dbop.removeComponent(model, type);	
 		return result;
 	}
 	
+	/**
+	 * quando sei amministratore mi fai selezionare una component a cui 
+	 * devo modificare dei campi
+	 * @return
+	 */
 	public boolean updateComponent() {
+		//TODO da implementare
 		return false;
 		
 	}
@@ -105,7 +115,6 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 				neededComp.add(elem);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			neededComp = null;
 		}
