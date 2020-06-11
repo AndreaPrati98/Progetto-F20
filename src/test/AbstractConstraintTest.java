@@ -130,13 +130,15 @@ public class AbstractConstraintTest {
 			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
 			oldCheckedComponents.add(c);
 			
-			System.out.println(oldCheckedComponents.get(0).getAttributeByName("ramSize").getValue() +" "+oldCheckedComponents.get(0).getAttributeByName("ramSize").getConstraintCategory());		
-			System.out.println(componentToCheck.getAttributeByName("ramSize").getValue() +" "+ componentToCheck.getAttributeByName("ramSize").getConstraintCategory());
+			System.out.println("old " + oldCheckedComponents.get(0).getAttributeByName("ramSize").getValue() +" "+oldCheckedComponents.get(0).getAttributeByName("ramSize").getConstraintCategory());		
+			System.out.println("toCheck "+ componentToCheck.getAttributeByName("ramSize").getValue() +" "+ componentToCheck.getAttributeByName("ramSize").getConstraintCategory());
 			System.out.println();
 			assertTrue(constraint.checkList(oldCheckedComponents, componentToCheck));
 			
-		}	
+		}
+		
 	}
+	
 
 	/**
 	 * @param attBuff
