@@ -8,7 +8,7 @@ public class RamPerformanceEstimator implements InterfacePerformanceEstimator {
 
 	@Override
 	public double computePerformance(Map<String, Attribute> componentAttributes) {
-		// TODO Auto-generated method stub
+		// TODO Metodo ancora da scrivere!
 		return 0;
 	}
 

@@ -18,31 +18,34 @@ public class PowerSupplyPerformanceEstimator implements InterfacePerformanceEsti
 		 * Considera il seguente parametro:
 		 * power
 		 * 
-		 * DEVO CONSIDERARE ALTRO??
 		 */
-		String powerString = componentAttributes.get("power").getValue();
+		Attribute att = componentAttributes.get("power");
+		if(att == null) {
+			return -1;
+		}
+		String powerString = att.getValue();
 		int power;
 		try {
 			power = Integer.parseInt(powerString);
 		} catch (NumberFormatException e) {
-			// La potenza non è disponibile tra gli attributi
 			return -1;
 		}
 		
-		double index = 0.0;
-		if(power>750) {
-			index += MAX_POINT_POWER;
-		} else if(power>650) {
-			index += 3*MAX_POINT_POWER/4;
-		} else if(power>550) {
-			index += MAX_POINT_POWER/2;
-		} else if(power>450) {
-			index += MAX_POINT_POWER/4;
+		return powerPerformance(power);
+	}
+	
+	private double powerPerformance(int value) {
+		if(value>750) {
+			return MAX_POINT_POWER;
+		} else if(value>650) {
+			return 3*MAX_POINT_POWER/4;
+		} else if(value>550) {
+			return MAX_POINT_POWER/2;
+		} else if(value>450) {
+			return MAX_POINT_POWER/4;
 		} else {
-			index += 0;
+			return 0;
 		}
-		
-		return index;
 	}
 
 }

@@ -10,22 +10,13 @@ public class CoolerPerformanceEstimator implements InterfacePerformanceEstimator
 	
 	@Override
 	public double computePerformance(Map<String, Attribute> componentAttributes) {
-
-		double index = 0;
-		
-		// Controllo giusto per sicurezza
-		if(componentAttributes == null) {
-			throw new NullPointerException("Invalid instance of componentAttributes");
-		}
-		
 		Attribute att = componentAttributes.get("tdp");
 		
 		if(att == null) {
-			throw new NullPointerException("Invalid instance of Attribute");			
+			return -1;			
 		}
 		
 		int tdp = -1; 
-		
 		try {
 			tdp = Integer.parseInt(att.getValue());
 			
@@ -35,21 +26,23 @@ public class CoolerPerformanceEstimator implements InterfacePerformanceEstimator
 			
 		}
 		
-		if(tdp > 1100) {
-			index = CoolerPerformanceEstimator.MAX_POINT_TDP;
-		} else if(tdp > 800) {
-			index = CoolerPerformanceEstimator.MAX_POINT_TDP * 2/3;			
-		} else if(tdp > 500) {
-			index = CoolerPerformanceEstimator.MAX_POINT_TDP/2;
-		} else if (tdp > 150) {
-			index = CoolerPerformanceEstimator.MAX_POINT_TDP/3;			
-		} else if(tdp > 100) {
-			index = CoolerPerformanceEstimator.MAX_POINT_TDP/4;			
+		return tdpPerformance(tdp);
+	}
+	
+	private double tdpPerformance(int value) {
+		if(value > 1100) {
+			return CoolerPerformanceEstimator.MAX_POINT_TDP;
+		} else if(value > 800) {
+			return CoolerPerformanceEstimator.MAX_POINT_TDP * 2/3;			
+		} else if(value > 500) {
+			return CoolerPerformanceEstimator.MAX_POINT_TDP/2;
+		} else if (value > 150) {
+			return CoolerPerformanceEstimator.MAX_POINT_TDP/3;			
+		} else if(value > 100) {
+			return CoolerPerformanceEstimator.MAX_POINT_TDP/4;			
 		} else {
-			return index;
+			return 0;
 		}
-		
-		return index;
 	}
 
 }

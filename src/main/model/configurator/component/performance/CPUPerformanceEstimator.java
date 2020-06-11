@@ -38,24 +38,19 @@ public class CPUPerformanceEstimator implements InterfacePerformanceEstimator {
 	 *
 	 */
 	@Override
-	public double computePerformance(Map<String, Attribute> componentAttributes) throws NullPointerException {
+	public double computePerformance(Map<String, Attribute> componentAttributes) {
 		
-		
-		// Controllo giusto per sicurezza
-		if(componentAttributes == null) {
-			throw new NullPointerException("Invalid instance of componentAttributes");
-		}
-		
-		String ramType = componentAttributes.get("ramType").getValue();
-		double clock = Double.parseDouble(componentAttributes.get("cpuFrequency").getValue());
-		int numberOfCore; // non ce l'abbiamo ancora nel JSON
-		int numberOfThread; // non ce l'abbiamo ancora nel JSON		
+		String ramType;
+		double clock;
+		int numberOfCore; 
+		int numberOfThread; 		
 		int cacheSize;
 		
 		try {
+			ramType = componentAttributes.get("ramType").getValue();
 			clock = Double.parseDouble(componentAttributes.get("cpuFrequency").getValue());
-			numberOfCore = Integer.parseInt(componentAttributes.get("numberOfCore").getValue()); 
-			numberOfThread = Integer.parseInt(componentAttributes.get("numberOfThread").getValue()); 
+			numberOfCore = Integer.parseInt(componentAttributes.get("n_core").getValue()); 
+			numberOfThread = Integer.parseInt(componentAttributes.get("n_thread").getValue()); 
 			cacheSize = Integer.parseInt(componentAttributes.get("cacheSize").getValue());
 			
 		} catch (NumberFormatException e) {
@@ -65,77 +60,81 @@ public class CPUPerformanceEstimator implements InterfacePerformanceEstimator {
 			 * indice di performance
 			 */
 			return -1;
-			
-		}
-		
-		boolean isRamNull = ramType == null;
-		if (isRamNull) {
+		} catch (NullPointerException e1) {
+			//Potrebbe lanciarla se qualche attributo non e' presente nel momento
+			//in cui cerca di accedere al suo valore
+			e1.printStackTrace();
 			return -1;
 		}
 		
-		double index = 0;
-		ramType = ramType.toUpperCase();
-		if(ramType.equals("DDR4")) {
-			index += CPUPerformanceEstimator.MAX_POINT_RAM_TYPE;
-			
-		} else if(ramType.equals("DDR3")) {
-			index += CPUPerformanceEstimator.MAX_POINT_RAM_TYPE/2;
-			
-		} else {
-			index += 0;
+		if (ramType == null) {
+			return -1;
 		}
 		
-		if(clock >= 4.0) {
-			index += CPUPerformanceEstimator.MAX_POINT_CLOCK;
-			
-		} else if (clock > 3.0) {
-			index += CPUPerformanceEstimator.MAX_POINT_CLOCK/2;
-			
-		} else if (clock > 2.0) {
-			index += CPUPerformanceEstimator.MAX_POINT_CLOCK/3;
+		return ramTypePerformance(ramType)+clockPerformance(clock)+nCorePerformance(numberOfCore)+
+				nThreadPerformance(numberOfThread)+cacheSizePerformance(cacheSize);
 		
-		} else if(clock <= 1) {
-			index += 0;
-		
+	}
+	
+	private double ramTypePerformance(String value) {
+		if(value.equalsIgnoreCase("DDR4")) {
+			return CPUPerformanceEstimator.MAX_POINT_RAM_TYPE;		
+		} else if(value.equalsIgnoreCase("DDR3")) {
+			return CPUPerformanceEstimator.MAX_POINT_RAM_TYPE/2;
 		} else {
-			index += CPUPerformanceEstimator.MAX_POINT_CLOCK/4;
+			return 0;
+		}
+	}
+	
+	private double clockPerformance(double value) {
+		if(value >= 4.0) {
+			return CPUPerformanceEstimator.MAX_POINT_CLOCK;
+		} else if (value > 3.0) {
+			return CPUPerformanceEstimator.MAX_POINT_CLOCK/2;
+		} else if (value > 2.0) {
+			return CPUPerformanceEstimator.MAX_POINT_CLOCK/3;
+		} else if(value <= 1) {
+			return 0;	
+		} else {
+			return CPUPerformanceEstimator.MAX_POINT_CLOCK/4;
 		} 
-		
-		if(numberOfCore > 6) {
-			index += CPUPerformanceEstimator.MAX_POINT_CORE;
-		
-		} else if (numberOfCore >= 4) {
-			index += 3*CPUPerformanceEstimator.MAX_POINT_CORE/4;
-		
-		} else if(numberOfCore >= 2) {
-			index += CPUPerformanceEstimator.MAX_POINT_CORE/2;
-		
+	}
+	
+	private double nCorePerformance(int value) {
+		if(value > 6) {
+			return CPUPerformanceEstimator.MAX_POINT_CORE;
+		} else if (value >= 4) {
+			return 3*CPUPerformanceEstimator.MAX_POINT_CORE/4;
+		} else if(value >= 2) {
+			return CPUPerformanceEstimator.MAX_POINT_CORE/2;
 		} else {
-			index += CPUPerformanceEstimator.MAX_POINT_CORE/5;
-			
+			return CPUPerformanceEstimator.MAX_POINT_CORE/5;
 		}
-		
-		if(numberOfThread > numberOfCore) {
-			index += CPUPerformanceEstimator.MAX_POINT_THREAD;
-		
-		}
-		
-		if(cacheSize >= 18) {
-			index += CPUPerformanceEstimator.MAX_POINT_CACHE;
-			
-		} else if (cacheSize >= 12) {
-			index += 3*CPUPerformanceEstimator.MAX_POINT_CACHE/4;
-		
-		} else if(cacheSize < 12 && cacheSize > 6) {
-			index += CPUPerformanceEstimator.MAX_POINT_CACHE/2;
-			
+	}
+	
+	private double nThreadPerformance(int value) {
+		if(value > 12) {
+			return CPUPerformanceEstimator.MAX_POINT_THREAD;
+		} else if (value >= 8) {
+			return 3*CPUPerformanceEstimator.MAX_POINT_THREAD/4;
+		} else if(value >= 4) {
+			return CPUPerformanceEstimator.MAX_POINT_THREAD/2;
 		} else {
-			index += 0;
+			return 0;
+		}
+	}
+	
+	private double cacheSizePerformance(int value) {
+		if(value >= 18) {
+			return CPUPerformanceEstimator.MAX_POINT_CACHE;
+		} else if (value >= 12) {
+			return 3*CPUPerformanceEstimator.MAX_POINT_CACHE/4;
+		} else if(value > 6) {
+			return CPUPerformanceEstimator.MAX_POINT_CACHE/2;
+		} else {
+			return 0;
 			
 		}
-		
-		double schimpa = index;
-		return schimpa;
 	}
 
 }

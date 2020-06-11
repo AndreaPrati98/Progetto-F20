@@ -14,18 +14,11 @@ public class GPUPerformanceEstimator implements InterfacePerformanceEstimator {
 	//TODO ancora da finire
 	@Override
 	public double computePerformance(Map<String, Attribute> componentAttributes) {
-		double index = 0;
-		
-		// Controllo giusto per sicurezza
-		if(componentAttributes == null) {
-			throw new NullPointerException("Invalid instance of componentAttributes");
-		}
-
 		Attribute att1 = componentAttributes.get("coreCount");
 		Attribute att2 = componentAttributes.get("graphicCardFrequency");
 		
 		if(att1 == null || att2 == null) {
-			throw new NullPointerException("Invalid instance of Attribute");			
+			return -1;			
 		}		
 		
 		int coreCount = -1;
@@ -40,21 +33,25 @@ public class GPUPerformanceEstimator implements InterfacePerformanceEstimator {
 			return -1;
 		}
 		
-		if(coreCount > 1) {
-			index += GPUPerformanceEstimator.MAX_POINT_CORE;
-		} else {
-			index += 0;
-		}
+		return corePerformance(coreCount) + memoryPerformance(memory);
 		
-		if(memory > 8) {
-			index += GPUPerformanceEstimator.MAX_POINT_MEMORY;
-		} else if (memory > 4) {
-			index += GPUPerformanceEstimator.MAX_POINT_MEMORY/2;
-		} else {
-			index += 0;
-		}
-		
-		return index;
 	}
 	
+	private double corePerformance(int value) {
+		if(value > 1) {
+			return GPUPerformanceEstimator.MAX_POINT_CORE;
+		} else {
+			return 0;
+		}
+	}
+	
+	private double memoryPerformance(double value) {
+		if(value > 8) {
+			return GPUPerformanceEstimator.MAX_POINT_MEMORY;
+		} else if (value > 4) {
+			return GPUPerformanceEstimator.MAX_POINT_MEMORY/2;
+		} else {
+			return 0;
+		}
+	}
 }
