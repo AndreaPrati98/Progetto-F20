@@ -12,7 +12,6 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 import main.model.configurator.component.Component;
@@ -24,40 +23,11 @@ import main.model.configurator.component.Component;
  *
  */
 
-@RunWith(Parameterized.class)
 class AbstractConstraintTest {
 
 	//private static MaxConstraint max;
 	//private static DimensionConstraint dim;
 	//private static EqualsConstraint equ;
-	
-	//Con questi valori creo un Attribute
-	@Parameter(0)
-	public String name1;
-	@Parameter(1)
-	public String value1;
-	@Parameter(2)
-	public String constraintName1;
-	@Parameter(3)
-	public boolean isBinding1;
-	@Parameter(4)
-	public boolean isPresentable1;
-	@Parameter(5)
-	public String constraintCategory1;
-
-	@Parameter(6)
-	public String name2;
-	@Parameter(7)
-	public String value2;
-	@Parameter(8)
-	public String constraintName2;
-	@Parameter(9)
-	public boolean isBinding2;
-	@Parameter(10)
-	public boolean isPresentable2;
-	@Parameter(11)
-	public String constraintCategory2;
-
 	
 	//Con questi valori creo un Component
 	//private String model;
@@ -70,29 +40,11 @@ class AbstractConstraintTest {
 	
 	public static int contatore = 0;
 	
+	
 	/*
-	 * Noi dobbiamo testare il metodo checklist, ci serve
-	 * un array diverso per ogni tipo di constraint. 
-	 *
-	public void daButtare() {
-		Component c0 = new Component(model, typeOfComponent, price, attributeMap);	
-	}
+	 * name, value, caonstrName, is binding, isPresentable, constraintType
 	 */
 	
-	@Parameters
-	public static Collection<Object[]> data() {
-		Object[][] data = new Object[][] {
-			{"cpuSocket", "1200", "CpuSocket", true, true, null,
-			"cpuSocket", "1200", "CpuSocket", true, true, null},
-		};
-		//List<Object[]> c = Arrays.asList(data);
-		return Arrays.asList(data);
-	}
-	
-	/**
-	 * This method is used to initialize some binding Attributes  
-	 */
-	@BeforeClass
 	public void initializeEqualsAttributes() {
 		/*
 		 * ci serve un esempio di Max, uno di Equals e uno di Dimension.
