@@ -43,7 +43,19 @@ public class Configuration {
 		this.id=lastUsedId;
 	}
 	
-	//TODO Non esiste un costruttore che crea la configurazione parte dal nome, farne unotr
+	//TODO Questo costruttore non è utilizzato da nessuna parte, è da mettere
+	//come costruttore utilizzato nelle varie classi che istanziano la configuration
+	public Configuration(int id,String name, List<String> neededComponents, Map<String, Boolean> singleComponents) {
+		this.name = name;
+		this.id = id;
+		this.neededComponents = neededComponents;
+		this.singleComponents = singleComponents;
+		this.constraintErrors = new ArrayList<AbstractConstraint>();
+		addedComponents = new ArrayList<Component>();
+	}
+	
+	
+	
 	// Questa andra' tolta quando gestiremo i neededComponent e i singleComponent tramite vincoli
 	public Configuration(List<String> neededComponents, Map<String, Boolean> singleComponents) {
 		this.neededComponents = neededComponents;
