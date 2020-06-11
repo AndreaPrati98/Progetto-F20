@@ -1,20 +1,19 @@
 package test;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
+import main.model.configurator.component.Attribute;
 import main.model.configurator.component.Component;
+import main.model.configurator.constraint.DimensionConstraint;
 
 /**
  * 
@@ -23,7 +22,7 @@ import main.model.configurator.component.Component;
  *
  */
 
-class AbstractConstraintTest {
+public class AbstractConstraintTest {
 
 	//private static MaxConstraint max;
 	//private static DimensionConstraint dim;
@@ -40,6 +39,9 @@ class AbstractConstraintTest {
 	
 	public static int contatore = 0;
 	
+	public AbstractConstraintTest() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	/*
 	 * name, value, caonstrName, is binding, isPresentable, constraintType
@@ -95,42 +97,110 @@ class AbstractConstraintTest {
 		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "external"});
 		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
 		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "external"});
-		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
+		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
 		
 		return buff;		
 	}
 	
+	
 	@Test
-	void testCheckListMaxConstraint() {
+	public void testCheckListDimensionConstraint() {
+	
+		ArrayList<Object[]> attBuff = AbstractConstraintTest.initializeDimensionList();
+		ArrayList<Attribute> attributesList = AbstractConstraintTest.createTwoAttribute(attBuff);
+		DimensionConstraint constraint = new DimensionConstraint("CpuSocket");
+		
+		//ATTENZIONE, INCREMENTO i DI DUE OGNI VOLTA
+		for (int i = 0; i < attributesList.size(); i += 2) {
+			Map<String, Attribute> map1 = new HashMap<String, Attribute>();
+			Map<String, Attribute> map2 = new HashMap<String, Attribute>();
+			
+			Attribute att1 = attributesList.get(i);
+			Attribute att2 = attributesList.get(i+1);
+		
+			//System.out.println(att1.getValue());
+			//System.out.println(att2.getValue());
+			
+			map1.put(att1.getName(), att1);
+			map2.put(att2.getName(), att2);
+			
+			Component c = new Component("oldOne", map1);
+			Component componentToCheck = new Component("newOne", map2);			
+			
+			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
+			oldCheckedComponents.add(c);
+			
+			System.out.println(oldCheckedComponents.get(0).getAttributeByName("ramSize").getValue() +" "+oldCheckedComponents.get(0).getAttributeByName("ramSize").getConstraintCategory());		
+			System.out.println(componentToCheck.getAttributeByName("ramSize").getValue() +" "+ componentToCheck.getAttributeByName("ramSize").getConstraintCategory());
+			System.out.println();
+			assertTrue(constraint.checkList(oldCheckedComponents, componentToCheck));
+			
+		}	
+	}
+
+	/**
+	 * @param attBuff
+	 * @return attriuteList - elements goes 2 by 2
+	 * 
+	 */
+	private static ArrayList<Attribute> createTwoAttribute(ArrayList<Object[]> attBuff) {
+		
+		ArrayList<Attribute> attributesList = new ArrayList<Attribute>(); 
+		for(int i = 0; i < attBuff.size() - 1; i++) {
+			for(int j = 1; j < attBuff.size(); j++) {
+				String name1 = (String)attBuff.get(i)[0];
+				String value1 = (String)attBuff.get(i)[1]; 
+				String constraintName1 = (String)attBuff.get(i)[2];
+				boolean isBinding1 = (boolean)attBuff.get(i)[3];
+				boolean isPresentable1 = (boolean)attBuff.get(i)[4];
+				String constraintCategory1 = (String)attBuff.get(i)[5];				
+				Attribute newAtt = new Attribute(name1, value1, constraintName1, isBinding1, isPresentable1, constraintCategory1);
+				
+				String name2 = (String)attBuff.get(j)[0];
+				String value2 = (String)attBuff.get(j)[1]; 
+				String constraintName2 = (String)attBuff.get(j)[2];
+				boolean isBinding2 = (boolean)attBuff.get(j)[3];
+				boolean isPresentable2 = (boolean)attBuff.get(j)[4];
+				String constraintCategory2 = (String)attBuff.get(j)[5];				
+				Attribute oldAtt = new Attribute(name2, value2, constraintName2, isBinding2, isPresentable2, constraintCategory2);
+				
+				//System.out.println(value1);
+				//System.out.println(value2);				
+				
+				attributesList.add(newAtt);
+				attributesList.add(oldAtt);
+			}
+		}
+		return attributesList;
+	}
+	
+	@Test
+	public void testCheckListEqualsConstraint() {
 		fail("Not yet implemented");
 	}
 	
 	@Test
-	void testCheckListDimensionConstraint() {
+	public void testCheckListMaxConstraint() {
 		fail("Not yet implemented");
 	}
 	
+/*
 	@Test
-	void testCheckListEqualsConstraint() {
+	@Ignore
+	public void testSelectAttributeSameNameListOfComponent() {
 		fail("Not yet implemented");
 	}
 
 	@Test
 	@Ignore
-	void testSelectAttributeSameNameListOfComponent() {
+	public void testSelectAttributeSameNameComponent() {
 		fail("Not yet implemented");
 	}
 
 	@Test
 	@Ignore
-	void testSelectAttributeSameNameComponent() {
+	public void testFilterAttributesList() {
 		fail("Not yet implemented");
 	}
-
-	@Test
-	@Ignore
-	void testFilterAttributesList() {
-		fail("Not yet implemented");
-	}
-
+*/
 }
