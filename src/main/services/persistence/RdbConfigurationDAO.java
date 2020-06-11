@@ -25,7 +25,7 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 
 		ResultSet rs = dbop.getConfiguration(confId);
 		String ModelofC;
-		String Name;
+		String Name = null;
 		String Email;
 		ComponentCatalog catalog = new ComponentCatalog();
 		List<Component> addedComponent = new ArrayList<Component>();
@@ -40,7 +40,7 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 				ModelofC = rs.getString("ModelofC");
 				addedComponent.add(catalog.getComponentByModel(ModelofC));
 			}
-			return new Configuration(confId,addedComponent);
+			return new Configuration(confId,addedComponent, Name);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -62,8 +62,9 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 		try {
 			while (rs.next()) {
 				id = rs.getInt("Id");
+				name = rs.getString("Name");
 				if (!confMap.containsKey(id)) {
-					confMap.put(id, new Configuration(id));
+					confMap.put(id, new Configuration(id, name));
 				}
 				modelofC = rs.getString("ModelofC");
 				c = catalog.getComponentByModel(modelofC);
@@ -71,6 +72,7 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 			}
 
 			configurations = new ArrayList<Configuration>(confMap.values());
+			System.out.println(configurations.get(0).getName());
 			return configurations;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

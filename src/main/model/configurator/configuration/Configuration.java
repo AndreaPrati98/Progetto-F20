@@ -61,7 +61,7 @@ public class Configuration {
 		this.neededComponents = new ArrayList<String>();
 		this.singleComponents = new HashMap<String, Boolean>();
 		this.constraintErrors = new ArrayList<AbstractConstraint>();
-		addedComponents = new ArrayList<Component>();
+		this.addedComponents = new ArrayList<Component>();
 		this.id=id;
 	}
 	
@@ -72,11 +72,18 @@ public class Configuration {
 	 * @param addedComponents
 	 */
 	public Configuration(int id, List<Component> addedComponents) {
+		this(id);
 		this.addedComponents=addedComponents;
-		this.neededComponents = new ArrayList<String>();
-		this.singleComponents = new HashMap<String, Boolean>();
-		this.constraintErrors = new ArrayList<AbstractConstraint>();
-		this.id=id;
+	}
+	
+	public Configuration(int id, String name) {
+		this(id);
+		this.name = name;
+	}
+	
+	public Configuration(int id, List<Component> addedComponents, String name) {
+		this(id, name);
+		this.addedComponents=addedComponents;
 	}
 
 	/**
