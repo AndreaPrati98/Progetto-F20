@@ -2,6 +2,10 @@
     width: 87%;
 }
 
+#PerformanceIndex{
+    width: 20%;
+}
+
 #expandableCollapsible{
     width: 50%;
     margin-left: auto;
@@ -60,12 +64,14 @@ body{
 #pollBtn{
     background-color: #fbc02d;
 }
-
 #saveBtn{
     background-color: #00c853;
 }
 #confBtn{
     background-color: #90a4ae;
+}
+#getBtn{
+    background-color: #0097a7;
 }
 
 .bottomPosition{
