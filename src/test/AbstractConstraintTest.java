@@ -1,5 +1,6 @@
 package test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -13,6 +14,7 @@ import org.junit.Test;
 import main.model.configurator.component.Attribute;
 import main.model.configurator.component.Component;
 import main.model.configurator.constraint.DimensionConstraint;
+import main.model.configurator.constraint.EqualsConstraint;
 
 /**
  * 
@@ -28,11 +30,11 @@ public class AbstractConstraintTest {
 
 	}
 	
-	/*
-	 * name, value, caonstrName, is binding, isPresentable, constraintType
+	/**
+	 * Qui devo avere tutti gli attribute che poi verranno provati con assertTrue
+	 * @see EqualsConstraint
 	 */
-		
-	private static ArrayList<Object[]> initializeEqualsList() {
+	private static ArrayList<Object[]> initializeAttributesForEqualsTrue() {
 		/*
 		 * Costruisco così la lista, almeno creo un Component con un 
 		 * attributo solo e riesco a provare il funzionamento dei singoli constraint.
@@ -44,36 +46,45 @@ public class AbstractConstraintTest {
 		
 		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true});
 		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true});
+		
+		buff.add(new Object[] {"cpuSocket", "0", "CpuSocket", true, true});
+		buff.add(new Object[] {"cpuSocket", "0", "CpuSocket", true, true});
+		
 		buff.add(new Object[] {"cpuSocket", "1000", "CpuSocket", true, true});
-		buff.add(new Object[] {"cpuSocket", "800", "CpuSocket", true, true});
 		buff.add(new Object[] {"cpuSocket", "1000", "CpuSocket", true, true});
 
 		return buff;		
 	} 
 	
-	private static ArrayList<Object[]> initializeDimensionList() {
-		
+	/**
+	 * Qui devo avere tutti gli attribute che poi verranno provati con assertFalse
+	 * @see EqualsConstraint
+	 */
+	private static ArrayList<Object[]> initializeAttributesForEqualsFalse() {
 		/*
 		 * Costruisco così la lista, almeno creo un Component con un 
 		 * attributo solo e riesco a provare il funzionamento dei singoli constraint.
-		 * Qui dovrò andare di due in due per la creazione dei component (poichè ho internal
-		 * ed external)
+		 * Qui posso sfruttare il fatto che non ho internal ed external per
+		 * "interlacciare" gli attribti.
 		 */
 		
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
 		
-		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
-		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
-		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "external"});
-		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
-		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "external"});
-		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
+		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true});
+		buff.add(new Object[] {"cpuSocket", "1201", "CpuSocket", true, true});
 		
+		buff.add(new Object[] {"cpuSocket", "5", "CpuSocket", true, true});
+		buff.add(new Object[] {"cpuSocket", "0", "CpuSocket", true, true});
+		
+		buff.add(new Object[] {"cpuSocket", "800", "CpuSocket", true, true});
+		buff.add(new Object[] {"cpuSocket", "500", "CpuSocket", true, true});
+
 		return buff;		
-	}
+	} 
 	
 	/**
-	 * Qui devo avere tutti gli attribute che poi verranno provati con assertTrue 
+	 * Qui devo avere tutti gli attribute che poi verranno provati con assertTrue
+	 * @see DimensionConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForDimensionTrue() {
 
@@ -93,7 +104,8 @@ public class AbstractConstraintTest {
 	}
 
 	/**
-	 * Qui devo avere tutti gli attribute che poi verranno provati con assertFalse 
+	 * Qui devo avere tutti gli attribute che poi verranno provati con assertFalse
+	 * @see DimensionConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForDimensionFalse() {
 		
@@ -120,7 +132,9 @@ public class AbstractConstraintTest {
 	private static ArrayList<Attribute> createAttributesCouples(ArrayList<Object[]> attBuff) {
 		
 		ArrayList<Attribute> attributesList = new ArrayList<Attribute>(); 
+	
 		if(attBuff.size() % 2 == 0) {
+			//ATTENZIONE, LA VARIABILE 'i' VIENE INCREMENTATA DI DUE AD OGNI CICLO
 			for(int i = 0; i < attBuff.size() - 1; i += 2) {
 				
 				int j = i+1;
@@ -166,7 +180,7 @@ public class AbstractConstraintTest {
 		
 		DimensionConstraint constraint = new DimensionConstraint(attributeList.get(0).getConstraintName());
 		
-		for (int i = 0; i < attributeList.size(); i++) {
+		for (int i = 0; i < attributeList.size() - 1; i++) {
 						
 			HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
 			HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();
@@ -187,7 +201,41 @@ public class AbstractConstraintTest {
 		}
 		
 	}
+
+	/**
+	 * This test should consider ok
+	 */
+	@Test
+	public void falseTestCheckListOnDimension() {
+
+		ArrayList<Object[]> attBuff = AbstractConstraintTest.initializeAttributesForDimensionFalse();
+		ArrayList<Attribute> attributeList = AbstractConstraintTest.createAttributesCouples(attBuff);
 		
+		DimensionConstraint constraint = new DimensionConstraint(attributeList.get(0).getConstraintName());
+		
+		for (int i = 0; i < attributeList.size() - 1; i++) {
+						
+			HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();
+			
+			Attribute att1 = attributeList.get(i);
+			Attribute att2 = attributeList.get(i+1);
+			
+			attributesMap1.put(att1.getName(), att1);
+			attributesMap2.put(att2.getName(), att2);
+			
+			Component alreadyCheckedComp = new Component("old", "cpu", 16, attributesMap1);
+			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
+			oldCheckedComponents.add(alreadyCheckedComp);
+			
+			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
+			
+			assertFalse(constraint.checkList(oldCheckedComponents, componentToCheck));
+		}
+		
+	}
+
+	
 	@Test
 	public void testCheckListEqualsConstraint() {
 		fail("Not yet implemented");
