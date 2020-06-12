@@ -22,45 +22,16 @@ import main.model.configurator.constraint.DimensionConstraint;
  */
 
 public class AbstractConstraintTest {
-
-	//private static MaxConstraint max;
-	//private static DimensionConstraint dim;
-	//private static EqualsConstraint equ;
 	
-	//Con questi valori creo un Component
-	//private String model;
-	//private String typeOfComponent;
-	//private double price;
-	//private Map<String, Attribute> attributeMap;
-	
-	public static List<Component> oldComp;
-	public static Component newComp;
-	
-	public static int contatore = 0;
 	
 	public AbstractConstraintTest() {
-		// TODO Auto-generated constructor stub
+
 	}
 	
 	/*
 	 * name, value, caonstrName, is binding, isPresentable, constraintType
 	 */
-	
-	public void initializeEqualsAttributes() {
-		/*
-		 * ci serve un esempio di Max, uno di Equals e uno di Dimension.
-		 */
 		
-		//Credo che per il max sia necessario usare più gruppi di questo tipo.
-		Object[][] max = new Object[][] {
-			{"power", "", "Power", true, true, "internal"},
-			{"power", "", "Power", true, true, "external"},
-			{"power", "", "Power", true, true, "internal"},
-			{"power", "", "Power", true, true, "internal"},
-		};
-			
-	}
-	
 	private static ArrayList<Object[]> initializeEqualsList() {
 		/*
 		 * Costruisco così la lista, almeno creo un Component con un 
@@ -100,6 +71,45 @@ public class AbstractConstraintTest {
 		
 		return buff;		
 	}
+	
+	/**
+	 * Qui devo avere tutti gli attribute che poi verranno provati con assertTrue 
+	 */
+	private static ArrayList<Object[]> initializeAttributesForDimensionTrue() {
+
+		
+		ArrayList<Object[]> buff = new ArrayList<Object[]>();
+		
+		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
+		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
+		
+		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
+		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
+		
+		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
+		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
+		
+		return buff;		
+	}
+
+	/**
+	 * Qui devo avere tutti gli attribute che poi verranno provati con assertFalse 
+	 */
+	private static ArrayList<Object[]> initializeAttributesForDimensionFalse() {
+		
+		ArrayList<Object[]> buff = new ArrayList<Object[]>();
+		
+		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
+		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "external"});
+		
+//		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
+//		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
+		
+//		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "external"});
+//		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
+		
+		return buff;		
+	}
 
 
 	/**
@@ -107,11 +117,13 @@ public class AbstractConstraintTest {
 	 * @return attriuteList - elements goes 2 by 2
 	 * 
 	 */
-	private static ArrayList<Attribute> createTwoAttribute(ArrayList<Object[]> attBuff) {
+	private static ArrayList<Attribute> createAttributesCouples(ArrayList<Object[]> attBuff) {
 		
 		ArrayList<Attribute> attributesList = new ArrayList<Attribute>(); 
-		for(int i = 0; i < attBuff.size() - 1; i++) {
-			for(int j = 1; j < attBuff.size(); j++) {
+		if(attBuff.size() % 2 == 0) {
+			for(int i = 0; i < attBuff.size() - 1; i += 2) {
+				
+				int j = i+1;
 				String name1 = (String)attBuff.get(i)[0];
 				String value1 = (String)attBuff.get(i)[1]; 
 				String constraintName1 = (String)attBuff.get(i)[2];
@@ -128,78 +140,54 @@ public class AbstractConstraintTest {
 				String constraintCategory2 = (String)attBuff.get(j)[5];				
 				Attribute oldAtt = new Attribute(name2, value2, constraintName2, isBinding2, isPresentable2, constraintCategory2);
 				
-				//System.out.println(value1);
-				//System.out.println(value2);				
+				System.out.println(name1 +" "+value1+" "+ constraintCategory1);
+				System.out.println(name2 +" "+value2+" "+ constraintCategory2);			
+				System.out.println();
 				
 				attributesList.add(newAtt);
 				attributesList.add(oldAtt);
 			}
+		} else {
+			System.out.println("La lista di oggetti deve contenere un numero pari di oggetti");
 		}
 		return attributesList;
 	}
 	
-	@Test
-	public void simpleTestOnDimension() {
-
-//		ArrayList<Object[]> attBuff = AbstractConstraintTest.initializeDimensionList();
-//		ArrayList<Attribute> attributesList = AbstractConstraintTest.createTwoAttribute(attBuff);
-		DimensionConstraint constraint = new DimensionConstraint("RamSize");
-
-		Attribute att1 = new Attribute("ramSize", "13", "RamSize", true, true, "internal");
-		Attribute att2 = new Attribute("ramSize", "10", "RamSize", true, true, "external");
-		
-		HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
-		HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();
-		
-		attributesMap1.put(att1.getName(), att1);
-		attributesMap2.put(att2.getName(), att2);
-		
-		Component oldCheckedComponentsSingle = new Component("old", "cpu", 16, attributesMap1);
-		ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
-		oldCheckedComponents.add(oldCheckedComponentsSingle);
-		
-		Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
-		
-		assertTrue(constraint.checkList(oldCheckedComponents, componentToCheck));
-		
-	}
 	
-	@Test
-	public void testCheckListDimensionConstraint() {
 	
-		ArrayList<Object[]> attBuff = AbstractConstraintTest.initializeDimensionList();
-		ArrayList<Attribute> attributesList = AbstractConstraintTest.createTwoAttribute(attBuff);
-		DimensionConstraint constraint = new DimensionConstraint("RamSize");
+	/**
+	 * This test should consider ok
+	 */
+	@Test
+	public void trueTestCheckListOnDimension() {
+
+		ArrayList<Object[]> attBuff = AbstractConstraintTest.initializeAttributesForDimensionTrue();
+		ArrayList<Attribute> attributeList = AbstractConstraintTest.createAttributesCouples(attBuff);
 		
-		//ATTENZIONE, INCREMENTO i DI DUE OGNI VOLTA
-		for (int i = 0; i < attributesList.size(); i += 2) {
-			Map<String, Attribute> map1 = new HashMap<String, Attribute>();
-			Map<String, Attribute> map2 = new HashMap<String, Attribute>();
-			
-			Attribute att1 = attributesList.get(i);
-			Attribute att2 = attributesList.get(i+1);
+		DimensionConstraint constraint = new DimensionConstraint(attributeList.get(0).getConstraintName());
 		
-			//System.out.println(att1.getValue());
-			//System.out.println(att2.getValue());
+		for (int i = 0; i < attributeList.size(); i++) {
+						
+			HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();
 			
-			map1.put(att1.getName(), att1);
-			map2.put(att2.getName(), att2);
+			Attribute att1 = attributeList.get(i);
+			Attribute att2 = attributeList.get(i+1);
 			
-			Component c = new Component("oldOne", map1);
-			Component componentToCheck = new Component("newOne", map2);			
+			attributesMap1.put(att1.getName(), att1);
+			attributesMap2.put(att2.getName(), att2);
 			
+			Component alreadyCheckedComp = new Component("old", "cpu", 16, attributesMap1);
 			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
-			oldCheckedComponents.add(c);
+			oldCheckedComponents.add(alreadyCheckedComp);
 			
-			System.out.println("old " + oldCheckedComponents.get(0).getAttributeByName("ramSize").getValue() +" "+oldCheckedComponents.get(0).getAttributeByName("ramSize").getConstraintCategory());		
-			System.out.println("toCheck "+ componentToCheck.getAttributeByName("ramSize").getValue() +" "+ componentToCheck.getAttributeByName("ramSize").getConstraintCategory());
-			System.out.println();
+			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
+			
 			assertTrue(constraint.checkList(oldCheckedComponents, componentToCheck));
-			
 		}
 		
 	}
-	
+		
 	@Test
 	public void testCheckListEqualsConstraint() {
 		fail("Not yet implemented");
