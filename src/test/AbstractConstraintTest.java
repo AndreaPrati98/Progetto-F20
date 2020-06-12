@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import main.model.configurator.component.Attribute;
@@ -101,8 +100,6 @@ public class AbstractConstraintTest {
 		
 		return buff;		
 	}
-	
-	
 
 
 	/**
@@ -146,7 +143,7 @@ public class AbstractConstraintTest {
 
 //		ArrayList<Object[]> attBuff = AbstractConstraintTest.initializeDimensionList();
 //		ArrayList<Attribute> attributesList = AbstractConstraintTest.createTwoAttribute(attBuff);
-		DimensionConstraint constraint = new DimensionConstraint("CpuSocket");
+		DimensionConstraint constraint = new DimensionConstraint("RamSize");
 
 		Attribute att1 = new Attribute("ramSize", "13", "RamSize", true, true, "internal");
 		Attribute att2 = new Attribute("ramSize", "10", "RamSize", true, true, "external");
@@ -172,7 +169,7 @@ public class AbstractConstraintTest {
 	
 		ArrayList<Object[]> attBuff = AbstractConstraintTest.initializeDimensionList();
 		ArrayList<Attribute> attributesList = AbstractConstraintTest.createTwoAttribute(attBuff);
-		DimensionConstraint constraint = new DimensionConstraint("CpuSocket");
+		DimensionConstraint constraint = new DimensionConstraint("RamSize");
 		
 		//ATTENZIONE, INCREMENTO i DI DUE OGNI VOLTA
 		for (int i = 0; i < attributesList.size(); i += 2) {
