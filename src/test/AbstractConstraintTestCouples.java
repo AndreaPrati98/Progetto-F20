@@ -63,14 +63,14 @@ public class AbstractConstraintTestCouples {
 		
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
 		
-		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true});
-		buff.add(new Object[] {"cpuSocket", "1201", "CpuSocket", true, true});
+		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true, null});
+		buff.add(new Object[] {"cpuSocket", "1201", "CpuSocket", true, true, null});
 		
-		buff.add(new Object[] {"cpuSocket", "5", "CpuSocket", true, true});
-		buff.add(new Object[] {"cpuSocket", "0", "CpuSocket", true, true});
+		buff.add(new Object[] {"cpuSocket", "5", "CpuSocket", true, true, null});
+		buff.add(new Object[] {"cpuSocket", "0", "CpuSocket", true, true, null});
 		
-		buff.add(new Object[] {"cpuSocket", "800", "CpuSocket", true, true});
-		buff.add(new Object[] {"cpuSocket", "500", "CpuSocket", true, true});
+		buff.add(new Object[] {"cpuSocket", "800", "CpuSocket", true, true, null});
+		buff.add(new Object[] {"cpuSocket", "500", "CpuSocket", true, true, null});
 
 		return buff;		
 	} 
@@ -92,6 +92,9 @@ public class AbstractConstraintTestCouples {
 		
 		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
 		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});		
+		
+		buff.add(new Object[] {"ciccioPasticcio", "16", "ciao", true, true, "internal"});
+		buff.add(new Object[] {"lollipop", "8", "ciao", true, true, "external"});
 		
 		return buff;		
 	}
@@ -181,7 +184,7 @@ public class AbstractConstraintTestCouples {
 		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForDimensionTrue();
 		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
 		
-		DimensionConstraint constraint = new DimensionConstraint(attributeList.get(0).getConstraintName());
+		DimensionConstraint constraint = new DimensionConstraint("RamSize");
 		
 		for (int i = 0; i < attributeList.size(); i += 2) {
 						
@@ -214,7 +217,7 @@ public class AbstractConstraintTestCouples {
 		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForDimensionFalse();
 		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
 		
-		DimensionConstraint constraint = new DimensionConstraint(attributeList.get(0).getConstraintName());
+		DimensionConstraint constraint = new DimensionConstraint("RamSize");
 		
 		for (int i = 0; i < attributeList.size(); i += 2) {
 						
