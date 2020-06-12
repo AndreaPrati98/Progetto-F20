@@ -103,42 +103,7 @@ public class AbstractConstraintTest {
 	}
 	
 	
-	@Test
-	public void testCheckListDimensionConstraint() {
-	
-		ArrayList<Object[]> attBuff = AbstractConstraintTest.initializeDimensionList();
-		ArrayList<Attribute> attributesList = AbstractConstraintTest.createTwoAttribute(attBuff);
-		DimensionConstraint constraint = new DimensionConstraint("CpuSocket");
-		
-		//ATTENZIONE, INCREMENTO i DI DUE OGNI VOLTA
-		for (int i = 0; i < attributesList.size(); i += 2) {
-			Map<String, Attribute> map1 = new HashMap<String, Attribute>();
-			Map<String, Attribute> map2 = new HashMap<String, Attribute>();
-			
-			Attribute att1 = attributesList.get(i);
-			Attribute att2 = attributesList.get(i+1);
-		
-			//System.out.println(att1.getValue());
-			//System.out.println(att2.getValue());
-			
-			map1.put(att1.getName(), att1);
-			map2.put(att2.getName(), att2);
-			
-			Component c = new Component("oldOne", map1);
-			Component componentToCheck = new Component("newOne", map2);			
-			
-			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
-			oldCheckedComponents.add(c);
-			
-			System.out.println("old " + oldCheckedComponents.get(0).getAttributeByName("ramSize").getValue() +" "+oldCheckedComponents.get(0).getAttributeByName("ramSize").getConstraintCategory());		
-			System.out.println("toCheck "+ componentToCheck.getAttributeByName("ramSize").getValue() +" "+ componentToCheck.getAttributeByName("ramSize").getConstraintCategory());
-			System.out.println();
-			assertTrue(constraint.checkList(oldCheckedComponents, componentToCheck));
-			
-		}
-		
-	}
-	
+
 
 	/**
 	 * @param attBuff
@@ -174,6 +139,68 @@ public class AbstractConstraintTest {
 			}
 		}
 		return attributesList;
+	}
+	
+	@Test
+	public void simpleTestOnDimension() {
+
+//		ArrayList<Object[]> attBuff = AbstractConstraintTest.initializeDimensionList();
+//		ArrayList<Attribute> attributesList = AbstractConstraintTest.createTwoAttribute(attBuff);
+		DimensionConstraint constraint = new DimensionConstraint("CpuSocket");
+
+		Attribute att1 = new Attribute("ramSize", "13", "RamSize", true, true, "internal");
+		Attribute att2 = new Attribute("ramSize", "10", "RamSize", true, true, "external");
+		
+		HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
+		HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();
+		
+		attributesMap1.put(att1.getName(), att1);
+		attributesMap2.put(att2.getName(), att2);
+		
+		Component oldCheckedComponentsSingle = new Component("old", "cpu", 16, attributesMap1);
+		ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
+		oldCheckedComponents.add(oldCheckedComponentsSingle);
+		
+		Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
+		
+		assertTrue(constraint.checkList(oldCheckedComponents, componentToCheck));
+		
+	}
+	
+	@Test
+	public void testCheckListDimensionConstraint() {
+	
+		ArrayList<Object[]> attBuff = AbstractConstraintTest.initializeDimensionList();
+		ArrayList<Attribute> attributesList = AbstractConstraintTest.createTwoAttribute(attBuff);
+		DimensionConstraint constraint = new DimensionConstraint("CpuSocket");
+		
+		//ATTENZIONE, INCREMENTO i DI DUE OGNI VOLTA
+		for (int i = 0; i < attributesList.size(); i += 2) {
+			Map<String, Attribute> map1 = new HashMap<String, Attribute>();
+			Map<String, Attribute> map2 = new HashMap<String, Attribute>();
+			
+			Attribute att1 = attributesList.get(i);
+			Attribute att2 = attributesList.get(i+1);
+		
+			//System.out.println(att1.getValue());
+			//System.out.println(att2.getValue());
+			
+			map1.put(att1.getName(), att1);
+			map2.put(att2.getName(), att2);
+			
+			Component c = new Component("oldOne", map1);
+			Component componentToCheck = new Component("newOne", map2);			
+			
+			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
+			oldCheckedComponents.add(c);
+			
+			System.out.println("old " + oldCheckedComponents.get(0).getAttributeByName("ramSize").getValue() +" "+oldCheckedComponents.get(0).getAttributeByName("ramSize").getConstraintCategory());		
+			System.out.println("toCheck "+ componentToCheck.getAttributeByName("ramSize").getValue() +" "+ componentToCheck.getAttributeByName("ramSize").getConstraintCategory());
+			System.out.println();
+			assertTrue(constraint.checkList(oldCheckedComponents, componentToCheck));
+			
+		}
+		
 	}
 	
 	@Test
