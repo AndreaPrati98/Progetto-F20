@@ -66,12 +66,12 @@
 				<ul>
 					@for(main.model.configurator.component.Component cl:conf1.getAddedComponents()){
 					 
-					<p><li> @(cl.getModel())   </h4></li></p>
+					<p><li>@(cl.getModel())</h4></li></p>
 					 } 
 					 
    
 				<br>
-						<form action="/servlet/HomeServlet" method="post" >
+						<form action="/" method="post" >
 					<li><imput class="waves-effect waves-light btn" value = @conf1.getId()>View</a></li>
 				  </form>
 				</ul>
@@ -95,7 +95,7 @@
 
         
 					<br>
-						<form action="/servlet/HomeServlet" method="post" >
+						<form action="/" method="post" >
 					<li><imput class="waves-effect waves-light btn" value = @conf2.getId() >View</a></li>
 				  </form>
 				</ul>
@@ -131,7 +131,7 @@
 					<p><li> @(cl.getModel())   </h4></li></p>
 					}
 					<br>
-					<form action="/servlet/HomeServlet" method="post" >
+					<form action="/" method="post" >
 					<li><imput class="waves-effect waves-light btn" value = @conf3.getId() >View</a></li>
 				  </form>
 				</ul>

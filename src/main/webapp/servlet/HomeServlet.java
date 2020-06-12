@@ -43,6 +43,10 @@ public class HomeServlet extends MyServlet{
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		response.getWriter().write(Rythm.render("sign-in.rtm"));
+		response.sendRedirect("/configuration");
+		System.out.println("stefano post");
+		
+		
 	
 		
 	}
