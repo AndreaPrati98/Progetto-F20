@@ -24,12 +24,7 @@ import main.model.configurator.constraint.EqualsConstraint;
  */
 
 public class AbstractConstraintTest {
-	
-	
-	public AbstractConstraintTest() {
-
-	}
-	
+		
 	/**
 	 * Qui devo avere tutti gli attribute che poi verranno provati con assertTrue
 	 * @see EqualsConstraint
