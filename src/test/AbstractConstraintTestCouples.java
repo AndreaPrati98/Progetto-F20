@@ -6,8 +6,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import org.junit.Test;
 
@@ -23,7 +21,7 @@ import main.model.configurator.constraint.EqualsConstraint;
  *
  */
 
-public class AbstractConstraintTest {
+public class AbstractConstraintTestCouples {
 		
 	/**
 	 * Qui devo avere tutti gli attribute che poi verranno provati con assertTrue
@@ -93,7 +91,7 @@ public class AbstractConstraintTest {
 		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
 		
 		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
-		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
+		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});		
 		
 		return buff;		
 	}
@@ -118,6 +116,15 @@ public class AbstractConstraintTest {
 		return buff;		
 	}
 
+	private static ArrayList<Object[]> initializeAttributesForMaxTrue(){
+		//TODO da implementare
+		return null;
+	}
+	
+	private static ArrayList<Object[]> initializeAttributesForMaxFalse(){
+		//TODO da implementare
+		return null;
+	}
 
 	/**
 	 * @param attBuff
@@ -130,9 +137,10 @@ public class AbstractConstraintTest {
 	
 		if(attBuff.size() % 2 == 0) {
 			//ATTENZIONE, LA VARIABILE 'i' VIENE INCREMENTATA DI DUE AD OGNI CICLO
-			for(int i = 0; i < attBuff.size() - 1; i += 2) {
+			for(int i = 0; i < attBuff.size(); i += 2) {
 				
 				int j = i+1;
+				//TODO estrarre il metodo getInstanceOfAttribute
 				String name1 = (String)attBuff.get(i)[0];
 				String value1 = (String)attBuff.get(i)[1]; 
 				String constraintName1 = (String)attBuff.get(i)[2];
@@ -148,13 +156,13 @@ public class AbstractConstraintTest {
 				boolean isPresentable2 = (boolean)attBuff.get(j)[4];
 				String constraintCategory2 = (String)attBuff.get(j)[5];				
 				Attribute oldAtt = new Attribute(name2, value2, constraintName2, isBinding2, isPresentable2, constraintCategory2);
-				
+
 				System.out.println(name1 +" "+value1+" "+ constraintCategory1);
 				System.out.println(name2 +" "+value2+" "+ constraintCategory2);			
 				System.out.println();
 				
-				attributesList.add(newAtt);
 				attributesList.add(oldAtt);
+				attributesList.add(newAtt);
 			}
 		} else {
 			System.out.println("La lista di oggetti deve contenere un numero pari di oggetti");
@@ -170,12 +178,12 @@ public class AbstractConstraintTest {
 	@Test
 	public void trueTestCheckListOnDimension() {
 
-		ArrayList<Object[]> attBuff = AbstractConstraintTest.initializeAttributesForDimensionTrue();
-		ArrayList<Attribute> attributeList = AbstractConstraintTest.createAttributesCouples(attBuff);
+		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForDimensionTrue();
+		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
 		
 		DimensionConstraint constraint = new DimensionConstraint(attributeList.get(0).getConstraintName());
 		
-		for (int i = 0; i < attributeList.size() - 1; i++) {
+		for (int i = 0; i < attributeList.size(); i += 2) {
 						
 			HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
 			HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();
@@ -203,12 +211,12 @@ public class AbstractConstraintTest {
 	@Test
 	public void falseTestCheckListOnDimension() {
 
-		ArrayList<Object[]> attBuff = AbstractConstraintTest.initializeAttributesForDimensionFalse();
-		ArrayList<Attribute> attributeList = AbstractConstraintTest.createAttributesCouples(attBuff);
+		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForDimensionFalse();
+		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
 		
 		DimensionConstraint constraint = new DimensionConstraint(attributeList.get(0).getConstraintName());
 		
-		for (int i = 0; i < attributeList.size() - 1; i++) {
+		for (int i = 0; i < attributeList.size(); i += 2) {
 						
 			HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
 			HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();

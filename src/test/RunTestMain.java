@@ -24,7 +24,7 @@ public class RunTestMain {
 		System.out.println("Number of ignored test: "+ res.getIgnoreCount());
 		System.out.println("Was successful? "+ res.wasSuccessful());
 */
-		Result res = JUnitCore.runClasses(AbstractConstraintTest.class);
+		Result res = JUnitCore.runClasses(AbstractConstraintTestCouples.class);
 		
 		for (Failure failure : res.getFailures()) {
 			System.out.println(failure.toString());
