@@ -75,7 +75,6 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 				c.add(new Component(model, typeOfComponent, price, attributes));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -102,6 +101,11 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 		//TODO da implementare
 		return false;
 		
+	}
+	
+	public List<String> getTypeOfComponent(){
+		//TODO da implementare
+		return null;
 	}
 
 	@Override
