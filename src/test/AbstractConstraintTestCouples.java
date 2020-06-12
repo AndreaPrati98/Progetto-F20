@@ -244,11 +244,13 @@ public class AbstractConstraintTestCouples {
 	
 	@Test
 	public void testCheckListEqualsConstraint() {
+		//TODO
 		fail("Not yet implemented");
 	}
 	
 	@Test
 	public void testCheckListMaxConstraint() {
+		//TODO
 		fail("Not yet implemented");
 	}
 	
