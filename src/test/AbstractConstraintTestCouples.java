@@ -120,13 +120,37 @@ public class AbstractConstraintTestCouples {
 	}
 
 	private static ArrayList<Object[]> initializeAttributesForMaxTrue(){
-		//TODO da implementare
-		return null;
+
+		ArrayList<Object[]> buff = new ArrayList<Object[]>();
+		
+		buff.add(new Object[] {"power", "750", "Power", true, true, "external"});
+		buff.add(new Object[] {"power", "65", "Power", true, true, "internal"});
+		
+		buff.add(new Object[] {"power", "65", "Power", true, true, "external"});
+		buff.add(new Object[] {"power", "65", "Power", true, true, "internal"});
+		
+		buff.add(new Object[] {"power", "65", "Power", true, true, "internal"});
+		buff.add(new Object[] {"power", "750", "Power", true, true, "external"});		
+	
+		
+		return buff;		
+
 	}
 	
 	private static ArrayList<Object[]> initializeAttributesForMaxFalse(){
-		//TODO da implementare
-		return null;
+		
+		ArrayList<Object[]> buff = new ArrayList<Object[]>();
+		
+		buff.add(new Object[] {"power", "750", "Power", true, true, "internal"});
+		buff.add(new Object[] {"power", "65", "Power", true, true, "external"});
+		
+//		buff.add(new Object[] {"power", "750", "Power", true, true, "internal"});
+//		buff.add(new Object[] {"power", "750", "Power", true, true, "external"});
+		
+//		buff.add(new Object[] {"power", "65", "Power", true, true, "external"});
+//		buff.add(new Object[] {"power", "750", "Power", true, true, "internal"});
+		
+		return buff;		
 	}
 
 	/**
@@ -243,15 +267,119 @@ public class AbstractConstraintTestCouples {
 
 	
 	@Test
-	public void testCheckListEqualsConstraint() {
-		//TODO
-		fail("Not yet implemented");
+	public void trueTestCheckListEqualsConstraint() {
+		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForEqualsTrue();
+		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
+		
+		DimensionConstraint constraint = new DimensionConstraint("CpuSocket");
+		
+		for (int i = 0; i < attributeList.size(); i += 2) {
+						
+			HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();
+			
+			Attribute att1 = attributeList.get(i);
+			Attribute att2 = attributeList.get(i+1);
+			
+			attributesMap1.put(att1.getName(), att1);
+			attributesMap2.put(att2.getName(), att2);
+			
+			Component alreadyCheckedComp = new Component("old", "cpu", 16, attributesMap1);
+			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
+			oldCheckedComponents.add(alreadyCheckedComp);
+			
+			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
+			
+			assertTrue(constraint.checkList(oldCheckedComponents, componentToCheck));
+		}
 	}
 	
 	@Test
-	public void testCheckListMaxConstraint() {
-		//TODO
-		fail("Not yet implemented");
+	public void falseTestCheckListEqualsConstraint() {
+		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForEqualsFalse();
+		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
+		
+		DimensionConstraint constraint = new DimensionConstraint("CpuSocket");
+		
+		for (int i = 0; i < attributeList.size(); i += 2) {
+						
+			HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();
+			
+			Attribute att1 = attributeList.get(i);
+			Attribute att2 = attributeList.get(i+1);
+			
+			attributesMap1.put(att1.getName(), att1);
+			attributesMap2.put(att2.getName(), att2);
+			
+			Component alreadyCheckedComp = new Component("old", "cpu", 16, attributesMap1);
+			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
+			oldCheckedComponents.add(alreadyCheckedComp);
+			
+			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
+			
+			assertFalse(constraint.checkList(oldCheckedComponents, componentToCheck));
+		}
+		
+	}
+	
+	
+	
+	@Test
+	public void trueTestCheckListMaxConstraint() {
+		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForMaxTrue();
+		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
+		
+		DimensionConstraint constraint = new DimensionConstraint("Power");
+		
+		for (int i = 0; i < attributeList.size(); i += 2) {
+						
+			HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();
+			
+			Attribute att1 = attributeList.get(i);
+			Attribute att2 = attributeList.get(i+1);
+			
+			attributesMap1.put(att1.getName(), att1);
+			attributesMap2.put(att2.getName(), att2);
+			
+			Component alreadyCheckedComp = new Component("old", "power", 16, attributesMap1);
+			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
+			oldCheckedComponents.add(alreadyCheckedComp);
+			
+			Component componentToCheck = new Component("new", "cpu", 14, attributesMap2);
+			
+			assertTrue(constraint.checkList(oldCheckedComponents, componentToCheck));
+		}
+	}
+	
+	@Test
+	public void falseTestCheckListMaxConstraint() {
+		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForMaxFalse();
+		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
+		
+		DimensionConstraint constraint = new DimensionConstraint("Power");
+		
+		for (int i = 0; i < attributeList.size(); i += 2) {
+						
+			HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();
+			
+			Attribute att1 = attributeList.get(i);
+			Attribute att2 = attributeList.get(i+1);
+			
+			attributesMap1.put(att1.getName(), att1);
+			attributesMap2.put(att2.getName(), att2);
+			
+			Component alreadyCheckedComp = new Component("old", "power", 16, attributesMap1);
+			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
+			oldCheckedComponents.add(alreadyCheckedComp);
+			
+			Component componentToCheck = new Component("new", "cpu", 14, attributesMap2);
+			
+			assertFalse(constraint.checkList(oldCheckedComponents, componentToCheck));
+		}
+		
 	}
 	
 /*
