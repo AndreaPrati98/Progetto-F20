@@ -74,7 +74,7 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 			configurations = new ArrayList<Configuration>(confMap.values());
 			return configurations;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
@@ -94,7 +94,7 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 
 	}
 	
-	// Sistemare in modo che tutto viene fatto in modo atomico
+	// TODO: Sistemare in modo che tutto viene fatto in modo atomico
 	public boolean updateConfiguration(Configuration conf, Customer user) {
 		boolean flag1 = this.removeConfiguration(conf.getId());
 		boolean flag2 = false;
@@ -121,7 +121,7 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 				id = rs.getInt("maxId");
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		return id;
