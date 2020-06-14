@@ -145,7 +145,7 @@ public class RdbOperation {
 			ps.setString(3, email);
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
@@ -158,7 +158,7 @@ public class RdbOperation {
 				ps.setInt(3, id);
 				ps.executeUpdate();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				// Auto-generated catch block
 				e.printStackTrace();
 				return false;
 			}
@@ -190,7 +190,7 @@ public class RdbOperation {
 			ps.setString(2, password);
 			return ps.executeQuery();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -215,7 +215,7 @@ public class RdbOperation {
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -274,7 +274,7 @@ public class RdbOperation {
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;

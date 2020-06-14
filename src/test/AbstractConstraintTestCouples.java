@@ -271,7 +271,7 @@ public class AbstractConstraintTestCouples {
 		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForEqualsTrue();
 		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
 		
-		DimensionConstraint constraint = new DimensionConstraint("CpuSocket");
+		EqualsConstraint constraint = new EqualsConstraint("CpuSocket");
 		
 		for (int i = 0; i < attributeList.size(); i += 2) {
 						
@@ -299,7 +299,7 @@ public class AbstractConstraintTestCouples {
 		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForEqualsFalse();
 		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
 		
-		DimensionConstraint constraint = new DimensionConstraint("CpuSocket");
+		EqualsConstraint constraint = new EqualsConstraint("CpuSocket");
 		
 		for (int i = 0; i < attributeList.size(); i += 2) {
 						
