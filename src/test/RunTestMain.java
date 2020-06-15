@@ -36,6 +36,18 @@ public class RunTestMain {
 		System.out.println("Number of ignored test: "+ res.getIgnoreCount());
 		System.out.println("Was successful? "+ res.wasSuccessful());
 		
+		res = JUnitCore.runClasses(AbstractConstraintTestTriple.class);
+
+		for (Failure failure : res.getFailures()) {
+			System.out.println(failure.toString());
+		}
+		
+		System.out.println("Success: "+ (res.getRunCount() - res.getFailureCount()));
+		System.out.println("Failures: "+ res.getFailureCount());
+		System.out.println("Number of runned tests: "+ res.getRunCount());
+		System.out.println("Number of ignored test: "+ res.getIgnoreCount());
+		System.out.println("Was successful? "+ res.wasSuccessful());
+
 	}
 	
 }
