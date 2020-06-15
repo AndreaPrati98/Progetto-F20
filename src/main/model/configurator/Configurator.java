@@ -85,6 +85,8 @@ public class Configurator {
 	public List<Component> getAddedComponents(){
 		return configuration.getAddedComponents();
 	}
+	
+	// TODO togliere, non serve piu!
 	/**
 	 * @return neededComponents - returns the essential components that you must have in your configuration
 	 * @see Configuration {@link Configuration}
