@@ -11,7 +11,9 @@ import org.junit.Test;
 import main.model.configurator.component.Attribute;
 import main.model.configurator.component.Component;
 import main.model.configurator.constraint.AbstractConstraint;
+import main.model.configurator.constraint.DimensionConstraint;
 import main.model.configurator.constraint.EqualsConstraint;
+import main.model.configurator.constraint.MaxConstraint;
 
 /**
  * This class is used to test the implementation of the method checkList in {@link AbstractConstraint}.
@@ -78,6 +80,42 @@ public class AbstractConstraintTestTriple {
 		return buff;		
 	} 
 	
+	/**
+	 * Qui devo avere tutti gli attribute che poi verranno provati con assertTrue
+	 * @see DimensionConstraint
+	 */
+	private static ArrayList<Object[]> initializeAttributesForDimensionTrue() {
+		//TODO da implementare
+		return null;
+	}
+	
+	/**
+	 * Qui devo avere tutti gli attribute che poi verranno provati con assertFalse
+	 * @see DimensionConstraint
+	 */
+	private static ArrayList<Object[]> initializeAttributesForDimensionFalse() {
+		//TODO da implementare
+		return null;
+	}
+	
+	/**
+	 * Qui devo avere tutti gli attribute che poi verranno provati con assertTrue
+	 * @see MaxConstraint
+	 */
+	private static ArrayList<Object[]> initializeAttributesForMaxTrue(){
+		//TODO da implementare
+		return null;
+	}
+	
+	/**
+	 * Qui devo avere tutti gli attribute che poi verranno provati con assertFalse
+	 * @see MaxConstraint
+	 */
+	private static ArrayList<Object[]> initializeAttributesForMaxFalse(){
+		//TODO da implementare
+		return null;
+	}
+		
 	private static ArrayList<Attribute> createAttributesCouples(ArrayList<Object[]> attBuff) {
 		
 		ArrayList<Attribute> attributesList = new ArrayList<Attribute>(); 
