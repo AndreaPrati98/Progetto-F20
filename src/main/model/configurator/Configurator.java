@@ -19,9 +19,14 @@ import main.services.persistence.PersistenceFacade;
 public class Configurator {
 
 	private ComponentCatalog catalog;
-	private Customer customer;
 	private Configuration configuration;
-
+	
+	
+	public Configurator(){
+		catalog = ComponentCatalog.getInstance();
+	}
+	
+	
 	public Configurator(ComponentCatalog catalog) {
 		super();
 		this.catalog = catalog;
@@ -31,22 +36,10 @@ public class Configurator {
 		this.catalog = catalog;
 		this.configuration=configuration;
 	}
-	/**
-	 * @return catalog - returns the catalog 
-	 * @see Configuration {@link Configuration}
-	 * */
-	public ComponentCatalog getCatalog() {
-		return catalog;
-	}
 	
-	/**
-	 *@overloading 
-	 *@param componentType - The filter of your search
-	 * */
-	public ComponentCatalog getCatalog(String compnentType) {
-		return catalog;
-	}
-	
+	public void newConfiguration(){
+		configuration = new Configuration();
+	}	
 	
 	/**
 	 * @param comp - Component that you would like to add.
@@ -85,32 +78,13 @@ public class Configurator {
 	public List<Component> getAddedComponents(){
 		return configuration.getAddedComponents();
 	}
-	
-	// TODO togliere, non serve piu!
-	/**
-	 * @return neededComponents - returns the essential components that you must have in your configuration
-	 * @see Configuration {@link Configuration}
-	 * */
-	public List<String> getNeededComponents(){
-		return configuration.getNeededComponents();
-	}
 
 	@Override
 	public String toString() {
 		return "System [configuration=" + configuration + "]";
 	}
-	/**
-	 * @return customer - returns the customer
-	 * @see {@link Customer}
-	 * */
-	public Customer getCustomer() {
-		return customer;
-	}
 	
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
-	
+
 	/**
 	 * 
 	 * 
@@ -133,7 +107,7 @@ public class Configurator {
 		return list;
 	}
 	
-	public boolean saveConfiguration(){
+	public boolean saveConfiguration(Customer customer){
 		PersistenceFacade facade = PersistenceFacade.getIstance();
 		return 	facade.addConfiguration(configuration, customer);
 	}

@@ -22,40 +22,19 @@ import main.services.persistence.PersistenceFacade;
  */
 public class ServletController {
 
-	//public static ServletController controller;
-	Configurator configurator;
+	private Configurator configurator;
+	private Customer customer;
+
 
 	public ServletController() {
-		ComponentCatalog catalog = new ComponentCatalog();
-		List<String> neededComponents = new ArrayList<String>();
-		
-		//TODO Nella versioe finale questa lista di stringhe deve essere recuperata dal 
-		//db dove nella tabella sono presenti
-		neededComponents.add("cpu");
-		neededComponents.add("mobo");
-		neededComponents.add("ram");
-		neededComponents.add("case");
-		neededComponents.add("power");
-		neededComponents.add("massStorage");
+		configurator = new Configurator();
+	}
 
-		Map<String, Boolean> singleComponents = new HashMap<String, Boolean>();
-		singleComponents.put("cpu", false);
-		singleComponents.put("mobo", false);
-		singleComponents.put("case", false);
-		singleComponents.put("cooler", false);
-
-		Configuration configuration = new Configuration(neededComponents, singleComponents);
-		configurator = new Configurator(catalog, configuration);
+	
+	public void newConfiguration(){
+		configurator.newConfiguration();
 	}
 	
-//
-//	public static ServletController getIstance() {
-//		if (controller == null)
-//			controller = new ServletController();
-//
-//		return controller;
-//	}
-
 	/**
 	 * Add the component with the given model to the configuration. 
 	 * 
@@ -64,7 +43,7 @@ public class ServletController {
 	 * added to the configuration
 	 */
 	public boolean addToConfiguration(String model) {
-		ComponentCatalog catalog = configurator.getCatalog();
+		ComponentCatalog catalog = ComponentCatalog.getInstance();
 		Component component = catalog.getComponentByModel(model);
 		if (component == null)
 			return false;
@@ -79,15 +58,11 @@ public class ServletController {
 	 * removed to the configuratio
 	 */
 	public boolean removeFromConfiguration(String model) {
-		ComponentCatalog catalog = configurator.getCatalog();
+		ComponentCatalog catalog = ComponentCatalog.getInstance();
 		Component component = catalog.getComponentByModel(model);
 		if (component == null)
 			return false;
 		return configurator.removeComponent(component);
-	}
-
-	public Map<String, List<Component>> getConfiguration() {
-		return null;
 	}
 
 	/**
@@ -108,12 +83,9 @@ public class ServletController {
 	 * @return true if the login goes right, false otherwise
 	 */
 	public boolean login(String email, String password){
-		PersistenceFacade facade = PersistenceFacade.getIstance();
-		//Dovrei avere una funzione di login sulla facade		
+		PersistenceFacade facade = PersistenceFacade.getIstance();		
 		if(facade.login(email, password)) {				
-			//Da testare la login che funzioni, è brutto farlo così, magari lo sposto
-			//TODO Aggiustare perchè causa eccezione il recupero dello User
-			configurator.setCustomer(facade.getUser(email));
+			customer = facade.getUser(email);
 			return true;
 		}
 		
@@ -135,7 +107,7 @@ public class ServletController {
 	}
 	
 	public boolean saveConfiguration(){
-		return configurator.saveConfiguration();
+		return configurator.saveConfiguration(customer);
 	}
 
 }

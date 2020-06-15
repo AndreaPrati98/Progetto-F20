@@ -46,7 +46,7 @@ public class ConfigurationServlet extends MyServlet {
 		}
 		
 		
-		ComponentCatalog catalog = new ComponentCatalog();
+		ComponentCatalog catalog = ComponentCatalog.getInstance();
 		List<String> type=new ArrayList<String>();
 		type.add("case");
 		type.add("cpu");

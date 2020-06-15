@@ -15,12 +15,22 @@ public class ComponentCatalog {
 
 	private List<Component> componentList;
 	private PersistenceFacade pf;
+	private static ComponentCatalog catalog;
 	
-	public ComponentCatalog() {
+	
+	private ComponentCatalog() {
 		pf= PersistenceFacade.getIstance();
 		componentList = new ArrayList<Component>();
 		componentList=pf.getAllComponent();
 		//componentList.addAll((new JSONUtil()).getComponents());
+	}
+	
+	
+	public static ComponentCatalog getInstance(){
+		if(catalog == null)
+			catalog = new ComponentCatalog();
+		
+		return catalog;
 	}
 	
 	/**

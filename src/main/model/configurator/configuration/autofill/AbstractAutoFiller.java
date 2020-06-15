@@ -22,7 +22,7 @@ public abstract class AbstractAutoFiller {
 	 */
 	protected List<Component> getCompatibleComponents(String type, List<Component> alreadyInside) {
 		List<Component> compatibleComp = new ArrayList<>();
-		ComponentCatalog compCat = new ComponentCatalog();
+		ComponentCatalog compCat = ComponentCatalog.getInstance();
 		List<Component> allComp = compCat.getComponentList();
 		ConstraintChecker cc = new ConstraintChecker();
 		
