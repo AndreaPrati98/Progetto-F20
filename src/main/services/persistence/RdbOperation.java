@@ -67,6 +67,18 @@ public class RdbOperation {
 		}
 		return rs;
 	}
+	
+	public ResultSet getTypeComponents() {
+		ResultSet rs = null;
+		Statement s;
+		try {
+			s = c.createStatement();
+			rs = s.executeQuery("SELECT type\r\nFROM TypeComponent");
+		} catch (SQLException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		return rs;
+	}
 
 	public boolean removeComponent(String model, String type) {
 		String sql = "DELETE FROM Component WHERE TypeofC = ? AND Model= ?";

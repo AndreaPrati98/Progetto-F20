@@ -8,4 +8,5 @@ public interface InterfaceComponentDAO {
 	
 	List<Component> getAllComponent();
 	List<String> getNeededComponents();
+	List<String> getTypeOfComponent();
 }
