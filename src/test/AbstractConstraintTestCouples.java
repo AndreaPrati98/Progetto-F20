@@ -2,7 +2,6 @@ package test;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,11 +10,13 @@ import org.junit.Test;
 
 import main.model.configurator.component.Attribute;
 import main.model.configurator.component.Component;
+import main.model.configurator.constraint.AbstractConstraint;
 import main.model.configurator.constraint.DimensionConstraint;
 import main.model.configurator.constraint.EqualsConstraint;
 
 /**
- * 
+ * This class is used to test the implementation of the method checkList in {@link AbstractConstraint}.
+ * In particular we want to test the method with 2 component. 
  * @author Andrea
  * @author Irene R.
  *
@@ -167,7 +168,7 @@ public class AbstractConstraintTestCouples {
 			for(int i = 0; i < attBuff.size(); i += 2) {
 				
 				int j = i+1;
-				//TODO estrarre il metodo getInstanceOfAttribute
+
 				String name1 = (String)attBuff.get(i)[0];
 				String value1 = (String)attBuff.get(i)[1]; 
 				String constraintName1 = (String)attBuff.get(i)[2];
