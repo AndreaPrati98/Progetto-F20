@@ -13,6 +13,7 @@ import main.model.configurator.component.Component;
 import main.model.configurator.constraint.AbstractConstraint;
 import main.model.configurator.constraint.DimensionConstraint;
 import main.model.configurator.constraint.EqualsConstraint;
+import main.model.configurator.constraint.MaxConstraint;
 
 /**
  * This class is used to test the implementation of the method checkList in {@link AbstractConstraint}.
@@ -120,6 +121,10 @@ public class AbstractConstraintTestCouples {
 		return buff;		
 	}
 
+	/**
+	 * Qui devo avere tutti gli attribute che poi verranno provati con assertTrue
+	 * @see MaxConstraint
+	 */
 	private static ArrayList<Object[]> initializeAttributesForMaxTrue(){
 
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
@@ -138,6 +143,10 @@ public class AbstractConstraintTestCouples {
 
 	}
 	
+	/**
+	 * Qui devo avere tutti gli attribute che poi verranno provati con assertFalse
+	 * @see MaxConstraint
+	 */
 	private static ArrayList<Object[]> initializeAttributesForMaxFalse(){
 		
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
