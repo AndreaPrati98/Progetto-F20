@@ -110,7 +110,6 @@ public class ConfigurationServlet extends MyServlet {
 		String modelOfComponentToInsert = request.getParameter("model");
 		System.out.println("Voglio inserire il modello "+modelOfComponentToInsert);
 		
-		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
 
 		//Facciamo l'inserimento con i controlli con le classi che abbiamo
 		boolean allOk = controller.addToConfiguration(modelOfComponentToInsert);	
