@@ -185,9 +185,9 @@ public class AbstractConstraintTestCouples {
 				String constraintCategory2 = (String)attBuff.get(j)[5];				
 				Attribute oldAtt = new Attribute(name2, value2, constraintName2, isBinding2, isPresentable2, constraintCategory2);
 
-				System.out.println(name1 +" "+value1+" "+ constraintCategory1);
-				System.out.println(name2 +" "+value2+" "+ constraintCategory2);			
-				System.out.println();
+				//System.out.println(name1 +" "+value1+" "+ constraintCategory1);
+				//System.out.println(name2 +" "+value2+" "+ constraintCategory2);			
+				//System.out.println();
 				
 				attributesList.add(oldAtt);
 				attributesList.add(newAtt);
