@@ -37,14 +37,14 @@ public class AbstractConstraintTestCouples {
 		
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
 		
-		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true});
-		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true});
+		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true, null});
+		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true, null});
 		
-		buff.add(new Object[] {"cpuSocket", "0", "CpuSocket", true, true});
-		buff.add(new Object[] {"cpuSocket", "0", "CpuSocket", true, true});
+		buff.add(new Object[] {"cpuSocket", "0", "CpuSocket", true, true, null});
+		buff.add(new Object[] {"cpuSocket", "0", "CpuSocket", true, true, null});
 		
-		buff.add(new Object[] {"cpuSocket", "1000", "CpuSocket", true, true});
-		buff.add(new Object[] {"cpuSocket", "1000", "CpuSocket", true, true});
+		buff.add(new Object[] {"cpuSocket", "1000", "CpuSocket", true, true, null});
+		buff.add(new Object[] {"cpuSocket", "1000", "CpuSocket", true, true, null});
 
 		return buff;		
 	} 
