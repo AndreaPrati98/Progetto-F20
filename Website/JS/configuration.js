@@ -31,7 +31,7 @@ $("#resetBtn").click(function(){
 	//TODO
 	//(in realtà non sono riuscito a farlo e quindi brutarlmente invia la richiesta di rimozione al server tutti i componenti anche
 	//se questi non sono stati checkati lol )
-    $(".selection").prop("checked", false);
+    $(".selection").prop("checked", false); 
     $(".selection").trigger('change');
 });
 
@@ -98,6 +98,7 @@ function add(modelString){
      	var price=parseFloat($("span[name="+modelString+"_price]").text());
      	var totalPrice=parseFloat($("#totalPrice").text());
      	totalPrice=totalPrice+price;
+     	totalPrice = totalePrice.toFixed(2);
      	$("#totalPrice").text(totalPrice);
 	    var addedComponentHtmlList = $(".collection");
 	    addedComponentHtmlList.append("<li class='collection-item' name='"+modelString+"'><div>"+modelString+"<a href='#!' class='secondary-content'></a></div></li>");
