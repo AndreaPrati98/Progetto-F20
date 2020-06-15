@@ -1,5 +1,6 @@
 package test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -158,6 +159,40 @@ public class AbstractConstraintTestTriple {
 			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
 			
 			assertTrue(constraint.checkList(oldCheckedComponents, componentToCheck));
+		}
+	}
+
+	@Test 
+	public void falseTestCheckListEqualsConstraint() {
+		ArrayList<Object[]> attBuff = AbstractConstraintTestTriple.initializeAttributesForEqualsFalse();
+		ArrayList<Attribute> attributeList = AbstractConstraintTestTriple.createAttributesCouples(attBuff);
+
+		EqualsConstraint constraint  = new EqualsConstraint("CpuSocket");
+		
+		for (int i = 0; i < attributeList.size(); i += 3) {
+			
+			HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap3 = new HashMap<String, Attribute>();
+			
+			Attribute att1 = attributeList.get(i);
+			Attribute att2 = attributeList.get(i+1);
+			Attribute att3 = attributeList.get(i+2);
+			
+			attributesMap1.put(att1.getName(), att1);
+			attributesMap2.put(att2.getName(), att2);
+			attributesMap3.put(att3.getName(), att3);
+			
+			Component alreadyCheckedComp1 = new Component("old", "cpu", 16, attributesMap1);
+			Component alreadyCheckedComp2 = new Component("old", "cpu", 16, attributesMap2);
+			
+			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
+			oldCheckedComponents.add(alreadyCheckedComp1);
+			oldCheckedComponents.add(alreadyCheckedComp2);
+			
+			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
+			
+			assertFalse(constraint.checkList(oldCheckedComponents, componentToCheck));
 		}
 	}
 
