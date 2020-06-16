@@ -112,12 +112,6 @@ public class AbstractConstraintTestCouples {
 		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
 		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "external"});
 		
-//		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
-//		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
-		
-//		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "external"});
-//		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
-		
 		return buff;		
 	}
 
