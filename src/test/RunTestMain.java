@@ -25,7 +25,7 @@ public class RunTestMain {
 		System.out.println("Was successful? "+ res.wasSuccessful());
 */
 		Result res = JUnitCore.runClasses(AbstractConstraintTestCouples.class);
-		
+		 
 		for (Failure failure : res.getFailures()) {
 			System.out.println(failure.toString());
 		}
