@@ -54,11 +54,12 @@ public class ConfigurationServlet extends MyServlet {
 		    return;
 		}
 		
-		Integer confId = Integer.parseInt(request.getParameter("oldConfigurationId"));
+		String confIdAsString = request.getParameter("oldConfigurationId");
 		List<Component> elementOfPreexistentConfiguration = new ArrayList<Component>();
-		if(confId == null) {
+		if(confIdAsString == null) {
 			controller.newConfiguration();
 		}else {
+			int confId = Integer.parseInt(confIdAsString);
 			elementOfPreexistentConfiguration = controller.retrieveConfigurationById(confId);
 			if(elementOfPreexistentConfiguration == null)
 				elementOfPreexistentConfiguration = new ArrayList<Component>();
