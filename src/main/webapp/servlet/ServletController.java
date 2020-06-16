@@ -109,5 +109,10 @@ public class ServletController {
 	public boolean saveConfiguration(){
 		return configurator.saveConfiguration(customer);
 	}
+	
+	public List<Component> retrieveConfigurationById(int confId){
+		configurator.retrieveConfigurationByName(confId);
+		return configurator.getAddedComponents();
+	}
 
 }

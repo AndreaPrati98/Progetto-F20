@@ -112,4 +112,15 @@ public class Configurator {
 		return facade.updateConfiguration(configuration, customer);
 	}
 
+	/**
+	 * Retrieve from the database a previously created configuration setting it inside
+	 * the configurator
+	 * @param confId
+	 * @return
+	 */
+	public void retrieveConfigurationByName(int confId) {
+		PersistenceFacade facade = PersistenceFacade.getIstance();
+		configuration = facade.getConfiguration(confId);
+	}
+
 }

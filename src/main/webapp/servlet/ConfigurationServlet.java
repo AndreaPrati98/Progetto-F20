@@ -15,6 +15,7 @@ import org.json.simple.JSONObject;
 import org.rythmengine.Rythm;
 
 import main.model.configurator.ComponentCatalog;
+import main.model.configurator.component.Component;
 import main.services.persistence.PersistenceFacade;
 
 @SuppressWarnings("serial")
@@ -52,13 +53,21 @@ public class ConfigurationServlet extends MyServlet {
 		    dispatcher.forward(request, response);
 		    return;
 		}
-		controller.newConfiguration();
-
+		
+		Integer confId = (Integer) request.getSession().getAttribute("oldConfigurationId");
+		List<Component> elementOfPreexistentConfiguration = new ArrayList<Component>();
+		if(confId == null) {
+			controller.newConfiguration();
+		}else {
+			elementOfPreexistentConfiguration = controller.retrieveConfigurationById(confId);
+			if(elementOfPreexistentConfiguration == null)
+				elementOfPreexistentConfiguration = new ArrayList<Component>();
+		}
 		
 		ComponentCatalog catalog = ComponentCatalog.getInstance();
 		List<String> type= PersistenceFacade.getIstance().getTypeComponent();	
 		
-		response.getWriter().write(Rythm.render("configurationv2.html",catalog.getComponentList(),type));
+		response.getWriter().write(Rythm.render("configurationv2.html",catalog.getComponentList(),type, elementOfPreexistentConfiguration));
 	}
 	
 	//TODO: Cambiare le stringhe boiler con costanti per i percorsi ed i nomi degli attributi

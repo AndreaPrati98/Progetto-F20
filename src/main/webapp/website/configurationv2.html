@@ -3,6 +3,7 @@
 @args() {
 	List<main.model.configurator.component.Component> componentlist,
 	List<String> type
+	List<main.model.configurator.component.Component> elementOfPreexistentConfiguration,
 }
 <html>
 <head>
@@ -83,7 +84,7 @@
 						        		<tr class="row@(tipo)Table" >
 					        				<th>
 						        				<label>
-											    	<input name="group@(tipo)" type="checkbox" id="@(cl.getModel())" class="check@(tipo) selection"/>
+											    	<input name="group@(tipo)" type="checkbox" id="@(cl.getModel())" class="check@(tipo) selection" @if(elementOfPreexistentConfiguration.contains(cl)){checked}/>
 								        			<span></span>
 								        		</label>
 								        	</th>
