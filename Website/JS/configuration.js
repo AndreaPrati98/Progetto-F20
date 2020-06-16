@@ -123,6 +123,7 @@ function remove(modelString,listItemParent){
 		var price=parseFloat($("span[name="+modelString+"_price]").text());
 		var totalPrice=parseFloat($("#totalPrice").text());
 		totalPrice=totalPrice-price;
+     	totalPrice = totalPrice.toFixed(2);
 		$("#totalPrice").text(totalPrice);
 		listItemParent.remove();	
 	  }else if(convertedData['response'] == 'redirect'){
