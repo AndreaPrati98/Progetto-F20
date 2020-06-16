@@ -86,7 +86,32 @@ public class AbstractConstraintTestTriple {
 	 */
 	private static ArrayList<Object[]> initializeAttributesForDimensionTrue() {
 		//TODO da implementare
-		return null;
+		ArrayList<Object[]> buff = new ArrayList<Object[]>();
+		
+		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
+		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
+		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
+		
+		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
+		buff.add(new Object[] {"ramSize", "17", "RamSize", true, true, "internal"});
+		buff.add(new Object[] {"ramSize", "32", "RamSize", true, true, "external"});
+
+		
+		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
+		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});		
+		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
+		
+		buff.add(new Object[] {"ciccioPasticcio", "16", "ciao", true, true, "internal"});
+		buff.add(new Object[] {"lollipop", "8", "ciao", true, true, "external"});
+		buff.add(new Object[] {"IDK", "8", "ciao", true, true, "external"});
+		
+		//occhio a questa terna, fa capire che i compoenenti già inseriti non vengono ricontrollati!
+		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
+		buff.add(new Object[] {"ramSize", "4", "RamSize", true, true, "external"});		
+		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "external"});
+		
+		return buff;		
+
 	}
 	
 	/**
@@ -94,8 +119,13 @@ public class AbstractConstraintTestTriple {
 	 * @see DimensionConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForDimensionFalse() {
-		//TODO da implementare
-		return null;
+		ArrayList<Object[]> buff = new ArrayList<Object[]>();
+		
+		buff.add(new Object[] {"ramSize", "4", "RamSize", true, true, "external"});		
+		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "external"});
+		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
+		
+		return buff;
 	}
 	
 	/**
@@ -167,7 +197,7 @@ public class AbstractConstraintTestTriple {
 	}
 
 	@Test 
-	public void trueTestCheckListEqualsConstraint() {
+	public void trueTestCheckListOnEquals() {
 		ArrayList<Object[]> attBuff = AbstractConstraintTestTriple.initializeAttributesForEqualsTrue();
 		ArrayList<Attribute> attributeList = AbstractConstraintTestTriple.createAttributesCouples(attBuff);
 
@@ -187,8 +217,8 @@ public class AbstractConstraintTestTriple {
 			attributesMap2.put(att2.getName(), att2);
 			attributesMap3.put(att3.getName(), att3);
 			
-			Component alreadyCheckedComp1 = new Component("old", "cpu", 16, attributesMap1);
-			Component alreadyCheckedComp2 = new Component("old", "cpu", 16, attributesMap2);
+			Component alreadyCheckedComp1 = new Component("old1", "cpu", 16, attributesMap1);
+			Component alreadyCheckedComp2 = new Component("old2", "cpu", 16, attributesMap2);
 			
 			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
 			oldCheckedComponents.add(alreadyCheckedComp1);
@@ -196,12 +226,12 @@ public class AbstractConstraintTestTriple {
 			
 			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
 			
-			assertTrue(constraint.checkList(oldCheckedComponents, componentToCheck));
+			assertTrue("Non viene restituito true", constraint.checkList(oldCheckedComponents, componentToCheck));
 		}
 	}
 
 	@Test 
-	public void falseTestCheckListEqualsConstraint() {
+	public void falseTestCheckListOnEquals() {
 		ArrayList<Object[]> attBuff = AbstractConstraintTestTriple.initializeAttributesForEqualsFalse();
 		ArrayList<Attribute> attributeList = AbstractConstraintTestTriple.createAttributesCouples(attBuff);
 
@@ -221,8 +251,8 @@ public class AbstractConstraintTestTriple {
 			attributesMap2.put(att2.getName(), att2);
 			attributesMap3.put(att3.getName(), att3);
 			
-			Component alreadyCheckedComp1 = new Component("old", "cpu", 16, attributesMap1);
-			Component alreadyCheckedComp2 = new Component("old", "cpu", 16, attributesMap2);
+			Component alreadyCheckedComp1 = new Component("old1", "cpu", 16, attributesMap1);
+			Component alreadyCheckedComp2 = new Component("old2", "cpu", 16, attributesMap2);
 			
 			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
 			oldCheckedComponents.add(alreadyCheckedComp1);
@@ -230,9 +260,76 @@ public class AbstractConstraintTestTriple {
 			
 			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
 			
-			assertFalse(constraint.checkList(oldCheckedComponents, componentToCheck));
+			assertFalse("Non viene restituito false", constraint.checkList(oldCheckedComponents, componentToCheck));
+		}
+	}
+	
+	@Test
+	public void trueTestCheckListOnDimension() {
+		ArrayList<Object[]> attBuff = AbstractConstraintTestTriple.initializeAttributesForDimensionTrue();
+		ArrayList<Attribute> attributeList = AbstractConstraintTestTriple.createAttributesCouples(attBuff);
+
+		DimensionConstraint constraint = new DimensionConstraint("RamSize");
+		
+		for (int i = 0; i < attributeList.size(); i += 3) {
+			
+			HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap3 = new HashMap<String, Attribute>();
+			
+			Attribute att1 = attributeList.get(i);
+			Attribute att2 = attributeList.get(i+1);
+			Attribute att3 = attributeList.get(i+2);
+			
+			attributesMap1.put(att1.getName(), att1);
+			attributesMap2.put(att2.getName(), att2);
+			attributesMap3.put(att3.getName(), att3);
+			
+			Component alreadyCheckedComp1 = new Component("old1", "cpu", 16, attributesMap1);
+			Component alreadyCheckedComp2 = new Component("old2", "cpu", 16, attributesMap2);
+			
+			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
+			oldCheckedComponents.add(alreadyCheckedComp1);
+			oldCheckedComponents.add(alreadyCheckedComp2);
+			
+			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
+			
+			assertTrue("Non viene restituito true", constraint.checkList(oldCheckedComponents, componentToCheck));
 		}
 	}
 
+	@Test
+	public void falseTestCheckListOnDimension() {
+		ArrayList<Object[]> attBuff = AbstractConstraintTestTriple.initializeAttributesForDimensionFalse();
+		ArrayList<Attribute> attributeList = AbstractConstraintTestTriple.createAttributesCouples(attBuff);
+		
+		DimensionConstraint constraint = new DimensionConstraint("RamSize");
+		
+		for (int i = 0; i < attributeList.size(); i += 3) {
+			
+			HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap3 = new HashMap<String, Attribute>();
+			
+			Attribute att1 = attributeList.get(i);
+			Attribute att2 = attributeList.get(i+1);
+			Attribute att3 = attributeList.get(i+2);
+			
+			attributesMap1.put(att1.getName(), att1);
+			attributesMap2.put(att2.getName(), att2);
+			attributesMap3.put(att3.getName(), att3);
+			
+			Component alreadyCheckedComp1 = new Component("old1", "cpu", 16, attributesMap1);
+			Component alreadyCheckedComp2 = new Component("old2", "cpu", 16, attributesMap2);
+			
+			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
+			oldCheckedComponents.add(alreadyCheckedComp1);
+			oldCheckedComponents.add(alreadyCheckedComp2);
+			
+			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
+
+			assertFalse("Non viene restituito false", constraint.checkList(oldCheckedComponents, componentToCheck));
+		}
+	}
 	
 }
