@@ -85,7 +85,6 @@ public class AbstractConstraintTestTriple {
 	 * @see DimensionConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForDimensionTrue() {
-		//TODO da implementare
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
 		
 		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
