@@ -277,7 +277,7 @@ public class AbstractConstraintTestCouples {
 
 	
 	@Test
-	public void trueTestCheckListEqualsConstraint() {
+	public void trueTestCheckListOnEquals() {
 		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForEqualsTrue();
 		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
 		
@@ -305,7 +305,7 @@ public class AbstractConstraintTestCouples {
 	}
 	
 	@Test
-	public void falseTestCheckListEqualsConstraint() {
+	public void falseTestCheckListOnEquals() {
 		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForEqualsFalse();
 		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
 		
@@ -336,7 +336,7 @@ public class AbstractConstraintTestCouples {
 	
 	
 	@Test
-	public void trueTestCheckListMaxConstraint() {
+	public void trueTestCheckListOnMax() {
 		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForMaxTrue();
 		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
 		
@@ -364,7 +364,7 @@ public class AbstractConstraintTestCouples {
 	}
 	
 	@Test
-	public void falseTestCheckListMaxConstraint() {
+	public void falseTestCheckListOnMax() {
 		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForMaxFalse();
 		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
 		
@@ -392,23 +392,4 @@ public class AbstractConstraintTestCouples {
 		
 	}
 	
-/*
-	@Test
-	@Ignore
-	public void testSelectAttributeSameNameListOfComponent() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	@Ignore
-	public void testSelectAttributeSameNameComponent() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	@Ignore
-	public void testFilterAttributesList() {
-		fail("Not yet implemented");
-	}
-*/
 }
