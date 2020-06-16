@@ -26,13 +26,9 @@ $('#checkBtn').click(function(){
 );
 
 $("#resetBtn").click(function(){
-	//Serve a manipolare solo quelli checkati altrimenti mando più richiesta di rimozione del
-	//dovuto 
-	//TODO
-	//(in realtà non sono riuscito a farlo e quindi brutarlmente invia la richiesta di rimozione al server tutti i componenti anche
-	//se questi non sono stati checkati lol )
-    $(".selection").prop("checked", false); 
-    $(".selection").trigger('change');
+	let previouslyCheckedCheckbox = $('.selection:checkbox:checked');
+	previouslyCheckedCheckbox.prop("checked", false);
+	previouslyCheckedCheckbox.trigger('change');
 });
 
 $("#saveBtn").click(function(){
