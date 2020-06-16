@@ -28,10 +28,6 @@ public class CPUPerformanceEstimator implements InterfacePerformanceEstimator {
 	 * numero di thread
 	 * tipo ram supportata
 	 * cache
-	 * 
-	 * se qualcuno avesse altre idee sono ben accette
-	 * (Consiglio: metodo troppo lungo, se si possono fare diversi conti separati spezzarli
-	 * più metodi protetti)
 	 */
 	
 	/**
