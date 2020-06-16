@@ -17,6 +17,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="statics/CSS/personalizedScrollbar.css"  media="screen,projection"/>
+	
 </head>
 
 <body>
@@ -74,7 +76,7 @@
 				        }
 				        
 				        <div class="collapsible-body"  id="@(tipo)Menu">
-			        	<form action="#" style="overflow: auto">
+			        	<form action="#" style="overflow: auto; height: 20em">
 			            	<table id="@(tipo)Table" >
 						        @for(main.model.configurator.component.Component cl:componentlist){
 						        	@if(cl.getTypeComponent().equals(tipo)){
