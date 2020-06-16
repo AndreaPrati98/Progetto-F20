@@ -58,7 +58,7 @@ public class ConfigurationServlet extends MyServlet {
 		ComponentCatalog catalog = ComponentCatalog.getInstance();
 		List<String> type= PersistenceFacade.getIstance().getTypeComponent();	
 		
-		response.getWriter().write(Rythm.render("configuration.html",catalog.getComponentList(),type));
+		response.getWriter().write(Rythm.render("configurationv2.html",catalog.getComponentList(),type));
 	}
 	
 	//TODO: Cambiare le stringhe boiler con costanti per i percorsi ed i nomi degli attributi

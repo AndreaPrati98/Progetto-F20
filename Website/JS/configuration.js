@@ -98,9 +98,10 @@ function add(modelString){
      	var price=parseFloat($("span[name="+modelString+"_price]").text());
      	var totalPrice=parseFloat($("#totalPrice").text());
      	totalPrice=totalPrice+price;
-     	totalPrice = totalePrice.toFixed(2);
+     	totalPrice = totalPrice.toFixed(2);
      	$("#totalPrice").text(totalPrice);
-	    var addedComponentHtmlList = $(".collection");
+	    let addedComponentHtmlList = $(".collection");
+	    console.log(addedComponentHtmlList);
 	    addedComponentHtmlList.append("<li class='collection-item' name='"+modelString+"'><div>"+modelString+"<a href='#!' class='secondary-content'></a></div></li>");
 	 }else if(convertedData['response'] == 'redirect'){
 		 window.location.replace("/logout");
