@@ -133,8 +133,26 @@ public class AbstractConstraintTestTriple {
 	 * @see MaxConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForMaxTrue(){
-		//TODO da implementare
-		return null;
+		ArrayList<Object[]> buff = new ArrayList<Object[]>();
+		
+		buff.add(new Object[] {"power", "750", "Power", true, true, "external"});
+		buff.add(new Object[] {"power", "65", "Power", true, true, "internal"});
+		buff.add(new Object[] {"power", "600", "Power", true, true, "internal"});
+		
+		buff.add(new Object[] {"power", "10", "Power", true, true, "internal"});
+		buff.add(new Object[] {"power", "75", "Power", true, true, "external"});
+		buff.add(new Object[] {"power", "65", "Power", true, true, "internal"});
+		
+		buff.add(new Object[] {"power", "10", "Power", true, true, "internal"});
+		buff.add(new Object[] {"power", "65", "Power", true, true, "internal"});
+		buff.add(new Object[] {"power", "75", "Power", true, true, "external"});
+		
+		buff.add(new Object[] {"power", "65", "Power", true, true, "internal"});
+		buff.add(new Object[] {"power", "650", "Power", true, true, "external"});		
+		buff.add(new Object[] {"power", "700", "Power", true, true, "internal"});
+	
+		
+		return buff;
 	}
 	
 	/**
@@ -142,8 +160,17 @@ public class AbstractConstraintTestTriple {
 	 * @see MaxConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForMaxFalse(){
-		//TODO da implementare
-		return null;
+		ArrayList<Object[]> buff = new ArrayList<Object[]>();
+		
+		buff.add(new Object[] {"power", "750", "Power", true, true, "internal"});
+		buff.add(new Object[] {"power", "65", "Power", true, true, "internal"});
+		buff.add(new Object[] {"power", "65", "Power", true, true, "external"});
+		
+		buff.add(new Object[] {"power", "65", "Power", true, true, "internal"});
+		buff.add(new Object[] {"power", "650", "Power", true, true, "external"});		
+		buff.add(new Object[] {"power", "700", "Power", true, true, "internal"});		
+		
+		return buff;				
 	}
 		
 	private static ArrayList<Attribute> createAttributesCouples(ArrayList<Object[]> attBuff) {
@@ -226,7 +253,7 @@ public class AbstractConstraintTestTriple {
 			
 			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
 			
-			assertTrue("Non viene restituito true", constraint.checkList(oldCheckedComponents, componentToCheck));
+			assertTrue("Non viene restituito true al giro: "+ i/3, constraint.checkList(oldCheckedComponents, componentToCheck));
 		}
 	}
 
@@ -260,7 +287,7 @@ public class AbstractConstraintTestTriple {
 			
 			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
 			
-			assertFalse("Non viene restituito false", constraint.checkList(oldCheckedComponents, componentToCheck));
+			assertFalse("Non viene restituito false al giro: "+ i/3, constraint.checkList(oldCheckedComponents, componentToCheck));
 		}
 	}
 	
@@ -294,7 +321,7 @@ public class AbstractConstraintTestTriple {
 			
 			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
 			
-			assertTrue("Non viene restituito true", constraint.checkList(oldCheckedComponents, componentToCheck));
+			assertTrue("Non viene restituito true al giro: "+ i/3, constraint.checkList(oldCheckedComponents, componentToCheck));
 		}
 	}
 
@@ -328,8 +355,79 @@ public class AbstractConstraintTestTriple {
 			
 			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
 
-			assertFalse("Non viene restituito false", constraint.checkList(oldCheckedComponents, componentToCheck));
+			assertFalse("Non viene restituito false al giro: "+ i/3, constraint.checkList(oldCheckedComponents, componentToCheck));
 		}
 	}
+
+	@Test
+	public void trueTestCheckListOnMax() {
+		ArrayList<Object[]> attBuff = AbstractConstraintTestTriple.initializeAttributesForMaxTrue();
+		ArrayList<Attribute> attributeList = AbstractConstraintTestTriple.createAttributesCouples(attBuff);
+
+		DimensionConstraint constraint = new DimensionConstraint("RamSize");
+		
+		for (int i = 0; i < attributeList.size(); i += 3) {
+			
+			HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap3 = new HashMap<String, Attribute>();
+			
+			Attribute att1 = attributeList.get(i);
+			Attribute att2 = attributeList.get(i+1);
+			Attribute att3 = attributeList.get(i+2);
+			
+			attributesMap1.put(att1.getName(), att1);
+			attributesMap2.put(att2.getName(), att2);
+			attributesMap3.put(att3.getName(), att3);
+			
+			Component alreadyCheckedComp1 = new Component("old1", "cpu", 16, attributesMap1);
+			Component alreadyCheckedComp2 = new Component("old2", "cpu", 16, attributesMap2);
+			
+			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
+			oldCheckedComponents.add(alreadyCheckedComp1);
+			oldCheckedComponents.add(alreadyCheckedComp2);
+			
+			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
+			
+			assertTrue("Non viene restituito true al giro: "+i/3, constraint.checkList(oldCheckedComponents, componentToCheck));
+		}
+
+	}
+	
+	@Test
+	public void falseTestCheckListOnMax() {
+		ArrayList<Object[]> attBuff = AbstractConstraintTestTriple.initializeAttributesForMaxFalse();
+		ArrayList<Attribute> attributeList = AbstractConstraintTestTriple.createAttributesCouples(attBuff);
+
+		DimensionConstraint constraint = new DimensionConstraint("RamSize");
+		
+		for (int i = 0; i < attributeList.size(); i += 3) {
+			
+			HashMap<String, Attribute> attributesMap1 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap2 = new HashMap<String, Attribute>();
+			HashMap<String, Attribute> attributesMap3 = new HashMap<String, Attribute>();
+			
+			Attribute att1 = attributeList.get(i);
+			Attribute att2 = attributeList.get(i+1);
+			Attribute att3 = attributeList.get(i+2);
+			
+			attributesMap1.put(att1.getName(), att1);
+			attributesMap2.put(att2.getName(), att2);
+			attributesMap3.put(att3.getName(), att3);
+			
+			Component alreadyCheckedComp1 = new Component("old1", "cpu", 16, attributesMap1);
+			Component alreadyCheckedComp2 = new Component("old2", "cpu", 16, attributesMap2);
+			
+			ArrayList<Component> oldCheckedComponents = new ArrayList<Component>();
+			oldCheckedComponents.add(alreadyCheckedComp1);
+			oldCheckedComponents.add(alreadyCheckedComp2);
+			
+			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
+			
+			assertFalse("Non viene restituito false al giro: "+ i/3, constraint.checkList(oldCheckedComponents, componentToCheck));
+		}
+
+	}
+	
 	
 }
