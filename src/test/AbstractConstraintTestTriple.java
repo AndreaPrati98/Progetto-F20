@@ -146,12 +146,7 @@ public class AbstractConstraintTestTriple {
 		buff.add(new Object[] {"power", "10", "Power", true, true, "internal"});
 		buff.add(new Object[] {"power", "65", "Power", true, true, "internal"});
 		buff.add(new Object[] {"power", "75", "Power", true, true, "external"});
-		
-		buff.add(new Object[] {"power", "65", "Power", true, true, "internal"});
-		buff.add(new Object[] {"power", "650", "Power", true, true, "external"});		
-		buff.add(new Object[] {"power", "700", "Power", true, true, "internal"});
-	
-		
+			
 		return buff;
 	}
 	
@@ -364,7 +359,7 @@ public class AbstractConstraintTestTriple {
 		ArrayList<Object[]> attBuff = AbstractConstraintTestTriple.initializeAttributesForMaxTrue();
 		ArrayList<Attribute> attributeList = AbstractConstraintTestTriple.createAttributesCouples(attBuff);
 
-		DimensionConstraint constraint = new DimensionConstraint("RamSize");
+		MaxConstraint constraint = new MaxConstraint("Power");
 		
 		for (int i = 0; i < attributeList.size(); i += 3) {
 			
@@ -399,7 +394,7 @@ public class AbstractConstraintTestTriple {
 		ArrayList<Object[]> attBuff = AbstractConstraintTestTriple.initializeAttributesForMaxFalse();
 		ArrayList<Attribute> attributeList = AbstractConstraintTestTriple.createAttributesCouples(attBuff);
 
-		DimensionConstraint constraint = new DimensionConstraint("RamSize");
+		MaxConstraint constraint = new MaxConstraint("Power");
 		
 		for (int i = 0; i < attributeList.size(); i += 3) {
 			
