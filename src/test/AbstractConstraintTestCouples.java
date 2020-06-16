@@ -147,12 +147,9 @@ public class AbstractConstraintTestCouples {
 		
 		buff.add(new Object[] {"power", "750", "Power", true, true, "internal"});
 		buff.add(new Object[] {"power", "65", "Power", true, true, "external"});
-		
-//		buff.add(new Object[] {"power", "750", "Power", true, true, "internal"});
-//		buff.add(new Object[] {"power", "750", "Power", true, true, "external"});
-		
-//		buff.add(new Object[] {"power", "65", "Power", true, true, "external"});
-//		buff.add(new Object[] {"power", "750", "Power", true, true, "internal"});
+
+		buff.add(new Object[] {"power", "65", "Power", true, true, "external"});
+		buff.add(new Object[] {"power", "750", "Power", true, true, "internal"});
 		
 		return buff;		
 	}
@@ -231,7 +228,7 @@ public class AbstractConstraintTestCouples {
 			
 			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
 			
-			assertTrue(constraint.checkList(oldCheckedComponents, componentToCheck));
+			assertTrue("Non viene restituito true al giro: "+ i/2, constraint.checkList(oldCheckedComponents, componentToCheck));
 		}
 		
 	}
@@ -264,7 +261,7 @@ public class AbstractConstraintTestCouples {
 			
 			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
 			
-			assertFalse(constraint.checkList(oldCheckedComponents, componentToCheck));
+			assertFalse("Non viene restituito false al giro: "+ i/2, constraint.checkList(oldCheckedComponents, componentToCheck));
 		}
 		
 	}
@@ -294,7 +291,7 @@ public class AbstractConstraintTestCouples {
 			
 			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
 			
-			assertTrue(constraint.checkList(oldCheckedComponents, componentToCheck));
+			assertTrue("Non viene restituito true al giro: "+ i/2, constraint.checkList(oldCheckedComponents, componentToCheck));
 		}
 	}
 	
@@ -322,7 +319,7 @@ public class AbstractConstraintTestCouples {
 			
 			Component componentToCheck = new Component("new", "mobo", 14, attributesMap2);
 			
-			assertFalse(constraint.checkList(oldCheckedComponents, componentToCheck));
+			assertFalse("Non viene restituito false al giro: "+ i/2, constraint.checkList(oldCheckedComponents, componentToCheck));
 		}
 		
 	}
@@ -353,7 +350,7 @@ public class AbstractConstraintTestCouples {
 			
 			Component componentToCheck = new Component("new", "cpu", 14, attributesMap2);
 			
-			assertTrue(constraint.checkList(oldCheckedComponents, componentToCheck));
+			assertTrue("Non viene restituito true al giro: "+ i/2, constraint.checkList(oldCheckedComponents, componentToCheck));
 		}
 	}
 	
@@ -381,7 +378,7 @@ public class AbstractConstraintTestCouples {
 			
 			Component componentToCheck = new Component("new", "cpu", 14, attributesMap2);
 			
-			assertFalse(constraint.checkList(oldCheckedComponents, componentToCheck));
+			assertFalse("Non viene restituito false al giro: "+ i/2, constraint.checkList(oldCheckedComponents, componentToCheck));
 		}
 		
 	}

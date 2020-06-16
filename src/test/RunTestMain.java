@@ -29,7 +29,8 @@ public class RunTestMain {
 		for (Failure failure : res.getFailures()) {
 			System.out.println(failure.toString());
 		}
-		
+
+		System.out.println("Tested "+ AbstractConstraintTestCouples.class);	
 		System.out.println("Success: "+ (res.getRunCount() - res.getFailureCount()));
 		System.out.println("Failures: "+ res.getFailureCount());
 		System.out.println("Number of runned tests: "+ res.getRunCount());
@@ -43,6 +44,7 @@ public class RunTestMain {
 			System.out.println(failure.toString());
 		}
 		
+		System.out.println("Tested "+ AbstractConstraintTestTriple.class);
 		System.out.println("Success: "+ (res.getRunCount() - res.getFailureCount()));
 		System.out.println("Failures: "+ res.getFailureCount());
 		System.out.println("Number of runned tests: "+ res.getRunCount());
