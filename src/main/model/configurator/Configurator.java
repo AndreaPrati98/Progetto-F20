@@ -109,9 +109,7 @@ public class Configurator {
 	
 	public boolean saveConfiguration(Customer customer){
 		PersistenceFacade facade = PersistenceFacade.getIstance();
-		return 	facade.addConfiguration(configuration, customer);
+		return facade.updateConfiguration(configuration, customer);
 	}
-	
-	
 
 }
