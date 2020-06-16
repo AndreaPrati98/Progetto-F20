@@ -331,7 +331,7 @@ public class AbstractConstraintTestCouples {
 		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForMaxTrue();
 		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
 		
-		DimensionConstraint constraint = new DimensionConstraint("Power");
+		MaxConstraint constraint = new MaxConstraint("Power");
 		
 		for (int i = 0; i < attributeList.size(); i += 2) {
 						
@@ -359,7 +359,7 @@ public class AbstractConstraintTestCouples {
 		ArrayList<Object[]> attBuff = AbstractConstraintTestCouples.initializeAttributesForMaxFalse();
 		ArrayList<Attribute> attributeList = AbstractConstraintTestCouples.createAttributesCouples(attBuff);
 		
-		DimensionConstraint constraint = new DimensionConstraint("Power");
+		MaxConstraint constraint = new MaxConstraint("Power");
 		
 		for (int i = 0; i < attributeList.size(); i += 2) {
 						
