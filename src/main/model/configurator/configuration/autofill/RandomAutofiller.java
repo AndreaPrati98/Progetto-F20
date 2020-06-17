@@ -19,13 +19,13 @@ public class RandomAutofiller extends AbstractAutoFiller {
 		componentTypes.add("case");
 		componentTypes.add("gpu");
 		componentTypes.add("power");
-		componentTypes.add("case");
 		componentTypes.add("massStorage");
 		componentTypes.add("cooler");
 	}
 	
 	@Override
 	public List<Component> completeConfiguration(List<Component> alreadyInside) {
+		//TODO cosa succede se alreadyInside dovesse essere null? Funziona tutto comunque?
 		List<Component> completeConfig = new ArrayList<>(alreadyInside);
 		for(String typeComp : componentTypes) {
 			// Controllo se tra i componenti già presenti ce n'è uno del tipo specificato
