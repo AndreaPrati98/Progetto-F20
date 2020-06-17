@@ -1,17 +1,22 @@
 package main.model.configurator.configuration.autofill;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import main.model.configurator.ComponentCatalog;
 import main.model.configurator.component.Component;
 
 public class PriceAutoFiller extends AbstractAutoFiller {
 	private List<String> componentTypes;
+	private Map<String, Double> percentageMap;
 	private double priceScope;
 	
 	public PriceAutoFiller(double priceScope) {
 		componentTypes = new ArrayList<>();
 		this.priceScope = priceScope; 
+		this.percentageMap = calculatePercentageMap();
 		// Nella lista aggiungo nell'ordine i tipi di componenti a partire da quelli che hanno
 		// più vincoli da rispettare, che quindi voglio che siano aggiunti per primi
 		componentTypes.add("mobo");
@@ -38,9 +43,9 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 					return alreadyInside;
 				}
 				
-				Component compToAdd = componentByScope(compatibleComp);
-				System.out.println("Aggiunto componente "+compToAdd.getTypeComponent()+": "+compToAdd.getModel());
-				completeConfig.add(compToAdd);
+//				Component compToAdd = componentByScope(compatibleComp, );
+//				System.out.println("Aggiunto componente "+compToAdd.getTypeComponent()+": "+compToAdd.getModel());
+//				completeConfig.add(compToAdd);
 
 			}
 		}
@@ -51,9 +56,10 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 	/**
 	 * Find in a list the Component that has the price nearest to the scope
 	 * @param campatibleComp
-	 * @return
+	 * @param priceScopeByType
+	 * @return bestComponent
 	 */
-	private Component componentByScope(List<Component> compatibleComp) {
+	private Component componentByScope(List<Component> compatibleComp, double priceScopeByType) {
 
 		Component bestComponent = null;
 		double diff = -1;
@@ -66,11 +72,11 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 		for (Component component : compatibleComp) {
 			//se diff è negativa allora è il primo giro
 			if (diff < 0) {
-				diff = component.getPrice() - priceScope;
+				diff = component.getPrice() - priceScopeByType;
 				diff = Math.abs(diff);
 				bestComponent = component;
 			} else {
-				temp = component.getPrice() - priceScope;
+				temp = component.getPrice() - priceScopeByType;
 				temp = Math.abs(temp);
 				//se ho minimizzato ancora di più la differenza di prezzo mi salvo la componente
 				if(temp < diff) {
@@ -81,4 +87,38 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 		}
 		return bestComponent;
 	}
+	
+	/**
+	 * create a map that contains the couple (typeOfComponent, Percentage of price)
+	 * 
+	 */
+	private Map<String, Double> calculatePercentageMap() {
+		ComponentCatalog catalog = ComponentCatalog.getInstance();
+//		List<Component> allComp = new ArrayList<Component> (catalog.getComponentList());
+//		List<Component> allComp = catalog.getComponentList();
+		//Creo la mappa che deve contenere la coppia tipo di componente-percentuale del prezzo
+		Map<String, Double> percMap = new HashMap<String, Double>();
+		
+		double totalSum = 0;
+		for (String typeOfC : componentTypes) {
+			List<Component> compByType = catalog.getComponentListByType(typeOfC);
+			double sum = 0;
+			for (Component component : compByType) {
+				sum += component.getPrice();
+			}
+			
+			Double avg = sum / compByType.size();
+			totalSum += avg;
+			percMap.put(typeOfC, avg);
+		}
+		
+		for (String typeOfC : componentTypes) {
+			Double percentage = percMap.get(typeOfC) / totalSum;
+			// rimpiazzo quello che era il prezzo medio con la percentuale
+			percMap.put(typeOfC, percentage);
+		}
+
+		return percMap;
+	}
+	
 }
