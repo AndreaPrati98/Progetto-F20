@@ -97,5 +97,19 @@ public class ComponentCatalog {
 		return null;
 	}
 	
+	public List<Component> getComponentListByType(String typeOfC){
+		List<Component> compByTypeList = new ArrayList<Component>();
+		
+		for (Component component : componentList) {
+			if(component.getTypeComponent().equals(typeOfC)) {
+				compByTypeList.add(component);
+			}
+		}
+		
+		return compByTypeList;
+		
+		
+	}
+	
 	
 }
