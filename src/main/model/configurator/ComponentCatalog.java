@@ -96,6 +96,11 @@ public class ComponentCatalog {
 		return null;
 	}
 	
+	/**
+	 * 
+	 * @param typeOfC
+	 * @return
+	 */
 	public List<Component> getComponentListByType(String typeOfC){
 		List<Component> compByTypeList = new ArrayList<Component>();
 		
@@ -106,7 +111,6 @@ public class ComponentCatalog {
 		}
 		
 		return compByTypeList;
-		
 		
 	}
 	
