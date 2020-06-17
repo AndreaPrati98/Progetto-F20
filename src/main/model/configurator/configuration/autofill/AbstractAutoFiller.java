@@ -36,7 +36,13 @@ public abstract class AbstractAutoFiller implements InterfaceAutofiller {
 		return compatibleComp;
 	}
 	
-	
+	/**
+	 * Verify if a given list of components contains one or more components of the given type
+	 * 
+	 * @param type
+	 * @param alreadyInside
+	 * @return
+	 */
 	protected boolean containsTypeComponent(String type, List<Component> alreadyInside) {
 		for (Component comp : alreadyInside) {
 			if(comp.getTypeComponent().equals(type)) {
