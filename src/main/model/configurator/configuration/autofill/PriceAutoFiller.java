@@ -43,9 +43,9 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 					return alreadyInside;
 				}
 				
-//				Component compToAdd = componentByScope(compatibleComp, );
-//				System.out.println("Aggiunto componente "+compToAdd.getTypeComponent()+": "+compToAdd.getModel());
-//				completeConfig.add(compToAdd);
+				Component compToAdd = componentByScope(compatibleComp, typeComp);
+				System.out.println("Aggiunto componente "+compToAdd.getTypeComponent()+": "+compToAdd.getModel());
+				completeConfig.add(compToAdd);
 
 			}
 		}
@@ -59,7 +59,7 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 	 * @param priceScopeByType
 	 * @return bestComponent
 	 */
-	private Component componentByScope(List<Component> compatibleComp, double priceScopeByType) {
+	private Component componentByScope(List<Component> compatibleComp, String typeOfComponent) {
 
 		Component bestComponent = null;
 		double diff = -1;
@@ -69,6 +69,8 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 			return null;
 		}
 
+		double priceScopeByType = percentageMap.get(typeOfComponent)*priceScope;
+		
 		for (Component component : compatibleComp) {
 			//se diff è negativa allora è il primo giro
 			if (diff < 0) {
@@ -94,8 +96,6 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 	 */
 	private Map<String, Double> calculatePercentageMap() {
 		ComponentCatalog catalog = ComponentCatalog.getInstance();
-//		List<Component> allComp = new ArrayList<Component> (catalog.getComponentList());
-//		List<Component> allComp = catalog.getComponentList();
 		//Creo la mappa che deve contenere la coppia tipo di componente-percentuale del prezzo
 		Map<String, Double> percMap = new HashMap<String, Double>();
 		
