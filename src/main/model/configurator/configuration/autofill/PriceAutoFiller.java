@@ -41,15 +41,7 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 				Component compToAdd = componentByScope(compatibleComp);
 				System.out.println("Aggiunto componente "+compToAdd.getTypeComponent()+": "+compToAdd.getModel());
 				completeConfig.add(compToAdd);
-				/*				
-				// Genero un numero casuale con cui scegliere quale tra gli elementi compatibili 
-				// inserire nella configurazione
-				Random rand = new Random();
-				int randomElem = rand.nextInt(compatibleComp.size());
-				Component compToAdd = compatibleComp.get(randomElem);
-				System.out.println("Aggiunto componente "+compToAdd.getTypeComponent()+": "+compToAdd.getModel());
-				completeConfig.add(compToAdd);
-				*/			
+
 			}
 		}
 		System.out.println("Completamento riuscito");
