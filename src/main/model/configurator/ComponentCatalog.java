@@ -5,7 +5,6 @@ import java.util.List;
 
 import main.model.configurator.component.Component;
 import main.services.persistence.PersistenceFacade;
-import main.services.persistence.RdbOperation;
 /**
  * Here is where we have the list of all components 
  * @author Alessandro Capici
