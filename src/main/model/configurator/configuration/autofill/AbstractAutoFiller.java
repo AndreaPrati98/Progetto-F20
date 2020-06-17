@@ -8,10 +8,7 @@ import main.model.configurator.component.Component;
 import main.model.configurator.constraint.AbstractConstraint;
 import main.model.configurator.constraint.ConstraintChecker;
 
-public abstract class AbstractAutoFiller {
-	
-	
-	abstract List<Component> completeConfiguration(List<Component> alreadyInside);
+public abstract class AbstractAutoFiller implements InterfaceAutofiller {
 	
 	/**
 	 * 
@@ -36,7 +33,16 @@ public abstract class AbstractAutoFiller {
 			}
 		}
 		
-		
 		return compatibleComp;
+	}
+	
+	
+	protected boolean containsTypeComponent(String type, List<Component> alreadyInside) {
+		for (Component comp : alreadyInside) {
+			if(comp.getTypeComponent().equals(type)) {
+				return true;
+			}
+		}
+		return false;
 	}
 }
