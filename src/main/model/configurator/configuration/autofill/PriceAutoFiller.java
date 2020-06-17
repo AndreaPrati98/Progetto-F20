@@ -54,10 +54,10 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 	}
 
 	/**
-	 * Find in a list the Component that has the price nearest to the scope
-	 * @param campatibleComp
-	 * @param priceScopeByType
-	 * @return bestComponent
+	 * 
+	 * @param compatibleComp
+	 * @param typeOfComponent
+	 * @return
 	 */
 	private Component componentByScope(List<Component> compatibleComp, String typeOfComponent) {
 
@@ -68,7 +68,8 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 		if (compatibleComp == null) {
 			return null;
 		}
-
+		
+		//calcolo a quale prezzo devo puntare con questa componente
 		double priceScopeByType = percentageMap.get(typeOfComponent)*priceScope;
 		
 		for (Component component : compatibleComp) {
@@ -91,8 +92,8 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 	}
 	
 	/**
-	 * create a map that contains the couple (typeOfComponent, Percentage of price)
-	 * 
+	 * Create a map that contains the couple (typeOfComponent, Percentage of price)
+	 * @return percentageMap
 	 */
 	private Map<String, Double> calculatePercentageMap() {
 		ComponentCatalog catalog = ComponentCatalog.getInstance();
