@@ -2,7 +2,6 @@ package main.model.configurator.configuration.autofill;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import main.model.configurator.component.Component;
 
@@ -38,8 +37,11 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 					System.out.println("Autocompletamento fallito");
 					return alreadyInside;
 				}
-			
-/*				
+				
+				Component compToAdd = componentByScope(compatibleComp);
+				System.out.println("Aggiunto componente "+compToAdd.getTypeComponent()+": "+compToAdd.getModel());
+				completeConfig.add(compToAdd);
+				/*				
 				// Genero un numero casuale con cui scegliere quale tra gli elementi compatibili 
 				// inserire nella configurazione
 				Random rand = new Random();
@@ -47,7 +49,8 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 				Component compToAdd = compatibleComp.get(randomElem);
 				System.out.println("Aggiunto componente "+compToAdd.getTypeComponent()+": "+compToAdd.getModel());
 				completeConfig.add(compToAdd);
-*/			}
+				*/			
+			}
 		}
 		System.out.println("Completamento riuscito");
 		return completeConfig;
@@ -68,24 +71,22 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 			return null;
 		}
 
-		boolean firstCicle = true;
 		for (Component component : compatibleComp) {
-			if (firstCicle) {
+			//se diff è negativa allora è il primo giro
+			if (diff < 0) {
 				diff = component.getPrice() - priceScope;
 				diff = Math.abs(diff);
-				firstCicle = false;
+				bestComponent = component;
 			} else {
 				temp = component.getPrice() - priceScope;
 				temp = Math.abs(temp);
-				diff = Math.min(diff, temp);
-				//controllo che diff non sia negativa, in tal caso c'è un problema
-				if(diff < 0) {
-					System.out.println("Qualcosa è andato storto, controllare il metodo componentByScope in PriceAutofiller");
-					return null;
+				//se ho minimizzato ancora di più la differenza di prezzo mi salvo la componente
+				if(temp < diff) {
+					diff = temp;
+					bestComponent = component;
 				}
 			}	
 		}
-
 		return bestComponent;
 	}
 }
