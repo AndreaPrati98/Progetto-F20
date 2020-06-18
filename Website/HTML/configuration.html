@@ -52,6 +52,16 @@
                                                 <input name="groupCase" type="radio" id="radioCase1" class="radioCase"/>
                                                 <span>Case 1</span>
                                             </label>
+                                            <div class="input-field col s2">
+                                                <select>
+                                                    <option value="1" selected>1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
+                                                <label>Quantity</label>
+                                            </div>
                                         </th>
                                         <th>
                                             <label>
@@ -549,3 +559,8 @@
 <script src="../JS/modal.js"></script>
 <script src="../JS/collapsibleScript.js"></script>
 <script src="../JS/sidenavScript.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('select').formSelect();
+});
+</script>
