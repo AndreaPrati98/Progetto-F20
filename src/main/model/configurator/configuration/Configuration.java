@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import main.model.configurator.component.Component;
+import main.model.configurator.configuration.autofill.PriceAutoFiller;
+import main.model.configurator.configuration.autofill.RandomAutofiller;
 import main.model.configurator.constraint.AbstractConstraint;
 import main.model.configurator.constraint.ConstraintChecker;
 import main.model.configurator.constraint.InterfaceConstraintChecker;
@@ -190,6 +192,26 @@ public class Configuration {
 		return performanceIndex;
 	}
 	
+	public boolean autofillRandom() {
+		RandomAutofiller autofiller = new RandomAutofiller();
+		List<Component> newComponents = autofiller.completeConfiguration(addedComponents);
+		if(newComponents.equals(addedComponents)) {
+			//L'autocompletamento e' fallito
+			return false;
+		}
+		addedComponents = newComponents;
+		return true;
+	}
 	
+	public boolean autofillByPrice(double targetPrice) {
+		PriceAutoFiller autofiller = new PriceAutoFiller(targetPrice);
+		List<Component> newComponents = autofiller.completeConfiguration(addedComponents);
+		if(newComponents.equals(addedComponents)) {
+			//L'autocompletamento e' fallito
+			return false;
+		}
+		addedComponents = newComponents;
+		return true;
+	}
 
 }
