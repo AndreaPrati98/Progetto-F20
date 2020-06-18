@@ -25,7 +25,11 @@ public class RandomAutofiller extends AbstractAutoFiller {
 	
 	@Override
 	public List<Component> completeConfiguration(List<Component> alreadyInside) {
-		//TODO cosa succede se alreadyInside dovesse essere null? Funziona tutto comunque?
+		// Se viene passata una lista nulla mi comporto come se venisse passata una lista vuota
+		if(alreadyInside == null) {
+			alreadyInside = new ArrayList<>();
+		}
+		
 		List<Component> completeConfig = new ArrayList<>(alreadyInside);
 		for(String typeComp : componentTypes) {
 			// Controllo se tra i componenti già presenti ce n'è uno del tipo specificato

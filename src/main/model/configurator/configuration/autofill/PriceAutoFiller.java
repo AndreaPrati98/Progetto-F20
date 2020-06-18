@@ -15,8 +15,6 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 	
 	public PriceAutoFiller(double priceScope) {
 		componentTypes = new ArrayList<>();
-		this.priceScope = priceScope; 
-		this.percentageMap = calculatePercentageMap();
 		// Nella lista aggiungo nell'ordine i tipi di componenti a partire da quelli che hanno
 		// più vincoli da rispettare, che quindi voglio che siano aggiunti per primi
 		componentTypes.add("mobo");
@@ -27,11 +25,18 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 		componentTypes.add("power");
 		componentTypes.add("massStorage");
 		componentTypes.add("cooler");
+		this.priceScope = priceScope; 
+		this.percentageMap = calculatePercentageMap();
+		
 	}
 
 	@Override
 	public List<Component> completeConfiguration(List<Component> alreadyInside) {
-		//TODO cosa succede se alreadyInside dovesse essere null? Funziona tutto comunque?
+		// Se viene passata una lista nulla mi comporto come se venisse passata una lista vuota
+				if(alreadyInside == null) {
+					alreadyInside = new ArrayList<>();
+				}
+		
 		List<Component> completeConfig = new ArrayList<>(alreadyInside);
 		for(String typeComp : componentTypes) {
 			// Controllo se tra i componenti già presenti ce n'è uno del tipo specificato
@@ -107,17 +112,26 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 			for (Component component : compByType) {
 				sum += component.getPrice();
 			}
-			
+			// Temporaneamente nella mappa viene messo il prezzo medio per ogni componente
 			Double avg = sum / compByType.size();
 			totalSum += avg;
 			percMap.put(typeOfC, avg);
 		}
+//		System.out.println("Mappa dei prezzi medi");
+//		for(Map.Entry<String, Double> entry : percMap.entrySet()) {
+//			System.out.println(entry.getKey()+": "+entry.getValue());
+//		}
 		
 		for (String typeOfC : componentTypes) {
 			Double percentage = percMap.get(typeOfC) / totalSum;
 			// rimpiazzo quello che era il prezzo medio con la percentuale
 			percMap.put(typeOfC, percentage);
 		}
+		
+//		System.out.println("Mappa delle percentuali di prezzo");
+//		for(Map.Entry<String, Double> entry : percMap.entrySet()) {
+//			System.out.println(entry.getKey()+": "+entry.getValue());
+//		}
 
 		return percMap;
 	}
