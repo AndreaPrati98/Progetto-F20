@@ -96,10 +96,22 @@ public class ConfigurationServlet extends MyServlet {
 			check(request, response, controller);
 		}else if(request.getPathInfo().equals("/save")){
 			save(request, response, controller);
+		}else if(request.getPathInfo().equals("/performance")) {
+			System.out.println("Voglio le perf");
+			getPerformance(request, response, controller);
 		}
 		
 	}
 	
+	private void getPerformance(HttpServletRequest request, HttpServletResponse response,
+			ServletController controller) throws IOException {
+		System.out.println("getPerf");
+		double performance = controller.getPerformanceIndex();
+		System.out.println("getPerf "+performance);
+		String json = JsonMessages.getJsonPerformanceResponse(performance);
+		response.getWriter().write(json);
+	}
+
 	private void add(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		//Recupero il modello
 		String modelOfComponentToInsert = request.getParameter("model");

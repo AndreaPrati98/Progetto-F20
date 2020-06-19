@@ -42,6 +42,10 @@ $("#saveBtn").click(function(){
 	
 });
 
+$("#perfBtn").click(function(){
+	performance();
+});
+
 
 $(".numberInput").bind('keyup mouseup', function () {
     console.log("changed");            
@@ -189,4 +193,23 @@ function save(){
 		
 		
 	});  
+}
+
+function performance(){
+	let posting = $.post( "/configuration/performance");
+
+	posting.done(function(data) {
+		  var convertedData =  JSON.parse(data);
+		  if(convertedData['response'] != '-1'){
+			  	console.log(convertedData['response']);
+			  	let value = parseDouble(convertedData['response']);
+			  	let str = value+"%";
+			  	$("#performanceValue").css('width',str);
+		  }else if(convertedData['response'] == 'redirect'){
+				 window.location.replace("/logout");
+		  }else{
+			  alert("Alcuni componenti non sono valutabili");
+		  }	
+	}); 
+	
 }

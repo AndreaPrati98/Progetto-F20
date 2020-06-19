@@ -61,5 +61,12 @@ public class JsonMessages {
 		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
 		return responseJsonToSend.toJSONString();
 	}
+	
+	public static String getJsonPerformanceResponse(double performance) {
+		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
+		responseMapToSend.put(responseString, performance);
+		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
+		return responseJsonToSend.toJSONString();
+	}
 
 }
