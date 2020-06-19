@@ -71,9 +71,10 @@
 					 
    
 				<br>
-						<form action="/" method="post" >
+						<form action="/" method="get" >
 					<li><input type ="submit" class="waves-effect waves-light btn" value = View><a></a></li>
-				  	 <input type="hidden" id="idConf" name="idConf" value=@conf1.getId>
+				  	 
+				  <input type="hidden" id="configurationId" name="configurationId" value="@conf1.getId()">
 				  </form>
 				</ul>
 			</div>
@@ -96,8 +97,9 @@
 
         
 					<br>
-						<form action="/" method="post" >
+						<form action="/configuration" method="get" >
 					<li><input type =  "submit"  class="waves-effect waves-light btn" value = View><a></a></li>
+				  <input type="hidden" id="configurationId" name="configurationId" value="@conf2.getId()">
 				  </form>
 				</ul>
 			</div>
@@ -134,6 +136,7 @@
 					<br>
 					<form action="/" method="post" >
 					<li><input type =  "submit"  class="waves-effect waves-light btn" value = View ><a></a></li>
+				 	<input type="hidden" id="configurationId" name="configurationId" value="@conf3.getId()">
 				  </form>
 				</ul>
 			</div>
@@ -169,178 +172,3 @@
 </html>
 
 
-=======
-<!-- Alessandro Capici Stefano Butera -->
-@args() {
-	main.model.configurator.configuration.Configuration conf1,
-	main.model.configurator.configuration.Configuration conf2,
-	main.model.configurator.configuration.Configuration conf3,
-	
-}
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Configurazione pc</title>
-	<!-- link CSS -->
-	<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css">
-	<!-- Compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<!-- sidenav script -->
-	<script src="../JS/sidenavScript.js"></script>
-	<!-- Compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<!--Import Google Icon Font-->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!--Import materialize.css-->
-	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"  media="screen,projection"/>
-</head>
-<body>
-	<nav class="  cyan darken-2">
-		<div >
-			<a href="/" class="brand-logo">Logo</a>
-			<a href="#" class="sidenav-trigger right" data-target="mobile-nav">
-				<i class="material-icons">menu</i>
-			</a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="login">Login</a></li>
-				<li><a href="sign-in" method="post">Sign-in</a></li>
-				<li><a href="configuration">Configuration</a></li>
-			</ul>
-		</div>
-	</nav>
-
-	<ul class="sidenav" id="mobile-nav">
-		<li><a href="/">Home</a></li>
-		<li><a href="login">Login</a></li>
-		<li><a href="sign-in">Sign-in</a></li>
-		<li><a href="configuration">Configuration</a></li>
-	</ul>
-
-	<br><br><br>
-
-	<div>
-		<h1 class="text-align center">RACCOMANDATI DA NOI</h1><br><br>
-	</div>
-
-	<div class="row">
-		<div class="col s7">
-			<div>
-				<b><h3 class="text-align left">Configurazione 1</h3></b><br><br>
-				<img src="https://www.aquatuning.it/media/image/20/d5/00/1017923_01_1200x800_600x600.jpg" class="homeImg">
-			</div>
-		</div>
-
-		<div class="col s5">
-			<div>
-				<h3>Descrizone pc</h3>
-				<br>
-				<ul>
-					@for(main.model.configurator.component.Component cl:conf1.getAddedComponents()){
-					 
-					<p><li>@(cl.getModel())</h4></li></p>
-					 } 
-					 
-   
-				<br>
-						<form action="/" method="post" >
-					<li><input class="waves-effect waves-light btn" value = @conf1.getId()>View</a></li>
-					<input type="hidden" id="idConf" name="idConf" value="@conf1.getId">
-				  </form>
-				</ul>
-			</div>
-		</div>
-
-	</div>
-	<br><br>
-	<div class="row">
-		<div class="col s5">
-			<div class="container">
-				<br>
-				<h3>Descrizone pc</h3>
-				<br>
-				<ul>
-					@for(main.model.configurator.component.Component cl:conf2.getAddedComponents()){
-					 
-					<p><li> @(cl.getModel())   </h4></li></p>
-					}
-					 <div class="row">
-
-        
-					<br>
-						<form action="/" method="post" >
-					<li><input class="waves-effect waves-light btn" value = @conf2.getId() >View</a></li>
-					<input type="hidden" id="idConf" name="idConf" value="@conf2.getId">
-				  </form>
-				</ul>
-			</div>
-		</div>
-		<br>
-		<div class="col s7">
-			<div>
-				<div class="container">
-					<b><h3 class="text-align center">Configurazione 2</h3></b><br><br>
-					<img src="statics\IMG\pc2.jpg" class="homeImg">
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
-	<br>
-	<div class="row">
-		<div class="col s7">
-			<div>
-				<b><h3 class="text-align left">Configurazione 3</h3></b><br><br>
-				<img src="statics\IMG\pc3.jpg" class="homeImg">
-			</div>
-		</div>
-
-		<div class="col s5">
-			<div>
-				<h3>Descrizone pc</h3>
-				<br>
-				<ul>
-					@for(main.model.configurator.component.Component cl:conf3.getAddedComponents()){
-					 
-					<p><li> @(cl.getModel())   </h4></li></p>
-					}
-					<br>
-					<form action="/" method="post" >
-					<li><input class="waves-effect waves-light btn" value = @conf3.getId() >View</a></li>
-					<input type="hidden" id="idConf" name="idConf" value="@conf3.getId">
-				  </form>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<footer class=" cyan darken-2">
-		<div class="container">
-			<div class="row">
-				<div class="col l6 s12">
-					<h5 class="white-text">Footer Content</h5>
-					<p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-				</div>
-				<div class="col l4 offset-l2 s12">
-					<h5 class="white-text">Links</h5>
-					<ul>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-						<li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="footer-copyright">
-			<div class="container">
-				© 2020 Copyright Text
-				<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-			</div>
-		</div>
-	</footer>
-	
-</body>
-</html>
-
-
->>>>>>> branch 'master' of https://github.com/IngSW-unipv/Progetto-F20.git
