@@ -8,13 +8,11 @@ public interface InterfaceConstraintChecker {
 
 
 	/**
-	 * Estrae i {@link Constraint} non rispettati a partire dalla lista dei componenti gia aggiunti
-	 * e controlla che siano compatibili con i Constrint del nuovo componente
 	 * 
 	 * @param newComponent
 	 * @param oldComponents
 	 * 
-	 * @return La lista di Constraint non rispettati
+	 * @return List of Constraints that are not respected
 	 * 
 	 * @see Constraint
 	 * @see Component 
@@ -22,7 +20,7 @@ public interface InterfaceConstraintChecker {
 	List<AbstractConstraint> check(Component newComponent, List<Component> oldComponents);
 	
 	/**
-	 * 
+	 * Check if a list of components contains all the needed components
 	 * @param components in the configuration
 	 * @return true if all needed components are present, false if not all needed components are present
 	 */

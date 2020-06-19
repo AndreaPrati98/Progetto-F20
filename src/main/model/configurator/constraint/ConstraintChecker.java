@@ -9,9 +9,7 @@ import main.services.persistence.PersistenceFacade;
  * @author Guglielmo Cassini
  * @author Irene Schimperna
  * 
- * The ConstraintChekcker is the object that extrapolates the Constraints from a list of
- * given components that are already compatible each others and check if the constraints 
- * from a new component are compatible with the list.
+ * 
  * 
  */
 public class ConstraintChecker implements InterfaceConstraintChecker {
@@ -25,28 +23,6 @@ public class ConstraintChecker implements InterfaceConstraintChecker {
 	 */
 	@Override
 	public List<AbstractConstraint> check(Component newComponent, List<Component> oldComponents) {
-//		List<Constraint> constraintErrors = new ArrayList<Constraint>();
-//		
-//		//Creo una lista totale di tutti i vincoli già presenti nelle vecchie componenti
-//		//facendo una append alla lista iniziale vuota
-//		List<Constraint> oldConstraints = new ArrayList<Constraint>();
-//		
-//		for(Component c : oldComponents) {
-//			List<Constraint> tmpConstraintList =  c.getConstraints();
-//			oldConstraints.addAll(tmpConstraintList);
-//		}			
-//		
-//		//Passo a 
-//		List<Constraint> listNewConstraint =  newComponent.getConstraints();
-//		
-//		for(Constraint constr : listNewConstraint){
-//			boolean correct = constr.checkList(oldConstraints);
-//			if(!correct) {
-//				//return false
-//				constraintErrors.add(constr);
-//			}
-//		}		
-		//return true
 		
 		PersistenceFacade facade = PersistenceFacade.getIstance();
 		List<AbstractConstraint> listOfConstraints = facade.getAllConstraints();
@@ -56,17 +32,7 @@ public class ConstraintChecker implements InterfaceConstraintChecker {
 			if(!constraint.checkList(oldComponents, newComponent))
 				listOfConstraintsThatAreViolated.add(constraint);
 		}		
-		
-		// TODO togliere queste stampe di debug
-		if(listOfConstraintsThatAreViolated.isEmpty()) {
-			System.out.println("Tutti i constraint sono rispettati");
-		} else {
-			for(AbstractConstraint con : listOfConstraintsThatAreViolated) {
-				System.out.println("Violato constraint "+con.getConstraintName());
-			}
-		}
 
-		
 		return listOfConstraintsThatAreViolated;		
 	}
 	
