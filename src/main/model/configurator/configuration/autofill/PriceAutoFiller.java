@@ -8,6 +8,11 @@ import java.util.Map;
 import main.model.configurator.ComponentCatalog;
 import main.model.configurator.component.Component;
 
+/**
+ * 
+ * @author Andrea Prati
+ *
+ */
 public class PriceAutoFiller extends AbstractAutoFiller {
 	private List<String> componentTypes;
 	private Map<String, Double> percentageMap;
@@ -44,17 +49,15 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 				List<Component> compatibleComp = new ArrayList<>();
 				compatibleComp = getCompatibleComponents(typeComp, completeConfig);
 				if(compatibleComp.isEmpty()) {
-					System.out.println("Autocompletamento fallito");
+					// Se non ci sono componenti compatibili allora l'autocompletamento è fallito
 					return alreadyInside;
 				}
 				
 				Component compToAdd = componentByScope(compatibleComp, typeComp);
-				System.out.println("Aggiunto componente "+compToAdd.getTypeComponent()+": "+compToAdd.getModel());
 				completeConfig.add(compToAdd);
 
 			}
 		}
-		System.out.println("Completamento riuscito");
 		return completeConfig;
 	}
 
@@ -117,21 +120,12 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 			totalSum += avg;
 			percMap.put(typeOfC, avg);
 		}
-//		System.out.println("Mappa dei prezzi medi");
-//		for(Map.Entry<String, Double> entry : percMap.entrySet()) {
-//			System.out.println(entry.getKey()+": "+entry.getValue());
-//		}
 		
 		for (String typeOfC : componentTypes) {
 			Double percentage = percMap.get(typeOfC) / totalSum;
 			// rimpiazzo quello che era il prezzo medio con la percentuale
 			percMap.put(typeOfC, percentage);
 		}
-		
-//		System.out.println("Mappa delle percentuali di prezzo");
-//		for(Map.Entry<String, Double> entry : percMap.entrySet()) {
-//			System.out.println(entry.getKey()+": "+entry.getValue());
-//		}
 
 		return percMap;
 	}

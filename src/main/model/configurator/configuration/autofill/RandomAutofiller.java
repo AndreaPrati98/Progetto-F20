@@ -6,13 +6,20 @@ import java.util.Random;
 
 import main.model.configurator.component.Component;
 
+/**
+ * 
+ * @author Irene Schimperna
+ *
+ */
 public class RandomAutofiller extends AbstractAutoFiller {
 	private List<String> componentTypes;
 	
 	public RandomAutofiller() {
 		componentTypes = new ArrayList<>();
 		// Nella lista aggiungo nell'ordine i tipi di componenti a partire da quelli che hanno
-		// più vincoli da rispettare, che quindi voglio che siano aggiunti per primi
+		// più vincoli da rispettare, che quindi voglio che siano aggiunti per primi.
+		// Avremmo potuto scaricare l'elenco dei tipi di componenti dal database, ma non sarebbero
+		// stati nell'ordine voluto, quindi abbiamo scelto di inserirli a mano
 		componentTypes.add("mobo");
 		componentTypes.add("cpu");
 		componentTypes.add("ram");
@@ -37,7 +44,7 @@ public class RandomAutofiller extends AbstractAutoFiller {
 				List<Component> compatibleComp = new ArrayList<>();
 				compatibleComp = getCompatibleComponents(typeComp, completeConfig);
 				if(compatibleComp.isEmpty()) {
-					System.out.println("Autocompletamento fallito");
+					// Se non ci sono componenti compatibili allora l'autocompletamento è fallito
 					return alreadyInside;
 				}
 				// Genero un numero casuale con cui scegliere quale tra gli elementi compatibili 
@@ -45,11 +52,9 @@ public class RandomAutofiller extends AbstractAutoFiller {
 				Random rand = new Random();
 				int randomElem = rand.nextInt(compatibleComp.size());
 				Component compToAdd = compatibleComp.get(randomElem);
-				System.out.println("Aggiunto componente "+compToAdd.getTypeComponent()+": "+compToAdd.getModel());
 				completeConfig.add(compToAdd);
 			}
 		}
-		System.out.println("Completamento riuscito");
 		return completeConfig;
 	}
 

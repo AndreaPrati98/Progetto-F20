@@ -5,11 +5,11 @@ import java.util.Map;
 import main.model.configurator.component.Attribute;
 
 public class MoboPerformanceEstimator implements InterfacePerformanceEstimator {
-	private static final double MAX_POINT_RAM_TYPE = 16;
-	private static final double MAX_POINT_RAM_SIZE = 16;
-	private static final double MAX_POINT_RAM_FREQ = 16;
+	private static final double MAX_POINT_RAM_TYPE = 17;
+	private static final double MAX_POINT_RAM_SIZE = 17;
+	private static final double MAX_POINT_RAM_FREQ = 17;
 	private static final double MAX_POINT_STORAGE_PORT = 16;
-	private static final double MAX_POINT_HDMI_PORT = 16;
+	private static final double MAX_POINT_HDMI_PORT = 17;
 	private static final double MAX_POINT_PCI_PORT = 16;
 	
 	/*
