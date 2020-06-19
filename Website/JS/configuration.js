@@ -10,9 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
 $('.selection').change(function() {
 	//Svuoto quello che dice o no invalid configuration
 	$("#configurationCheckResultText").text('');
-    let modelString = $(this).attr('id');	 
+    let modelString = $(this).attr('id');
+    let numberOfComponent = $("#"+modelString+"_number").val();
     if (this.checked) {
-        add(modelString);
+        add(modelString, numberOfComponent);
     } else {
          let listItemParent = $('.collection').find( "li[name='"+modelString+"']" );
          console.log(listItemParent);
@@ -76,10 +77,10 @@ function checkConfiguration(){
   });
 }
 
-function add(modelString){
+function add(modelString, numberOfComponent){
   let dataToSend = "";
   //alert("ok click");
-  let posting = $.post( "/configuration/add", {model: modelString});
+  let posting = $.post( "/configuration/add", {model: modelString, number: numberOfComponent});
   
   posting.done(function(data) {
 	console.log(data);
