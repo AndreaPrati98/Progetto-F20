@@ -5,7 +5,6 @@ import java.util.List;
 
 import main.model.configurator.component.Component;
 import main.services.persistence.PersistenceFacade;
-import main.services.persistence.RdbOperation;
 /**
  * Here is where we have the list of all components 
  * @author Alessandro Capici
@@ -15,12 +14,22 @@ public class ComponentCatalog {
 
 	private List<Component> componentList;
 	private PersistenceFacade pf;
+	private static ComponentCatalog catalog;
 	
-	public ComponentCatalog() {
+	
+	private ComponentCatalog() {
 		pf= PersistenceFacade.getIstance();
 		componentList = new ArrayList<Component>();
 		componentList=pf.getAllComponent();
 		//componentList.addAll((new JSONUtil()).getComponents());
+	}
+	
+	
+	public static ComponentCatalog getInstance(){
+		if(catalog == null)
+			catalog = new ComponentCatalog();
+		
+		return catalog;
 	}
 	
 	/**
@@ -85,6 +94,24 @@ public class ComponentCatalog {
 		}
 		
 		return null;
+	}
+	
+	/**
+	 * 
+	 * @param typeOfC
+	 * @return
+	 */
+	public List<Component> getComponentListByType(String typeOfC){
+		List<Component> compByTypeList = new ArrayList<Component>();
+		
+		for (Component component : componentList) {
+			if(component.getTypeComponent().equals(typeOfC)) {
+				compByTypeList.add(component);
+			}
+		}
+		
+		return compByTypeList;
+		
 	}
 	
 	

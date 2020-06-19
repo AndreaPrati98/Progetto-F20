@@ -15,6 +15,8 @@ import org.json.simple.JSONObject;
 import org.rythmengine.Rythm;
 
 import main.model.configurator.ComponentCatalog;
+import main.model.configurator.component.Component;
+import main.services.persistence.PersistenceFacade;
 
 @SuppressWarnings("serial")
 public class ConfigurationServlet extends MyServlet {
@@ -41,31 +43,32 @@ public class ConfigurationServlet extends MyServlet {
 			response.sendRedirect("/login");		
 			System.out.println("Utente nullo "+ email);
 			return; 
-		}else {
-			System.out.println("Utente non nullo "+ email);
+		}
+			
+		System.out.println("Utente non nullo "+ email);
+		
+		ServletController controller = (ServletController) this.getServletConfig().getServletContext().getAttribute(email+"_controller");
+		if(controller== null) {
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/logout");
+		    dispatcher.forward(request, response);
+		    return;
 		}
 		
+		String confIdAsString = request.getParameter("configurationId");
+		List<Component> elementOfPreexistentConfiguration = new ArrayList<Component>();
+		if(confIdAsString == null) {
+			controller.newConfiguration();
+		}else {
+			int confId = Integer.parseInt(confIdAsString);
+			elementOfPreexistentConfiguration = controller.retrieveConfigurationById(confId);
+			if(elementOfPreexistentConfiguration == null)
+				elementOfPreexistentConfiguration = new ArrayList<Component>();
+		}
 		
-		ComponentCatalog catalog = new ComponentCatalog();
-		List<String> type=new ArrayList<String>();
-		type.add("case");
-		type.add("cpu");
+		ComponentCatalog catalog = ComponentCatalog.getInstance();
+		List<String> type= PersistenceFacade.getIstance().getTypeComponent();	
 		
-		type.add("mobo");
-		type.add("ram");
-		type.add("massStorage");
-		type.add("cooler");
-		type.add("power");
-		type.add("gpu");
-		
-		//Arrivato a questo punto devo istanziare una nuova configurazione
-		//con un id particolare (ottenuto in qualche modo) e con quell'id
-		//devo pure poter salvare la prima volta il server ed una volta che ho salvato la 
-		//prima volta quella configurazione
-		
-		
-		
-		response.getWriter().write(Rythm.render("configuration.html",catalog.getComponentList(),type));
+		response.getWriter().write(Rythm.render("configurationv2.html",catalog.getComponentList(),type, elementOfPreexistentConfiguration));
 	}
 	
 	//TODO: Cambiare le stringhe boiler con costanti per i percorsi ed i nomi degli attributi
@@ -92,6 +95,7 @@ public class ConfigurationServlet extends MyServlet {
 			return;
 		}
 		
+
 		//Prende solo /add anche se il path completo è /configuration/add	
 		if(request.getPathInfo().equals("/add")){
 			add(request, response, controller);
@@ -110,7 +114,6 @@ public class ConfigurationServlet extends MyServlet {
 		String modelOfComponentToInsert = request.getParameter("model");
 		System.out.println("Voglio inserire il modello "+modelOfComponentToInsert);
 		
-		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
 
 		//Facciamo l'inserimento con i controlli con le classi che abbiamo
 		boolean allOk = controller.addToConfiguration(modelOfComponentToInsert);	
@@ -127,6 +130,7 @@ public class ConfigurationServlet extends MyServlet {
 			System.out.println("Aggiunta andata male");
 		}
 		
+		controller.printConf();
 		response.getWriter().write(json);
 	}
 	
@@ -150,6 +154,8 @@ public class ConfigurationServlet extends MyServlet {
 		}
 		
 		//Invio la risposta
+
+		controller.printConf();
 		response.getWriter().write(json);
 		
 	}

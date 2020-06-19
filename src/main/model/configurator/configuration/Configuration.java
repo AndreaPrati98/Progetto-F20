@@ -21,63 +21,33 @@ public class Configuration {
 	private int id;
 
 	private String name;
-	
-	private List<String> neededComponents; // lista di elementi obbligatori per far si che un pc si possa accendere
-											// (Lista da stabilire)
 	private List<Component> addedComponents;
-
-	private Map<String, Boolean> singleComponents; // mappa con componenti che possono essere aggiunte in sovrannumero,
-													// da definire meglio in futuro
-
 	private List<AbstractConstraint> constraintErrors;
 
 	/**
 	 * Create an empty new configuration, with a never used id
 	 */
-	public Configuration() {
-		this.neededComponents = new ArrayList<String>();
-		this.singleComponents = new HashMap<String, Boolean>();
+	public Configuration() { 
 		this.constraintErrors = new ArrayList<AbstractConstraint>();
 		addedComponents = new ArrayList<Component>();
 		lastUsedId++;
 		this.id=lastUsedId;
-	}
-	
-	//TODO Questo costruttore non è utilizzato da nessuna parte, è da mettere
-	//come costruttore utilizzato nelle varie classi che istanziano la configuration
-	public Configuration(int id,String name, List<String> neededComponents, Map<String, Boolean> singleComponents) {
-		this.name = name;
-		this.id = id;
-		this.neededComponents = neededComponents;
-		this.singleComponents = singleComponents;
-		this.constraintErrors = new ArrayList<AbstractConstraint>();
-		addedComponents = new ArrayList<Component>();
+		this.name = "configuration_"+this.id;
 	}
 	
 	
-	
-	// Questa andra' tolta quando gestiremo i neededComponent e i singleComponent tramite vincoli
-	public Configuration(List<String> neededComponents, Map<String, Boolean> singleComponents) {
-		this.neededComponents = neededComponents;
-		this.singleComponents = singleComponents;
-		this.constraintErrors = new ArrayList<AbstractConstraint>();
-		addedComponents = new ArrayList<Component>();
-	}
-	
-	/**
+	/**USATO
 	 * Create an empty configuration with a given id.
 	 * This constructor is used when the configuration is downloaded from the database
 	 * @param id
 	 */
 	public Configuration(int id) {
-		this.neededComponents = new ArrayList<String>();
-		this.singleComponents = new HashMap<String, Boolean>();
 		this.constraintErrors = new ArrayList<AbstractConstraint>();
 		this.addedComponents = new ArrayList<Component>();
 		this.id=id;
 	}
 	
-	/**
+	/**USATO
 	 * Create a configuration with a given id and some components.
 	 * This constructor is used when the configuration is downloaded from the database.
 	 * @param id
@@ -88,6 +58,7 @@ public class Configuration {
 		this.addedComponents=addedComponents;
 	}
 	
+	//USATO
 	public Configuration(int id, String name) {
 		this(id);
 		this.name = name;
@@ -119,108 +90,33 @@ public class Configuration {
 		} else {
 			return false;
 		}
-		
-//		//constraintErrors = check(c);
-//		if (constraintErrors.isEmpty()) {
-//			/**
-//			 * checking if the component it's a "single component or not"
-//			 */
-//			if (!getSingleComponents().containsKey(c.getTypeComponent())) {
-//				addedComponents.add(c);
-//				return true;
-//			} else {
-//				if (!getSingleComponents().get(c.getTypeComponent())) {
-//					addedComponents.add(c); // se non Ã¨ un componente singolo lo posso agiungere
-//					getSingleComponents().replace(c.getTypeComponent(), true);
-//				} else {
-//					/**
-//					 * Messaggio d'errore
-//					 */
-//					constraintErrors.add(new MaxConstraint("Single Component"));
-//					return false; // se quel componente Ã¨ singolo ed era gia stato aggiunto non lo posso
-//									// riaggiungere
-//				}
-//			}
-//			return true;
-//		} else {
-//			return false;
-//			// return new DimensionConstraint("PROVA", "10", ConstraintType.EXTERNAL);
-//		}
-
 	}
 
 	public boolean removeComponent(Component c) {
 		if (addedComponents.remove(c)) {
-//			if (singleComponents.containsKey(c.getTypeComponent()) && singleComponents.get(c.getTypeComponent())) {
-//				singleComponents.replace(c.getTypeComponent(),false);
-//			}
 			return true;
 		} else {
 			return false;
 		}
 	}
 
-	/**
-	 * se anche solo un vincolo non ï¿½ rispettato esco dal ciclo restituendo false
-	 * 
-	 * @param c type:{@link Component}
-	 * @return true if the component will respect constraint,false if the component
-	 *         will not respect constraint
-	 */
-	private List<AbstractConstraint> check(Component c) {
-//		boolean flag = true; 
-//		List<Constraint> listConstraint = c.getConstraints();
-//		for (Constraint constraint : listConstraint) {
-//			if (!constraint.checkList(addedComponents)) {
-//				flag = false;
-//				break;
-//			}
-//		}
-		InterfaceConstraintChecker cc = new ConstraintChecker();
-		return cc.check(c, addedComponents);
-	}
 
 	/**
 	 * 
 	 * @return true added components contains essential components
 	 */
 	public boolean checkConf() {
-//		boolean flag = false;
-//		if (addedComponents.size() >= neededComponents.size()) {
-//			for (String nc : neededComponents) {
-//				for (Component ac : addedComponents) {
-//					if (nc.equalsIgnoreCase((ac.getTypeComponent()))) {
-//						flag = true;
-//						break;
-//					}
-//				}
-//				if (!flag) {
-//					return flag; // se la configurazione non ï¿½ funzionante ritorno subito flag al programma,
-//									// senza curarmi delle altre componenti
-//				}
-//				flag = false; // reimposto il flag a false per quando ripartira' il ciclo
-//			}
-//			flag = true;
-//			return flag; // se tutto fila liscio ritorno il flag = true
-//
-//		}
-//		return flag;
 		InterfaceConstraintChecker cc = new ConstraintChecker();
-		return cc.checkIfComplete(addedComponents);
-		
+		return cc.checkIfComplete(addedComponents);		
 	}
-	
+	/**
+	 * Used during downloading from db because they're ok
+	 * @param c
+	 * @return
+	 */
 	public boolean addComponentWithoutChecking(Component c) {
 		this.addedComponents.add(c);
 		return true;
-	}
-
-	/**
-	 * 
-	 * @return - neededComponents
-	 */
-	public List<String> getNeededComponents() {
-		return neededComponents;
 	}
 
 	/**
@@ -238,15 +134,6 @@ public class Configuration {
 
 	public List<AbstractConstraint> getConstraintErrors() {
 		return constraintErrors;
-	}
-
-
-	/**
-	 * 
-	 * @return
-	 */
-	public Map<String, Boolean> getSingleComponents() {
-		return singleComponents;
 	}
 
 	@Override

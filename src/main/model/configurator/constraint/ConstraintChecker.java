@@ -57,6 +57,7 @@ public class ConstraintChecker implements InterfaceConstraintChecker {
 				listOfConstraintsThatAreViolated.add(constraint);
 		}		
 		
+		// TODO togliere queste stampe di debug
 		if(listOfConstraintsThatAreViolated.isEmpty()) {
 			System.out.println("Tutti i constraint sono rispettati");
 		} else {

@@ -42,6 +42,10 @@ public class PersistenceFacade {
 	public List<String> getNeededComponents() {
 		return cdao.getNeededComponents();
 	}
+	
+	public List<String> getTypeComponent(){
+		return cdao.getTypeOfComponent();
+	}
 
 
 	public Configuration getConfiguration(int confId) {

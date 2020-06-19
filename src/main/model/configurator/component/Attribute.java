@@ -53,7 +53,7 @@ public class Attribute {
 	 * @param isBinding
 	 * @param isPresentable
 	 * @param constraintCategory
-	 */
+	 */ 
 	public Attribute(String name, String value, String constraintName, boolean isBinding, boolean isPresentable,
 			String constraintCategory) {
 		this(name, value, constraintName, isBinding, isPresentable);

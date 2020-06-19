@@ -15,7 +15,6 @@ public class RdbUserDAO implements InterfaceUserDAO {
 
 	@Override
 	public boolean addUsers(String name, String cognome, String email, String password, boolean isAdmin) {
-		// TODO Auto-generated method stub
 		return dbop.addUser(name, cognome, email, password, isAdmin);
 	}
 
@@ -37,7 +36,7 @@ public class RdbUserDAO implements InterfaceUserDAO {
 			}
 			return new Customer(name, surname, email, isAdmin);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -53,7 +52,7 @@ public class RdbUserDAO implements InterfaceUserDAO {
 			if(rs.next())
 				return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
 			

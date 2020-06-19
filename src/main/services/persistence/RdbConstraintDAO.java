@@ -22,7 +22,7 @@ public class RdbConstraintDAO implements InterfaceCostraintDAO {
 	/*
 	@Override
 	public AbstractConstraint getConstraint(String name, String typeOfComponent) {
-		// TODO Auto-generated method stub
+		//  Auto-generated method stub
 		return null;
 	}*/
 
@@ -46,7 +46,7 @@ public class RdbConstraintDAO implements InterfaceCostraintDAO {
 				constraints.add(c);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		

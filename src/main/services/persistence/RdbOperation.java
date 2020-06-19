@@ -67,6 +67,18 @@ public class RdbOperation {
 		}
 		return rs;
 	}
+	
+	public ResultSet getTypeComponents() {
+		ResultSet rs = null;
+		Statement s;
+		try {
+			s = c.createStatement();
+			rs = s.executeQuery("SELECT type\r\nFROM TypeComponent");
+		} catch (SQLException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		return rs;
+	}
 
 	public boolean removeComponent(String model, String type) {
 		String sql = "DELETE FROM Component WHERE TypeofC = ? AND Model= ?";
@@ -145,7 +157,7 @@ public class RdbOperation {
 			ps.setString(3, email);
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		}
@@ -158,7 +170,7 @@ public class RdbOperation {
 				ps.setInt(3, id);
 				ps.executeUpdate();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+				// Auto-generated catch block
 				e.printStackTrace();
 				return false;
 			}
@@ -190,7 +202,7 @@ public class RdbOperation {
 			ps.setString(2, password);
 			return ps.executeQuery();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -215,7 +227,7 @@ public class RdbOperation {
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -274,7 +286,7 @@ public class RdbOperation {
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;

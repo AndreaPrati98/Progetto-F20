@@ -26,13 +26,9 @@ $('#checkBtn').click(function(){
 );
 
 $("#resetBtn").click(function(){
-	//Serve a manipolare solo quelli checkati altrimenti mando più richiesta di rimozione del
-	//dovuto 
-	//TODO
-	//(in realtà non sono riuscito a farlo e quindi brutarlmente invia la richiesta di rimozione al server tutti i componenti anche
-	//se questi non sono stati checkati lol )
-    $(".selection").prop("checked", false);
-    $(".selection").trigger('change');
+	let previouslyCheckedCheckbox = $('.selection:checkbox:checked');
+	previouslyCheckedCheckbox.prop("checked", false);
+	previouslyCheckedCheckbox.trigger('change');
 });
 
 $("#saveBtn").click(function(){
@@ -98,8 +94,10 @@ function add(modelString){
      	var price=parseFloat($("span[name="+modelString+"_price]").text());
      	var totalPrice=parseFloat($("#totalPrice").text());
      	totalPrice=totalPrice+price;
+     	totalPrice = totalPrice.toFixed(2);
      	$("#totalPrice").text(totalPrice);
-	    var addedComponentHtmlList = $(".collection");
+	    let addedComponentHtmlList = $(".collection");
+	    console.log(addedComponentHtmlList);
 	    addedComponentHtmlList.append("<li class='collection-item' name='"+modelString+"'><div>"+modelString+"<a href='#!' class='secondary-content'></a></div></li>");
 	 }else if(convertedData['response'] == 'redirect'){
 		 window.location.replace("/logout");
@@ -125,6 +123,7 @@ function remove(modelString,listItemParent){
 		var price=parseFloat($("span[name="+modelString+"_price]").text());
 		var totalPrice=parseFloat($("#totalPrice").text());
 		totalPrice=totalPrice-price;
+     	totalPrice = totalPrice.toFixed(2);
 		$("#totalPrice").text(totalPrice);
 		listItemParent.remove();	
 	  }else if(convertedData['response'] == 'redirect'){
