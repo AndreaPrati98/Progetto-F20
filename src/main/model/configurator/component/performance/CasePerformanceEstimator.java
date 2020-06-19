@@ -10,13 +10,10 @@ public class CasePerformanceEstimator implements InterfacePerformanceEstimator {
 	
 	@Override
 	public double computePerformance(Map<String, Attribute> componentAttributes) {
-		double index = 0;
-		
 		Attribute att = componentAttributes.get("formFactor");
 		if(att == null) {
 			return -1;			
 		}
-		
 		String formFactor = att.getValue();
 		
 		return formFactorPerformance(formFactor);

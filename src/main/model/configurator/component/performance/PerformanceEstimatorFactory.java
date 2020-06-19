@@ -1,7 +1,17 @@
 package main.model.configurator.component.performance;
 
+/**
+ * 
+ * @author Irene Schimperna, Andrea Prati
+ *
+ */
 public class PerformanceEstimatorFactory {
-
+	
+	/**
+	 * 
+	 * @param typeOfComponent
+	 * @return the correct performance estimator for the given type of component
+	 */
 	public InterfacePerformanceEstimator getPerformanceEstimator(String typeOfComponent) {
 		
 		if(typeOfComponent.equalsIgnoreCase("CPU")) {

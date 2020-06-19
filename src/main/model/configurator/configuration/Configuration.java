@@ -104,7 +104,7 @@ public class Configuration {
 
 
 	/**
-	 * 
+	 * Check if the configuration is complete
 	 * @return true added components contains essential components
 	 */
 	public boolean checkConf() {
@@ -144,7 +144,8 @@ public class Configuration {
 	}
 	
 	/**
-	 *  ritorna il prezzo totale della configurazione i prezzi sono di amazon 
+	 * Returns the total price of the configuration.
+	 * Prices in the database are taken from Amazon.
 	 * @return totalPrice
 	 */
 	public double getTotalPrice() {
@@ -192,6 +193,10 @@ public class Configuration {
 		return performanceIndex;
 	}
 	
+	/**
+	 * Completes the configuration in a random way. 
+	 * @return true if the autofill have been completed correctly
+	 */
 	public boolean autofillRandom() {
 		RandomAutofiller autofiller = new RandomAutofiller();
 		List<Component> newComponents = autofiller.completeConfiguration(addedComponents);
@@ -203,6 +208,11 @@ public class Configuration {
 		return true;
 	}
 	
+	/**
+	 * Completes the configuration trying to have a total price as close as possible to the target price
+	 * @param targetPrice
+	 * @return true if the autofill have been completed correctly
+	 */
 	public boolean autofillByPrice(double targetPrice) {
 		PriceAutoFiller autofiller = new PriceAutoFiller(targetPrice);
 		List<Component> newComponents = autofiller.completeConfiguration(addedComponents);
