@@ -12,7 +12,7 @@ import org.rythmengine.Rythm;
 import main.model.configurator.component.Component;
 import main.model.configurator.configuration.Configuration;
 
-import main.services.persistence.PersistenceFacade;
+import  main.services.persistence.PersistenceFacade;
 
 @SuppressWarnings("serial")
 public class HomeServlet extends MyServlet {
