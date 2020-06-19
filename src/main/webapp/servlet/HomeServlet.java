@@ -29,7 +29,7 @@ public class HomeServlet extends MyServlet {
 		Configuration conf1 = pr.getConfiguration(1); // le prime tre configurazioni sono quelle della HOME
 		Configuration conf2 = pr.getConfiguration(2);
 		Configuration conf3 = pr.getConfiguration(3);
-		response.getWriter().write(Rythm.render("home.rtm", conf1, conf2, conf3));
+		response.getWriter().write(Rythm.render("home.html", conf1, conf2, conf3));
 
 	}
 
