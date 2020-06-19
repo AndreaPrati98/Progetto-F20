@@ -8,6 +8,11 @@ import main.model.configurator.component.Component;
 import main.model.configurator.constraint.AbstractConstraint;
 import main.model.configurator.constraint.ConstraintChecker;
 
+/**
+ * 
+ * @author Irene Schimperna
+ *
+ */
 public abstract class AbstractAutoFiller implements InterfaceAutofiller {
 	
 	/**

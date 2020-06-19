@@ -4,6 +4,11 @@ import java.util.List;
 
 import main.model.configurator.component.Component;
 
+/**
+ * 
+ * @author Irene Schimperna, Andrea Prati
+ *
+ */
 public interface InterfaceAutofiller {
 	
 	/**
