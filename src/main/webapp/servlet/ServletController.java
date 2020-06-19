@@ -136,8 +136,13 @@ public class ServletController {
 	}
 	
 	public List<Component> retrieveConfigurationById(int confId){
-		configurator.retrieveConfigurationByName(confId);
+		configurator.retrieveConfigurationById(confId);
 		return configurator.getAddedComponents();
 	}
 
+	
+	public double getPerformanceIndex(){
+		return configurator.getPerformaceIndex();
+	}
+	
 }

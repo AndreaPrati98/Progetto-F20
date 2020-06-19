@@ -21,14 +21,6 @@ import main.services.persistence.PersistenceFacade;
 @SuppressWarnings("serial")
 public class ConfigurationServlet extends MyServlet {
 	
-	//Chiavi e valori per la mappa della risposta
-	public static final String responseString = "response";
-	public static final String responseOkString = "ok";
-	public static final String responseNotOkString = "not";	
-	public static final String responseToRedirectString = "redirect";	
-	
-	//Chiave per la mappa della risposta quando ho errori
-	public static final String responseErrorString = "error";
 	
 	
 	
@@ -124,12 +116,12 @@ public class ConfigurationServlet extends MyServlet {
 		String json = "";
 		
 		if(allOk){
-			json = getJsonOkResponse();
+			json = JsonMessages.getJsonOkResponse();
 			//controller.printConf();
 			System.out.println("Aggiunta andata a buon fine");
 		}else{
 			
-			json = getJsonNotOkResponse(controller);
+			json = JsonMessages.getJsonNotOkResponse(controller);
 			//controller.printConf();
 			System.out.println("Aggiunta andata male");
 		}
@@ -147,12 +139,12 @@ public class ConfigurationServlet extends MyServlet {
 		String json = "";
 		
 		if(allOk){
-			json = getJsonOkResponse();				
+			json = JsonMessages.getJsonOkResponse();				
 			
 			//controller.printConf();
 			//System.out.println("b");
 		}else{
-			json = getJsonNotOkResponse();				
+			json = JsonMessages.getJsonNotOkResponse();				
 			//controller.printConf();
 			//System.out.println("m");
 		}
@@ -168,9 +160,9 @@ public class ConfigurationServlet extends MyServlet {
 	private void save(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		String json = "";
 		if(controller.saveConfiguration()) {
-			json = getJsonOkResponse();
+			json = JsonMessages.getJsonOkResponse();
 		}else {
-			json = getJsonNotOkResponse();
+			json = JsonMessages.getJsonNotOkResponse();
 		}
 		
 		System.out.println(json);
@@ -179,7 +171,7 @@ public class ConfigurationServlet extends MyServlet {
 	}
 
 	private void redirectToLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String json = getJsonRedirectResponse();	
+		String json = JsonMessages.getJsonRedirectResponse();	
 		response.getWriter().write(json);	
 	}
 
@@ -187,56 +179,15 @@ public class ConfigurationServlet extends MyServlet {
 	
 		String json = "";
 		if(controller.checkConfiguration()) {
-			json = getJsonOkResponse();
+			json = JsonMessages.getJsonOkResponse();
 		}else{
-			json = getJsonNotOkResponse();
+			json = JsonMessages.getJsonNotOkResponse();
 		}
 		
 		response.getWriter().write(json);
 	}
 	
 	
-	/**
-	 * Metodo generico quando devo solo scrivere che è andato storto
-	 * @return
-	 */
-	private String getJsonNotOkResponse() {
-		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
-		responseMapToSend.put(responseString, responseNotOkString);
-		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
-		return  responseJsonToSend.toJSONString();
-	}
-	
-	/**
-	 * Metodo che serve per dire che l'add è andata a male perchè ha violato dei contraint
-	 * @return
-	 */
-	private String getJsonNotOkResponse(ServletController controller) {
-		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
-		List<String> listConstraintErrors = controller.getConstraintErrors();
-		
-		responseMapToSend.put(responseString, responseNotOkString);
-		responseMapToSend.put(responseErrorString, listConstraintErrors);
-		
-		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
-		
-		return  responseJsonToSend.toJSONString();
-	}
-	
-	
-	
-	private String getJsonOkResponse() {
-		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
-		responseMapToSend.put(responseString, responseOkString);
-		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
-		return responseJsonToSend.toJSONString();		
-	}
 
-	private String getJsonRedirectResponse() {
-		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
-		responseMapToSend.put(responseString, responseToRedirectString);
-		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
-		return responseJsonToSend.toJSONString();
-	}
 	
 }

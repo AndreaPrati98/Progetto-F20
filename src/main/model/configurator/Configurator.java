@@ -118,9 +118,17 @@ public class Configurator {
 	 * @param confId
 	 * @return
 	 */
-	public void retrieveConfigurationByName(int confId) {
+	public void retrieveConfigurationById(int confId) {
 		PersistenceFacade facade = PersistenceFacade.getIstance();
 		configuration = facade.getConfiguration(confId);
 	}
 
+	/**
+	 * 
+	 * @return the performance index of the current configuration
+	 */
+	public double getPerformaceIndex(){
+		return configuration.getPerformance();
+	}
+	
 }
