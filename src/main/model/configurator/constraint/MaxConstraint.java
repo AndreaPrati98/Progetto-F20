@@ -67,12 +67,14 @@ public class MaxConstraint extends AbstractConstraint {
 //		//attribute che è sia external che un internal per lo stesso MaxConstraint.
 //		//Di conseguenza quella lista ha un solo elemento
 //		
+//		//Questo pezzo era commentato. Perchè?
 //		Attribute newAttribute = newAttributesToCheck.get(0);
 		
 		//Copio le liste filtrate dei vecchi componenti in delle nuove (potrebbe essere inutile)
 		List<Attribute> listWhereToFindTheMax =  externalAttributesFilteredList;
 		List<Attribute> listOfInternalToCheckTheMax =  internalAttributesFilteredList;
 		 
+//		//Questo pezzo era commentato. Perchè?
 //		//Devo capire dove collocare il nuovo attribute del nuovo componente
 //		if(newAttribute.getConstraintCategory() == ConstraintCategory.EXTERNAL)
 //			listWhereToFindTheMax.add(newAttribute);
