@@ -18,7 +18,7 @@ $('.selection').change(function() {
     } else {
          let listItemParent = $('.collection').find( "li[name='"+modelString+"']" );
          console.log(listItemParent);
-         remove(modelString,listItemParent);
+         remove(modelString,listItemParent,numberOfComponent);
     }
 });
 
@@ -61,11 +61,8 @@ $(".numberInput").bind('keyup mouseup', function () {
     	
     	let inputNumberId = $(this).attr('id');
     	let checkboxId = inputNumberId.substring(0, inputNumberId.indexOf("_number"));
-    	console.log("Id della check "+checkboxId);
     	
     	let respectiveCheckbox = $("#"+checkboxId);
-    	console.log("Ora stampo la checkbox trovata");
-    	console.log(respectiveCheckbox);
     	
     	if(respectiveCheckbox.prop("checked") == true){
     		console.log("La checkbox è checkata, devi agire!");
@@ -73,11 +70,15 @@ $(".numberInput").bind('keyup mouseup', function () {
     		//corretto
     		//Oss: la checkboxId è il nome del modello
             let listItemParent = $('.collection').find( "li[name='"+checkboxId+"']" );
-    		remove(checkboxId, listItemParent);
+    		remove(checkboxId, listItemParent, previousValue);
     		//Ora che ha rimosso correttamente le vecchie istanze, posso fare 
     		//le aggiunte del nuovo numero corretto
     		add(checkboxId, actualValue);
     	}
+    	
+
+    	//Aggiorno il valore del previousValue
+    	$(this).data("previousValue",actualValue);
     	
     }
     
@@ -136,12 +137,11 @@ function add(modelString, numberOfComponent){
      	//alert("ok post");
      	var price=parseFloat($("span[name="+modelString+"_price]").text());
      	var totalPrice=parseFloat($("#totalPrice").text());
-     	totalPrice=totalPrice+price;
+     	totalPrice=totalPrice+(price*numberOfComponent);
      	totalPrice = totalPrice.toFixed(2);
      	$("#totalPrice").text(totalPrice);
 	    let addedComponentHtmlList = $(".collection");
-	    console.log(addedComponentHtmlList);
-	    addedComponentHtmlList.append("<li class='collection-item' name='"+modelString+"'><div>"+modelString+"<a href='#!' class='secondary-content'></a></div></li>");
+	    addedComponentHtmlList.append("<li class='collection-item' name='"+modelString+"'><div>"+modelString+"<a href='#!' class='secondary-content'>"+numberOfComponent+"</a></div></li>");
 	 }else if(convertedData['response'] == 'redirect'){
 		 window.location.replace("/logout");
 	 }else{
@@ -151,21 +151,18 @@ function add(modelString, numberOfComponent){
   });
 }
 
-function remove(modelString,listItemParent){
+function remove(modelString,listItemParent, numberOfComponent=1){
   let dataToSend = "";
-  //alert("ok click");
   let posting = $.post( "/configuration/remove", {model: modelString});
   posting.done(function(data) {
 	  var convertedData =  JSON.parse(data);
-	  //alert('pippo');
 	  console.log(convertedData);
-	  console.log(convertedData['response']);
 		 
 	  if(convertedData['response'] == 'ok'){
-		//alert("ok remove "+modelString);
 		var price=parseFloat($("span[name="+modelString+"_price]").text());
 		var totalPrice=parseFloat($("#totalPrice").text());
-		totalPrice=totalPrice-price;
+		console.log("Numero componenti da rimuovere "+numberOfComponent);
+		totalPrice=totalPrice-(price*numberOfComponent);
      	totalPrice = totalPrice.toFixed(2);
 		$("#totalPrice").text(totalPrice);
 		listItemParent.remove();	
