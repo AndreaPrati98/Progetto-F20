@@ -30,7 +30,7 @@ public class ProfileServlet extends MyServlet{
 			String name = c.getName();
 			String surname = c.getSurname();
 			//Da sostituire
-			String profilePic = "https://images.unsplash.com/photo-1484557985045-edf25e08da73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80";
+			String profilePic = "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png";
 			List<Configuration> conf;
 			conf =pf.getConfigurationByEmail(email);
 			response.getWriter().write(Rythm.render("profile.rtm", name, surname, email, profilePic, conf));
