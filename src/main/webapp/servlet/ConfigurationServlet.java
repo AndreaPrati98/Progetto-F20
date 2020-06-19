@@ -113,7 +113,7 @@ public class ConfigurationServlet extends MyServlet {
 		String modelOfComponentToInsert = request.getParameter("model");
 		String numberString = request.getParameter("number");
 		int number=1;
-		if(numberString == null)
+		if(numberString != null)
 			number = Integer.parseInt(numberString);
 			
 		System.out.println("Voglio inserire il modello "+modelOfComponentToInsert + "volte: "+number);

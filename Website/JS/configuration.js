@@ -12,6 +12,7 @@ $('.selection').change(function() {
 	$("#configurationCheckResultText").text('');
     let modelString = $(this).attr('id');
     let numberOfComponent = $("#"+modelString+"_number").val();
+    console.log(numberOfComponent)
     if (this.checked) {
         add(modelString, numberOfComponent);
     } else {
@@ -39,6 +40,47 @@ $("#saveBtn").click(function(){
 	//Richiesta ajx
 	save();
 	
+});
+
+
+$(".numberInput").bind('keyup mouseup', function () {
+    console.log("changed");            
+    let previousValueString = $(this).data("previousValue");
+    let previousValue = parseInt(previousValueString);
+    let actualValueString = $(this).val();
+    let actualValue = parseInt(actualValueString);
+    
+    if(actualValue != previousValue){
+    	//Significa che qualcosa è cambiato, quindi devo agire
+    	
+    	//La prima cosa da controllare è se la corrispettiva checkbox è checked
+    	//Se è checked vuol dire che devo agire cancellando dal server e poi raggiungendo
+    	//tutto, altrimenti non faccio niente
+    	
+    	//Ricavo dall'id dell'input number l'id della checkbox
+    	
+    	let inputNumberId = $(this).attr('id');
+    	let checkboxId = inputNumberId.substring(0, inputNumberId.indexOf("_number"));
+    	console.log("Id della check "+checkboxId);
+    	
+    	let respectiveCheckbox = $("#"+checkboxId);
+    	console.log("Ora stampo la checkbox trovata");
+    	console.log(respectiveCheckbox);
+    	
+    	if(respectiveCheckbox.prop("checked") == true){
+    		console.log("La checkbox è checkata, devi agire!");
+        	//Ora recupero il modello e poi lo elimino per poi raggiungere il numero
+    		//corretto
+    		//Oss: la checkboxId è il nome del modello
+            let listItemParent = $('.collection').find( "li[name='"+checkboxId+"']" );
+    		remove(checkboxId, listItemParent);
+    		//Ora che ha rimosso correttamente le vecchie istanze, posso fare 
+    		//le aggiunte del nuovo numero corretto
+    		add(checkboxId, actualValue);
+    	}
+    	
+    }
+    
 });
 
 //TODO Da mettere a posto perchè se faccio la redirezione via codice chiede conferma
@@ -79,7 +121,7 @@ function checkConfiguration(){
 
 function add(modelString, numberOfComponent){
   let dataToSend = "";
-  //alert("ok click");
+  console.log("Numero compo "+numberOfComponent);
   let posting = $.post( "/configuration/add", {model: modelString, number: numberOfComponent});
   
   posting.done(function(data) {
