@@ -1,6 +1,7 @@
 package main.model.configurator.configuration;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -95,7 +96,7 @@ public class Configuration {
 	}
 
 	public boolean removeComponent(Component c) {
-		if (addedComponents.remove(c)) {
+		if (addedComponents.removeAll(Collections.singleton(c))) {
 			return true;
 		} else {
 			return false;
