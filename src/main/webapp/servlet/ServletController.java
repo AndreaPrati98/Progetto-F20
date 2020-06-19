@@ -49,6 +49,31 @@ public class ServletController {
 			return false;
 		return configurator.addComponent(component);
 	}
+	
+	/**
+	 * Second version of the method that add a specified number of the model given as
+	 * parameter
+	 * @param model
+	 * @return
+	 */
+	public boolean addToConfiguration(String model, int number) {
+		ComponentCatalog catalog = ComponentCatalog.getInstance();
+		Component component = catalog.getComponentByModel(model);
+		if (component == null)
+			return false;
+		
+		for(int i=0; i< number; i++) {
+			//If one of the add goes wrong, you need to remove the previous that you 
+			//have added during this cicle and show that it went wrong to the caller class
+			if(!configurator.addComponent(component)){			
+				this.removeFromConfiguration(model);
+				return false;
+			}
+			
+		}
+		
+		return true;
+	}
 
 	/**
 	 * Remove the component with the given model from the configuration.
