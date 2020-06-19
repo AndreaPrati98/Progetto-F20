@@ -95,7 +95,6 @@ public class ConfigurationServlet extends MyServlet {
 			return;
 		}
 		
-
 		//Prende solo /add anche se il path completo è /configuration/add	
 		if(request.getPathInfo().equals("/add")){
 			add(request, response, controller);
@@ -112,11 +111,16 @@ public class ConfigurationServlet extends MyServlet {
 	private void add(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		//Recupero il modello
 		String modelOfComponentToInsert = request.getParameter("model");
-		System.out.println("Voglio inserire il modello "+modelOfComponentToInsert);
+		String numberString = request.getParameter("number");
+		int number=1;
+		if(numberString == null)
+			number = Integer.parseInt(numberString);
+			
+		System.out.println("Voglio inserire il modello "+modelOfComponentToInsert + "volte: "+number);
 		
 
 		//Facciamo l'inserimento con i controlli con le classi che abbiamo
-		boolean allOk = controller.addToConfiguration(modelOfComponentToInsert);	
+		boolean allOk = controller.addToConfiguration(modelOfComponentToInsert, number);	
 		String json = "";
 		
 		if(allOk){
