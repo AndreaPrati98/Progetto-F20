@@ -128,7 +128,8 @@ public class ConfigurationServlet extends MyServlet {
 		String json = "";
 		
 		if(allOk){
-			json = JsonMessages.getJsonOkResponse();
+			double price = this.getConfigurationPrice(controller);
+			json = JsonMessages.getJsonOkResponse(price);
 			//controller.printConf();
 			System.out.println("Aggiunta andata a buon fine");
 		}else{
@@ -151,7 +152,8 @@ public class ConfigurationServlet extends MyServlet {
 		String json = "";
 		
 		if(allOk){
-			json = JsonMessages.getJsonOkResponse();				
+			double price = this.getConfigurationPrice(controller);
+			json = JsonMessages.getJsonOkResponse(price);				
 			
 			//controller.printConf();
 			//System.out.println("b");
@@ -172,7 +174,8 @@ public class ConfigurationServlet extends MyServlet {
 	private void save(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		String json = "";
 		if(controller.saveConfiguration()) {
-			json = JsonMessages.getJsonOkResponse();
+			double price = this.getConfigurationPrice(controller);
+			json = JsonMessages.getJsonOkResponse(price);
 		}else {
 			json = JsonMessages.getJsonNotOkResponse();
 		}
@@ -191,7 +194,8 @@ public class ConfigurationServlet extends MyServlet {
 	
 		String json = "";
 		if(controller.checkConfiguration()) {
-			json = JsonMessages.getJsonOkResponse();
+			double price = this.getConfigurationPrice(controller);
+			json = JsonMessages.getJsonOkResponse(price);
 		}else{
 			json = JsonMessages.getJsonNotOkResponse();
 		}
@@ -199,6 +203,9 @@ public class ConfigurationServlet extends MyServlet {
 		response.getWriter().write(json);
 	}
 	
+	private double getConfigurationPrice(ServletController controller){
+		return controller.getConfigurationPrice();
+	}
 	
 
 	

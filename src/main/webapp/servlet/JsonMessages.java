@@ -12,7 +12,11 @@ public class JsonMessages {
 	public static final String responseString = "response";
 	public static final String responseOkString = "ok";
 	public static final String responseNotOkString = "not";	
-	public static final String responseToRedirectString = "redirect";	
+	public static final String responseToRedirectString = "redirect";
+	
+	//Chiave per inserire il prezzo
+	public static final String responsePrice = "price";
+	
 	
 	//Chiave per la mappa della risposta quando ho errori
 	public static final String responseErrorString = "error";
@@ -37,10 +41,10 @@ public class JsonMessages {
 	public static String getJsonNotOkResponse(ServletController controller) {
 		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
 		List<String> listConstraintErrors = controller.getConstraintErrors();
-		
+		double price = controller.getConfigurationPrice();
 		responseMapToSend.put(responseString, responseNotOkString);
 		responseMapToSend.put(responseErrorString, listConstraintErrors);
-		
+		responseMapToSend.put(responsePrice, price);		
 		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
 		
 		return  responseJsonToSend.toJSONString();
@@ -48,9 +52,10 @@ public class JsonMessages {
 	
 	
 	
-	public static String getJsonOkResponse() {
+	public static String getJsonOkResponse(double price) {
 		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
 		responseMapToSend.put(responseString, responseOkString);
+		responseMapToSend.put(responsePrice, price);
 		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
 		return responseJsonToSend.toJSONString();		
 	}

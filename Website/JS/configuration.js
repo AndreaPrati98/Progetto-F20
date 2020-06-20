@@ -140,8 +140,7 @@ function add(modelString, numberOfComponent){
     if(convertedData['response'] == 'ok'){
      	//alert("ok post");
      	var price=parseFloat($("span[name="+modelString+"_price]").text());
-     	var totalPrice=parseFloat($("#totalPrice").text());
-     	totalPrice=totalPrice+(price*numberOfComponent);
+     	var totalPrice=parseFloat(convertedData['price']);
      	totalPrice = totalPrice.toFixed(2);
      	$("#totalPrice").text(totalPrice);
 	    let addedComponentHtmlList = $(".collection");
@@ -163,11 +162,9 @@ function remove(modelString,listItemParent, numberOfComponent=1){
 	  console.log(convertedData);
 		 
 	  if(convertedData['response'] == 'ok'){
-		var price=parseFloat($("span[name="+modelString+"_price]").text());
-		var totalPrice=parseFloat($("#totalPrice").text());
-		console.log("Numero componenti da rimuovere "+numberOfComponent);
-		totalPrice=totalPrice-(price*numberOfComponent);
-     	totalPrice = totalPrice.toFixed(2);
+		let price=parseFloat($("span[name="+modelString+"_price]").text());
+     	let totalPrice=parseFloat(convertedData['price']);
+		totalPrice = totalPrice.toFixed(2);
 		$("#totalPrice").text(totalPrice);
 		listItemParent.remove();	
 	  }else if(convertedData['response'] == 'redirect'){

@@ -144,5 +144,10 @@ public class ServletController {
 	public double getPerformanceIndex(){
 		return configurator.getPerformaceIndex();
 	}
+
+
+	public double getConfigurationPrice() {
+		return configurator.getPrice();		
+	}
 	
 }

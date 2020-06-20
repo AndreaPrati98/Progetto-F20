@@ -130,5 +130,10 @@ public class Configurator {
 	public double getPerformaceIndex(){
 		return configuration.getPerformance();
 	}
+
+
+	public double getPrice() {
+		return configuration.getTotalPrice();
+	}
 	
 }
