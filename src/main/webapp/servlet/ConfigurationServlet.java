@@ -42,17 +42,19 @@ public class ConfigurationServlet extends MyServlet {
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext().getAttribute(email+"_controller");
 		if(controller== null) {
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/logout");
-		    dispatcher.forward(request, response);
+			dispatcher.forward(request, response);
 		    return;
 		}
 		
 		String confIdAsString = request.getParameter("configurationId");
 		List<Component> elementOfPreexistentConfiguration = new ArrayList<Component>();
+		double price = 0.0;
 		if(confIdAsString == null) {
 			controller.newConfiguration();
 		}else {
 			int confId = Integer.parseInt(confIdAsString);
-			elementOfPreexistentConfiguration = controller.retrieveConfigurationById(confId);
+			elementOfPreexistentConfiguration = controller.retrieveConfigurationComponentById(confId);
+			price = controller.getConfigurationPrice();
 			if(elementOfPreexistentConfiguration == null)
 				elementOfPreexistentConfiguration = new ArrayList<Component>();
 		}
@@ -60,7 +62,7 @@ public class ConfigurationServlet extends MyServlet {
 		ComponentCatalog catalog = ComponentCatalog.getInstance();
 		List<String> type= PersistenceFacade.getIstance().getTypeComponent();	
 		
-		response.getWriter().write(Rythm.render("configurationv2.html",catalog.getComponentList(),type, elementOfPreexistentConfiguration));
+		response.getWriter().write(Rythm.render("configurationv2.html",catalog.getComponentList(),type, elementOfPreexistentConfiguration, price));
 	}
 	
 	//TODO: Cambiare le stringhe boiler con costanti per i percorsi ed i nomi degli attributi

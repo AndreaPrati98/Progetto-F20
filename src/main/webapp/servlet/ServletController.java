@@ -135,7 +135,7 @@ public class ServletController {
 		return configurator.saveConfiguration(customer);
 	}
 	
-	public List<Component> retrieveConfigurationById(int confId){
+	public List<Component> retrieveConfigurationComponentById(int confId){
 		configurator.retrieveConfigurationById(confId);
 		return configurator.getAddedComponents();
 	}

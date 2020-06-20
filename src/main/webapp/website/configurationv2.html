@@ -4,6 +4,7 @@
 	List<main.model.configurator.component.Component> componentlist,
 	List<String> type
 	List<main.model.configurator.component.Component> elementOfPreexistentConfiguration,
+	double price,
 }
 <html>
 <head>
@@ -89,7 +90,14 @@
 								        		</label>
 								        	</th>
 								        	<th>
-						        		 		<input style="width:4rem;" placeholder="Number" id="@(cl.getModel())_number" data-previousValue="-1" type="number" class="validate numberInput" value="1" min="1" max="10">
+						        		 		<input style="width:4rem;" placeholder="Number" id="@(cl.getModel())_number" data-previousValue="-1" type="number" class="validate numberInput" 
+						        		 			@if(Collections.frequency(elementOfPreexistentConfiguration, cl)==0){
+						        		 				value="1"
+						        		 			}else{
+						        		 				value="@(Collections.frequency(elementOfPreexistentConfiguration, cl))"
+						        		 			}
+						        		 			
+						        		 			min="1" max="10">
 								        	</th>
 								        	<th>
 								        		Model <hr>
@@ -152,7 +160,7 @@
         </div>
         <div class="col s5">
         	<p>
-		        <h4>Price: <label id="totalPrice" style='font-size:55px ; color: black;'>0</label>$</h4>
+		        <h4>Price: <label id="totalPrice" style='font-size:55px ; color: black;'>@(price)</label>$</h4>
 		    </p>
 		    <p>
 		        <div id="outcomeLabel">
