@@ -199,7 +199,7 @@ function performance(){
 		  var convertedData =  JSON.parse(data);
 		  if(convertedData['response'] != '-1'){
 			  	console.log(convertedData['response']);
-			  	let value = parseDouble(convertedData['response']);
+			  	let value = parseFloat(convertedData['response']);
 			  	let str = value+"%";
 			  	$("#performanceValue").css('width',str);
 		  }else if(convertedData['response'] == 'redirect'){
