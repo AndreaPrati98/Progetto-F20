@@ -27,7 +27,7 @@ public class MoboPerformanceEstimator implements InterfacePerformanceEstimator {
 	public double computePerformance(Map<String, Attribute> componentAttributes) {
 		Attribute sizeAtt = componentAttributes.get("ramSize");
 		Attribute typeAtt = componentAttributes.get("ramType");
-		Attribute freqAtt = componentAttributes.get("ramMaxFrequency");
+		Attribute freqAtt = componentAttributes.get("ramFrequency");
 		Attribute storageAtt = componentAttributes.get("storagePortVersion");
 		Attribute hdmiAtt = componentAttributes.get("hdmiPortsCount");
 		Attribute pciAtt = componentAttributes.get("pciSlotCount");

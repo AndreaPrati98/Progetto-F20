@@ -22,9 +22,9 @@ public class CasePerformanceEstimator implements InterfacePerformanceEstimator {
 	private double formFactorPerformance(String value) {
 		if(value.equals("atx")) {
 			return CasePerformanceEstimator.MAX_POINT_FORM_FACTOR;			
-		} else if (value.equals("micro-atx")) {
+		} else if (value.equals("micro_atx")) {
 			return CasePerformanceEstimator.MAX_POINT_FORM_FACTOR * 2/3;			
-		} else if (value.equals("mini-atx")) {
+		} else if (value.equals("mini_atx")) {
 			return CasePerformanceEstimator.MAX_POINT_FORM_FACTOR /3;
 		} else {
 			return -1;
