@@ -150,6 +150,7 @@ function add(modelString, numberOfComponent){
 	 }else{
 		alert("Hai violato i segunti vincoli: "+convertedData['error']); 
 	 	$('#'+modelString).prop("checked", false);
+	 	$('#'+modelString+"_number").val(1);
 	 }
   });
 }

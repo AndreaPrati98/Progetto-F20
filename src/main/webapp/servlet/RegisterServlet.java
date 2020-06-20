@@ -58,8 +58,9 @@ public class RegisterServlet extends MyServlet {
 		}
 		pf.addUser(nome, cognome, mail, psw, false);
 		//Mail m=new Mail(mail,nome);
-		response.getWriter().write(Rythm.render("profile.rtm",nome,cognome,mail));
-		
+		//response.getWriter().write(Rythm.render("profile.rtm",nome,cognome,mail));
+		request.getSession().invalidate();
+		response.sendRedirect("/login");
 	}
 
 }
