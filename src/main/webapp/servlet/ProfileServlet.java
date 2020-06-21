@@ -30,10 +30,9 @@ public class ProfileServlet extends MyServlet{
 			String name = c.getName();
 			String surname = c.getSurname();
 			//Da sostituire
-			String profilePic = "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png";
 			List<Configuration> conf;
 			conf =pf.getConfigurationByEmail(email);
-			response.getWriter().write(Rythm.render("profile.rtm", name, surname, email, profilePic, conf));
+			response.getWriter().write(Rythm.render("profile.html", name, surname, email, conf));
 		}else {
 			//altrimenti reindirizzo al login
 			response.sendRedirect("/login");

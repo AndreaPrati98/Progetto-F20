@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 
@@ -55,7 +56,7 @@ public class RdbOperation {
 		return rs;
 
 	}
-	
+
 	public ResultSet getNeededComponents() {
 		ResultSet rs = null;
 		Statement s;
@@ -67,20 +68,20 @@ public class RdbOperation {
 		}
 		return rs;
 	}
-	
+
 	public ResultSet getOwnerMailByConfigurationId(int id) {
 		ResultSet rs = null;
-		String idAsString=Integer.toString(id);
+		String idAsString = Integer.toString(id);
 		Statement s;
 		try {
 			s = c.createStatement();
-			rs = s.executeQuery("SELECT EmailU from Configuration WHERE id="+idAsString);
+			rs = s.executeQuery("SELECT EmailU from Configuration WHERE id=" + idAsString);
 		} catch (SQLException e) {
 			System.out.println("Error: " + e.getMessage());
 		}
 		return rs;
 	}
-	
+
 	public ResultSet getTypeComponents() {
 		ResultSet rs = null;
 		Statement s;
@@ -102,9 +103,9 @@ public class RdbOperation {
 			pstmt.setString(1, type);
 			pstmt.setString(2, model);
 			// execute the delete statement
-			if(pstmt.executeUpdate()==1) {
+			if (pstmt.executeUpdate() == 1) {
 				return true;
-			}	
+			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
@@ -151,8 +152,8 @@ public class RdbOperation {
 	public ResultSet getConfigurationByEmail(String email) {
 		try {
 			stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery(
-					"SELECT*\n" + "FROM ElementConfiguration NATURAL join Configuration\n" + "where EmailU='" + email+"'");
+			ResultSet rs = stmt.executeQuery("SELECT*\n" + "FROM ElementConfiguration NATURAL join Configuration\n"
+					+ "where EmailU='" + email + "'");
 			return rs;
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
@@ -160,7 +161,8 @@ public class RdbOperation {
 		return null;
 	}
 
-	public boolean addConfiguration(int id, String name, String email, List<String> Type, List<String> Model) {
+	public boolean addConfiguration(int id, String name, String email, List<String> Type, List<String> Model,
+			Map<String, Integer> counter) {
 		String sql = "INSERT INTO Configuration(Id,Name,EmailU) VALUES(?,?,?)";
 		PreparedStatement ps;
 		try {
@@ -174,13 +176,15 @@ public class RdbOperation {
 			e.printStackTrace();
 			return false;
 		}
-		sql = "INSERT INTO ElementConfiguration(TypeofC, ModelofC, Id) VALUES(?,?,?)";
+		sql = "INSERT INTO ElementConfiguration(TypeofC, ModelofC, Id,Counter) VALUES(?,?,?,?)";
 		for (int i = 0; i < Type.size(); i++) {
 			try {
+				System.out.println(Model.get(i)+"yooooooooooooo");
 				ps = c.prepareStatement(sql);
 				ps.setString(1, Type.get(i));
 				ps.setString(2, Model.get(i));
 				ps.setInt(3, id);
+				ps.setInt(4, counter.get(Model.get(i)));
 				ps.executeUpdate();
 			} catch (SQLException e) {
 				// Auto-generated catch block
@@ -191,24 +195,22 @@ public class RdbOperation {
 		return true;
 
 	}
-	
-	
+
 	public ResultSet getUser(String email) {
 		try {
 			stmt = c.createStatement();
-			ResultSet rs = stmt.executeQuery(
-					"SELECT*\n" + "FROM User where email='" + email +"'");
+			ResultSet rs = stmt.executeQuery("SELECT*\n" + "FROM User where email='" + email + "'");
 			return rs;
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
 		}
 		return null;
 	}
-	
+
 	public ResultSet login(String email, String password) {
 		String sql = "SELECT * FROM User WHERE email = ? AND password = ?";
 		PreparedStatement ps;
-		
+
 		try {
 			ps = c.prepareStatement(sql);
 			ps.setString(1, email);
@@ -218,10 +220,9 @@ public class RdbOperation {
 			// Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
-	
 
 	public boolean addUser(String name, String cognome, String email, String password, boolean isAdmin) {
 		String sql = "INSERT INTO User(firstName,lastName,email,password,isAdmin) VALUES(?,?,?,?,?)";
@@ -333,14 +334,13 @@ public class RdbOperation {
 		return null;
 
 	}
-	
-	
+
 	public boolean changeEmail(String oldEmail, String newEmail) {
 		String sql = ("UPDATE User SET email= ? WHERE email= ?");
 		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
 			// set the corresponding param
-			pstmt.setString(1,newEmail);
-			pstmt.setString(2,oldEmail);
+			pstmt.setString(1, newEmail);
+			pstmt.setString(2, oldEmail);
 			// execute the delete statement
 			pstmt.executeUpdate();
 			return true;
@@ -348,15 +348,15 @@ public class RdbOperation {
 			System.out.println(e.getMessage());
 		}
 		return false;
-		
+
 	}
-	
+
 	public boolean changePassword(String oldPassword, String newPassword) {
 		String sql = ("UPDATE User SET password= ? WHERE password= ?");
 		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
 			// set the corresponding param
-			pstmt.setString(1,newPassword);
-			pstmt.setString(2,oldPassword);
+			pstmt.setString(1, newPassword);
+			pstmt.setString(2, oldPassword);
 			// execute the delete statement
 			pstmt.executeUpdate();
 			return true;
@@ -364,7 +364,7 @@ public class RdbOperation {
 			System.out.println(e.getMessage());
 		}
 		return false;
-		
+
 	}
-	
+
 }
