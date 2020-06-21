@@ -86,11 +86,15 @@ public class AbstractConstraintTestTriple {
 	 */
 	private static ArrayList<Object[]> initializeAttributesForDimensionTrue() {
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
-		//NOTA BENE: la prima tupla è quellache viene inserita come nuova!
+		//NOTA BENE: la prima tupla è quella che viene inserita come nuova!
 		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
 		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
 		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
-		
+
+		/*
+		 * Questo test ci ricorda che gli elementi agginti prima devono rispettare gia i vincoli
+		 * perche non verranno ricontrollati 
+		 */
 		buff.add(new Object[] {"ramSize", "32", "RamSize", true, true, "external"});
 		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
 		buff.add(new Object[] {"ramSize", "17", "RamSize", true, true, "internal"});
@@ -102,11 +106,7 @@ public class AbstractConstraintTestTriple {
 		buff.add(new Object[] {"ciccioPasticcio", "16", "ciao", true, true, "internal"});
 		buff.add(new Object[] {"lollipop", "8", "ciao", true, true, "external"});
 		buff.add(new Object[] {"IDK", "8", "ciao", true, true, "external"});
-		
-		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
-		buff.add(new Object[] {"ramSize", "4", "RamSize", true, true, "external"});		
-		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
-		
+				
 		return buff;		
 
 	}
