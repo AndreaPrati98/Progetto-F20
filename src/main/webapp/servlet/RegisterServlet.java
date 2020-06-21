@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.rythmengine.Rythm;
 
+import main.model.util.Mail;
 import main.services.persistence.PersistenceFacade;
-import main.services.statics.Mail;
 /**
  * 
  * @author Capici Alessandro
