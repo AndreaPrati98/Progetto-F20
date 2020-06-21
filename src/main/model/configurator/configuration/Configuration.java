@@ -183,15 +183,17 @@ public class Configuration {
 		if(addedComponents.isEmpty()) {
 			return -1;
 		}
+		double numElem = 0;
 		for(Component c : addedComponents) {
 			double cIndex =c.getPerformanceIndex();
 			if(cIndex<0) {
 				return -1;
 			}
 			performanceIndex+=cIndex;
+			numElem++; 
 		}
 		
-		return performanceIndex;
+		return performanceIndex/numElem;
 	}
 	
 	/**
