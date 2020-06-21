@@ -27,6 +27,7 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 		String ModelofC;
 		String name = null;
 		String email;
+		int counter = 0;
 		ComponentCatalog catalog = ComponentCatalog.getInstance();
 		List<Component> addedComponent = new ArrayList<Component>();
 		int cont = 0;
@@ -35,10 +36,13 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 				if (cont == 0) {
 					name = rs.getString("Name");
 					email = rs.getString("EmailU");
+					counter = rs.getInt("Counter");
 					cont++;
 				}
 				ModelofC = rs.getString("ModelofC");
-				addedComponent.add(catalog.getComponentByModel(ModelofC));
+				for (int i = 0; i < counter ; i++) {
+					addedComponent.add(catalog.getComponentByModel(ModelofC));
+				}
 			}
 			return new Configuration(confId,addedComponent, name);
 		} catch (SQLException e) {
