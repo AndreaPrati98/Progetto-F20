@@ -112,9 +112,7 @@ public class Configurator {
 		if (email.equals(facade.getOwnerMailByConfigurationId(confId))) {
 			return facade.updateConfiguration(configuration, customer);
 		} else {
-			System.out.println(configuration.getId());
 			configuration.refreshId();
-			System.out.println(configuration.getId());
 			return facade.addConfiguration(configuration, customer);
 		}
 
