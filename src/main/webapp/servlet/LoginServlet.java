@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.rythmengine.Rythm;
 
+import main.services.util.HashingPassword;
+
 public class LoginServlet extends MyServlet {
 
 	public LoginServlet(String name, String path) {
@@ -27,21 +29,11 @@ public class LoginServlet extends MyServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("Email");
 		String password = request.getParameter("Password");
-		MessageDigest digest;
-
-		try {
-			digest = MessageDigest.getInstance("SHA-256");
-			digest.reset();
-			digest.update(password.getBytes("utf8"));
-			password = String.format("%064x", new BigInteger(1, digest.digest()));
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		HashingPassword hashingPassword= new HashingPassword();
 
 		ServletController controller = new ServletController();
 		
-		if (controller.login(email, password)) {
+		if (controller.login(email, hashingPassword.getHashPsw(password))) {
 			request.getSession().setAttribute("email", email);
 		    this.getServletConfig().getServletContext().setAttribute(email+"_controller", controller); // add to application context
 			response.sendRedirect("/profile");
