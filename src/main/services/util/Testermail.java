@@ -1,4 +1,4 @@
-package main.util;
+package main.services.util;
 
 public class Testermail {
 
