@@ -1,9 +1,6 @@
 <!-- Alessandro Capici Stefano Butera -->
 @args() {
-	main.model.configurator.configuration.Configuration conf1,
-	main.model.configurator.configuration.Configuration conf2,
-	main.model.configurator.configuration.Configuration conf3,
-	
+	javax.servlet.http.HttpServletRequest request
 }
 <!DOCTYPE html>
 <html>
@@ -31,9 +28,16 @@
 				<i class="material-icons">menu</i>
 			</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="login">Login</a></li>
-				<li><a href="sign-in" method="post">Sign-in</a></li>
+				
 				<li><a href="configuration">Configuration</a></li>
+				
+				@if((String)request.getSession().getAttribute("email") == null){
+					<li><a href="login">Login</a></li>
+					<li><a href="sign-in" method="post">Sign-in</a></li>
+				}else{
+					<li><a href="profile"> Profile</a></li>
+					<li><a href="logout"> Logout</a></li>
+				}
 			</ul>
 		</div>
 	</nav>
@@ -72,6 +76,17 @@
 			</div>
 		</div>
 	</footer>
+	<script type="text/javascript">
+
+		var yourVariable = '<%= Session["Email"] %>';
+		if (yourVariable.val() != null && yourVariable.val() != '')
+		{
+		alert('Your session value is  ' + yourVariable.val())
+		}
+		else {
+		alert('Session value not exists')
+		}
 	
+	</script>
 </body>
 </html>
