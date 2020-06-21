@@ -124,4 +124,17 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 		}
 		return id;
 	}
+
+	@Override
+	public String getOwnerMailByConfigurationId(int confId) {
+		ResultSet rs=dbop.getOwnerMailByConfigurationId(confId);
+		
+		try {
+			return rs.getString("EmailU");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 }

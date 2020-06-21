@@ -68,6 +68,19 @@ public class RdbOperation {
 		return rs;
 	}
 	
+	public ResultSet getOwnerMailByConfigurationId(int id) {
+		ResultSet rs = null;
+		String idAsString=Integer.toString(id);
+		Statement s;
+		try {
+			s = c.createStatement();
+			rs = s.executeQuery("SELECT EmailU from Configuration WHERE id="+idAsString);
+		} catch (SQLException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		return rs;
+	}
+	
 	public ResultSet getTypeComponents() {
 		ResultSet rs = null;
 		Statement s;

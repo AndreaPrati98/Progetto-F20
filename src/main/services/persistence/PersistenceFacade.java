@@ -1,6 +1,5 @@
 package main.services.persistence;
 
-
 import java.util.List;
 
 import main.model.configurator.component.Component;
@@ -14,7 +13,7 @@ public class PersistenceFacade {
 	private InterfaceConfigurationDAO confdao;
 	private InterfaceCostraintDAO cosdao;
 	private InterfaceUserDAO udao;
-	
+
 	private static PersistenceFacade facade;
 
 	static public PersistenceFacade getIstance() {
@@ -32,21 +31,24 @@ public class PersistenceFacade {
 		this.cdao = new RdbComponentDAO(dbop);
 		this.confdao = new RdbConfigurationDAO(dbop);
 		this.cosdao = new RdbConstraintDAO(dbop);
-		this.udao=new RdbUserDAO(dbop);
+		this.udao = new RdbUserDAO(dbop);
 	}
 
 	public List<Component> getAllComponent() {
 		return cdao.getAllComponent();
 	}
-	
+
 	public List<String> getNeededComponents() {
 		return cdao.getNeededComponents();
 	}
-	
-	public List<String> getTypeComponent(){
+
+	public List<String> getTypeComponent() {
 		return cdao.getTypeOfComponent();
 	}
 
+	public String getOwnerMailByConfigurationId(int confId) {
+		return confdao.getOwnerMailByConfigurationId(confId);
+	}
 
 	public Configuration getConfiguration(int confId) {
 
@@ -60,33 +62,33 @@ public class PersistenceFacade {
 
 	}
 
-	public boolean addConfiguration(Configuration conf,Customer user) {
+	public boolean addConfiguration(Configuration conf, Customer user) {
 
-		return confdao.addConfiguration(conf,user);
-
-	}
-	
-	public boolean addUser(String name,String cognome, String email,String password, boolean isAdmin) {
-
-		return udao.addUsers(name, cognome, email, password,isAdmin);
+		return confdao.addConfiguration(conf, user);
 
 	}
-	
+
+	public boolean addUser(String name, String cognome, String email, String password, boolean isAdmin) {
+
+		return udao.addUsers(name, cognome, email, password, isAdmin);
+
+	}
+
 	public Customer getUser(String email) {
-		Customer c=udao.getCustomer(email);
+		Customer c = udao.getCustomer(email);
 		c.setConfigurationList(this.getConfigurationByEmail(email));
 		return c;
-		
+
 	}
-	
-	public boolean login(String email, String password){
-				
+
+	public boolean login(String email, String password) {
+
 		return udao.login(email, password);
 	}
 
 	public boolean updateConfiguration(Configuration conf, Customer user) {
 
-		return confdao.updateConfiguration(conf ,user);
+		return confdao.updateConfiguration(conf, user);
 
 	}
 
@@ -95,12 +97,12 @@ public class PersistenceFacade {
 		return confdao.removeConfiguration(confId);
 
 	}
-	
+
 	// Tanto il constraintChecker legge tutti i constraint, non ne legge uno solo
 	/*
-	public AbstractConstraint getConstraint(String name, String typeOfComponent) {
-		return cosdao.getConstraint(name, typeOfComponent);
-	}*/
+	 * public AbstractConstraint getConstraint(String name, String typeOfComponent)
+	 * { return cosdao.getConstraint(name, typeOfComponent); }
+	 */
 
 	public List<AbstractConstraint> getAllConstraints() {
 
@@ -116,6 +118,7 @@ public class PersistenceFacade {
 
 		return cosdao.removeConstraint(name);
 	}
+
 	/**
 	 * 
 	 * @return the last id used for the configuration table as an integer.

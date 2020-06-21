@@ -227,4 +227,12 @@ public class Configuration {
 		return true;
 	}
 
+
+	public void refreshId() {
+		lastUsedId++;
+		this.id = lastUsedId;
+	}
+	
+	
+
 }

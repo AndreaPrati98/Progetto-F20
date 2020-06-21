@@ -18,6 +18,8 @@ public interface InterfaceConfigurationDAO {
 
 	public boolean removeConfiguration(int confId);
 	
+	public String getOwnerMailByConfigurationId(int confId);
+	
 	public int getLastUsedId();
 
 }
