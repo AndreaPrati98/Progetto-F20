@@ -103,6 +103,10 @@ public class AbstractConstraintTestTriple {
 		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});		
 		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
 		
+		/*
+		 * Se vengono aggiunti dei constraint che hanno un nome diverso da quello che viene controllato
+		 * non vengono considerati e viene restituito true
+		 */
 		buff.add(new Object[] {"ciccioPasticcio", "16", "ciao", true, true, "internal"});
 		buff.add(new Object[] {"lollipop", "8", "ciao", true, true, "external"});
 		buff.add(new Object[] {"IDK", "8", "ciao", true, true, "external"});
