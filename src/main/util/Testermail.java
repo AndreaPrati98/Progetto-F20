@@ -1,4 +1,4 @@
-package main.model.util;
+package main.util;
 
 public class Testermail {
 
