@@ -58,4 +58,14 @@ public class RdbUserDAO implements InterfaceUserDAO {
 			
 		return false;
 	}
+	public boolean changeEmail(String oldEmail, String newEmail) {
+		return dbop.changeEmail(oldEmail, newEmail);
+		
+	}
+	
+	public boolean changePassword(String oldPassword, String newPassword) {
+		return dbop.changePassword(oldPassword, newPassword);
+		
+	}
+	
 }

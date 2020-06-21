@@ -333,4 +333,38 @@ public class RdbOperation {
 		return null;
 
 	}
+	
+	
+	public boolean changeEmail(String oldEmail, String newEmail) {
+		String sql = ("UPDATE User SET email= ? WHERE email= ?");
+		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
+			// set the corresponding param
+			pstmt.setString(1,newEmail);
+			pstmt.setString(2,oldEmail);
+			// execute the delete statement
+			pstmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
+		
+	}
+	
+	public boolean changePassword(String oldPassword, String newPassword) {
+		String sql = ("UPDATE User SET password= ? WHERE password= ?");
+		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
+			// set the corresponding param
+			pstmt.setString(1,newPassword);
+			pstmt.setString(2,oldPassword);
+			// execute the delete statement
+			pstmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
+		
+	}
+	
 }
