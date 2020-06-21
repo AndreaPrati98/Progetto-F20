@@ -61,7 +61,7 @@ public class ConfigurationServlet extends MyServlet {
 		List<String> type = PersistenceFacade.getIstance().getTypeComponent();
 
 		response.getWriter().write(Rythm.render("configurationv2.html", catalog.getComponentList(), type,
-				elementOfPreexistentConfiguration, price));
+				elementOfPreexistentConfiguration, price, request));
 	}
 
 	// TODO: Cambiare le stringhe boiler con costanti per i percorsi ed i nomi degli

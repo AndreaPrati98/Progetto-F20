@@ -32,7 +32,7 @@ public class ProfileServlet extends MyServlet{
 			//Da sostituire
 			List<Configuration> conf;
 			conf =pf.getConfigurationByEmail(email);
-			response.getWriter().write(Rythm.render("profile.html", name, surname, email, conf));
+			response.getWriter().write(Rythm.render("profile.html", name, surname, email, conf, request));
 		}else {
 			//altrimenti reindirizzo al login
 			response.sendRedirect("/login");

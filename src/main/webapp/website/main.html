@@ -31,9 +31,14 @@
 				
 				<li><a href="configuration">Configuration</a></li>
 				
-				@if((String)request.getSession().getAttribute("email") == null){
-					<li><a href="login">Login</a></li>
-					<li><a href="sign-in" method="post">Sign-in</a></li>
+				@if(request!=null){
+					@if((String)request.getSession().getAttribute("email") == null){
+						<li><a href="login">Login</a></li>
+						<li><a href="sign-in" method="post">Sign-in</a></li>
+					}else{
+						<li><a href="profile"> Profile</a></li>
+						<li><a href="logout"> Logout</a></li>
+					}
 				}else{
 					<li><a href="profile"> Profile</a></li>
 					<li><a href="logout"> Logout</a></li>
