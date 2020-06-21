@@ -86,13 +86,13 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 		Map<String,Integer> counter = new HashMap<String,Integer>();
 		int count ;
 		for (Component c : conf.getAddedComponents()) {
-			if (!counter.containsKey(model)) {
+			if (!counter.containsKey(c.getModel())) {
 				counter.put(c.getModel(), 1);
 				type.add(c.getTypeComponent());
 				model.add(c.getModel());
 			}else {
-				count=counter.get(c.getModel());
-				counter.replace(c.getModel(),count++);
+				count=counter.get(c.getModel())+1;
+				counter.put(c.getModel(),count);
 			}
 		}
 		
