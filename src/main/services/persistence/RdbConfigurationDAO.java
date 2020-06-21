@@ -83,12 +83,20 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 	public boolean addConfiguration(Configuration conf, Customer user) {
 		List<String> type = new ArrayList<String>();
 		List<String> model = new ArrayList<String>();
+		Map<String,Integer> counter = new HashMap<String,Integer>();
+		int count ;
 		for (Component c : conf.getAddedComponents()) {
-			type.add(c.getTypeComponent());
-			model.add(c.getModel());
+			if (!counter.containsKey(model)) {
+				counter.put(c.getModel(), 1);
+				type.add(c.getTypeComponent());
+				model.add(c.getModel());
+			}else {
+				count=counter.get(c.getModel());
+				counter.replace(c.getModel(),count++);
+			}
 		}
-
-		return dbop.addConfiguration(conf.getId(), conf.getName(), user.getEmail(), type, model);
+		
+		return dbop.addConfiguration(conf.getId(), conf.getName(), user.getEmail(), type, model,counter);
 
 	}
 	
