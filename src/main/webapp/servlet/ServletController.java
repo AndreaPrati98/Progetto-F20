@@ -153,9 +153,4 @@ public class ServletController {
 	public boolean removeConfiguration(int confId) {
 		return configurator.removeConfiguration(confId);
 	}
-	
-	public boolean renameConfiguration(String name, Customer customer, Configuration configuration) {
-		configurator.setConfiguration(configuration);
-		return configurator.saveConfiguration(customer);
-	}
 }

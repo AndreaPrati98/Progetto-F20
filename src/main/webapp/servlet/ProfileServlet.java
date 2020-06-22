@@ -75,7 +75,7 @@ public class ProfileServlet extends MyServlet {
 	
 	private void rename(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		int confId = Integer.parseInt(request.getParameter("id"));
-		String name = "ProvaNome";
+		String name = request.getParameter("name");
 		
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		Customer customer = pf.getUser((String) request.getSession().getAttribute("email"));
@@ -83,7 +83,5 @@ public class ProfileServlet extends MyServlet {
 		configuration.setName(name);
 		
 		pf.updateConfiguration(configuration, customer);
-		//controller.renameConfiguration(name, customer, configuration);
-
 	}
 }

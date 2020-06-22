@@ -22,10 +22,19 @@
 	@if(conf.size()>0){
 		@for(main.model.configurator.configuration.Configuration c: conf) {
 			<li class="collection-item">
-				<div>@(c.getName())
-					<a href="configuration?configurationId=@(c.getId())" class="secondary-content confLink" id="@(c.getId())" style="margin: 20px;">edit</a>
-					<a href="" class="secondary-content confLink" style="margin: 20px;" id="@(c.getId())">rename</a>
-					<a href="" class="secondary-content confLink" style="margin: 20px;" id="@(c.getId())">remove</a>
+				<div class="row">
+					<div class="col s7">
+					@(c.getName())
+					</div>
+					<div class="col s2">
+						<i class="material-icons prefix">mode_edit</i>
+				        <textarea id="@(c.getId())" class="materialize-textarea"></textarea>
+				    </div>
+				    <div class="col s3">
+						<a href="configuration?configurationId=@(c.getId())" class="secondary-content confLink" id="@(c.getId())" style="margin: 20px;">edit</a>
+						<a href="" class="secondary-content confLink" style="margin: 20px;" id="@(c.getId())">rename</a>
+						<a href="" class="secondary-content confLink" style="margin: 20px;" id="@(c.getId())">remove</a>
+					</div>
 				</div>
 			</li>
 		}

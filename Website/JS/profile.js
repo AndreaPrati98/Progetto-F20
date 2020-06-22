@@ -7,8 +7,6 @@ $('a.confLink').click(function(){
 		var configurationId = $(this).attr('id');
 		var text = $(this).text();
 
-		alert(text);
-
 		if(text == 'remove'){
 			removeConfiguration(configurationId);
 		}else if(text == 'rename'){
@@ -24,5 +22,6 @@ function removeConfiguration(configurationId){
 }
 
 function renameConfiguration(configurationId){
-  let posting = $.post( "/profile/rename", {id: configurationId});
+  let newName = $('textarea#' + configurationId).val();
+  let posting = $.post( "/profile/rename", {id: configurationId, name: newName});
 }
