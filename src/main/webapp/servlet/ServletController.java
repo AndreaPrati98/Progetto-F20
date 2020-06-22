@@ -151,7 +151,6 @@ public class ServletController {
 	}
 	
 	public boolean removeConfiguration(String confId) {
-		System.out.println("remove da servletController: " + confId);
 		return true;
 	}
 }
