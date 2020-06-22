@@ -2,6 +2,7 @@ package main.webapp.servlet;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -42,25 +43,19 @@ public class ProfileServlet extends MyServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-		// ServletController controller = (ServletController)
-		// request.getSession().getAttribute("controller");
 		String email = (String) request.getSession().getAttribute("email");
-
-		if (email == null) {
-			response.sendRedirect("/login");
-			return;
-		}
-
 		ServletController controller = new ServletController();
 
 		if (request.getPathInfo().equals("/remove")) {
+			System.out.println("Remove");
 			remove(request, response, controller);
 		} else if (request.getPathInfo().equals("/rename")) {
+			System.out.println("Rename");
 			rename(request, response, controller);
 		}
 	}
 
-	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller) {
+	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		int confId = Integer.parseInt(request.getParameter("id"));
 		// controller.removeConfiguration(confId);
 
@@ -76,14 +71,26 @@ public class ProfileServlet extends MyServlet {
 		} else {
 			json = JsonMessages.getJsonNotOkResponse();
 		}
-
+		response.getWriter().write(json);
 		// System.out.println(json);
 	}
 	
-	private void rename(HttpServletRequest request, HttpServletResponse response, ServletController controller) {
-		String confId = request.getParameter("id");
-		// controller.removeConfiguration(confId);
-
-		// System.out.println(json);
+	private void rename(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
+		int confId = Integer.parseInt(request.getParameter("id"));
+		String name = "essrw";
+		
+		PersistenceFacade pf = PersistenceFacade.getIstance();
+		Customer customer = pf.getUser((String) request.getSession().getAttribute("email"));
+		Configuration configuration = pf.getConfiguration(confId);
+		configuration.setName(name);
+		
+		
+		String json = "";
+		if (controller.renameConfiguration(name, customer, configuration)) {
+			json = JsonMessages.getJsonRemoveConfigurationResponse(confId);
+		} else {
+			json = JsonMessages.getJsonNotOkResponse();
+		}
+		response.getWriter().write(json);
 	}
 }

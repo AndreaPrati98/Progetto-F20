@@ -6,18 +6,23 @@ $('a.confLink').click(function(){
 
 		var configurationId = $(this).attr('id');
 		var text = $(this).text();
-		alert(configurationId);
+
+		alert(text);
+
 		if(text == 'remove'){
 			removeConfiguration(configurationId);
 		}else if(text == 'rename'){
-			alert('rename');
+			renameConfiguration(configurationId);
 		}else{
-			alert("errore");
+
 		}
 	}
 );
 
 function removeConfiguration(configurationId){
-  let dataToSend = "";
   let posting = $.post( "/profile/remove", {id: configurationId});
+}
+
+function renameConfiguration(configurationId){
+  let posting = $.post( "/profile/rename", {id: configurationId});
 }

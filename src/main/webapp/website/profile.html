@@ -23,9 +23,8 @@
 		@for(main.model.configurator.configuration.Configuration c: conf) {
 			<li class="collection-item">
 				<div>@(c.getName())
-					<a href="configuration?configurationId=@(c.getId())" class="secondary-content confLink" id="@(c.getId())" style="margin: 20px;">go</a>
+					<a href="configuration?configurationId=@(c.getId())" class="secondary-content confLink" id="@(c.getId())" style="margin: 20px;">edit</a>
 					<a href="" class="secondary-content confLink" style="margin: 20px;" id="@(c.getId())">rename</a>
-					<a href="" class="secondary-content confLink" style="margin: 20px;" id="@(c.getId())">edit</a>
 					<a href="" class="secondary-content confLink" style="margin: 20px;" id="@(c.getId())">remove</a>
 				</div>
 			</li>
