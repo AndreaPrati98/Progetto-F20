@@ -179,7 +179,6 @@ public class RdbOperation {
 		sql = "INSERT INTO ElementConfiguration(TypeofC, ModelofC, Id,Counter) VALUES(?,?,?,?)";
 		for (int i = 0; i < Type.size(); i++) {
 			try {
-				System.out.println(Model.get(i)+"yooooooooooooo");
 				ps = c.prepareStatement(sql);
 				ps.setString(1, Type.get(i));
 				ps.setString(2, Model.get(i));

@@ -57,6 +57,7 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 		Map<Integer, Configuration> confMap = new HashMap<>();
 		String modelofC;
 		int id;
+		int counter;
 		String name;
 		List<Configuration> configurations = null;
 		ComponentCatalog catalog = ComponentCatalog.getInstance();
@@ -65,12 +66,15 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 			while (rs.next()) {
 				id = rs.getInt("Id");
 				name = rs.getString("Name");
+				counter=rs.getInt("Counter");
 				if (!confMap.containsKey(id)) {
 					confMap.put(id, new Configuration(id, name));
 				}
 				modelofC = rs.getString("ModelofC");
 				c = catalog.getComponentByModel(modelofC);
-				confMap.get(id).addComponentWithoutChecking(c);
+				for (int i = 0; i < counter; i++) {
+					confMap.get(id).addComponentWithoutChecking(c);
+				}
 			}
 
 			configurations = new ArrayList<Configuration>(confMap.values());
