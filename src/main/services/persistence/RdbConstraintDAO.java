@@ -62,7 +62,7 @@ public class RdbConstraintDAO implements InterfaceCostraintDAO {
 
 	@Override
 	public boolean removeConstraint(String name) {
-		return dbop.RemoveConstraint(name);
+		return dbop.removeConstraint(name);
 	}
 
 }
