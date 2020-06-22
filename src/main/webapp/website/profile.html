@@ -13,7 +13,7 @@
 		<h5><b>E-mail:</b> @(email)</h5>
 	</div>
 	<div class="col s6">
-		
+
 	</div>
 </div>
 
@@ -26,10 +26,11 @@
 					<div class="col s7">
 					@(c.getName())
 					</div>
-					<div class="col s2">
-						<i class="material-icons prefix">mode_edit</i>
-				        <textarea id="@(c.getId())" class="materialize-textarea"></textarea>
-				    </div>
+					<div class="input-field col s6">
+          				<input id="@(c.getId())" type="text" class="validate">
+          				<label for="@(c.getId())">New Name</label>
+        			</div>
+
 				    <div class="col s3">
 						<a href="configuration?configurationId=@(c.getId())" class="secondary-content confLink" id="@(c.getId())" style="margin: 20px;">edit</a>
 						<a href="" class="secondary-content confLink" style="margin: 20px;" id="@(c.getId())">rename</a>
