@@ -306,7 +306,7 @@ public class RdbOperation {
 		return false;
 	}
 
-	public boolean RemoveConstraint(String name) {
+	public boolean removeConstraint(String name) {
 		String sql = "DELETE FROM Bound WHERE Name = ?";
 
 		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
