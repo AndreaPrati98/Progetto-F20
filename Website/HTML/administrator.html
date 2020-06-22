@@ -30,11 +30,17 @@
 	#addComponentBtn{
 		background-color: #0097a7;
 	}
+	#addAdminUserBtn{
+		background-color: #0097a7;
+	}
 	#removeComponentBtn{
 		background-color: #d32f2f;
 	}
 	#addAttributeBtn{
 		background-color: #43a047;
+	}
+	#TypeSelect{
+		width: 40%;
 	}
 	</style>
 	<title>Administrator</title>
@@ -92,35 +98,38 @@
 		</div>
 		<div class="column">
 			<h5 class="columnsTitle">Operations</h5>
-			<br><br>
+			<br>
 			<p>
 				Add a new type of component &nbsp;&nbsp;&nbsp;
 				<a class="waves-effect waves-light btn" id="addComponentBtn">Add</a>
 			</p>
-			<br><br>
+			-----------------------------------------------------------------------------------------------
 			<p>
-				<h6>Manage existing components</h6>
-				<br>
-				<div class="input-field col s14" id="componentSelect">
+				<h6>Remove a component</h6>
+				
+				<div class="input-field col s14" id="TypeSelect">
 					<select>
-						<option value="" disabled selected>Select a component</option>
+						<option value="" disabled selected>Type</option>
 						<option value="1">Cpu</option>
 						<option value="2">Mobo</option>
 						<option value="3">Case</option>
 					</select>
-					<label>Existing Components</label>
 				</div>
+				<div class="input-field col s7">
+          			<input id="componentName" type="text" class="validate">
+         		    <label for="componentName">Component name</label>
+        		</div>
 			</p>
-			<br><br><br>
+			<br><br>
 			<p>
-				Remove selected component &nbsp;&nbsp;&nbsp;
+				
 				<a class="waves-effect waves-light btn" id="removeComponentBtn">Remove</a>
-			</p>
 			<br>
-			<p>
+			<br>
+			<h6>Add standard attribute for selected component<h6>
 				<div class="input-field col s14" id="TypeSelect">
 					<select>
-						<option value="" disabled selected>Type of component</option>
+						<option value="" disabled selected>Type</option>
 						<option value="1">Case</option>
 						<option value="2">Mobo</option>
 						<option value="3">Cpu</option>
@@ -130,13 +139,18 @@
 						<option value="7">Gpu</option>
 						<option value="8">Cooler</option>
 					</select>
-					<label>Existing type of Components</label>
 				</div>
-				<br><br><br><br>
-				Add standard attribute to selected component &nbsp;&nbsp;&nbsp;
-				<a class="waves-effect waves-light btn" id="addAttributeBtn">Add Attr.</a>
+				<br>
+				<a class="waves-effect waves-light btn" id="addAttributeBtn">Add Std Attr.</a>
+			</p>
+			<br>
+			----------------------------------------------------------------------------
+			<p>
+				Add new administrator user &nbsp;&nbsp;&nbsp;
+				<a class="waves-effect waves-light btn" id="addAdminUserBtn">Add</a>
 			</p>
 		</div>
+		
 		<div class="column">
 			<h5 class="columnsTitle">Updates</h5>
 			<p>qui ci saranno i vari form in base a quello che premo nella colonna di operations</p>
