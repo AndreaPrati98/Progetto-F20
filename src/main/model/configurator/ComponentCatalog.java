@@ -99,7 +99,7 @@ public class ComponentCatalog {
 	/**
 	 * 
 	 * @param typeOfC
-	 * @return
+	 * @return All the components of the given type
 	 */
 	public List<Component> getComponentListByType(String typeOfC){
 		List<Component> compByTypeList = new ArrayList<Component>();

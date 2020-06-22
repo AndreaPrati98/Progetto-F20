@@ -4,7 +4,7 @@ import main.model.configurator.constraint.ConstraintCategory;
 
 /**
  * 
- * @author Irene S
+ * @author Irene Schimperna
  * @author Andrea Prati
  *
  */
@@ -13,9 +13,6 @@ public class Attribute {
 	private boolean isBinding, isPresentable;
 	private ConstraintCategory constraintCategory;
 	
-	//AGGIUNGERE CONSTRAINTNAME (come da db) e eventualmente togliere isBinding.
-	//Di conseguemza va cambiato Component (a cui va aggiunto un metodo getAttributesByConstraintName)
-	//e il ConstraintChecker, che non dovrà più usare name ma constraintName
 	
 	/**
 	 * Constructor for not binding attributes, which has no constraintName
