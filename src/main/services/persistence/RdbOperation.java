@@ -113,6 +113,23 @@ public class RdbOperation {
 		return false;
 
 	}
+	
+	public boolean addComponent(String model, String type, double price) {
+		String sql = "INSERT INTO Component(TypeofC,Model,Price) VALUES(?,?,?)";
+		PreparedStatement ps;
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setString(1, type);
+			ps.setString(2, model);
+			ps.setDouble(3, price);
+			ps.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
 
 	/*
 	 * QUERY ATTRIBUTE RELATION

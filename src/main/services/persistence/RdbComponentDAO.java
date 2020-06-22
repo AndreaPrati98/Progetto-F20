@@ -82,9 +82,8 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 	}
 	
 	//Update, remove component
-	public boolean addComponent(String model, String type) {
-		//TODO da implementare
-		return false;
+	public boolean addComponent(String model, String type, double price) {
+		return dbop.addComponent(model, type, price);
 	}
 	
 	public boolean removeComponent(String model, String type) {

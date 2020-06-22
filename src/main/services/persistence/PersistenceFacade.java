@@ -128,6 +128,14 @@ public class PersistenceFacade {
 
 		return cosdao.removeConstraint(name);
 	}
+	
+	public boolean addComponent(String model, String type, double price) {
+		return cdao.addComponent(model, type, price);
+	}
+	
+	public boolean removeComponent(String model, String type) {
+		return cdao.removeComponent(model, type);
+	}
 
 	/**
 	 * 
