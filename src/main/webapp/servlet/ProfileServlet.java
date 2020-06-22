@@ -41,6 +41,51 @@ public class ProfileServlet extends MyServlet{
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+		// ServletController controller = (ServletController)
+		// request.getSession().getAttribute("controller");
+		String email = (String) request.getSession().getAttribute("email");
+		System.out.println(email);
+		if (email == null) {
+			response.sendRedirect("/login");
+			return;
+		}
+
+		ServletController controller = new ServletController();
+		// Se il controller è nullo (cosa che non dovrebbe succedere poichè viene
+		// istanziato
+		// durante la login, vuol dire che qualcuno sta facendo una cattiva post e
+		// quindi lo
+		// redirigo alla logout
+		if (controller == null) {
+			// Devo fare in modo di inviare di risposta come ajax un erorre
+			// e se trovo quell'errore invio un json che venendo letto lato
+			// client dal javascript poi forza a sloggare e poi loggare.
+			System.out.println("ROBE BRUTTE");
+			return;
+		}
+
+		// Prende solo /add anche se il path completo è /configuration/add
+		if (request.getPathInfo().equals("/remove")) {
+			System.out.println("perfect");
+			remove(request, response, controller);
+		}else {
+			System.out.println("Fuck");
+		}
+	}
+	
+	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller) {
+		System.out.println("OTTIMO");
+		String confId = request.getParameter("id");
+		//controller.removeConfiguration(confId);
 		
+		String json = "";
+		if (controller.removeConfiguration(confId)) {
+			json = JsonMessages.getJsonRemoveConfigurationResponse(confId);
+		} else {
+			json = JsonMessages.getJsonNotOkResponse();
+		}
+
+		System.out.println(json);
 	}
 }

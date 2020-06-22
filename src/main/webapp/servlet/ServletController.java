@@ -150,4 +150,8 @@ public class ServletController {
 		return configurator.getPrice();		
 	}
 	
+	public boolean removeConfiguration(String confId) {
+		System.out.println("remove da servletController: " + confId);
+		return true;
+	}
 }

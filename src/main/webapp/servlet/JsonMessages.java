@@ -73,5 +73,12 @@ public class JsonMessages {
 		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
 		return responseJsonToSend.toJSONString();
 	}
+	
+	public static String getJsonRemoveConfigurationResponse(String confId) {
+		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
+		responseMapToSend.put(responseString, confId);
+		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
+		return responseJsonToSend.toJSONString();
+	}
 
 }
