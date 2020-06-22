@@ -5,8 +5,15 @@ $(document).ready(function(){
 $('a.confLink').click(function(){
 
 		var configurationId = $(this).attr('id');
+		var text = $(this).text();
 		alert(configurationId);
-		removeConfiguration(configurationId);
+		if(text == 'remove'){
+			removeConfiguration(configurationId);
+		}else if(text == 'rename'){
+			alert('rename');
+		}else{
+			alert("errore");
+		}
 	}
 );
 

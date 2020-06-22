@@ -150,7 +150,7 @@ public class ServletController {
 		return configurator.getPrice();		
 	}
 	
-	public boolean removeConfiguration(String confId) {
-		return true;
+	public boolean removeConfiguration(int confId) {
+		return configurator.removeConfiguration(confId);
 	}
 }

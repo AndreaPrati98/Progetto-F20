@@ -13,28 +13,28 @@ import main.model.configurator.configuration.Configuration;
 import main.model.people.costumer.Customer;
 import main.services.persistence.PersistenceFacade;
 
-public class ProfileServlet extends MyServlet{
+public class ProfileServlet extends MyServlet {
 
 	public ProfileServlet(String name, String path) {
 		super(name, path);
 	}
-	
+
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		String email = (String) request.getSession().getAttribute("email");
 
-		if(email != null) {
-			//Se nella sessione esiste la mail, mi salvo tutte le info e carico il profilo
+		if (email != null) {
+			// Se nella sessione esiste la mail, mi salvo tutte le info e carico il profilo
 			Customer c = pf.getUser(email);
 			String name = c.getName();
 			String surname = c.getSurname();
-			//Da sostituire
+			// Da sostituire
 			List<Configuration> conf;
-			conf =pf.getConfigurationByEmail(email);
+			conf = pf.getConfigurationByEmail(email);
 			response.getWriter().write(Rythm.render("profile.html", name, surname, email, conf, request));
-		}else {
-			//altrimenti reindirizzo al login
+		} else {
+			// altrimenti reindirizzo al login
 			response.sendRedirect("/login");
 		}
 	}
@@ -55,12 +55,20 @@ public class ProfileServlet extends MyServlet{
 
 		if (request.getPathInfo().equals("/remove")) {
 			remove(request, response, controller);
+		} else if (request.getPathInfo().equals("/rename")) {
+			rename(request, response, controller);
 		}
 	}
-	
+
 	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller) {
-		String confId = request.getParameter("id");
-		//controller.removeConfiguration(confId);
+		int confId = Integer.parseInt(request.getParameter("id"));
+		// controller.removeConfiguration(confId);
+
+		if(controller.removeConfiguration(confId)) {
+			System.out.println("Configurazione rimossa");
+		}else {
+			System.out.println("Configurazione non rimossa");
+		}
 		
 		String json = "";
 		if (controller.removeConfiguration(confId)) {
@@ -69,6 +77,13 @@ public class ProfileServlet extends MyServlet{
 			json = JsonMessages.getJsonNotOkResponse();
 		}
 
-		//System.out.println(json);
+		// System.out.println(json);
+	}
+	
+	private void rename(HttpServletRequest request, HttpServletResponse response, ServletController controller) {
+		String confId = request.getParameter("id");
+		// controller.removeConfiguration(confId);
+
+		// System.out.println(json);
 	}
 }

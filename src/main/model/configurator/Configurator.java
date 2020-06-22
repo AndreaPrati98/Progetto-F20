@@ -149,4 +149,8 @@ public class Configurator {
 		this.configuration = configuration;
 	}
 
+	public boolean removeConfiguration(int confId) {
+		PersistenceFacade facade = PersistenceFacade.getIstance();
+		return facade.removeConfiguration(confId);
+	}
 }
