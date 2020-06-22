@@ -16,16 +16,11 @@ public class Customer {
 	//public static int MAX_NUMBER_OF_CONFIGURATIONS = 5;
 	private String name;
 	private String surname;
-	private String email;
-	private String nome;
-	private String cognome;
-	
-	
+	private String email;	
 	private boolean isAdmin;
-	//private String name;
+
 	private List<Configuration> configurationList;
-	@SuppressWarnings("unused")
-	private Configurator facadeController;
+
 	
 	public Customer(String name,String surname,String email,boolean isAdmin) {
 		this.email=email;
@@ -34,12 +29,6 @@ public class Customer {
 		this.isAdmin=isAdmin;
 		configurationList = new ArrayList<Configuration>();
 	}
-	
-	public Customer(Configurator system) {
-		configurationList = new ArrayList<Configuration>();
-		facadeController = system;
-	}
-	
 	
 	public List<Configuration> getConfigurationList() {
 		return configurationList;
@@ -73,12 +62,6 @@ public class Customer {
 		return isAdmin;
 	}
 	
-	
-	
-	/*
-	 * I metodi di add e di remove configuration non li ho fatti perch� mi sembra abbia pi� senso che 
-	 * la responsabilit� di farlo l'abbia system e non il cliente direttamente dalla propria classe, ne parliamo alla riunione
-	 */
-	
+
 	
 }
