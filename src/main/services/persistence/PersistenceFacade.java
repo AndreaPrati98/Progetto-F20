@@ -61,6 +61,17 @@ public class PersistenceFacade {
 		return confdao.getConfigurationByEmail(email);
 
 	}
+	
+	public boolean changeMail(String oldEmail, String newEmail) {
+
+		return udao.changeEmail(oldEmail, newEmail);
+
+	}
+	public boolean changePassword(String oldPassword, String newPassword) {
+
+		return udao.changePassword(oldPassword, newPassword);
+
+	}
 
 	public boolean addConfiguration(Configuration conf, Customer user) {
 
