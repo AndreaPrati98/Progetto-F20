@@ -76,7 +76,6 @@ public class PersistenceFacade {
 
 	public Customer getUser(String email) {
 		Customer c = udao.getCustomer(email);
-		c.setConfigurationList(this.getConfigurationByEmail(email));
 		return c;
 
 	}
