@@ -24,8 +24,6 @@ public class ProfileServlet extends MyServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		String email = (String) request.getSession().getAttribute("email");
-
-		System.out.println("get profile");
 		
 		if (email != null) {
 			// Se nella sessione esiste la mail, mi salvo tutte le info e carico il profilo
@@ -48,12 +46,9 @@ public class ProfileServlet extends MyServlet {
 		String email = (String) request.getSession().getAttribute("email");
 		ServletController controller = new ServletController();
 
-		System.out.println("Sono pazzo");
 		if (request.getPathInfo().equals("/remove")) {
-			System.out.println("Remove");
 			remove(request, response, controller);
 		} else if (request.getPathInfo().equals("/rename")) {
-			System.out.println("Rename");
 			rename(request, response, controller);
 		}
 	}
@@ -80,9 +75,8 @@ public class ProfileServlet extends MyServlet {
 	
 	private void rename(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		int confId = Integer.parseInt(request.getParameter("id"));
-		String name = "essrw";
+		String name = "ProvaNome";
 		
-		System.out.println("dio");
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		Customer customer = pf.getUser((String) request.getSession().getAttribute("email"));
 		Configuration configuration = pf.getConfiguration(confId);
