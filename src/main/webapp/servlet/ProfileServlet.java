@@ -25,6 +25,8 @@ public class ProfileServlet extends MyServlet {
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		String email = (String) request.getSession().getAttribute("email");
 
+		System.out.println("get profile");
+		
 		if (email != null) {
 			// Se nella sessione esiste la mail, mi salvo tutte le info e carico il profilo
 			Customer c = pf.getUser(email);
@@ -46,6 +48,7 @@ public class ProfileServlet extends MyServlet {
 		String email = (String) request.getSession().getAttribute("email");
 		ServletController controller = new ServletController();
 
+		System.out.println("Sono pazzo");
 		if (request.getPathInfo().equals("/remove")) {
 			System.out.println("Remove");
 			remove(request, response, controller);
@@ -79,18 +82,14 @@ public class ProfileServlet extends MyServlet {
 		int confId = Integer.parseInt(request.getParameter("id"));
 		String name = "essrw";
 		
+		System.out.println("dio");
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		Customer customer = pf.getUser((String) request.getSession().getAttribute("email"));
 		Configuration configuration = pf.getConfiguration(confId);
 		configuration.setName(name);
 		
-		
-		String json = "";
-		if (controller.renameConfiguration(name, customer, configuration)) {
-			json = JsonMessages.getJsonRemoveConfigurationResponse(confId);
-		} else {
-			json = JsonMessages.getJsonNotOkResponse();
-		}
-		response.getWriter().write(json);
+		pf.updateConfiguration(configuration, customer);
+		//controller.renameConfiguration(name, customer, configuration);
+
 	}
 }
