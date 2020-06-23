@@ -31,6 +31,7 @@ $("#resetBtn").click(function(){
 	let previouslyCheckedCheckbox = $('.selection:checkbox:checked');
 	previouslyCheckedCheckbox.prop("checked", false);
 	previouslyCheckedCheckbox.trigger('change');
+	$(".collection-item").remove();
 });
 
 $("#saveBtn").click(function(){
