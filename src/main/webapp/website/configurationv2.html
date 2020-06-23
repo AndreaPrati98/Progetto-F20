@@ -6,7 +6,7 @@
 	List<String> type
 	List<main.model.configurator.component.Component> elementOfPreexistentConfiguration,
 	double price,
-	javax.servlet.http.HttpServletRequest request
+	double performance,
 }
 <html>
 <head>
@@ -180,7 +180,7 @@
     <p>
         <h3>Performance Index: </h3>
         <div class="progress" id="PerformanceIndex">
-            <div class="determinate" id="performanceValue" style="width: 70%"></div>
+            <div class="determinate" id="performanceValue" style="width: @(performance)%"></div>
         </div>
     </p>
 </div>

@@ -47,12 +47,14 @@ public class ConfigurationServlet extends MyServlet {
 		String confIdAsString = request.getParameter("configurationId");
 		List<Component> elementOfPreexistentConfiguration = new ArrayList<Component>();
 		double price = 0.0;
+		double performance = 0.0;
 		if (confIdAsString == null) {
 			controller.newConfiguration();
 		} else {
 			int confId = Integer.parseInt(confIdAsString);
 			elementOfPreexistentConfiguration = controller.retrieveConfigurationComponentById(confId);
 			price = controller.getConfigurationPrice();
+			performance = controller.getPerformanceIndex();
 			if (elementOfPreexistentConfiguration == null)
 				elementOfPreexistentConfiguration = new ArrayList<Component>();
 		}
@@ -61,7 +63,7 @@ public class ConfigurationServlet extends MyServlet {
 		List<String> type = PersistenceFacade.getIstance().getTypeComponent();
 
 		response.getWriter().write(Rythm.render("configurationv2.html", catalog.getComponentList(), type,
-				elementOfPreexistentConfiguration, price, request));
+				elementOfPreexistentConfiguration, price, performance));
 	}
 
 	// TODO: Cambiare le stringhe boiler con costanti per i percorsi ed i nomi degli
