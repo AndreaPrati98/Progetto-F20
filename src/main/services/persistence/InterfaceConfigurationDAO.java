@@ -21,5 +21,7 @@ public interface InterfaceConfigurationDAO {
 	public String getOwnerMailByConfigurationId(int confId);
 	
 	public int getLastUsedId();
+	
+	public boolean changeConfName(int confId, String newName);
 
 }

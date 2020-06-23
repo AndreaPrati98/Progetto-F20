@@ -45,6 +45,10 @@ public class PersistenceFacade {
 	public List<String> getTypeComponent() {
 		return cdao.getTypeOfComponent();
 	}
+	
+	public boolean changeConfName(int confId, String newName) {
+		return confdao.changeConfName(confId, newName);
+	}
 
 	public String getOwnerMailByConfigurationId(int confId) {
 		return confdao.getOwnerMailByConfigurationId(confId);
