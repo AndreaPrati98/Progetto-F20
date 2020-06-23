@@ -24,11 +24,11 @@ public class ProfileServlet extends MyServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		String email = (String) request.getSession().getAttribute("email");
-		
+		String name = null;
 		if (email != null) {
 			// Se nella sessione esiste la mail, mi salvo tutte le info e carico il profilo
 			Customer c = pf.getUser(email);
-			String name = c.getName();
+			name = c.getName();
 			String surname = c.getSurname();
 			// Da sostituire
 			List<Configuration> conf;
@@ -81,7 +81,6 @@ public class ProfileServlet extends MyServlet {
 		Customer customer = pf.getUser((String) request.getSession().getAttribute("email"));
 		Configuration configuration = pf.getConfiguration(confId);
 		configuration.setName(name);
-		
-		pf.updateConfiguration(configuration, customer);
+		pf.changeConfName(confId, name);
 	}
 }

@@ -367,6 +367,22 @@ public class RdbOperation {
 
 	}
 
+	public boolean changeConfName(int confId, String newName) {
+		String sql = ("UPDATE Configuration SET Name= ? WHERE Id= ?");
+		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
+			// set the corresponding param
+			pstmt.setString(1, newName);
+			pstmt.setInt(2,confId);
+			// execute the delete statement
+			pstmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
+
+	}
+	
 	public boolean changePassword(String oldPassword, String newPassword) {
 		String sql = ("UPDATE User SET password= ? WHERE password= ?");
 		try (PreparedStatement pstmt = c.prepareStatement(sql)) {

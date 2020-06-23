@@ -108,6 +108,10 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 
 	}
 	
+	public boolean changeConfName(int confId, String newName) {
+		return dbop.changeConfName(confId, newName);
+	}
+	
 	// TODO: Sistemare in modo che tutto viene fatto in modo atomico
 	public boolean updateConfiguration(Configuration conf, Customer user) {
 		boolean flag1 = this.removeConfiguration(conf.getId());
