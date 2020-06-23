@@ -48,6 +48,7 @@ public class ConfigurationServlet extends MyServlet {
 		List<Component> elementOfPreexistentConfiguration = new ArrayList<Component>();
 		double price = 0.0;
 		double performance = 0.0;
+		boolean valid = false;
 		if (confIdAsString == null) {
 			controller.newConfiguration();
 		} else {
@@ -55,6 +56,7 @@ public class ConfigurationServlet extends MyServlet {
 			elementOfPreexistentConfiguration = controller.retrieveConfigurationComponentById(confId);
 			price = controller.getConfigurationPrice();
 			performance = controller.getPerformanceIndex();
+			valid = controller.checkConfiguration();
 			if (elementOfPreexistentConfiguration == null)
 				elementOfPreexistentConfiguration = new ArrayList<Component>();
 		}
@@ -63,7 +65,7 @@ public class ConfigurationServlet extends MyServlet {
 		List<String> type = PersistenceFacade.getIstance().getTypeComponent();
 
 		response.getWriter().write(Rythm.render("configurationv2.html", catalog.getComponentList(), type,
-				elementOfPreexistentConfiguration, price, performance));
+				elementOfPreexistentConfiguration, price, performance, valid));
 	}
 
 	// TODO: Cambiare le stringhe boiler con costanti per i percorsi ed i nomi degli
@@ -114,7 +116,15 @@ public class ConfigurationServlet extends MyServlet {
 
 	}
 
+	//TODO Aggiungeread uml
 	private void autofill(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
+		//The first thing is to save the configuration
+		if(!controller.saveConfiguration()) {
+			reloadConfigurationHtmlPage(response, controller);
+			return;
+		}
+		
+		
 		String choice = (String) request.getParameter("groupCase");
 		
 		System.out.println("La scelta è "+ choice);
