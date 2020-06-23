@@ -26,7 +26,7 @@ public class RegisterServlet extends MyServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		response.getWriter().write(Rythm.render("sign-in.rtm", true));
+		response.getWriter().write(Rythm.render("sign-in.html", true));
 	}
 
 	@Override
