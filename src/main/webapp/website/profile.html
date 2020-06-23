@@ -1,46 +1,111 @@
-@extends(main)
 @args() {
 	String nome,
 	String Cognome,
 	String email,
-	List<main.model.configurator.configuration.Configuration> conf
+	List<main.model.configurator.configuration.Configuration> conf,
+	javax.servlet.http.HttpServletRequest request
 }
 
-<div class="row">
-	<div class="col s6">
-		<h5><b>Nome:</b> @(nome)</h5> <br>
-		<h5><b>Cognome:</b> @(Cognome)</h5> <br>
-		<h5><b>E-mail:</b> @(email)</h5>
-	</div>
-	<div class="col s6">
-		
-	</div>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Configurazione pc</title>
+	<!-- link CSS -->
+	<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css">
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<!-- sidenav script -->
+	<script src="statics/JS/sidenavScript.js"></script>
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"  media="screen,projection"/>
+</head>
+<body>
+	<nav class="  cyan darken-2">
+		<div >
+			<a href="/" class="brand-logo">Logo</a>
+			<a href="#" class="sidenav-trigger right" data-target="mobile-nav">
+				<i class="material-icons">menu</i>
+			</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				
+				<li><a href="configuration">Configuration</a></li>
+				
+				@if(request!=null){
+					@if((String)request.getSession().getAttribute("email") == null){
+						<li><a href="login">Login</a></li>
+						<li><a href="sign-in" method="post">Sign-up</a></li>
+					}else{
+						<li><a href="logout"> Logout</a></li>
+						<li><a href="profile"> Profile</a></li>
+					}
+				}else{
+					<li><a href="logout"> Logout</a></li>
+					<li><a href="profile"> Profile</a></li>
+				}
+			</ul>
+		</div>
+	</nav>
 
-<ul class="collection with-header">
-	<li class="collection-header"><h4>Configurations</h4></li>
-	@if(conf.size()>0){
-		@for(main.model.configurator.configuration.Configuration c: conf) {
+	<ul class="sidenav" id="mobile-nav">
+		<li><a href="/">Home</a></li>
+		<li><a href="/login">Login</a></li>
+		<li><a href="/sign-in">Sign-up</a></li>
+		<li><a href="/configuration">Configuration</a></li>
+	</ul>
+	
+	<div class="row">
+		<div class="col s6">
+			<h5><b>Nome:</b> @(nome)</h5> <br>
+			<h5><b>Cognome:</b> @(Cognome)</h5> <br>
+			<h5><b>E-mail:</b> @(email)</h5>
+		</div>
+		<div class="col s6">
+			
+		</div>
+	</div>
+	
+	<ul class="collection with-header">
+		<li class="collection-header">
+			<h4>
+				Configurations
+			</h4>
+		</li>
+		@if(conf.size()>0){
+			@for(main.model.configurator.configuration.Configuration c: conf) {	
+				<li class="collection-item">
+					<div class="row valign-wrapper">
+						<div class="col s4 valign-wrapper">
+							<b>@(c.getName())</b>
+						</div>
+						<div class="col s3">
+					    </div>
+					    <div class="col s5 valign-wrapper center-align">
+						    <div class="input-field">
+								<i class="material-icons prefix">create</i>
+						        <input id="@(c.getId())" type="text">
+						    </div>
+					    	<a href="" class="waves-effect waves-light btn confLink center-align" id="@(c.getId())">rename</a>
+							<a href="configuration?configurationId=@(c.getId())" class="waves-effect waves-light btn confLink center-align" id="@(c.getId())">edit</a>
+							<a href="" class="waves-effect waves-light btn confLink center-align" id="@(c.getId())">remove</a>
+						</div>
+					</div>
+				</li>
+			}
+		}else{
 			<li class="collection-item">
-				<div class="row">
-					<div class="col s7">
-					@(c.getName())
-					</div>
-					<div class="col s2">
-						<i class="material-icons prefix">mode_edit</i>
-				        <textarea id="@(c.getId())" class="materialize-textarea"></textarea>
-				    </div>
-				    <div class="col s3">
-						<a href="configuration?configurationId=@(c.getId())" class="secondary-content confLink" id="@(c.getId())" style="margin: 20px;">edit</a>
-						<a href="" class="secondary-content confLink" style="margin: 20px;" id="@(c.getId())">rename</a>
-						<a href="" class="secondary-content confLink" style="margin: 20px;" id="@(c.getId())">remove</a>
-					</div>
+				<div>
+					Non hai nessuna configurazione!
 				</div>
 			</li>
 		}
-	}else{
-		<li class="collection-item"><div>Non hai nessuna configurazione!</div></li>
-	}
-</ul>
-
+	</ul>
+	<form method="GET" action="newurl.html" id="myform">
+	</form>
 <script src="statics/JS/profile.js"></script>
+</body>
+</html>

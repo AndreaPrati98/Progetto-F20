@@ -36,10 +36,10 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 				if (cont == 0) {
 					name = rs.getString("Name");
 					email = rs.getString("EmailU");
-					counter = rs.getInt("Counter");
 					cont++;
 				}
 				ModelofC = rs.getString("ModelofC");
+				counter = rs.getInt("Counter");
 				for (int i = 0; i < counter ; i++) {
 					addedComponent.add(catalog.getComponentByModel(ModelofC));
 				}
