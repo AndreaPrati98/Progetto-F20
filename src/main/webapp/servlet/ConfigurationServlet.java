@@ -151,6 +151,7 @@ public class ConfigurationServlet extends MyServlet {
 			String priceString = (String) request.getParameter("priceAutofill");
 			if( priceString != null){
 				double price = Double.parseDouble(priceString);
+				System.out.println("Prezzo pari a "+price);
 				if(controller.autofill(price)) {
 					System.out.println("auto price ok");
 					reloadConfigurationHtmlPage(response, controller,false);
