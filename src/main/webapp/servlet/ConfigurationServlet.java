@@ -116,7 +116,6 @@ public class ConfigurationServlet extends MyServlet {
 
 	}
 
-	//TODO Aggiungeread uml
 	private void autofill(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		//The first thing is to save the configuration
 		if(!controller.saveConfiguration()) {

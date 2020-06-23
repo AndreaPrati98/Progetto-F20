@@ -154,17 +154,14 @@ public class Configurator {
 		return facade.removeConfiguration(confId);
 	}
 	
-	//TODO Da aggiungere all'uml
 	public boolean autofillByPrice(double price){
 		return configuration.autofillByPrice(price); 
 	}	
 
-	//TODO Da aggiungere all'uml
 	public boolean autofillRandom(){
 		return configuration.autofillRandom(); 
 	}
 
-	//TODO Da aggiungere all'uml
 	public int getConfigurationId() {
 		return configuration.getId();
 	}
