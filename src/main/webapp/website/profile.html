@@ -23,6 +23,20 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Import materialize.css-->
 	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"  media="screen,projection"/>
+	<style>
+		#confRow{
+			text-align: left;
+		}
+		#confBtnRow{
+			text-align: center;
+		}
+		#renameForm{
+			text-align: right;
+		}
+		#renameBox{
+			width: 10%;
+		}
+	</style>
 </head>
 <body>
 	<nav class="  cyan darken-2">
@@ -78,22 +92,18 @@
 		@if(conf.size()>0){
 			@for(main.model.configurator.configuration.Configuration c: conf) {	
 				<li class="collection-item">
-					<div class="row valign-wrapper">
-						<div class="col s4 valign-wrapper">
-							<b>@(c.getName())</b>
-						</div>
-						<div class="col s3">
-					    </div>
-					    <div class="col s5 valign-wrapper center-align">
-						    <div class="input-field">
-								<i class="material-icons prefix">create</i>
-						        <input id="@(c.getId())" type="text">
-						    </div>
-					    	<a href="" class="waves-effect waves-light btn confLink center-align" id="@(c.getId())">rename</a>
-							<a href="configuration?configurationId=@(c.getId())" class="waves-effect waves-light btn confLink center-align" id="@(c.getId())">edit</a>
-							<a href="" class="waves-effect waves-light btn confLink center-align" id="@(c.getId())">remove</a>
-						</div>
+					<div class="center" id="confRow">
+						<b>@(c.getName())</b>
 					</div>
+					<div class="center" id="confBtnRow">
+						<a href="configuration?configurationId=@(c.getId())" class="waves-effect waves-light btn confLink center-align" id="@(c.getId())" style="background-color: #0097a7;">edit</a>
+						<a href="" class="waves-effect waves-light btn confLink center-align" id="@(c.getId())" style="background-color: #d32f2f;">remove</a>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input placeholder="New name" id="renameBox" type="text" class="validate">
+						&nbsp;&nbsp;
+        				<a href="" class="waves-effect waves-light btn confLink center-align" id="@(c.getId())" style="background-color: #90a4ae;">rename</a>
+					</div>
+					
 				</li>
 			}
 		}else{
