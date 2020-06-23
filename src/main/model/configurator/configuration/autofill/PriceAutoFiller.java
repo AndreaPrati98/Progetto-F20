@@ -22,14 +22,30 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 		componentTypes = new ArrayList<>();
 		// Nella lista aggiungo nell'ordine i tipi di componenti a partire da quelli che hanno
 		// più vincoli da rispettare, che quindi voglio che siano aggiunti per primi
-		componentTypes.add("mobo");
-		componentTypes.add("cpu");
-		componentTypes.add("ram");
-		componentTypes.add("case");
-		componentTypes.add("gpu");
-		componentTypes.add("power");
-		componentTypes.add("massStorage");
-		componentTypes.add("cooler");
+		// Avremmo potuto scaricare l'elenco dei tipi di componenti dal database, ma non sarebbero
+		// stati nell'ordine voluto, quindi abbiamo scelto di inserirli a mano
+		if(priceScope <= 500) {
+			// Se voglio una configurazione a basso prezzo aggiungo solo le componenti essenziali
+			// (cioè quelle che nel database sono needed)
+			componentTypes.add("mobo");
+			componentTypes.add("cpu");
+			componentTypes.add("ram");
+			componentTypes.add("case");
+			componentTypes.add("power");
+			componentTypes.add("massStorage");
+		} else {
+			// Se voglio una configurazione con un prezzo sopra una certa soglia allora 
+			// nella confgurazione verranno aggiunte tutte le componenti
+			componentTypes.add("mobo");
+			componentTypes.add("cpu");
+			componentTypes.add("ram");
+			componentTypes.add("case");
+			componentTypes.add("gpu");
+			componentTypes.add("power");
+			componentTypes.add("massStorage");
+			componentTypes.add("cooler");
+		}
+		
 		this.priceScope = priceScope; 
 		this.percentageMap = calculatePercentageMap();
 		
