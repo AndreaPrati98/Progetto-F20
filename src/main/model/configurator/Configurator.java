@@ -166,4 +166,9 @@ public class Configurator {
 		return configuration.getId();
 	}
 	
+	//TODO: Aggiungere uml
+	public void setConfigurationName(String name) {
+		configuration.setName(name);
+	}
+	
 }
