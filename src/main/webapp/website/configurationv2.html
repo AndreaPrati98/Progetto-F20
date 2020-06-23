@@ -19,6 +19,9 @@
 	#saveBtn{
     	background-color: #00c853;
 	}
+	#saveBtnModal{
+    	background-color: #00c853;
+	}
 	#resetBtn{
     	background-color: #d32f2f;
 	}	
@@ -121,7 +124,22 @@
 			   } 
             </ul>
             <a class="waves-effect waves-light btn" id="checkBtn"><i class="material-icons left">center_focus_weak</i>Check</a>
-            <a class="waves-effect waves-light btn" id="saveBtn"><i class="material-icons left">save</i>Save</a>
+            <a class="waves-effect waves-light btn modal-trigger" id="saveBtnModal" href="#modal2"><i class="material-icons left">save</i>Save</a>
+            <div id="modal2" class="modal">
+                <div class="modal-content">
+                    <h4>Save configuration as...</h4>
+                    <form method="post">
+                        <div class="input-field col s6">
+          					<input id="confRename" type="text" class="validate">
+          					<label for="confRename">Give a name</label>
+        				</div>
+        				<a class="waves-effect waves-light btn" id="saveBtn"><i class="material-icons left">save</i>Save</a>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+                </div>
+            </div>
             <a class="waves-effect waves-light btn" id="resetBtn"><i class="material-icons left">delete</i>Reset</a>
             <a class="waves-effect waves-light btn" id="perfBtn"><i class="material-icons left">poll</i>Performance</a>
             <a class="waves-effect waves-light btn modal-trigger" id="confBtn" href="#modal1"><i class="material-icons left">widgets</i>Try random config.</a>
