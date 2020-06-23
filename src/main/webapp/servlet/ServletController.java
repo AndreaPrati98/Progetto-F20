@@ -153,4 +153,32 @@ public class ServletController {
 	public boolean removeConfiguration(int confId) {
 		return configurator.removeConfiguration(confId);
 	}
+	
+	/**
+	 * TODO: Da aggiungere all'uml
+	 * @return true if create and saves a configuration autofilling the remaining elements
+	 */
+	public boolean autofill(){
+		if(!configurator.autofillRandom()) 
+			return false;
+		
+		return 	this.saveConfiguration();
+	}
+	
+	/**
+	 * TODO: Da aggiungere all'uml
+	 * @param price
+	 * @return
+	 */
+	public boolean autofill(double price){
+		if(!configurator.autofillByPrice(price)) 
+			return false;
+		
+		return 	configurator.saveConfiguration(customer);
+	}
+	
+	//TODO: Da aggiungere all'uml
+	public int getConfigurationId() {
+		return configurator.getConfigurationId();
+	}
 }

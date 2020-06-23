@@ -103,10 +103,60 @@ public class ConfigurationServlet extends MyServlet {
 		} else if (request.getPathInfo().equals("/save")) {
 			save(request, response, controller);
 		} else if (request.getPathInfo().equals("/performance")) {
-			System.out.println("Voglio le perf");
 			getPerformance(request, response, controller);
+		}else if(request.getPathInfo().equals("/autofill")) {
+			//TODO modificare anche l'uml
+			System.out.println("Voglio autofillare");
+			autofill(request, response, controller);
 		}
 
+	}
+
+	private void autofill(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
+		String choice = (String) request.getParameter("groupCase");
+		
+		System.out.println("La scelta è "+ choice);
+		if(choice == null) {
+			reloadConfigurationHtmlPage(response, controller);
+			return;
+		}
+		
+		System.out.println("Scelta non nulla");
+		
+		if(choice.equals("random")) {
+			if(controller.autofill()){
+				//Make redirection to same page with current conf id
+				System.out.println("auto random ok");
+				reloadConfigurationHtmlPage(response, controller);
+			}else{
+				//Se arrivo qui l'autofill è fallito e la configurazione è rimasta 
+				//invariata, devo dare un messaggio di errore al coso
+				System.out.println("auto random fallito");
+			}	
+		}else if(choice.equals("price")){
+			String priceString = (String) request.getAttribute("priceAutofill");
+			if( priceString != null){
+				double price = Double.parseDouble(priceString);
+				if(controller.autofill(price)) {
+					System.out.println("auto price ok");
+					reloadConfigurationHtmlPage(response, controller);
+				}else{
+					System.out.println("auto price fallita");
+				}
+			}
+		}
+		
+	}
+
+	/**TODO: Aggiungere all'uml
+	 * @param response
+	 * @param controller
+	 * @throws IOException
+	 */
+	private void reloadConfigurationHtmlPage(HttpServletResponse response, ServletController controller) throws IOException {
+		String redirectPath = "/configuration?configurationId=";
+		int configurationId =  controller.getConfigurationId();
+		response.sendRedirect(redirectPath+configurationId);
 	}
 
 	private void getPerformance(HttpServletRequest request, HttpServletResponse response, ServletController controller)
