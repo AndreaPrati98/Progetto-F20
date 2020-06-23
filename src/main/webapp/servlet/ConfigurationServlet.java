@@ -134,7 +134,7 @@ public class ConfigurationServlet extends MyServlet {
 				System.out.println("auto random fallito");
 			}	
 		}else if(choice.equals("price")){
-			String priceString = (String) request.getAttribute("priceAutofill");
+			String priceString = (String) request.getParameter("priceAutofill");
 			if( priceString != null){
 				double price = Double.parseDouble(priceString);
 				if(controller.autofill(price)) {
