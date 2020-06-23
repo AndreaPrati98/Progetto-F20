@@ -22,6 +22,6 @@ function removeConfiguration(configurationId){
 }
 
 function renameConfiguration(configurationId){
-  let newName = $('textarea#' + configurationId).val();
+  let newName = $('input#' + configurationId).val();
   let posting = $.post( "/profile/rename", {id: configurationId, name: newName});
 }
