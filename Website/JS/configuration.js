@@ -37,9 +37,9 @@ $("#resetBtn").click(function(){
 $("#saveBtn").click(function(){
 	//Serve a manipolare solo quelli checkati altrimenti mando più richiesta di rimozione del
 	$("#saveBtn").val('true');
-	
+	let confName = $("#confRename").val();
 	//Richiesta ajx
-	save();
+	save(confName);
 	
 });
 
@@ -176,8 +176,8 @@ function remove(modelString,listItemParent, numberOfComponent=1){
   
 }
   
-function save(){
-	let posting = $.post( "/configuration/save");
+function save(confName){
+	let posting = $.post( "/configuration/save", {name: confName});
 	posting.done(function(data) {
 	  var convertedData =  JSON.parse(data);
 	  if(convertedData['response'] == 'ok'){

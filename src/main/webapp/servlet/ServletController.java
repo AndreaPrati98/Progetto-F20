@@ -155,7 +155,6 @@ public class ServletController {
 	}
 	
 	/**
-	 * TODO: Da aggiungere all'uml
 	 * @return true if create and saves a configuration autofilling the remaining elements
 	 */
 	public boolean autofill(){
@@ -166,7 +165,6 @@ public class ServletController {
 	}
 	
 	/**
-	 * TODO: Da aggiungere all'uml
 	 * @param price
 	 * @return
 	 */
@@ -177,8 +175,14 @@ public class ServletController {
 		return 	configurator.saveConfiguration(customer);
 	}
 	
-	//TODO: Da aggiungere all'uml
 	public int getConfigurationId() {
 		return configurator.getConfigurationId();
+	}
+
+	
+	//TODO: Aggiungere all'uml
+	public void setConfigurationName(String name) {
+		configurator.setConfigurationName(name);
+		
 	}
 }

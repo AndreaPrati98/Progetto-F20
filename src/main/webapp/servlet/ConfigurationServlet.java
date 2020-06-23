@@ -247,6 +247,11 @@ public class ConfigurationServlet extends MyServlet {
 
 	private void save(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		String json = "";
+		String confName = request.getParameter("name");
+		
+		if(confName != null)
+			controller.setConfigurationName(confName);
+		
 		if (controller.saveConfiguration()) {
 			double price = this.getConfigurationPrice(controller);
 			json = JsonMessages.getJsonOkResponse(price);
