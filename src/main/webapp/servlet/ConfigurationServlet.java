@@ -49,6 +49,7 @@ public class ConfigurationServlet extends MyServlet {
 		double price = 0.0;
 		double performance = 0.0;
 		boolean valid = false;
+		boolean errorInAutofill = false;
 		if (confIdAsString == null) {
 			controller.newConfiguration();
 		} else {
@@ -57,6 +58,7 @@ public class ConfigurationServlet extends MyServlet {
 			price = controller.getConfigurationPrice();
 			performance = controller.getPerformanceIndex();
 			valid = controller.checkConfiguration();
+			errorInAutofill = Boolean.parseBoolean(request.getParameter("errorAutofill"));
 			if (elementOfPreexistentConfiguration == null)
 				elementOfPreexistentConfiguration = new ArrayList<Component>();
 		}
@@ -65,7 +67,7 @@ public class ConfigurationServlet extends MyServlet {
 		List<String> type = PersistenceFacade.getIstance().getTypeComponent();
 
 		response.getWriter().write(Rythm.render("configurationv2.html", catalog.getComponentList(), type,
-				elementOfPreexistentConfiguration, price, performance, valid));
+				elementOfPreexistentConfiguration, price, performance, valid,errorInAutofill));
 	}
 
 	// TODO: Cambiare le stringhe boiler con costanti per i percorsi ed i nomi degli
@@ -119,7 +121,7 @@ public class ConfigurationServlet extends MyServlet {
 	private void autofill(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		//The first thing is to save the configuration
 		if(!controller.saveConfiguration()) {
-			reloadConfigurationHtmlPage(response, controller);
+			reloadConfigurationHtmlPage(response, controller,true);
 			return;
 		}
 		
@@ -128,7 +130,7 @@ public class ConfigurationServlet extends MyServlet {
 		
 		System.out.println("La scelta è "+ choice);
 		if(choice == null) {
-			reloadConfigurationHtmlPage(response, controller);
+			reloadConfigurationHtmlPage(response, controller, true);
 			return;
 		}
 		
@@ -138,12 +140,12 @@ public class ConfigurationServlet extends MyServlet {
 			if(controller.autofill()){
 				//Make redirection to same page with current conf id
 				System.out.println("auto random ok");
-				reloadConfigurationHtmlPage(response, controller);
+				reloadConfigurationHtmlPage(response, controller, false);
 			}else{
 				//Se arrivo qui l'autofill è fallito e la configurazione è rimasta 
 				//invariata, devo dare un messaggio di errore al coso
 				System.out.println("auto random fallito");
-				reloadConfigurationHtmlPage(response, controller);
+				reloadConfigurationHtmlPage(response, controller, true);
 			}	
 		}else if(choice.equals("price")){
 			String priceString = (String) request.getParameter("priceAutofill");
@@ -151,10 +153,10 @@ public class ConfigurationServlet extends MyServlet {
 				double price = Double.parseDouble(priceString);
 				if(controller.autofill(price)) {
 					System.out.println("auto price ok");
-					reloadConfigurationHtmlPage(response, controller);
+					reloadConfigurationHtmlPage(response, controller,false);
 				}else{
 					System.out.println("auto price fallita");
-					reloadConfigurationHtmlPage(response, controller);
+					reloadConfigurationHtmlPage(response, controller,true);
 				}
 			}
 		}
@@ -164,12 +166,14 @@ public class ConfigurationServlet extends MyServlet {
 	/**TODO: Aggiungere all'uml
 	 * @param response
 	 * @param controller
+	 * @param errorInAutofill 
 	 * @throws IOException
 	 */
-	private void reloadConfigurationHtmlPage(HttpServletResponse response, ServletController controller) throws IOException {
+	private void reloadConfigurationHtmlPage(HttpServletResponse response, ServletController controller, boolean errorInAutofill) throws IOException {
 		String redirectPath = "/configuration?configurationId=";
+		String otherParam = "&errorAutofill=";
 		int configurationId =  controller.getConfigurationId();
-		response.sendRedirect(redirectPath+configurationId);
+		response.sendRedirect(redirectPath+configurationId+otherParam+errorInAutofill);
 	}
 
 	private void getPerformance(HttpServletRequest request, HttpServletResponse response, ServletController controller)

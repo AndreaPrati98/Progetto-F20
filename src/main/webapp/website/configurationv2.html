@@ -8,6 +8,7 @@
 	double price,
 	double performance,
 	boolean valid,
+	boolean errorAutofill,
 }
 <html>
 <head>
@@ -192,6 +193,14 @@
     </p>
 </div>
 <br>
+
+@if(errorAutofill){
+	<script>
+		$().ready(function(){
+			alert("Qualcosa nell'autofill e' andato storto")	
+		});
+	</script>
+}
 
 <script src="statics/JS/modal.js"></script>
 <script src="statics/JS/collapsibleScript.js"></script>
