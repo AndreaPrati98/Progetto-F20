@@ -132,6 +132,7 @@ public class ConfigurationServlet extends MyServlet {
 				//Se arrivo qui l'autofill è fallito e la configurazione è rimasta 
 				//invariata, devo dare un messaggio di errore al coso
 				System.out.println("auto random fallito");
+				reloadConfigurationHtmlPage(response, controller);
 			}	
 		}else if(choice.equals("price")){
 			String priceString = (String) request.getParameter("priceAutofill");
@@ -142,6 +143,7 @@ public class ConfigurationServlet extends MyServlet {
 					reloadConfigurationHtmlPage(response, controller);
 				}else{
 					System.out.println("auto price fallita");
+					reloadConfigurationHtmlPage(response, controller);
 				}
 			}
 		}
