@@ -3,13 +3,11 @@ package main.model.configurator.configuration.autofill;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.model.configurator.ComponentCatalog;
 import main.model.configurator.component.Component;
 
 public class TesterAutofiller {
 
 	public static void main(String[] args) {
-		ComponentCatalog cc = ComponentCatalog.getInstance();
 		List<Component> alreadyInside = new ArrayList<>();
 		// Aggiungo i componenti che voglio che siano già dentro
 		// Se non aggiungo nessun componente allora mi fa una configurazione random da zero
