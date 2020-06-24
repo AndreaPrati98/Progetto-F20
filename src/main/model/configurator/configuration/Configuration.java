@@ -2,9 +2,7 @@ package main.model.configurator.configuration;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import main.model.configurator.component.Component;
 import main.model.configurator.configuration.autofill.PriceAutoFiller;
@@ -12,7 +10,6 @@ import main.model.configurator.configuration.autofill.RandomAutofiller;
 import main.model.configurator.constraint.AbstractConstraint;
 import main.model.configurator.constraint.ConstraintChecker;
 import main.model.configurator.constraint.InterfaceConstraintChecker;
-import main.model.configurator.constraint.MaxConstraint;
 
 /**
  * @author Capici Alessandro ,Frenkli Buzhiqi

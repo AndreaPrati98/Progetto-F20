@@ -1,7 +1,6 @@
 package main.model.configurator.constraint;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import main.model.configurator.component.Attribute;
