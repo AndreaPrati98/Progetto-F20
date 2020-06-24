@@ -20,7 +20,7 @@ public class TesterServlet {
 	public static void main(String[] args) {
 		
 		List<MyServlet> servlet = new ArrayList<MyServlet>();
-		servlet.add(new HomeServlet("home","/"));
+		servlet.add(new HomeServlet("home","/*"));
 		servlet.add(new RegisterServlet("register", "/sign-in"));
 		servlet.add(new ConfigurationServlet("configuration", "/configuration/*"));
 		servlet.add(new LoginServlet("login", "/login"));

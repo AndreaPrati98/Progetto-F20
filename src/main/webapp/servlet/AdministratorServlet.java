@@ -27,9 +27,10 @@ public class AdministratorServlet extends MyServlet {
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
 				.getAttribute(email + "_controller");
 		
-		boolean isAdmin = controller.getCustomer().isAdmin();
 		String name = null;
 		if (email != null) {
+			boolean isAdmin = controller.getCustomer().isAdmin();
+
 			// Se nella sessione esiste la mail, mi salvo tutte le info e carico il profilo
 			if (!isAdmin) {
 				response.getWriter().write(Rythm.render("403.html"));
