@@ -410,5 +410,24 @@ public class RdbOperation {
 			return null;
 		}
 	}
+	
+	public boolean addAttribute(String typeOfC, String modelOfC, String nameAtt, String attValue) {
+		String sql = "INSERT INTO Attribute(TypeofC, NameStdAtt, ModelofC, AttValue, TypeofStdAtt) VALUES(?,?,?,?,?)";
+		PreparedStatement ps;
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setString(1, typeOfC);
+			ps.setString(2, nameAtt);
+			ps.setString(3, modelOfC);
+			ps.setString(4, attValue);
+			ps.setString(5, typeOfC);
+			ps.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 }

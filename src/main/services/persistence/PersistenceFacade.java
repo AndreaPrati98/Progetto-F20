@@ -152,5 +152,9 @@ public class PersistenceFacade {
 	public List<String> getStandardAttributes(String typeComponent) {
 		return cdao.getStandardAttributes(typeComponent);
 	}
+	
+	public boolean addAttribute(String typeOfC, String modelOfC, String nameAtt, String attValue) {
+		return cdao.addAttribute(typeOfC, modelOfC, nameAtt, attValue);
+	}
 
 }

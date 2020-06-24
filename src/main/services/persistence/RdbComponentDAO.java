@@ -153,5 +153,9 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 		
 		return stdAtt;
 	}
+	
+	public boolean addAttribute(String typeOfC, String modelOfC, String nameAtt, String attValue) {
+		return dbop.addAttribute(typeOfC, modelOfC, nameAtt, attValue);
+	}
 
 }
