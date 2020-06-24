@@ -81,10 +81,16 @@ public class JsonMessages {
 		return responseJsonToSend.toJSONString();
 	}
 
-	public static String getJsonTypeComponentResponse() {
+	public static String getJsonTypeComponentResponse(List<String> list) {
 		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
-		responseMapToSend.put("Ciao sono una risposta", 1);
-		responseMapToSend.put("Ciao sono unaltra risposta", 2);
+		int i = 0;
+		
+		for(String nameAttr : list) {
+			responseMapToSend.put("" + i + "", nameAttr);
+			i++;
+		}
+		responseMapToSend.put("num", i);
+		
 		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
 		return responseJsonToSend.toJSONString();
 	}

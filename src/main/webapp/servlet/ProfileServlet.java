@@ -58,6 +58,8 @@ public class ProfileServlet extends MyServlet {
 		int confId = Integer.parseInt(request.getParameter("id"));
 		// controller.removeConfiguration(confId);
 
+		System.out.println(request.getParameterMap().keySet());
+		
 		if(controller.removeConfiguration(confId)) {
 			System.out.println("Configurazione rimossa");
 		}else {

@@ -1,16 +1,19 @@
 package main.webapp.servlet;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.rythmengine.Rythm;
 
-import main.model.configurator.configuration.Configuration;
-import main.model.people.costumer.Customer;
 import main.services.persistence.PersistenceFacade;
 
 @SuppressWarnings("serial")
@@ -46,12 +49,46 @@ public class AdministratorServlet extends MyServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//TODO aggiungere metodi JsonMessage
-		String type = request.getParameter("typeComp");
-		System.out.println("POOOST" + type);
+		String typeComponent = request.getParameter("typeComp");	
+		PersistenceFacade pf = PersistenceFacade.getIstance();
+		String model = "cristodiooooOOOOOOO";
+		String type = "gpu";
+		int price = 100;
 		
-		String json = "";
-		json = JsonMessages.getJsonTypeComponentResponse();
-		response.getWriter().write(json);
-		//response.getWriter().write(Rythm.render("login.html", false));
+		if (request.getPathInfo().equals("/addComp")) {
+			System.out.println("Salva");
+
+			pf.addComponent(model, type, price);
+
+
+			
+			for(Entry<String, String[]> name: request.getParameterMap().entrySet()) {
+				//pf.addAttribute(type, model, name.getKey(), name.getValue()[0]);
+				//System.out.println(name.getKey() + " - " +  name.getValue()[0]);
+				JSONObject j = null;
+				JSONParser jsonParser = new JSONParser();
+				try {
+					j = (JSONObject) jsonParser.parse(name.getKey());
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				Iterator<String> o = j.keySet().iterator();
+				String att;
+				
+				while(o.hasNext()) {
+					att = o.next();
+					pf.addAttribute(type, model, att, (String) j.get(att));
+				}
+
+			}
+		}else {
+			List<String> list = pf.getStandardAttributes(typeComponent);
+			
+			String json = "";
+			json = JsonMessages.getJsonTypeComponentResponse(list);
+			response.getWriter().write(json);
+		}
 	}
 }
