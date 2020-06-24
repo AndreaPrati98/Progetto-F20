@@ -14,4 +14,6 @@ public interface InterfaceComponentDAO {
 	boolean updateComponent();
 	List<String> getStandardAttributes(String typeComponent);
 	boolean addAttribute(String typeOfC, String modelOfC, String nameAtt, String attValue);
+	boolean addStandardAttribute(String name, String typeOfC, String constraintName, String category, boolean isPresentable);
+	boolean addTypeComponent(String type, boolean isNeeded);
 }

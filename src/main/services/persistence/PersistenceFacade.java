@@ -156,5 +156,13 @@ public class PersistenceFacade {
 	public boolean addAttribute(String typeOfC, String modelOfC, String nameAtt, String attValue) {
 		return cdao.addAttribute(typeOfC, modelOfC, nameAtt, attValue);
 	}
+	
+	public boolean addStandardAttribute(String name, String typeOfC, String constraintName, String category, boolean isPresentable) {
+		return cdao.addStandardAttribute(name, typeOfC, constraintName, category, isPresentable);
+	}
+	
+	public boolean addTypeComponent(String type, boolean isNeeded) {
+		return cdao.addTypeComponent(type, isNeeded);
+	}
 
 }

@@ -157,5 +157,25 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 	public boolean addAttribute(String typeOfC, String modelOfC, String nameAtt, String attValue) {
 		return dbop.addAttribute(typeOfC, modelOfC, nameAtt, attValue);
 	}
+	
+	public boolean addStandardAttribute(String name, String typeOfC, String constraintName, String category, boolean isPresentable) {
+		int isPres;
+		if(isPresentable) {
+			isPres = 1;
+		} else {
+			isPres = 0;
+		}
+		return dbop.addStandardAttribute(name, typeOfC, constraintName, category, isPres);	
+	}
+	
+	public boolean addTypeComponent(String type, boolean isNeeded) {
+		int isN;
+		if(isNeeded) {
+			isN = 1;
+		} else {
+			isN = 0;
+		}
+		return dbop.addTypeComponent(type, isN);
+	}
 
 }

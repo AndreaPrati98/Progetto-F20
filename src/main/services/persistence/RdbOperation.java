@@ -429,5 +429,41 @@ public class RdbOperation {
 		}
 		return false;
 	}
+	
+	public boolean addStandardAttribute(String name, String typeOfC, String constraintName, String category, int isPresentable) {
+		String sql = "INSERT INTO StandardAttribute(Name, TypeOfComponent, ConstraintName, Category, IsPresentable) "
+				+ "VALUES(?,?,?,?,?)";
+		PreparedStatement ps;
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, typeOfC);
+			ps.setString(3, constraintName);
+			ps.setString(4, category);
+			ps.setInt(5, isPresentable);
+			ps.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public boolean addTypeComponent(String type, int isNeeded) {
+		String sql = "INSERT INTO TypeComponent(type, isNeeded) VALUES(?,?)";
+		PreparedStatement ps;
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setString(1, type);
+			ps.setInt(2, isNeeded);
+			ps.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			// Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 }
