@@ -18,7 +18,6 @@ public class HomeServlet extends MyServlet {
 
 	public HomeServlet(String name, String path) {
 		super(name, path);
-		// TODO Auto-generated constructor stub
 
 	}
 
