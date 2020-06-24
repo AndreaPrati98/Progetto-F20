@@ -185,6 +185,11 @@ public class ServletController {
 		configurator.setConfigurationName(name);
 		
 	}
+	
+	//TODO: Aggiungere all'uml
+	public String getConfigurationName() {
+		return configurator.getConfigurationName();
+	}
 
 
 	public Customer getCustomer() {

@@ -171,4 +171,9 @@ public class Configurator {
 		configuration.setName(name);
 	}
 	
+	//TODO: Aggiungere uml
+	public String getConfigurationName() {
+		return configuration.getName();
+	}
+		
 }
