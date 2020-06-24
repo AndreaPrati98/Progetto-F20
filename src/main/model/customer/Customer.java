@@ -13,10 +13,10 @@ public class Customer {
 	private boolean isAdmin;
 
 	
-	public Customer(String name,String surname,String email,boolean isAdmin) {
+	public Customer(String name, String surname, String email, boolean isAdmin) {
 		this.email=email;
 		this.name=name;
-		this.setSurname(surname);
+		this.surname = surname;
 		this.isAdmin=isAdmin;
 	}
 
