@@ -89,18 +89,7 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 		boolean result = dbop.removeComponent(model, type);	
 		return result;
 	}
-	
-	/**
-	 * quando sei amministratore mi fai selezionare una component a cui 
-	 * devo modificare dei campi
-	 * @return
-	 */
-	public boolean updateComponent() {
-		//TODO da implementare
-		return false;
 		
-	}
-	
 	public List<String> getTypeOfComponent(){
 		ResultSet rs = dbop.getTypeComponents();
 		List<String> typeComp = new ArrayList<>();
