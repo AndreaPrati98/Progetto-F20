@@ -8,7 +8,7 @@ $("select.typeComp").change(function(){
     var selected = $(this).children("option:selected").text();
     $("input").attr("placeholder", selected);
     
-    let posting = $.post( "/administrator/getComp", {typeComp: selected});
+    let posting = $.post( "/administrator/getCompForm", {typeComp: selected});
     
     posting.done(function(data) {
 	  	var convertedData =  JSON.parse(data);
@@ -58,3 +58,23 @@ function saveComponent(num) {
 	let posting = $.post("administrator/addComp", json);
 	alert("asdasdasd");
 }
+
+$("select.removeComp").change(function(){
+    var selected = $(this).children("option:selected").text();
+    $("input").attr("placeholder", selected);
+    
+    let posting = $.post( "/administrator/getAllComp", {typeComp: selected});
+    
+    posting.done(function(data) {
+	  	var convertedData =  JSON.parse(data);
+	  	console.log(convertedData);  	
+	  	
+	  	$("#removeComponentForm").empty();
+	  	
+	  	for (i = 0; i < convertedData['num']; i++) {
+	  		$("#removeComponentForm").append('<p><label><input type="checkbox" value="' + convertedData[i] + '" name="' + 'checkBox' + '"/><span>' + convertedData[i] + '</span></label></p>');
+		}
+		
+		$("#removeComponentForm").append('<button id="submit" class="btn waves-effect waves-light" type="submit" name="action">Submit</button>');
+	});
+});

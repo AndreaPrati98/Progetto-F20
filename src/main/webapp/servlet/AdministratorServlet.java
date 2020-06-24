@@ -15,6 +15,7 @@ import org.json.simple.parser.ParseException;
 import org.rythmengine.Rythm;
 
 import main.model.configurator.ComponentCatalog;
+import main.model.configurator.component.Component;
 import main.services.persistence.PersistenceFacade;
 
 @SuppressWarnings("serial")
@@ -30,7 +31,7 @@ public class AdministratorServlet extends MyServlet {
 		String email = (String) request.getSession().getAttribute("email");
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
 				.getAttribute(email + "_controller");
-		
+
 		ComponentCatalog catalog = ComponentCatalog.getInstance();
 		String name = null;
 		if (email != null) {
@@ -53,6 +54,7 @@ public class AdministratorServlet extends MyServlet {
 		//TODO aggiungere metodi JsonMessage
 		String typeComponent = request.getParameter("typeComp");	
 		PersistenceFacade pf = PersistenceFacade.getIstance();
+		ComponentCatalog catalog = ComponentCatalog.getInstance();
 		String model = null;
 		String type = null;
 		double price = 0;
@@ -87,14 +89,35 @@ public class AdministratorServlet extends MyServlet {
 						pf.addAttribute(type, model, att, (String) j.get(att));
 					}
 				}
-				ComponentCatalog catalog = ComponentCatalog.getInstance();
+				
 				catalog.refreshCatalog();
 			}
-		}else {
+		}else if (request.getPathInfo().equals("/removeComp")){
+			String[] results = request.getParameterValues("checkBox");
+			
+			for(String result : results) {
+				model = result.split(" ")[0];
+				type = result.split(" ")[1];
+
+				pf.removeComponent(model, type);
+			}
+
+			catalog.refreshCatalog();
+			response.sendRedirect("/administrator");
+		} else if (request.getPathInfo().equals("/getCompForm")){
+			
 			List<String> list = pf.getStandardAttributes(typeComponent);
 			
 			String json = "";
 			json = JsonMessages.getJsonTypeComponentResponse(list);
+			response.getWriter().write(json);
+			
+		} else if (request.getPathInfo().equals("/getAllComp")) {
+			System.out.println("Getallcomp");
+
+			List<Component> list = catalog.getComponentListByType(typeComponent);
+			String json = "";
+			json = JsonMessages.getJsonAllTypeComponentResponse(list);
 			response.getWriter().write(json);
 		}
 	}

@@ -127,7 +127,22 @@
 			<div id="typeComponentDiv">
 			</div>
 		</div>
-		<div id="test2" class="col s12">Test 2</div>
+		<div id="test2" class="col s12">
+			Select type of component to remove 
+			
+			<div class="input-field col s12">
+			    <select class="removeComp">
+			    	<option value="" disabled selected>Choose your option</option>
+			    	@for(String type: typeOfC) {				
+						<option value="1">@(type)</option>
+					}
+			    </select>
+			</div>
+			<div id="removeComponentDiv">
+				<form action="/administrator/removeComp" id="removeComponentForm" method="post">
+				</form>
+			</div>
+		</div>
 		<div id="test3" class="col s12">Test 3</div>
 		<div id="test4" class="col s12">Test 4</div>
 	</div>

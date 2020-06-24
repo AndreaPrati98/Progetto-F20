@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.json.simple.JSONObject;
 
+import main.model.configurator.component.Component;
+
 public class JsonMessages {
 
 	//Chiavi e valori per la mappa della risposta
@@ -88,6 +90,19 @@ public class JsonMessages {
 		for(String nameAttr : list) {
 			responseMapToSend.put("" + i + "", nameAttr);
 			i++;
+		}
+		responseMapToSend.put("num", i);
+		
+		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
+		return responseJsonToSend.toJSONString();
+	}
+	
+	public static String getJsonAllTypeComponentResponse(List<Component> list) {
+		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
+		int i = 0;
+		
+		for(i = 0; i<list.size(); i++) {
+			responseMapToSend.put("" + i + "", list.get(i).getModel() + " " + list.get(i).getTypeComponent());
 		}
 		responseMapToSend.put("num", i);
 		
