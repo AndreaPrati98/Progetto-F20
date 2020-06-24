@@ -41,35 +41,6 @@ public class ComponentCatalog {
 	}
 	
 	/**
-	 * 
-	 * @param newComponent - the component you want to add 
-	 * @return false - if the componentList already conains this component or newComponent is null
-	 * @return true - if is alright
-	 */
-	public boolean addComponent(Component newComponent){
-		if(!componentList.contains(newComponent) && (newComponent != null)) {
-			componentList.add(newComponent);
-			return true;
-		}	
-		return false;
-	}
-	
-	/**
-	 * 
-	 * @param remComponent - the component you want to remove 
-	 * @return false - if the componentList already conains this component or newComponent is null
-	 * @return true - if is alright
-	 */
-	public boolean removeComponent(Component remComponent) {
-		if(!componentList.contains(remComponent) && (remComponent != null)) {
-			componentList.remove(remComponent);
-			return true;
-		}	
-		return false;
-	}
-	
-	
-	/**
 	 * @return StringBuilder.toString() - the elements appended in the StringBuilder are Components.toString
 	 * @see StringBuilder
 	 * @see Component

@@ -25,58 +25,6 @@ public class DimensionConstraint extends AbstractConstraint {
 		super(name);
 	}
 	
-//	@Override
-//	public String getConstraintName() {
-//		// TODO Auto-generated method stub
-//		return name;
-//	}
-
-	/**
-	 * Check if this Constraint is compatible with the list of others constraints given.
-	 * 
-	 * @param oldCheckedComponents (List) - this List is not checked again
-	 * @param componentToCheck
-	 * @return true if the component will respect the constraint,false if it will not respect the costraint
-	 * @see Component
-	 * @see List
-	 */
-	/*@Override
-	public boolean checkList(List<Constraint> constraints) {
-
-		String myName = this.name;
-		double myValue = Double.parseDouble(this.value);
-		
-		if(this.constraintType == ConstraintType.EXTERNAL) {
-			//Se sono esterno controllo tutti gli interni
-			//con lo stesso nome			
-			for(Constraint constr : constraints) {
-				if(constr.getConstraintName().equals(myName) && constr.getConstraintType() == ConstraintType.INTERNAL) {
-					
-					double hisValue = Double.parseDouble(constr.getValue());
-					if(hisValue > myValue){
-						return false;
-					}
-				}
-			}
-			
-			return true;
-		}else {
-			//Se sono interno controllo tutti gli esterni con lo stesso nome
-			//e controllo che devo essere più piccolo di tutti loro.
-			for(Constraint constr : constraints) {
-				if(constr.getConstraintName().equals(myName) && constr.getConstraintType() == ConstraintType.EXTERNAL) {
-					
-					double hisValue = Double.parseDouble(constr.getValue());
-					if(hisValue < myValue){
-						return false;
-					}
-				}
-			}	
-			
-			return true;
-		}
-	}*/
-	
 	//Metodo un po' lungo, vedere se si può rifattorizzare spezzando in vari sottometodi
 	@Override
 	public boolean checkList(List<Component> oldCheckedComponents, Component componentToCheck) {

@@ -16,7 +16,6 @@ import main.model.configurator.constraint.ConstraintCategory;
  */
 
 public class MaxConstraint extends AbstractConstraint {
-	private String name;
 	
 	public MaxConstraint(String name) {
 		super(name);
@@ -46,7 +45,7 @@ public class MaxConstraint extends AbstractConstraint {
 		List<Attribute> attributesToCheck = oldAttributesAlreadyChecked;
 		attributesToCheck.addAll(newAttributesToCheck);
 		
-		//Filtro per dividerli in liste
+		//Filtro per dividerli in internal e external
 		List<Attribute> internalAttributesFilteredList = this.filterAttributesList(attributesToCheck, ConstraintCategory.INTERNAL);
 		List<Attribute> externalAttributesFilteredList = this.filterAttributesList(attributesToCheck, ConstraintCategory.EXTERNAL);
 		
@@ -56,47 +55,18 @@ public class MaxConstraint extends AbstractConstraint {
 				
 		if(internalAttributesFilteredList == null || externalAttributesFilteredList == null)
 			return true;
-		
-		
-		//La prima cosa che faccio è cercare qual è il vero massimizzatore prendendo il valore più basso
-		//tra gli n massimi.
-		//Per farlo ciclo su tutti gli external (sia nuovi che vecchi) per cercare il vero 
-		//massimizzatore. Se il massimizzatore non cè ritorno true, quindi faccio subito questo controllo
-		
-//		//La newAttributesToCheck è una lista, ma in realtà in un componente non posso avere  un 
-//		//attribute che è sia external che un internal per lo stesso MaxConstraint.
-//		//Di conseguenza quella lista ha un solo elemento
-//		
-//		//Questo pezzo era commentato. Perchè?
-//		Attribute newAttribute = newAttributesToCheck.get(0);
-		
-		//Copio le liste filtrate dei vecchi componenti in delle nuove (potrebbe essere inutile)
-		List<Attribute> listWhereToFindTheMax =  externalAttributesFilteredList;
-		List<Attribute> listOfInternalToCheckTheMax =  internalAttributesFilteredList;
-		 
-//		//Questo pezzo era commentato. Perchè?
-//		//Devo capire dove collocare il nuovo attribute del nuovo componente
-//		if(newAttribute.getConstraintCategory() == ConstraintCategory.EXTERNAL)
-//			listWhereToFindTheMax.add(newAttribute);
-//		else if(newAttribute.getConstraintCategory() == ConstraintCategory.INTERNAL)
-//			listOfInternalToCheckTheMax.add(newAttribute);
-			
-		//Cerco l'attributo massimizzatore
-		Attribute maximizzatorAttribute = listWhereToFindTheMax.get(0);
-		
-		for(Attribute attribute : listWhereToFindTheMax){
+	
+		//Cerco il valore massimizzatore, che e' il minimo tra tutti gli external
+		double maxValue = Double.parseDouble(externalAttributesFilteredList.get(0).getValue());
+		for(Attribute attribute : externalAttributesFilteredList){
 		   double value = Double.parseDouble(attribute.getValue());
-		   double maxValue = Double.parseDouble(maximizzatorAttribute.getValue());
-		   //Devo prendere il min(max1,max2)
 			if(value < maxValue)
-				maximizzatorAttribute = attribute;
+				maxValue = value;
 		}		
 		
-		//Ora ho trovato il vero massimizzatore
-		//Ora ciclo su tutti gli internal per capire se rispettano il massimizzatore
-		double maxValue = Double.parseDouble(maximizzatorAttribute.getValue());
+		//Ora ciclo su tutti gli internal per capire se la loro somma rispetta il massimizzatore
 		double sum = 0.0;
-		for(Attribute internalAttribute : listOfInternalToCheckTheMax){
+		for(Attribute internalAttribute : internalAttributesFilteredList){
 			double internalValue = Double.parseDouble(internalAttribute.getValue());
 			sum += internalValue;
 		}
