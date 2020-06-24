@@ -21,7 +21,6 @@ public class ComponentCatalog {
 		pf= PersistenceFacade.getIstance();
 		componentList = new ArrayList<Component>();
 		componentList=pf.getAllComponent();
-		//componentList.addAll((new JSONUtil()).getComponents());
 	}
 	
 	

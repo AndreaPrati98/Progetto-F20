@@ -6,8 +6,6 @@ import org.eclipse.jetty.util.security.Constraint;
 
 import main.model.configurator.component.Attribute;
 import main.model.configurator.component.Component;
-import main.model.configurator.constraint.AbstractConstraint;
-import main.model.configurator.constraint.ConstraintCategory;
 
 /**
  * 
