@@ -9,19 +9,9 @@ import main.services.persistence.PersistenceFacade;
 public class Testermail {
 
 	public static void main(String[] args) {
-		//Mail m =new Mail("alessandrocapici.ac@gmail.com", "Alessandro");
+		Mail m =new Mail("irene.schimperna01@universitadipavia.it", "Shifu");
 		//HashingPassword hp= new HashingPassword();
-		PersistenceFacade pf=PersistenceFacade.getIstance();
-		Configuration configuration = pf.getConfiguration(8);
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		for (Component comp : configuration.getAddedComponents()) {
-			System.out.println(comp.getModel());
-		}
+		
 	}
 
 }
