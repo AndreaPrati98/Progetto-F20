@@ -12,7 +12,6 @@ import main.model.configurator.component.Component;
 import main.model.configurator.configuration.Configuration;
 import main.model.customer.Customer;
 
-@SuppressWarnings("unused")
 public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 
 	private RdbOperation dbop;
@@ -26,6 +25,7 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 		ResultSet rs = dbop.getConfiguration(confId);
 		String ModelofC;
 		String name = null;
+		@SuppressWarnings("unused")
 		String email;
 		int counter = 0;
 		ComponentCatalog catalog = ComponentCatalog.getInstance();
@@ -80,9 +80,9 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 			configurations = new ArrayList<Configuration>(confMap.values());
 			return configurations;
 		} catch (SQLException e) {
-			// Auto-generated catch block
 			e.printStackTrace();
 			System.out.println(e.getMessage());
+		
 		}
 		return null;
 
@@ -139,8 +139,8 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 				id = rs.getInt("maxId");
 			}
 		} catch (SQLException e) {
-			// Auto-generated catch block
 			e.printStackTrace();
+
 		}
 		return id;
 	}
@@ -152,8 +152,8 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 		try {
 			return rs.getString("EmailU");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+
 		}
 		return null;
 	}

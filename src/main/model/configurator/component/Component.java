@@ -20,7 +20,6 @@ public class Component {
 	private String model;
 	private String typeComponent;
 	private double price;
-	//private List<Constraint> constraintList;//
 	private Map<String, Attribute> attributesMap;
 	private double performanceIndex;
 

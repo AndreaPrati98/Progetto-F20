@@ -112,12 +112,6 @@ public class PersistenceFacade {
 
 	}
 
-	// Tanto il constraintChecker legge tutti i constraint, non ne legge uno solo
-	/*
-	 * public AbstractConstraint getConstraint(String name, String typeOfComponent)
-	 * { return cosdao.getConstraint(name, typeOfComponent); }
-	 */
-
 	public List<AbstractConstraint> getAllConstraints() {
 
 		return cosdao.getAllConstraints();

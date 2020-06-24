@@ -17,20 +17,14 @@ import main.services.persistence.PersistenceFacade;
  */
 public class Configurator {
 
-	private ComponentCatalog catalog;
+//	private ComponentCatalog catalog;
 	private Configuration configuration;
 
 	public Configurator() {
-		catalog = ComponentCatalog.getInstance();
+
 	}
 
-	public Configurator(ComponentCatalog catalog) {
-		super();
-		this.catalog = catalog;
-	}
-
-	public Configurator(ComponentCatalog catalog, Configuration configuration) {
-		this.catalog = catalog;
+	public Configurator(Configuration configuration) {
 		this.configuration = configuration;
 	}
 
