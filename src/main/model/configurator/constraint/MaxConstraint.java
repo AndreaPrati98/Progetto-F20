@@ -27,8 +27,6 @@ public class MaxConstraint extends AbstractConstraint {
 	 * @param Constraint type:{@link Constraint}
 	 * @return true if the component will respect the constraint,false if it will not respect the costraint
 	 */	
-	
-	//Metodo un po' lungo, considera se si può spezzare in sotto metodi
 	@Override
 	public boolean checkList(List<Component> oldCheckedComponents, Component componentToCheck) {
 		List<Attribute> oldAttributesAlreadyChecked = this.selectAttributeSameName(oldCheckedComponents);
@@ -53,7 +51,7 @@ public class MaxConstraint extends AbstractConstraint {
 		//Per prima cosa controllo che nessuna delle due lista sia nulla, poichè in tal caso sicuramente
 		//i componenti sono compatibili poichè o non esistono ancora internal o non esistono external
 				
-		if(internalAttributesFilteredList == null || externalAttributesFilteredList == null)
+		if(internalAttributesFilteredList.isEmpty() || externalAttributesFilteredList.isEmpty())
 			return true;
 	
 		//Cerco il valore massimizzatore, che e' il minimo tra tutti gli external

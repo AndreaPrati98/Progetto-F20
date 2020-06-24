@@ -25,7 +25,6 @@ public class DimensionConstraint extends AbstractConstraint {
 		super(name);
 	}
 	
-	//Metodo un po' lungo, vedere se si può rifattorizzare spezzando in vari sottometodi
 	@Override
 	public boolean checkList(List<Component> oldCheckedComponents, Component componentToCheck) {
 		List<Attribute> oldAttributesAlreadyChecked = this.selectAttributeSameName(oldCheckedComponents);
@@ -44,16 +43,6 @@ public class DimensionConstraint extends AbstractConstraint {
 		// Anche se una delle due liste e' vuota devo lo stesso fare i controlli. Infatti se 
 		//prima avevo solo attributi external, nei nuovi attributi potrei avere un internal che viola
 		//il vincolo, anche se la lista degli internal che c'erano da prima e' vuota
-		
-		//Siccome mi dava un errore ed ho visto l'aggiunta della schimpa, ho comunque dovuto istanziare
-		//una lista delle filtrate se questa è vuota perchè se no dava eccezione in basso
-		//nei cicli for -Cic
-		if(internalAttributesFilteredList == null)
-			internalAttributesFilteredList = new ArrayList<Attribute>();
-		
-		if(externalAttributesFilteredList == null)
-			externalAttributesFilteredList = new ArrayList<Attribute>();		
-		
 		
 		for(Attribute newAttribute : newAttributesToCheck) {
 			//Eseguo un ciclo interno diverso a seconda della categoria dell'attribute
