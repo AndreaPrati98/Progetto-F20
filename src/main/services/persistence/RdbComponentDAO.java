@@ -57,10 +57,10 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 					}
 					if (constraintName == null) {
 						isBinding = false;
-//						System.out.println("NON È VINCOLANTE " + isBinding);
+
 					} else {
 						isBinding = true;
-//						System.out.println("È VINCOLANTE " + isBinding);
+
 					}
 
 					a = new Attribute(nameStdAtt, attValue, constraintName, isBinding, isPresentable, category);
@@ -81,7 +81,6 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 		return c;
 	}
 	
-	//Update, remove component
 	public boolean addComponent(String model, String type, double price) {
 		return dbop.addComponent(model, type, price);
 	}
