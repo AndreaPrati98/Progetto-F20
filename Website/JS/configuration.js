@@ -1,5 +1,7 @@
 $(document).ready(function(){
     $('.collapsible').collapsible();
+    let ranges  = document.querySelectorAll("input[type=range]");
+    M.Range.init(ranges);
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -189,7 +191,11 @@ function save(confName){
 	  }else{
 		  alert("Qualcosa è andato storto");
 	  }
-		
+
+	  var elems = document.querySelectorAll('#modal2');
+	  var instances = M.Modal.init(elems);	  
+	  instances.close();
+
 		
 	});  
 }
