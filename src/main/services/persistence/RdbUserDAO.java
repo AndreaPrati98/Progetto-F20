@@ -36,7 +36,6 @@ public class RdbUserDAO implements InterfaceUserDAO {
 			}
 			return new Customer(name, surname, email, isAdmin);
 		} catch (SQLException e) {
-			// Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -52,7 +51,6 @@ public class RdbUserDAO implements InterfaceUserDAO {
 			if(rs.next())
 				return true;
 		} catch (SQLException e) {
-			// Auto-generated catch block
 			e.printStackTrace();
 		}
 			
