@@ -33,6 +33,14 @@ public class ComponentCatalog {
 	}
 	
 	/**
+	 * Downloads again the catalog from the database
+	 */
+	public void refreshCatalog() {
+		componentList.clear();
+		componentList=pf.getAllComponent();
+	}
+	
+	/**
 	 * 
 	 * @param newComponent - the component you want to add 
 	 * @return false - if the componentList already conains this component or newComponent is null
@@ -59,6 +67,7 @@ public class ComponentCatalog {
 		}	
 		return false;
 	}
+	
 	
 	/**
 	 * @return StringBuilder.toString() - the elements appended in the StringBuilder are Components.toString
