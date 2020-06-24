@@ -2,6 +2,7 @@
 	String nome,
 	String Cognome,
 	String email,
+	boolean isAdmin,
 	List<main.model.configurator.configuration.Configuration> conf,
 	javax.servlet.http.HttpServletRequest request
 }
@@ -47,13 +48,17 @@
 			</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
 				
+				@if(isAdmin){
+					<li><a href="administrator">Administrator</a></li>
+				}
+				
 				<li><a href="configuration">Configuration</a></li>
 				
 				@if(request!=null){
 					@if((String)request.getSession().getAttribute("email") == null){
 						<li><a href="login">Login</a></li>
 						<li><a href="sign-in" method="post">Sign-up</a></li>
-					}else{
+					}else{	
 						<li><a href="logout"> Logout</a></li>
 						<li><a href="profile"> Profile</a></li>
 					}

@@ -30,10 +30,11 @@ public class ProfileServlet extends MyServlet {
 			Customer c = pf.getUser(email);
 			name = c.getName();
 			String surname = c.getSurname();
+			boolean isAdmin = c.isAdmin();
 			// Da sostituire
 			List<Configuration> conf;
 			conf = pf.getConfigurationByEmail(email);
-			response.getWriter().write(Rythm.render("profile.html", name, surname, email, conf, request));
+			response.getWriter().write(Rythm.render("profile.html", name, surname, email, isAdmin, conf, request));
 		} else {
 			// altrimenti reindirizzo al login
 			response.sendRedirect("/login");
