@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    $('.collapsible').collapsible();
+
 });
 
 $('a.confLink').click(function(){
