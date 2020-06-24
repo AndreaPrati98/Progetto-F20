@@ -401,14 +401,18 @@ public class RdbOperation {
 	
 	public ResultSet getStandardAttributes(String typeComponent) {
 		String sql = "SELECT Name FROM StandardAttribute WHERE TypeOfComponent = ?";
-		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
-			pstmt.setString(1, typeComponent);
-			ResultSet rs = pstmt.executeQuery();
-			return rs;
+		PreparedStatement ps;
+
+		try {
+			ps = c.prepareStatement(sql);
+			ps.setString(1, typeComponent);
+			return ps.executeQuery();
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
-			return null;
+			// Auto-generated catch block
+			e.printStackTrace();
 		}
+
+		return null;
 	}
 	
 	public boolean addAttribute(String typeOfC, String modelOfC, String nameAtt, String attValue) {
