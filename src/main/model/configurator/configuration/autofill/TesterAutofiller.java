@@ -13,9 +13,6 @@ public class TesterAutofiller {
 		List<Component> alreadyInside = new ArrayList<>();
 		// Aggiungo i componenti che voglio che siano già dentro
 		// Se non aggiungo nessun componente allora mi fa una configurazione random da zero
-		//alreadyInside.add(cc.getComponentByModel("i5-9400F"));
-		//alreadyInside.add(cc.getComponentByModel("Cougar_MX330"));
-		//alreadyInside.add(cc.getComponentByModel("asus_prime_z390-1"));
 		
 		System.out.println("Autocompletamento random");
 		RandomAutofiller af = new RandomAutofiller();
