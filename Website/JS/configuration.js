@@ -210,6 +210,7 @@ function performance(){
 			  	let value = parseFloat(convertedData['response']);
 			  	let str = value+"%";
 			  	$("#performanceValue").css('width',str);
+			  	$("#performanceLabel").text(str);
 		  }else if(convertedData['response'] == 'redirect'){
 				 window.location.replace("/logout");
 		  }else{
