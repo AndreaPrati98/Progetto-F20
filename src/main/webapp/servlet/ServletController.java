@@ -185,4 +185,11 @@ public class ServletController {
 		configurator.setConfigurationName(name);
 		
 	}
+
+
+	public Customer getCustomer() {
+		return customer;
+	}
+	
+	
 }
