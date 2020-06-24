@@ -26,7 +26,7 @@ public class TesterServlet {
 		servlet.add(new LoginServlet("login", "/login"));
 		servlet.add(new LogoutServlet("logout", "/logout"));
 		servlet.add(new ProfileServlet("profile", "/profile/*"));
-		servlet.add(new AdministratorServlet("Admin", "/administrator"));
+		servlet.add(new AdministratorServlet("Admin", "/administrator/*"));
 		new ApplicationServer(8080, servlet).start();
 		
 		// Questo va fatto all'avvio per inizializzare gli id da usare per le configurazioni
