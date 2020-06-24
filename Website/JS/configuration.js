@@ -192,7 +192,6 @@ function save(confName){
 
 	  var elems = document.querySelectorAll('#modal2');
 	  var instances = M.Modal.init(elems);	  
-	  console.log(instance);
 	  instances.close();
 
 		
