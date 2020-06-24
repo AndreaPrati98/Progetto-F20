@@ -74,9 +74,11 @@ public class AdministratorServlet extends MyServlet {
 					e.printStackTrace();
 				}
 				
+				System.out.println(j);
 				
 				model = (String)j.get("name");
 				type = (String)j.get("type");
+				System.out.println("Tipo è "+type);
 				price = Double.parseDouble((String) j.get("price"));
 				pf.addComponent(model, type, price);
 				
@@ -85,6 +87,7 @@ public class AdministratorServlet extends MyServlet {
 				
 				while(o.hasNext()) {
 					att = o.next();
+					System.out.println(att);
 					if(!att.equals("price") && !att.equals("name") && !att.equals("type")) {
 						pf.addAttribute(type, model, att, (String) j.get(att));
 					}

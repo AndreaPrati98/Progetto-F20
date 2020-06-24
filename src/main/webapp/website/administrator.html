@@ -82,23 +82,25 @@
 <body>
 	<nav class="  cyan darken-2">
 		<div>
-			<a href="home.html" class="brand-logo">Logo</a> <a href="#"
+			<a href="/" class="brand-logo">Logo</a> <a href="#"
 				class="sidenav-trigger right" data-target="mobile-nav"> <i
 				class="material-icons">menu</i>
 			</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="login.html">Login</a></li>
-				<li><a href="sign-in.html">Sign-in</a></li>
-				<li><a href="configuration.html">Configuration</a></li>
+				<!--  <li><a href="/login">Login</a></li>
+				<li><a href="/sign-in">Sign-in</a></li>-->
+				<li><a href="/profile">Profile</a></li>
+				<li><a href="/configuration">Configuration</a></li>
 			</ul>
 		</div>
 	</nav>
 
 	<ul class="sidenav" id="mobile-nav">
-		<li><a href="home.html">Home</a></li>
-		<li><a href="login.html">Login</a></li>
-		<li><a href="sign-in.html">Sign-in</a></li>
-		<li><a href="configuration.html">Configuration</a></li>
+		<li><a href="/">Home</a></li>
+		<!--<li><a href="/login">Login</a></li>
+		<li><a href="/sign-in">Sign-in</a></li>-->
+		<li><a href="/profile">Profile</a></li>		
+		<li><a href="/configuration">Configuration</a></li>
 	</ul>
 
 
@@ -132,7 +134,7 @@
 			
 			<div class="input-field col s12">
 			    <select class="removeComp">
-			    	<option value="" disabled selected>Choose your option</option>
+			    	<option value="" disabled>Choose your option</option>
 			    	@for(String type: typeOfC) {				
 						<option value="1">@(type)</option>
 					}
