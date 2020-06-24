@@ -65,14 +65,17 @@ public class ProfileServlet extends MyServlet {
 			System.out.println("Configurazione non rimossa");
 		}
 		
-		String json = "";
-		if (controller.removeConfiguration(confId)) {
-			json = JsonMessages.getJsonRemoveConfigurationResponse(confId);
-		} else {
-			json = JsonMessages.getJsonNotOkResponse();
-		}
-		response.getWriter().write(json);
+//		Questo è inutile, è una cosa pensata solo per la pagina di configuration 
+// 		ed inoltre non esiste quel		
+//		String json = "";
+//		if (controller.removeConfiguration(confId)) {
+//			json = JsonMessages.getJsonRemoveConfigurationResponse(confId);
+//		} else {
+//			json = JsonMessages.getJsonNotOkResponse();
+//		}
+//		response.getWriter().write(json);
 		// System.out.println(json);
+		response.sendRedirect("/login");
 	}
 	
 }
