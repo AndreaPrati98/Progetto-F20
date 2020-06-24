@@ -28,8 +28,8 @@ public class RdbOperation {
 			System.out.println("Connection done");
 
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println("Error: " + e.getMessage());
+
 		}
 	}
 
@@ -125,9 +125,9 @@ public class RdbOperation {
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			// Auto-generated catch block
 			e.printStackTrace();
 			return false;
+
 		}
 	}
 
@@ -147,8 +147,8 @@ public class RdbOperation {
 			rs = s.executeQuery(sql);
 
 		} catch (SQLException e) {
-			// TODO: handle exception
 			System.out.println("Error: " + e.getMessage());
+
 		}
 
 		return rs;
@@ -162,6 +162,7 @@ public class RdbOperation {
 			return rs;
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
+
 		}
 		return null;
 	}
@@ -189,9 +190,9 @@ public class RdbOperation {
 			ps.setString(3, email);
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// Auto-generated catch block
 			e.printStackTrace();
 			return false;
+
 		}
 		sql = "INSERT INTO ElementConfiguration(TypeofC, ModelofC, Id,Counter) VALUES(?,?,?,?)";
 		for (int i = 0; i < Type.size(); i++) {
@@ -203,7 +204,6 @@ public class RdbOperation {
 				ps.setInt(4, counter.get(Model.get(i)));
 				ps.executeUpdate();
 			} catch (SQLException e) {
-				// Auto-generated catch block
 				e.printStackTrace();
 				return false;
 			}
@@ -233,7 +233,6 @@ public class RdbOperation {
 			ps.setString(2, password);
 			return ps.executeQuery();
 		} catch (SQLException e) {
-			// Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -257,7 +256,6 @@ public class RdbOperation {
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -316,7 +314,6 @@ public class RdbOperation {
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -408,7 +405,6 @@ public class RdbOperation {
 			ps.setString(1, typeComponent);
 			return ps.executeQuery();
 		} catch (SQLException e) {
-			// Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -428,7 +424,6 @@ public class RdbOperation {
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -448,7 +443,6 @@ public class RdbOperation {
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
@@ -464,7 +458,6 @@ public class RdbOperation {
 			ps.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			// Auto-generated catch block
 			e.printStackTrace();
 		}
 		return false;
