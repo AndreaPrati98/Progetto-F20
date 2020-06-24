@@ -1,4 +1,4 @@
-package main.webapp.servlet;
+package main.webapp.servlet.util;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,6 +7,7 @@ import java.util.Map;
 import org.json.simple.JSONObject;
 
 import main.model.configurator.component.Component;
+import main.webapp.servlet.ServletController;
 
 public class JsonMessages {
 

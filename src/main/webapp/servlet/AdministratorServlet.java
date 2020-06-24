@@ -17,6 +17,7 @@ import org.rythmengine.Rythm;
 import main.model.configurator.ComponentCatalog;
 import main.model.configurator.component.Component;
 import main.services.persistence.PersistenceFacade;
+import main.webapp.servlet.util.JsonMessages;
 
 @SuppressWarnings("serial")
 public class AdministratorServlet extends MyServlet {
