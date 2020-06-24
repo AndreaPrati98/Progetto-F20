@@ -19,29 +19,29 @@ public class AdministratorServlet extends MyServlet {
 	public AdministratorServlet(String name, String path) {
 		super(name, path);
 	}
-	
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		String email = (String) request.getSession().getAttribute("email");
-		ServletController controller = (ServletController) this.getServletConfig().getServletContext().getAttribute(email + "_controller");
-		
-		boolean isAdmin=controller.getCustomer().isAdmin();
+		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
+				.getAttribute(email + "_controller");
+
+		boolean isAdmin = controller.getCustomer().isAdmin();
 		String name = null;
 		if (email != null) {
 			// Se nella sessione esiste la mail, mi salvo tutte le info e carico il profilo
 			if (!isAdmin) {
 				response.getWriter().write(Rythm.render("403.html"));
+			} else {
+				response.getWriter().write(Rythm.render("administrator.html"));
 			}
-			response.getWriter().write(Rythm.render("administrator.html"));
 		} else {
 			// altrimenti reindirizzo al login
 			response.sendRedirect("/login");
 		}
-		
+
 	}
-	
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
