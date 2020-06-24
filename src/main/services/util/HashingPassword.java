@@ -20,10 +20,8 @@ public class HashingPassword {
 			digest.update(psw.getBytes("utf8"));
 			psw=String.format("%064x", new BigInteger(1, digest.digest()));
 		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return psw;
