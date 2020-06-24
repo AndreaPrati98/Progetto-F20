@@ -61,6 +61,7 @@ public class ConfigurationServlet extends MyServlet {
 			valid = controller.checkConfiguration();
 			errorInAutofill = Boolean.parseBoolean(request.getParameter("errorAutofill"));
 			configurationName = controller.getConfigurationName();
+			System.out.println("Configuration name "+configurationName);
 			if (elementOfPreexistentConfiguration == null)
 				elementOfPreexistentConfiguration = new ArrayList<Component>();
 		}

@@ -45,8 +45,9 @@ public class ProfileServlet extends MyServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 		String email = (String) request.getSession().getAttribute("email");
-		ServletController controller = new ServletController();
-
+		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
+				.getAttribute(email + "_controller");
+		System.out.println(request.getPathInfo());
 		if (request.getPathInfo().equals("/remove")) {
 			remove(request, response, controller);
 		}
