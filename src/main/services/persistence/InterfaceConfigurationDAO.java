@@ -4,7 +4,7 @@ package main.services.persistence;
 import java.util.List;
 
 import main.model.configurator.configuration.Configuration;
-import main.model.people.costumer.Customer;
+import main.model.customer.Customer;
 
 public interface InterfaceConfigurationDAO {
 

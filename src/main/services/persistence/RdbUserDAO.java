@@ -3,7 +3,7 @@ package main.services.persistence;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import main.model.people.costumer.Customer;
+import main.model.customer.Customer;
 
 public class RdbUserDAO implements InterfaceUserDAO {
 

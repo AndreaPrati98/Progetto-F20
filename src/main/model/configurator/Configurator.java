@@ -6,7 +6,7 @@ import java.util.List;
 import main.model.configurator.component.Component;
 import main.model.configurator.configuration.Configuration;
 import main.model.configurator.constraint.AbstractConstraint;
-import main.model.people.costumer.Customer;
+import main.model.customer.Customer;
 import main.services.persistence.PersistenceFacade;
 
 /**

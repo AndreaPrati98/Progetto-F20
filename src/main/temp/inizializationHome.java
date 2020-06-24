@@ -9,7 +9,7 @@ import javax.xml.catalog.Catalog;
 import main.model.configurator.ComponentCatalog;
 import main.model.configurator.Configurator;
 import main.model.configurator.configuration.Configuration;
-import main.model.people.costumer.Customer;
+import main.model.customer.Customer;
 import main.services.persistence.PersistenceFacade;
 import main.webapp.servlet.ApplicationServer;
 import main.webapp.servlet.ConfigurationServlet;

@@ -9,7 +9,7 @@ import main.model.configurator.ComponentCatalog;
 import main.model.configurator.Configurator;
 import main.model.configurator.component.Component;
 import main.model.configurator.configuration.Configuration;
-import main.model.people.costumer.Customer;
+import main.model.customer.Customer;
 import main.services.persistence.PersistenceFacade;
 
 /**

@@ -1,4 +1,4 @@
-package main.model.people.costumer;
+package main.model.customer;
 
 /**
  * 

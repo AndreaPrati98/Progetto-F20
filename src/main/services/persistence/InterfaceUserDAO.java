@@ -1,6 +1,6 @@
 package main.services.persistence;
 
-import main.model.people.costumer.Customer;
+import main.model.customer.Customer;
 
 public interface InterfaceUserDAO {
 

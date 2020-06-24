@@ -10,7 +10,7 @@ import java.util.Map;
 import main.model.configurator.ComponentCatalog;
 import main.model.configurator.component.Component;
 import main.model.configurator.configuration.Configuration;
-import main.model.people.costumer.Customer;
+import main.model.customer.Customer;
 
 @SuppressWarnings("unused")
 public class RdbConfigurationDAO implements InterfaceConfigurationDAO {

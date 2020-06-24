@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.rythmengine.Rythm;
 
 import main.model.configurator.configuration.Configuration;
-import main.model.people.costumer.Customer;
+import main.model.customer.Customer;
 import main.services.persistence.PersistenceFacade;
 
 public class ProfileServlet extends MyServlet {
