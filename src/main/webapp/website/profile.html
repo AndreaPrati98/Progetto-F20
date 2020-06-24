@@ -96,18 +96,15 @@
 		@if(conf.size()>0){
 			@for(main.model.configurator.configuration.Configuration c: conf) {	
 				<li class="collection-item">
-					<div class="center" id="confRow">
-						<b>@(c.getName())</b>
+					<div class="row">
+					<div class="center " id="confRow" >
+						<b><h5>@(c.getName())</h5></b>
 					</div>
-					<div class="center" id="confBtnRow">
-						<a href="configuration?configurationId=@(c.getId())" class="waves-effect waves-light btn confLink center-align" id="@(c.getId())" style="background-color: #0097a7;">edit</a>
-						<a href="" class="waves-effect waves-light btn confLink center-align" id="@(c.getId())" style="background-color: #d32f2f;">remove</a>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input placeholder="New name" id="renameBox" type="text" class="validate">
-						&nbsp;&nbsp;
-        				<a href="" class="waves-effect waves-light btn confLink center-align" id="@(c.getId())" style="background-color: #90a4ae;">rename</a>
+					<div class="col s2 offset-s10" id="confBtnRow" >
+						<a href="configuration?configurationId=@(c.getId())" class="waves-effect waves-light btn confLink right-align" id="@(c.getId())" style="background-color: #0097a7; align:right; ">edit</a>
+						<a href="" class="waves-effect waves-light btn confLink right-align" id="@(c.getId())" style="background-color: #d32f2f;align:right ;">remove</a>
 					</div>
-					
+					</div>
 				</li>
 			}
 		}else{
@@ -118,8 +115,6 @@
 			</li>
 		}
 	</ul>
-	<form method="GET" action="newurl.html" id="myform">
-	</form>
 <script src="statics/JS/profile.js"></script>
 </body>
 </html>

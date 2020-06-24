@@ -49,8 +49,6 @@ public class ProfileServlet extends MyServlet {
 
 		if (request.getPathInfo().equals("/remove")) {
 			remove(request, response, controller);
-		} else if (request.getPathInfo().equals("/rename")) {
-			rename(request, response, controller);
 		}
 	}
 
@@ -76,14 +74,4 @@ public class ProfileServlet extends MyServlet {
 		// System.out.println(json);
 	}
 	
-	private void rename(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
-		int confId = Integer.parseInt(request.getParameter("id"));
-		String name = request.getParameter("name");
-		
-		PersistenceFacade pf = PersistenceFacade.getIstance();
-		Customer customer = pf.getUser((String) request.getSession().getAttribute("email"));
-		Configuration configuration = pf.getConfiguration(confId);
-		configuration.setName(name);
-		pf.changeConfName(confId, name);
-	}
 }

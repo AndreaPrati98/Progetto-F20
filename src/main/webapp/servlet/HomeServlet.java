@@ -24,7 +24,6 @@ public class HomeServlet extends MyServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		if (request.getPathInfo().equals("/") || request.getPathInfo().equals("/home.html")) {
-			System.out.println(request.getPathInfo());
 			PersistenceFacade pr = PersistenceFacade.getIstance();
 			Configuration conf1 = pr.getConfiguration(1); // le prime tre configurazioni sono quelle della HOME
 			Configuration conf2 = pr.getConfiguration(36);
