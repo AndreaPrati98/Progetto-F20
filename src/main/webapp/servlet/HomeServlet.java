@@ -29,7 +29,6 @@ public class HomeServlet extends MyServlet {
 			Configuration conf2 = pr.getConfiguration(36);
 			Configuration conf3 = pr.getConfiguration(3); // dovrebbero funzionare
 			conf1.setName("Mr BlockChain limited edition");
-			System.out.println(conf1.getName());
 			conf2.setName("Android edition");
 			conf3.setName("Ris_OttO edition ");
 			response.getWriter().write(Rythm.render("home.html", conf1, conf2, conf3, request));
