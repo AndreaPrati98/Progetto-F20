@@ -52,9 +52,9 @@ public class AdministratorServlet extends MyServlet {
 		//TODO aggiungere metodi JsonMessage
 		String typeComponent = request.getParameter("typeComp");	
 		PersistenceFacade pf = PersistenceFacade.getIstance();
-		String model = "cristodiooooOOOOOOO";
-		String type = "gpu";
-		int price = 100;
+		String model = null;
+		String type = null;
+		double price = 0;
 		
 		if (request.getPathInfo().equals("/addComp")) {
 			System.out.println("Salva");
@@ -75,12 +75,20 @@ public class AdministratorServlet extends MyServlet {
 					e.printStackTrace();
 				}
 				
+				
+				model = (String)j.get("name");
+				type = (String)j.get("type");
+				price = Double.parseDouble((String) j.get("price"));
+				pf.addComponent(model, type, price);
+				
 				Iterator<String> o = j.keySet().iterator();
 				String att;
 				
 				while(o.hasNext()) {
 					att = o.next();
-					pf.addAttribute(type, model, att, (String) j.get(att));
+					if(!att.equals("price") && !att.equals("name") && !att.equals("type")) {
+						pf.addAttribute(type, model, att, (String) j.get(att));
+					}
 				}
 
 			}

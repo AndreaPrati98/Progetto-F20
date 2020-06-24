@@ -22,11 +22,11 @@ $("select.typeComp").change(function(){
 			$("#typeComponentDiv").append('<label id="label' + i + '" for="' + i + '">' + convertedData[i] +  '</label>');
 		}
 		
-		$("#typeComponentDiv").append('<input type="text" placeholder="" name="routename" id="Name"/>');
-		$("#typeComponentDiv").append('<label id="label' + i + '" for="Name">' + convertedData[i] +  '</label>');
+		$("#typeComponentDiv").append('<input type="text" placeholder="" name="routename" id="name"/>');
+		$("#typeComponentDiv").append('<label id="label' + i + '" for="name">Name</label>');
 		
-		$("#typeComponentDiv").append('<input type="text" placeholder="" name="routename" id="Price"/>');
-		$("#typeComponentDiv").append('<label id="label' + i + '" for="Price">' + convertedData[i] +  '</label>');
+		$("#typeComponentDiv").append('<input type="text" placeholder="" name="routename" id="price"/>');
+		$("#typeComponentDiv").append('<label id="label' + i + '" for="price">Price</label>');
 		
 		$("#typeComponentDiv").append('<button onClick="saveComponent(' + convertedData['num'] + ')" id="submit" class="btn waves-effect waves-light" type="submit" name="action">Submit</button>');
     });
@@ -47,8 +47,9 @@ function saveComponent(num) {
 		json = json + '", "';
 	}
 	
-	json = json + ' "price": "' + $("#price").val() + '",';
-	json = json + ' "name": "' + $("#name").val() + '"';
+	json = json + 'price": "' + $("input#price").val() + '",';
+	json = json + '"name": "' + $("input#name").val() + '",';
+	json = json + '"type": "' + $("select").children("option:selected").text();
 	
 	json = json + '"}';
 	
