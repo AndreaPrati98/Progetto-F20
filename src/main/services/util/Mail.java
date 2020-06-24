@@ -16,7 +16,6 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-@SuppressWarnings("unused")
 public class Mail {
 
 	private static final String from = "confpcf20@gmail.com";
@@ -24,7 +23,9 @@ public class Mail {
 	private static final String host = "smtp.gmail.com";
 	private String object = "Registrazione avvenuta";
 	private String text;
+	@SuppressWarnings("unused")
 	private String to;
+	@SuppressWarnings("unused")
 	private String user;
 
 	public Mail(String to, String user) {

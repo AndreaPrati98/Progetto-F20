@@ -33,8 +33,6 @@ public class AdministratorServlet extends MyServlet {
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
 				.getAttribute(email + "_controller");
 
-		ComponentCatalog catalog = ComponentCatalog.getInstance();
-		String name = null;
 		if (email != null) {
 			boolean isAdmin = controller.getCustomer().isAdmin();
 
@@ -71,7 +69,6 @@ public class AdministratorServlet extends MyServlet {
 				try {
 					j = (JSONObject) jsonParser.parse(name.getKey());
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
