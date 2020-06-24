@@ -81,4 +81,11 @@ public class JsonMessages {
 		return responseJsonToSend.toJSONString();
 	}
 
+	public static String getJsonTypeComponentResponse() {
+		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
+		responseMapToSend.put("Ciao sono una risposta", 1);
+		responseMapToSend.put("Ciao sono unaltra risposta", 2);
+		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
+		return responseJsonToSend.toJSONString();
+	}
 }

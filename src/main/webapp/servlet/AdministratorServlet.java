@@ -26,7 +26,7 @@ public class AdministratorServlet extends MyServlet {
 		String email = (String) request.getSession().getAttribute("email");
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
 				.getAttribute(email + "_controller");
-
+		
 		boolean isAdmin = controller.getCustomer().isAdmin();
 		String name = null;
 		if (email != null) {
@@ -34,7 +34,7 @@ public class AdministratorServlet extends MyServlet {
 			if (!isAdmin) {
 				response.getWriter().write(Rythm.render("403.html"));
 			} else {
-				response.getWriter().write(Rythm.render("administrator.html"));
+				response.getWriter().write(Rythm.render("administrator.html", pf.getTypeComponent()));
 			}
 		} else {
 			// altrimenti reindirizzo al login
@@ -45,6 +45,13 @@ public class AdministratorServlet extends MyServlet {
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().write(Rythm.render("login.html", false));
+		//TODO aggiungere metodi JsonMessage
+		String type = request.getParameter("typeComp");
+		System.out.println("POOOST" + type);
+		
+		String json = "";
+		json = JsonMessages.getJsonTypeComponentResponse();
+		response.getWriter().write(json);
+		//response.getWriter().write(Rythm.render("login.html", false));
 	}
 }
