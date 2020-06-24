@@ -12,4 +12,5 @@ public interface InterfaceComponentDAO {
 	boolean addComponent(String model, String type, double price);
 	boolean removeComponent(String model, String type);
 	boolean updateComponent();
+	List<String> getStandardAttributes(String typeComponent);
 }

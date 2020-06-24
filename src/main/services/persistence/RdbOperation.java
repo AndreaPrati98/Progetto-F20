@@ -398,5 +398,17 @@ public class RdbOperation {
 		return false;
 
 	}
+	
+	public ResultSet getStandardAttributes(String typeComponent) {
+		String sql = "SELECT Name FROM StandardAttribute WHERE TypeOfComponent = ?";
+		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
+			pstmt.setString(1, typeComponent);
+			ResultSet rs = pstmt.executeQuery();
+			return rs;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
 
 }

@@ -137,5 +137,21 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 		return neededComp;
 	}
 	
+	public List<String> getStandardAttributes(String typeComponent){
+		ResultSet rs = dbop.getStandardAttributes(typeComponent);
+		List<String> stdAtt = new ArrayList<>();
+		String elem;
+		try {
+			while(rs.next()) {
+				elem = rs.getString("Name");
+				stdAtt.add(elem);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			stdAtt = null;
+		}
+		
+		return stdAtt;
+	}
 
 }

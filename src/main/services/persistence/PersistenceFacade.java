@@ -148,5 +148,9 @@ public class PersistenceFacade {
 	public int getLastUsedId() {
 		return confdao.getLastUsedId();
 	}
+	
+	public List<String> getStandardAttributes(String typeComponent) {
+		return cdao.getStandardAttributes(typeComponent);
+	}
 
 }
