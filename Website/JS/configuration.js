@@ -1,5 +1,7 @@
 $(document).ready(function(){
     $('.collapsible').collapsible();
+    let ranges  = document.querySelectorAll("input[type=range]");
+    M.Range.init(ranges);
 });
 
 document.addEventListener('DOMContentLoaded', function() {
