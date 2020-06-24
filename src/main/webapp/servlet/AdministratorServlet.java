@@ -14,6 +14,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.rythmengine.Rythm;
 
+import main.model.configurator.ComponentCatalog;
 import main.services.persistence.PersistenceFacade;
 
 @SuppressWarnings("serial")
@@ -30,6 +31,7 @@ public class AdministratorServlet extends MyServlet {
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
 				.getAttribute(email + "_controller");
 		
+		ComponentCatalog catalog = ComponentCatalog.getInstance();
 		String name = null;
 		if (email != null) {
 			boolean isAdmin = controller.getCustomer().isAdmin();
@@ -44,7 +46,6 @@ public class AdministratorServlet extends MyServlet {
 			// altrimenti reindirizzo al login
 			response.sendRedirect("/login");
 		}
-
 	}
 
 	@Override
@@ -58,11 +59,7 @@ public class AdministratorServlet extends MyServlet {
 		
 		if (request.getPathInfo().equals("/addComp")) {
 			System.out.println("Salva");
-
-			pf.addComponent(model, type, price);
-
-
-			
+	
 			for(Entry<String, String[]> name: request.getParameterMap().entrySet()) {
 				//pf.addAttribute(type, model, name.getKey(), name.getValue()[0]);
 				//System.out.println(name.getKey() + " - " +  name.getValue()[0]);
@@ -90,7 +87,8 @@ public class AdministratorServlet extends MyServlet {
 						pf.addAttribute(type, model, att, (String) j.get(att));
 					}
 				}
-
+				ComponentCatalog catalog = ComponentCatalog.getInstance();
+				catalog.refreshCatalog();
 			}
 		}else {
 			List<String> list = pf.getStandardAttributes(typeComponent);
