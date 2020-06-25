@@ -1,5 +1,6 @@
 package main.services.persistence;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 import main.model.configurator.component.Component;
@@ -38,6 +39,19 @@ public class PersistenceFacade {
 		return cdao.getAllComponent();
 	}
 
+	public List<String> getAdmin() {
+		return udao.getAdmin();
+	}
+
+	public boolean addAdmin(String mail,boolean decision) {
+		return udao.addAdmin(mail, decision);
+	}
+	
+	public boolean checkIfUserExist(String mail) {
+		
+		return udao.checkIfUserExist(mail);
+	}
+
 	public List<String> getNeededComponents() {
 		return cdao.getNeededComponents();
 	}
@@ -45,7 +59,7 @@ public class PersistenceFacade {
 	public List<String> getTypeComponent() {
 		return cdao.getTypeOfComponent();
 	}
-	
+
 	public boolean changeConfName(int confId, String newName) {
 		return confdao.changeConfName(confId, newName);
 	}
@@ -65,12 +79,13 @@ public class PersistenceFacade {
 		return confdao.getConfigurationByEmail(email);
 
 	}
-	
+
 	public boolean changeMail(String oldEmail, String newEmail) {
 
 		return udao.changeEmail(oldEmail, newEmail);
 
 	}
+
 	public boolean changePassword(String oldPassword, String newPassword) {
 
 		return udao.changePassword(oldPassword, newPassword);
@@ -126,11 +141,11 @@ public class PersistenceFacade {
 
 		return cosdao.removeConstraint(name);
 	}
-	
+
 	public boolean addComponent(String model, String type, double price) {
 		return cdao.addComponent(model, type, price);
 	}
-	
+
 	public boolean removeComponent(String model, String type) {
 		return cdao.removeComponent(model, type);
 	}
@@ -142,19 +157,20 @@ public class PersistenceFacade {
 	public int getLastUsedId() {
 		return confdao.getLastUsedId();
 	}
-	
+
 	public List<String> getStandardAttributes(String typeComponent) {
 		return cdao.getStandardAttributes(typeComponent);
 	}
-	
+
 	public boolean addAttribute(String typeOfC, String modelOfC, String nameAtt, String attValue) {
 		return cdao.addAttribute(typeOfC, modelOfC, nameAtt, attValue);
 	}
-	
-	public boolean addStandardAttribute(String name, String typeOfC, String constraintName, String category, boolean isPresentable) {
+
+	public boolean addStandardAttribute(String name, String typeOfC, String constraintName, String category,
+			boolean isPresentable) {
 		return cdao.addStandardAttribute(name, typeOfC, constraintName, category, isPresentable);
 	}
-	
+
 	public boolean addTypeComponent(String type, boolean isNeeded) {
 		return cdao.addTypeComponent(type, isNeeded);
 	}

@@ -1,6 +1,8 @@
 @args() { 
 	List<main.model.configurator.constraint.AbstractConstraint> bounds,
+	List<String> admin ,
 	List<String> typeOfC, 
+	
 } 
 <!DOCTYPE html>
 <html>
@@ -60,9 +62,10 @@
 	
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s1"></li>
-				<li class="tab col s5"><a href="#test1">Add new Component</a></li>
-				<li class="tab col s5"><a href="#test2">Remove Component</a></li>
+				<li class="tab col s3"><a href="#test1">Add new Component</a></li>
+				<li class="tab col s3"><a href="#test2">Remove Component</a></li>
+				<li class="tab col s3"><a href="#test3">Add Admin</a></li>
+				<li class="tab col s3"><a href="#test4">Remove admin</li>
 				<!-- 
 				<li class="tab col s2 "><a href="#test3">Add Std Attribute</a></li>
 				<li class="tab col s2"><a href="#test4">Add new bound</a></li>
@@ -104,6 +107,69 @@
 			<div id="removeComponentDiv">
 				<form action="/administrator/removeComp" id="removeComponentForm" method="post">
 				</form>
+			</div>
+		</div>
+		<div id="test3" class="col s12" >
+			Add administrator
+			<div class="row" style="color:black;">
+				<div class = "col s5">
+				 <table>
+       	 			<thead>
+          				<tr>
+              				<th>Admin Email</th>
+          				</tr>
+        			</thead>
+        			<tbody>
+          				@for(String mail: admin){
+          					<tr>
+            					<td>@(mail)</td>
+         					</tr>
+         				}
+          			</tbody>
+      			</table>
+				</div>
+				<div class="col s1">
+				</div>
+				<div class = "col s5">
+					<input name="email" type="text" placeholder="Email" id="addAdmin" />
+					<br>
+					<p id="checkMsg">
+						<a class="waves-effect waves-light btn" onclick="checkAddAdmin()">check</a>
+						<a class="waves-effect waves-light btn" onclick="addAdmin()">add</a>
+					</p>
+				</div>
+			</div>
+			
+		</div>
+		<div id="test4" class="col s12">
+			Remove administrator
+			<div class="row" style="color:black;">
+				<div class = "col s5">
+				 <table>
+       	 			<thead>
+          				<tr>
+              				<th>Admin Email</th>
+          				</tr>
+        			</thead>
+        			<tbody>
+          				@for(String mail: admin){
+          					<tr>
+            					<td>@(mail)</td>
+         					</tr>
+         				}
+          			</tbody>
+      			</table>
+				</div>
+				<div class="col s1">
+				</div>
+				<div class = "col s5">
+					<input name="email" type="text" placeholder="Email" id="addAdmin" />
+					<br>
+					<p id="checkMsgr">
+						<a class="waves-effect waves-light btn" onclick="checkAddAdmin()">check</a>
+						<a class="waves-effect waves-light btn" onclick="removeAdmin()">remove</a>
+					</p>
+				</div>
 			</div>
 		</div>
 		<!-- 
@@ -164,4 +230,6 @@
 
 </body>
 <script src="statics/JS/tabs.js"></script>
+<script src="statics/JS/sidenavScript.js"></script>
+
 </html>

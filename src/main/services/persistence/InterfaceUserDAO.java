@@ -1,5 +1,7 @@
 package main.services.persistence;
 
+import java.util.List;
+
 import main.model.customer.Customer;
 
 public interface InterfaceUserDAO {
@@ -9,4 +11,7 @@ public interface InterfaceUserDAO {
 	public Customer getCustomer(String email);
 	public boolean changeEmail(String oldEmail, String newEmail);
 	public boolean changePassword(String oldPassword, String newPassword);
+	public boolean checkIfUserExist(String mail);
+	public List<String> getAdmin();
+	public boolean addAdmin(String mail,boolean decision);
 }

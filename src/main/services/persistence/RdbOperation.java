@@ -56,6 +56,41 @@ public class RdbOperation {
 		return rs;
 
 	}
+	
+	public ResultSet checkIfUserExist(String mail) {
+		ResultSet rs = null;
+		Statement s;
+		try {
+			s = c.createStatement();
+			rs = s.executeQuery("SELECT email\n" + 
+					"FROM User\n" + 
+					"WHERE email='"+mail+"'");
+		} catch (SQLException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		return rs;
+
+	}
+	
+	public boolean addAdmin(String mail,boolean decision) {
+		String sql = ("UPDATE User SET isAdmin= ? WHERE email= ?");
+		int admin=0;
+		if (decision) {
+			admin=1;
+		}
+		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
+			// set the corresponding param
+			pstmt.setInt(1, admin);
+			pstmt.setString(2, mail);
+			// execute the delete statement
+			pstmt.executeUpdate();
+			return true;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
+
+	}
 
 	public ResultSet getNeededComponents() {
 		ResultSet rs = null;
@@ -63,6 +98,18 @@ public class RdbOperation {
 		try {
 			s = c.createStatement();
 			rs = s.executeQuery("SELECT type\r\nFROM TypeComponent\r\nwhere isNeeded=1");
+		} catch (SQLException e) {
+			System.out.println("Error: " + e.getMessage());
+		}
+		return rs;
+	}
+	
+	public ResultSet getAdmin() {
+		ResultSet rs = null;
+		Statement s;
+		try {
+			s = c.createStatement();
+			rs = s.executeQuery("SELECT email FROM User where isAdmin=1");
 		} catch (SQLException e) {
 			System.out.println("Error: " + e.getMessage());
 		}

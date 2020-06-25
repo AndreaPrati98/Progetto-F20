@@ -112,7 +112,67 @@ function addStdAtt(){
 		alert(convertedData['Ok']);
 	});						
 }
+function checkAddAdmin(){
+	var mail=$("#addAdmin").val();
+	let posting=$.post("/administrator/checkAddAdmin",{email:mail})
+	posting.done(function(data){
+		var convertedData= JSON.parse(data);
+		var flag=convertedData['Ok'];
+		console.log(typeof(flag))
+		console.log("xxxxxx"+flag)
+		if (flag) {
+			alert("Ok")
+		}else{
+			alert("Email sbagliata!")
+		}
+		return flag;
+	})
+								
+}function addAdmin(){
+	var flag=checkAddAdmin();
+	console.log(flag)
+	var mail=$("#addAdmin").val();
+	if (flag) {
+		let posting=$.post("/administrator/addAdmin",{email:mail})
+	}
+	else{
+		alert("Email non esiste")
+	}
+	posting.done(function(data){
+		var convertedData= JSON.parse(data);
+		var flag=convertedData['Ok'];
+		if (flag) {
+			alert("New Admin")
+		}else{
+			alert("Error")
+		}
+		return flag;
+	})
+								
+}
 
+function removeAdmin(){
+	var flag=checkAddAdmin();
+	console.log(flag)
+	var mail=$("#addAdmin").val();
+	if (flag) {
+		let posting=$.post("/administrator/removeAdmin",{email:mail})
+	}
+	else{
+		alert("Email non esiste")
+	}
+	posting.done(function(data){
+		var convertedData= JSON.parse(data);
+		var flag=convertedData['Ok'];
+		if (flag) {
+			alert("New Admin")
+		}else{
+			alert("Error")
+		}
+		return flag;
+	})
+								
+}
 function addBound(){
 	
 	alert("sono un alert");

@@ -40,7 +40,7 @@ public class AdministratorServlet extends MyServlet {
 			if (!isAdmin) {
 				response.getWriter().write(Rythm.render("403.html"));
 			} else {
-				response.getWriter().write(Rythm.render("administrator.html", pf.getAllConstraints(), pf.getTypeComponent()));
+				response.getWriter().write(Rythm.render("administrator.html", pf.getAllConstraints(),pf.getAdmin(),pf.getTypeComponent()));
 			}
 		} else {
 			// altrimenti reindirizzo al login
@@ -140,7 +140,19 @@ public class AdministratorServlet extends MyServlet {
 			String json = "";
 			json = JsonMessages.getJsonAllTypeComponentResponse(list);
 			response.getWriter().write(json);
-		} else if (request.getPathInfo().equals("/addStdAtt")) {
+		} else if (request.getPathInfo().equals("/checkAddAdmin")) {
+			String mail=request.getParameter("email");
+			String json = JsonMessages.getJsonNewTypeComponentResponse(pf.checkIfUserExist(mail));
+			response.getWriter().write(json);
+		}else if (request.getPathInfo().equals("/addAdmin")) {
+			String mail=request.getParameter("email");
+			String json = JsonMessages.getJsonNewTypeComponentResponse(pf.addAdmin(mail,true));
+			response.getWriter().write(json);
+		}else if (request.getPathInfo().equals("/removeAdmin")) {
+			String mail=request.getParameter("email");
+			String json = JsonMessages.getJsonNewTypeComponentResponse(pf.addAdmin(mail,false));
+			response.getWriter().write(json);
+		}else if (request.getPathInfo().equals("/addStdAtt")) {
 			String name = request.getParameter("stdAttName");
 			String stdAtttype = request.getParameter("stdAttType");
 			String bound = request.getParameter("stdAttBound");
