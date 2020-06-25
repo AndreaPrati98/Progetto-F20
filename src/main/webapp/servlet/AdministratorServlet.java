@@ -40,7 +40,7 @@ public class AdministratorServlet extends MyServlet {
 			if (!isAdmin) {
 				response.getWriter().write(Rythm.render("403.html"));
 			} else {
-				response.getWriter().write(Rythm.render("administrator.html", pf.getTypeComponent()));
+				response.getWriter().write(Rythm.render("administrator.html", pf.getAllConstraints(), pf.getTypeComponent()));
 			}
 		} else {
 			// altrimenti reindirizzo al login

@@ -1,61 +1,11 @@
 @args() { 
+	List<main.model.configurator.constraint.AbstractConstraint> bounds,
 	List<String> typeOfC, 
 } 
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-* {
-	box-sizing: border-box;
-}
 
-.column {
-	float: left;
-	width: 33.33%;
-	padding: 10px;
-	height: 300px; 
-}
-
-.row:after {
-	content: "";
-	display: table;
-	clear: both; 
-} 
-
-#mainTitle {
-	text-align: center;
-}
-
-.columnsTitle {
-	text-align: center;
-}
-
-.collection {
-	text-align: center;
-	width: 40%;
-	align-items: center;
-}
-
-#addComponentBtn {
-	background-color: #0097a7;
-}
-
-#addAdminUserBtn {
-	background-color: #0097a7;
-}
-
-#removeComponentBtn {
-	background-color: #d32f2f;
-}
-
-#addAttributeBtn {
-	background-color: #43a047;
-}
-
-#TypeSelect {
-	width: 40%;
-}
-</style>
 <title>Administrator</title>
 <!-- link additional CSS file -->
 <!--<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css"> -->
@@ -107,14 +57,19 @@
 	<h2 id="mainTitle">Managing Page</h2>
 
 	<div class="row">
+	
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s3"><a href="#test1">Add new Component</a></li>
-				<li class="tab col s3"><a href="#test2">Remove Component</a></li>
-				<li class="tab col s3 "><a href="#test3">Add Std Attribute</a></li>
-				<li class="tab col s3"><a href="#test4">Add new type Component</a></li>
+				<li class="tab col s1"></li>
+				<li class="tab col s2"><a href="#test1">Add new Component</a></li>
+				<li class="tab col s2"><a href="#test2">Remove Component</a></li>
+				<li class="tab col s2 "><a href="#test3">Add Std Attribute</a></li>
+				<li class="tab col s2"><a href="#test4">Add new bound</a></li>
+				<li class="tab col s2"><a href="#test5">Add new type Component</a></li>
+				<li class="tab col s1"></li>
 			</ul>
 		</div>
+		
 		<div id="test1" class="col s12">
 			Select Type component 
 			
@@ -129,12 +84,13 @@
 			<div id="typeComponentDiv">
 			</div>
 		</div>
+		
 		<div id="test2" class="col s12">
 			Select type of component to remove 
 			
 			<div class="input-field col s12">
 			    <select class="removeComp">
-			    	<option value="" disabled>Choose your option</option>
+			    	<option value="" disabled selected>Choose your option</option>
 			    	@for(String type: typeOfC) {				
 						<option value="1">@(type)</option>
 					}
@@ -145,20 +101,58 @@
 				</form>
 			</div>
 		</div>
-		<div id="test3" class="col s12">Test 3</div>
+		
+		<div id="test3" class="col s12">
+			<input type="text" placeholder="Name" name="stdAttName" id="stdAttName" class="stdAtt"/>
+			<select class="stdAtt">
+		    	<option value="" disabled selected>Choose your option</option>
+		    	@for(String type: typeOfC) {				
+					<option value="1">@(type)</option>
+				}
+		    </select>
+		    <select class="stdAtt">
+		    	<option value="" disabled selected>Choose your option</option>
+		    	@for(main.model.configurator.constraint.AbstractConstraint bound : bounds) {				
+					<option value="2">@(bound.getConstraintName())</option>
+				}
+		    </select>
+		    <select class="stdAtt">
+		    	<option value="" disabled selected>Choose your option</option>
+		    	<option value="2">Internal</option>
+		    	<option value="2">External</option>
+		    	<option value="2">None</option>
+		    </select>
+		    <p>
+		      <label>
+		        <input name="stdAttCheck" type="checkbox" id="stdAttPresentable" />
+		        <span>Is presentable</span>
+		      </label>
+		    </p>
+		    <a class="waves-effect waves-light btn" onclick="addStdAtt()">add</a>
+		</div>
+		
 		<div id="test4" class="col s12">
-		Insert new type component
-		<input type="text" placeholder="Name" name="routenamewe" id="ntc"/>
-
-		<p>
-	      <label>
-	        <input name="group1" type="checkbox" id="radioB" />
-	        <span>Is needed</span>
-	      </label>
-	    </p>
-	    <a class="waves-effect waves-light btn" onclick="addTypeC()">add</a>
-
-	</div>
+			<input type="text" placeholder="Name" name="boundName" id="boundName" class="newBound"/>
+			<select class="newBound">
+		    	<option value="" disabled selected>Choose your option</option>
+		    	<option value="2">Equals</option>
+		    	<option value="2">Max</option>
+		    	<option value="2">Dimension</option>
+		    </select>
+		    <a class="waves-effect waves-light btn" onclick="addBound()">add</a>
+		</div>
+		
+		<div id="test5" class="col s12">
+			Insert new type component
+			<input type="text" placeholder="Name" name="routenamewe" id="ntc"/>
+			<p>
+		      <label>
+		        <input name="group1" type="checkbox" id="radioB" />
+		        <span>Is needed</span>
+		      </label>
+		    </p>
+		    <a class="waves-effect waves-light btn" onclick="addTypeC()">add</a>
+		</div>
 	</div>
 
 </body>

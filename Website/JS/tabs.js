@@ -92,3 +92,17 @@ function addTypeC(){
 		alert(convertedData['Ok']);
 	});									
 }
+
+function addStdAtt(){
+	
+	alert("sono un alert");
+	var name=$("#ntc").val();
+	var isN=$("#radioB:checked").val();
+								
+}
+
+function addBound(){
+	
+	alert("sono un alert");
+								
+}
