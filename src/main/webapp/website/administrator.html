@@ -1,59 +1,7 @@
-@args() { List
-<String> typeOfC, } <!DOCTYPE html>
+@args() { 
+List <String> typeOfC } <!DOCTYPE html>
 <html>
 <head>
-<style>
-* {
-	box-sizing: border-box;
-}
-
-.column {
-	float: left;
-	width: 33.33%;
-	padding: 10px;
-	height: 300px;
-}
-
-.row:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-#mainTitle {
-	text-align: center;
-}
-
-.columnsTitle {
-	text-align: center;
-}
-
-.collection {
-	text-align: center;
-	width: 40%;
-	align-items: center;
-}
-
-#addComponentBtn {
-	background-color: #0097a7;
-}
-
-#addAdminUserBtn {
-	background-color: #0097a7;
-}
-
-#removeComponentBtn {
-	background-color: #d32f2f;
-}
-
-#addAttributeBtn {
-	background-color: #43a047;
-}
-
-#TypeSelect {
-	width: 40%;
-}
-</style>
 <title>Administrator</title>
 <!-- link additional CSS file -->
 <!--<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css"> -->
@@ -95,8 +43,8 @@
 
 	<ul class="sidenav" id="mobile-nav">
 		<li><a href="/">Home</a></li>
-		<!--<li><a href="/login">Login</a></li>
-		<li><a href="/sign-in">Sign-in</a></li>-->
+		<li><a href="/login">Login</a></li>
+		<li><a href="/sign-in">Sign-in</a></li>
 		<li><a href="/profile">Profile</a></li>
 		<li><a href="/configuration">Configuration</a></li>
 	</ul>
@@ -131,9 +79,10 @@
 
 			<div class="input-field col s12">
 				<select class="removeComp">
-					<option value="" disabled>Choose your option</option> @for(String
-					type: typeOfC) {
-					<option value="1">@(type)</option> }
+					<option value="" disabled>Choose your option</option> 
+					@for(String	type: typeOfC) {
+						<option value="@(type)">@(type)</option> 
+					}
 				</select>
 			</div>
 			<div id="removeComponentDiv">
