@@ -79,10 +79,16 @@ $("select.removeComp").change(function(){
 	});
 });
 
-function Piero(){
+function addTypeC(){
 	
 	var name=$("#ntc").val();
-	var isN=$("#ntcn").val();
+	var isN=$("#radioB:checked"). val();
+	
 	
 	let posting = $.post( "/administrator/newTypeComp", {newTypeOfC: name, needed: isN});
+	
+	posting.done(function(data){
+		var convertedData= JSON.parse(data);
+		alert(convertedData['Ok']);
+	});									
 }

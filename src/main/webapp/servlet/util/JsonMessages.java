@@ -110,4 +110,15 @@ public class JsonMessages {
 		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
 		return responseJsonToSend.toJSONString();
 	}
+	
+	public static String getJsonNewTypeComponentResponse(boolean flag) {
+		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
+		
+		responseMapToSend.put("Ok", flag);
+			
+		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
+		return responseJsonToSend.toJSONString();
+	}
+	
+	
 }

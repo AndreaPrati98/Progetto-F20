@@ -116,14 +116,15 @@ public class AdministratorServlet extends MyServlet {
 		} else if (request.getPathInfo().equals("/newTypeComp")) {
 			String newTypeOfC = request.getParameter("newTypeOfC");
 			String needed = request.getParameter("needed");
-			
 			boolean flag;
-			if (needed.equals("Yes")) {
+			if (needed.equals("on")) {
 				flag = true;
 			} else {
 				flag = false;
 			}
-			System.out.println(newTypeOfC + "-" + flag);
+			String json = "";
+			json = JsonMessages.getJsonNewTypeComponentResponse(flag);
+			response.getWriter().write(json);
 			//pf.addTypeComponent(newTypeOfC, flag);
 
 		} else if (request.getPathInfo().equals("/getAllComp")) {
