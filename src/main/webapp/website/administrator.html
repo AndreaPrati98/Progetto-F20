@@ -1,7 +1,61 @@
 @args() { 
-List <String> typeOfC } <!DOCTYPE html>
+	List<String> typeOfC, 
+} 
+<!DOCTYPE html>
 <html>
 <head>
+<style>
+* {
+	box-sizing: border-box;
+}
+
+.column {
+	float: left;
+	width: 33.33%;
+	padding: 10px;
+	height: 300px;
+}
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both; 
+} 
+
+#mainTitle {
+	text-align: center;
+}
+
+.columnsTitle {
+	text-align: center;
+}
+
+.collection {
+	text-align: center;
+	width: 40%;
+	align-items: center;
+}
+
+#addComponentBtn {
+	background-color: #0097a7;
+}
+
+#addAdminUserBtn {
+	background-color: #0097a7;
+}
+
+#removeComponentBtn {
+	background-color: #d32f2f;
+}
+
+#addAttributeBtn {
+	background-color: #43a047;
+}
+
+#TypeSelect {
+	width: 40%;
+}
+</style>
 <title>Administrator</title>
 <!-- link additional CSS file -->
 <!--<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css"> -->
@@ -43,9 +97,9 @@ List <String> typeOfC } <!DOCTYPE html>
 
 	<ul class="sidenav" id="mobile-nav">
 		<li><a href="/">Home</a></li>
-		<li><a href="/login">Login</a></li>
-		<li><a href="/sign-in">Sign-in</a></li>
-		<li><a href="/profile">Profile</a></li>
+		<!--<li><a href="/login">Login</a></li>
+		<li><a href="/sign-in">Sign-in</a></li>-->
+		<li><a href="/profile">Profile</a></li>		
 		<li><a href="/configuration">Configuration</a></li>
 	</ul>
 
@@ -58,48 +112,53 @@ List <String> typeOfC } <!DOCTYPE html>
 				<li class="tab col s3"><a href="#test1">Add new Component</a></li>
 				<li class="tab col s3"><a href="#test2">Remove Component</a></li>
 				<li class="tab col s3 "><a href="#test3">Add Std Attribute</a></li>
-				<li class="tab col s3"><a href="#test4">Add new type
-						Component</a></li>
+				<li class="tab col s3"><a href="#test4">Add new type Component</a></li>
 			</ul>
 		</div>
 		<div id="test1" class="col s12">
-			Select Type component
-
+			Select Type component 
+			
 			<div class="input-field col s12">
-				<select class="typeComp">
-					<option value="" disabled selected>Choose your option</option>
-					@for(String type: typeOfC) {
-					<option value="1">@(type)</option> }
-				</select>
+			    <select class="typeComp">
+			    	<option value="" disabled selected>Choose your option</option>
+			    	@for(String type: typeOfC) {				
+						<option value="1">@(type)</option>
+					}
+			    </select>
 			</div>
-			<div id="typeComponentDiv"></div>
+			<div id="typeComponentDiv">
+			</div>
 		</div>
 		<div id="test2" class="col s12">
-			Select type of component to remove
-
+			Select type of component to remove 
+			
 			<div class="input-field col s12">
-				<select class="removeComp">
-					<option value="" disabled>Choose your option</option> 
-					@for(String	type: typeOfC) {
-						<option value="@(type)">@(type)</option> 
+			    <select class="removeComp">
+			    	<option value="" disabled>Choose your option</option>
+			    	@for(String type: typeOfC) {				
+						<option value="1">@(type)</option>
 					}
-				</select>
+			    </select>
 			</div>
 			<div id="removeComponentDiv">
-				<form action="/administrator/removeComp" id="removeComponentForm"
-					method="post"></form>
+				<form action="/administrator/removeComp" id="removeComponentForm" method="post">
+				</form>
 			</div>
 		</div>
 		<div id="test3" class="col s12">Test 3</div>
 		<div id="test4" class="col s12">
-			Insert new type component <input type="text" placeholder="Name"
-				name="newType" id="ntc" />
-			<p>
-				<label> <input name="group1" type="radio" checked /> <span>Red</span>
-				</label>
-			</p>
-			<a class="waves-effect waves-light btn" onclick="Piero()">add</a>
-		</div>
+		Insert new type component
+		<input type="text" placeholder="Name" name="routenamewe" id="n"/>
+
+		<p>
+	      <label>
+	        <input name="group1" type="radio" checked />
+	        <span>RdbButt</span>
+	      </label>
+	    </p>
+	    <a class="waves-effect waves-light btn">button</a>
+
+	</div>
 	</div>
 
 </body>
