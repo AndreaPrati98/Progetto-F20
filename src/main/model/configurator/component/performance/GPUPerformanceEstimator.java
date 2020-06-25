@@ -24,7 +24,6 @@ public class GPUPerformanceEstimator implements InterfacePerformanceEstimator {
 	 * graphicCardFrameBuffer
 	 */
 	
-	//TODO ancora da finire
 	@Override
 	public double computePerformance(Map<String, Attribute> componentAttributes) {
 		Attribute att1 = componentAttributes.get("coreCount");
