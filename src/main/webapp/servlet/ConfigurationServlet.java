@@ -3,8 +3,10 @@ package main.webapp.servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -47,6 +49,7 @@ public class ConfigurationServlet extends MyServlet {
 
 		String confIdAsString = request.getParameter("configurationId");
 		List<Component> elementOfPreexistentConfiguration = new ArrayList<Component>();
+		Set<Component> elementSetOfPreexistentConfiguration = new HashSet<Component>();
 		double price = 0.0;
 		double performance = 0.0;
 		boolean valid = false;
@@ -63,15 +66,18 @@ public class ConfigurationServlet extends MyServlet {
 			errorInAutofill = Boolean.parseBoolean(request.getParameter("errorAutofill"));
 			configurationName = controller.getConfigurationName();
 			System.out.println("Configuration name "+configurationName);
-			if (elementOfPreexistentConfiguration == null)
+			elementSetOfPreexistentConfiguration = new HashSet<>(elementOfPreexistentConfiguration);
+			if (elementOfPreexistentConfiguration == null) {
 				elementOfPreexistentConfiguration = new ArrayList<Component>();
+				elementSetOfPreexistentConfiguration =  new HashSet<Component>();
+			}
 		}
 
 		ComponentCatalog catalog = ComponentCatalog.getInstance();
 		List<String> type = PersistenceFacade.getIstance().getTypeComponent();
 
 		response.getWriter().write(Rythm.render("configurationv2.html", catalog.getComponentList(), type,
-				elementOfPreexistentConfiguration, price, performance, valid,errorInAutofill, configurationName));
+				elementOfPreexistentConfiguration, elementSetOfPreexistentConfiguration ,price, performance, valid,errorInAutofill, configurationName));
 	}
 
 	// TODO: Cambiare le stringhe boiler con costanti per i percorsi ed i nomi degli
