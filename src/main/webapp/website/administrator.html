@@ -61,12 +61,14 @@
 		<div class="col s12">
 			<ul class="tabs">
 				<li class="tab col s1"></li>
-				<li class="tab col s2"><a href="#test1">Add new Component</a></li>
-				<li class="tab col s2"><a href="#test2">Remove Component</a></li>
+				<li class="tab col s5"><a href="#test1">Add new Component</a></li>
+				<li class="tab col s5"><a href="#test2">Remove Component</a></li>
+				<!-- 
 				<li class="tab col s2 "><a href="#test3">Add Std Attribute</a></li>
 				<li class="tab col s2"><a href="#test4">Add new bound</a></li>
 				<li class="tab col s2"><a href="#test5">Add new type Component</a></li>
 				<li class="tab col s1"></li>
+				-->
 			</ul>
 		</div>
 		
@@ -81,7 +83,10 @@
 					}
 			    </select>
 			</div>
-			<div id="typeComponentDiv">
+			<div id="typeComponentDiv" style="display: none;">
+				<select class="addComp" id="addCompSelect">
+			    	<option value="" disabled selected>Choose your option</option>
+			    </select>
 			</div>
 		</div>
 		
@@ -101,30 +106,31 @@
 				</form>
 			</div>
 		</div>
-		
+		<!-- 
 		<div id="test3" class="col s12">
 			<input type="text" placeholder="Name" name="stdAttName" id="stdAttName" class="stdAtt"/>
-			<select class="stdAtt">
-		    	<option value="" disabled selected>Choose your option</option>
+			<select class="stdAtt" id="stdAttSelectType">
+		    	<option value="" disabled selected>Choose type of component</option>
 		    	@for(String type: typeOfC) {				
 					<option value="1">@(type)</option>
 				}
 		    </select>
-		    <select class="stdAtt">
-		    	<option value="" disabled selected>Choose your option</option>
+		    <select class="stdAtt" id="stdAttSelectBound">
+		    	<option value="" disabled selected>Choose bound</option>
+		    	<option value="2">None</option>
 		    	@for(main.model.configurator.constraint.AbstractConstraint bound : bounds) {				
 					<option value="2">@(bound.getConstraintName())</option>
 				}
 		    </select>
-		    <select class="stdAtt">
-		    	<option value="" disabled selected>Choose your option</option>
+		    <select class="stdAtt" id="stdAttSelectCat">
+		    	<option value="" disabled selected>Choose category</option>
+		    	<option value="2">None</option>
 		    	<option value="2">Internal</option>
 		    	<option value="2">External</option>
-		    	<option value="2">None</option>
 		    </select>
 		    <p>
 		      <label>
-		        <input name="stdAttCheck" type="checkbox" id="stdAttPresentable" />
+		        <input name="stdAttCheck" type="checkbox" id="stdAttIsPres" />
 		        <span>Is presentable</span>
 		      </label>
 		    </p>
@@ -153,6 +159,7 @@
 		    </p>
 		    <a class="waves-effect waves-light btn" onclick="addTypeC()">add</a>
 		</div>
+		-->
 	</div>
 
 </body>

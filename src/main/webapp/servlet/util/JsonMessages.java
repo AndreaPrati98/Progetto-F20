@@ -103,7 +103,7 @@ public class JsonMessages {
 		int i = 0;
 		
 		for(i = 0; i<list.size(); i++) {
-			responseMapToSend.put("" + i + "", list.get(i).getModel() + " " + list.get(i).getTypeComponent());
+			responseMapToSend.put("" + i + "", list.get(i).getModel() + "@" + list.get(i).getTypeComponent());
 		}
 		responseMapToSend.put("num", i);
 		
@@ -120,5 +120,12 @@ public class JsonMessages {
 		return responseJsonToSend.toJSONString();
 	}
 	
-	
+	public static String getJsonAddStdAttResponse(boolean flag) {
+		Map<String,Object> responseMapToSend = new HashMap<String, Object>(); 	
+		
+		responseMapToSend.put("Ok", flag);
+			
+		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
+		return responseJsonToSend.toJSONString();
+	}
 }

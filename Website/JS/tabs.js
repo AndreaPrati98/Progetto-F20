@@ -5,6 +5,7 @@
   
   
 $("select.typeComp").change(function(){
+    $("#typeComponentDiv").show();
     var selected = $(this).children("option:selected").text();
     $("input").attr("placeholder", selected);
     
@@ -18,7 +19,7 @@ $("select.typeComp").change(function(){
 		
 	  	
 	  	for (i = 0; i < convertedData['num']; i++) {
-			$("#typeComponentDiv").append('<input type="text" placeholder="" name="routename" id="' + i + '"/>');
+			$("#typeComponentDiv").append('<input class="newCompType" type="text" placeholder="" name="routename" id="' + i + '"/>');
 			$("#typeComponentDiv").append('<label id="label' + i + '" for="' + i + '">' + convertedData[i] +  '</label>');
 		}
 		
@@ -49,7 +50,7 @@ function saveComponent(num) {
 	
 	json = json + 'price": "' + $("input#price").val() + '",';
 	json = json + '"name": "' + $("input#name").val() + '",';
-	json = json + '"type": "' + $("select").children("option:selected").text();
+	json = json + '"type": "' + $("select.typeComp").children("option:selected").text();
 	
 	json = json + '"}';
 	
@@ -72,7 +73,7 @@ $("select.removeComp").change(function(){
 	  	$("#removeComponentForm").empty();
 	  	
 	  	for (i = 0; i < convertedData['num']; i++) {
-	  		$("#removeComponentForm").append('<p><label><input type="checkbox" value="' + convertedData[i] + '" name="' + 'checkBox' + '"/><span>' + convertedData[i] + '</span></label></p>');
+	  		$("#removeComponentForm").append('<p><label><input type="checkbox" value="' + convertedData[i] + '" name="' + 'checkBox' + '"/><span>' + convertedData[i].split("@")[0] + '</span></label></p>');
 		}
 		
 		$("#removeComponentForm").append('<button id="submit" class="btn waves-effect waves-light" type="submit" name="action">Submit</button>');
@@ -82,7 +83,7 @@ $("select.removeComp").change(function(){
 function addTypeC(){
 	
 	var name=$("#ntc").val();
-	var isN=$("#radioB:checked").val();
+	var isN=$("#radioB:checked"). val();
 	
 	
 	let posting = $.post( "/administrator/newTypeComp", {newTypeOfC: name, needed: isN});
@@ -96,9 +97,20 @@ function addTypeC(){
 function addStdAtt(){
 	
 	alert("sono un alert");
-	var name=$("#ntc").val();
-	var isN=$("#radioB:checked").val();
+	var name=$("#stdAttName").val();
+	var type=$("#stdAttSelectType option:selected").text();
+	var bound=$("#stdAttSelectBound option:selected").text();
+	var cat=$("#stdAttSelectCat option:selected").text();
+	var isPresentable=$("#stdAttIsPres:checked").val();
+
+	console.log(name + type + bound + cat + isPresentable);
+
+	let posting = $.post( "/administrator/newTypeComp", {stdAttName: name, stdAttType: type, stdAttBound: bound, stdAttCat: cat, stdAttIsPres: isPresentable});
 								
+	posting.done(function(data){
+		var convertedData= JSON.parse(data);
+		alert(convertedData['Ok']);
+	});						
 }
 
 function addBound(){

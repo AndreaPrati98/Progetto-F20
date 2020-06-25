@@ -97,9 +97,11 @@ public class AdministratorServlet extends MyServlet {
 			String[] results = request.getParameterValues("checkBox");
 
 			for (String result : results) {
-				model = result.split(" ")[0];
-				type = result.split(" ")[1];
-
+				model = result.split("@")[0];
+				type = result.split("@")[1];
+				
+				System.out.println(model + " - " + type);
+				
 				pf.removeComponent(model, type);
 			}
 
@@ -137,6 +139,35 @@ public class AdministratorServlet extends MyServlet {
 			List<Component> list = catalog.getComponentListByType(typeComponent);
 			String json = "";
 			json = JsonMessages.getJsonAllTypeComponentResponse(list);
+			response.getWriter().write(json);
+		} else if (request.getPathInfo().equals("/addStdAtt")) {
+			String name = request.getParameter("stdAttName");
+			String stdAtttype = request.getParameter("stdAttType");
+			String bound = request.getParameter("stdAttBound");
+			String cat = request.getParameter("stdAttCat");
+			String isPres = request.getParameter("stdAttIsPres");
+			
+			boolean flag;
+			if(isPres !=null)
+				if (isPres.equals("on")) {
+					flag = true;
+				} else {
+					flag = false;
+				}
+			else {
+				flag = false;
+			}
+			
+			if(bound.equals("None")){
+				bound = null;
+			}
+			
+			if(cat.equals("None")){
+				cat = null;
+			}
+			
+			String json = "";
+			json = JsonMessages.getJsonAddStdAttResponse(pf.addStandardAttribute(name, stdAtttype, bound, cat, flag));
 			response.getWriter().write(json);
 		}
 	}
