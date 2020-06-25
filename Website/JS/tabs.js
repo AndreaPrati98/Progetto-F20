@@ -78,3 +78,11 @@ $("select.removeComp").change(function(){
 		$("#removeComponentForm").append('<button id="submit" class="btn waves-effect waves-light" type="submit" name="action">Submit</button>');
 	});
 });
+
+function Piero(){
+	
+	var name=$("#ntc").val();
+	var isN=$("#ntcn").val();
+	
+	let posting = $.post( "/administrator/newTypeComp", {newTypeOfC: name, needed: isN});
+}

@@ -1,7 +1,5 @@
-@args() { 
-	List<String> typeOfC, 
-} 
-<!DOCTYPE html>
+@args() { List
+<String> typeOfC, } <!DOCTYPE html>
 <html>
 <head>
 <style>
@@ -99,7 +97,7 @@
 		<li><a href="/">Home</a></li>
 		<!--<li><a href="/login">Login</a></li>
 		<li><a href="/sign-in">Sign-in</a></li>-->
-		<li><a href="/profile">Profile</a></li>		
+		<li><a href="/profile">Profile</a></li>
 		<li><a href="/configuration">Configuration</a></li>
 	</ul>
 
@@ -112,45 +110,47 @@
 				<li class="tab col s3"><a href="#test1">Add new Component</a></li>
 				<li class="tab col s3"><a href="#test2">Remove Component</a></li>
 				<li class="tab col s3 "><a href="#test3">Add Std Attribute</a></li>
-				<li class="tab col s3"><a href="#test4">Add new type Component</a></li>
+				<li class="tab col s3"><a href="#test4">Add new type
+						Component</a></li>
 			</ul>
 		</div>
 		<div id="test1" class="col s12">
-			Select Type component 
-			
+			Select Type component
+
 			<div class="input-field col s12">
-			    <select class="typeComp">
-			    	<option value="" disabled selected>Choose your option</option>
-			    	@for(String type: typeOfC) {				
-						<option value="1">@(type)</option>
-					}
-			    </select>
+				<select class="typeComp">
+					<option value="" disabled selected>Choose your option</option>
+					@for(String type: typeOfC) {
+					<option value="1">@(type)</option> }
+				</select>
 			</div>
-			<div id="typeComponentDiv">
-			</div>
+			<div id="typeComponentDiv"></div>
 		</div>
 		<div id="test2" class="col s12">
-			Select type of component to remove 
-			
+			Select type of component to remove
+
 			<div class="input-field col s12">
-			    <select class="removeComp">
-			    	<option value="" disabled>Choose your option</option>
-			    	@for(String type: typeOfC) {				
-						<option value="1">@(type)</option>
-					}
-			    </select>
+				<select class="removeComp">
+					<option value="" disabled>Choose your option</option> @for(String
+					type: typeOfC) {
+					<option value="1">@(type)</option> }
+				</select>
 			</div>
 			<div id="removeComponentDiv">
-				<form action="/administrator/removeComp" id="removeComponentForm" method="post">
-				</form>
+				<form action="/administrator/removeComp" id="removeComponentForm"
+					method="post"></form>
 			</div>
 		</div>
 		<div id="test3" class="col s12">Test 3</div>
 		<div id="test4" class="col s12">
-		Insert new type component
-		<input type="text" placeholder="Name" name="routenamewe" id="n"/>
-		<input type="text" placeholder="Is Needed" name="routenamadce" id="n2"/>
-	</div>
+			Insert new type component <input type="text" placeholder="Name"
+				name="newType" id="ntc" />
+			<p>
+				<label> <input name="group1" type="radio" checked /> <span>Red</span>
+				</label>
+			</p>
+			<a class="waves-effect waves-light btn" onclick="Piero()">add</a>
+		</div>
 	</div>
 
 </body>
