@@ -82,7 +82,7 @@ $("select.removeComp").change(function(){
 function addTypeC(){
 	
 	var name=$("#ntc").val();
-	var isN=$("#radioB:checked"). val();
+	var isN=$("#radioB:checked").val();
 	
 	
 	let posting = $.post( "/administrator/newTypeComp", {newTypeOfC: name, needed: isN});
