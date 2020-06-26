@@ -82,7 +82,7 @@
 				        
 				        
 				        <div class="collapsible-body"  id="@(tipo)Menu">
-			        	<form action="#" style="overflow: auto; height: 20rem">
+			        	<form action="#" style="overflow: auto; min-height:5rm; max-height: 20rem">
 			            	<table id="@(tipo)Table" >
 						        @for(main.model.configurator.component.Component cl:componentlist){
 						        	@if(cl.getTypeComponent().equals(tipo)){
