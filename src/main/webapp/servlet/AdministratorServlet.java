@@ -201,12 +201,12 @@ public class AdministratorServlet extends MyServlet {
 	}
 	private void addAdmin(HttpServletRequest request, HttpServletResponse response,PersistenceFacade pf) throws IOException {
 		String mail=request.getParameter("email");
-		String json = JsonMessages.getJsonStringResponse(pf.addAdmin(mail,true),"");
+		String json = JsonMessages.getJsonStringResponse(pf.addAdmin(mail,true),"Admin added");
 		response.getWriter().write(json);
 	}
 	private void removeAdmin(HttpServletRequest request, HttpServletResponse response,PersistenceFacade pf) throws IOException {
 		String mail=request.getParameter("email");
-		String json = JsonMessages.getJsonStringResponse(pf.addAdmin(mail,false),"");
+		String json = JsonMessages.getJsonStringResponse(pf.addAdmin(mail,false),"Admin removed");
 		response.getWriter().write(json);
 	}
 }

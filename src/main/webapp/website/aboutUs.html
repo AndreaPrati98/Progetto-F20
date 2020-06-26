@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>About us</title>
+	<!-- link additional CSS file -->
+	<!--<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css"> -->
+	<!-- Compiled and minified CSS -->
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<!-- sidenav script -->
+	<script src="../JS/sidenavScript.js"></script>
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"  media="screen,projection"/>
+
+</head>
+<body>
+	<nav class="  cyan darken-2">
+		<div >
+			<a href="/" class="brand-logo">Logo</a>
+			<a href="#" class="sidenav-trigger right" data-target="mobile-nav">
+				<i class="material-icons">menu</i>
+			</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="login">Login</a></li>
+				<li><a href="sign-in">Sign-in</a></li>
+				<li><a href="configuration">Configuration</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="slider">
+		<ul class="slides">
+			<li>
+				<img src="statics/IMG/team/shifu.png"> <!-- random image -->
+				<div class="caption left-align">
+					<h3>Il genio</h3>
+				</div>
+			</li>
+			<li>
+				<img src="statics/IMG/team/ste.png"> <!-- random image -->
+				<div class="caption right-align">
+					<h3>Il genio Incompreso</h3>
+				</div>
+			</li>
+			<li>
+				<img src="statics/IMG/team/Prati.png"> <!-- random image -->
+				<div class="caption right-align">
+					<h3>Il pignolo</h3>
+				</div>
+			</li>
+			<li>
+				<img src="statics/IMG/team/Franco.png"> <!-- random image -->
+				<div class="caption right-align">
+					<br><br>
+					<h3>Il designer</h3>
+				</div>
+			</li>
+			<li>
+				<img src="statics/IMG/team/ire.png"> <!-- random image -->
+				<div class="caption left-align">
+					<br><br><br><br><br><br><br><br><br><br>
+					<h3 class="left-align" >Per forntuna non e' la designer</h3>
+				</div>
+			</li>
+			<li>
+				<img src="statics/IMG/team/ale.png"> <!-- random image -->
+				<div class="caption right-align">
+					<h3>          L' impiegato del mese</h3>
+				</div>
+			</li>
+			<li>
+				<img src="statics/IMG/team/Cic.png"> <!-- random image -->
+				<div class="caption right-align">
+					<br><br><br><br><br><br><br><br>
+					<h3>L'esperto</h3>
+				</div>
+			</li>
+			<li>
+				<img src="statics/IMG/team/Garau.png"> <!-- random image -->
+				<div class="caption right-align">
+					<br><br><br><br><br><br><br><br>
+					<h3>Garau</h3>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<h5 style="text-align: center;">Our grateful thanks goes to NullPointerException and Rythm for joining us in this trip.
+	 <br><br><br><marquee>By Ris8 team</marquee>
+	</h5>
+
+</body>
+</html>
+
+<script type="text/javascript">
+	
+	document.addEventListener('DOMContentLoaded', function() {
+		var elems = document.querySelectorAll('.slider');
+		var instances = M.Slider.init(elems, options);
+	});
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+  	$('.slider').slider();
+  });
+</script>
