@@ -19,17 +19,14 @@ $("select.typeComp").change(function(){
 		
 	  	
 	  	for (i = 0; i < convertedData['num']; i++) {
-			$("#typeComponentDiv").append('<input class="newCompType" type="text" placeholder="" name="routename" id="' + i + '"/>');
-			$("#typeComponentDiv").append('<label id="label' + i + '" for="' + i + '">' + convertedData[i] +  '</label>');
+			$("#typeComponentDiv").append('<input class="newCompType" type="text" placeholder="' + convertedData[i] +  '" name="routename" id="' + i + '"/>');
 		}
 		
-		$("#typeComponentDiv").append('<input type="text" placeholder="" name="routename" id="name"/>');
-		$("#typeComponentDiv").append('<label id="label' + i + '" for="name">Name</label>');
+		$("#typeComponentDiv").append('<input type="text" placeholder="Name" name="routename" id="name"/>');
 		
-		$("#typeComponentDiv").append('<input type="text" placeholder="" name="routename" id="price"/>');
-		$("#typeComponentDiv").append('<label id="label' + i + '" for="price">Price</label>');
+		$("#typeComponentDiv").append('<input type="text" placeholder="Price" name="routename" id="price"/><br><br>');
 		
-		$("#typeComponentDiv").append('<button onClick="saveComponent(' + convertedData['num'] + ')" id="submit" class="btn waves-effect waves-light" type="submit" name="action">Submit</button>');
+		$("#typeComponentDiv").append('<button onClick="saveComponent(' + convertedData['num'] + ')" id="submit" class="btn waves-effect waves-light" type="submit" name="action" style="background-color: #0097a7;">Submit</button>');
     });
 });
 
@@ -76,7 +73,7 @@ $("select.removeComp").change(function(){
 	  		$("#removeComponentForm").append('<p><label><input type="checkbox" value="' + convertedData[i] + '" name="' + 'checkBox' + '"/><span>' + convertedData[i].split("@")[0] + '</span></label></p>');
 		}
 		
-		$("#removeComponentForm").append('<button id="submit" class="btn waves-effect waves-light" type="submit" name="action">Submit</button>');
+		$("#removeComponentForm").append('<button id="submit" class="btn waves-effect waves-light" type="submit" style="background-color: #0097a7;" name="action">Submit</button>');
 	});
 });
 
