@@ -35,7 +35,7 @@ public class AdministratorServlet extends MyServlet {
 
 		if (email != null) {
 			boolean isAdmin = controller.getCustomer().isAdmin();
-
+			
 			// Se nella sessione esiste la mail, mi salvo tutte le info e carico il profilo
 			if (!isAdmin) {
 				response.getWriter().write(Rythm.render("403.html"));
@@ -140,18 +140,24 @@ public class AdministratorServlet extends MyServlet {
 			String json = "";
 			json = JsonMessages.getJsonAllTypeComponentResponse(list);
 			response.getWriter().write(json);
-		} else if (request.getPathInfo().equals("/checkAddAdmin")) {
-			String mail=request.getParameter("email");
-			String json = JsonMessages.getJsonNewTypeComponentResponse(pf.checkIfUserExist(mail));
-			response.getWriter().write(json);
+		} else if (request.getPathInfo().equals("/checkAdmin")) {
+			checkIfUserExist(request, response,pf,true);
 		}else if (request.getPathInfo().equals("/addAdmin")) {
-			String mail=request.getParameter("email");
-			String json = JsonMessages.getJsonNewTypeComponentResponse(pf.addAdmin(mail,true));
-			response.getWriter().write(json);
+			boolean userFlag=checkIfUserExist(request, response,pf,false);
+			if (userFlag) {
+				addAdmin(request, response, pf);
+			}else {
+				String json = JsonMessages.getJsonStringResponse(false,"check email");
+				response.getWriter().write(json);
+			}
 		}else if (request.getPathInfo().equals("/removeAdmin")) {
-			String mail=request.getParameter("email");
-			String json = JsonMessages.getJsonNewTypeComponentResponse(pf.addAdmin(mail,false));
-			response.getWriter().write(json);
+			boolean userFlag=checkIfUserExist(request, response,pf,false);
+			if (userFlag) {
+				removeAdmin(request, response, pf);
+			}else {
+				String json = JsonMessages.getJsonStringResponse(false,"check email");
+				response.getWriter().write(json);
+			}
 		}else if (request.getPathInfo().equals("/addStdAtt")) {
 			String name = request.getParameter("stdAttName");
 			String stdAtttype = request.getParameter("stdAttType");
@@ -182,5 +188,26 @@ public class AdministratorServlet extends MyServlet {
 			json = JsonMessages.getJsonAddStdAttResponse(pf.addStandardAttribute(name, stdAtttype, bound, cat, flag));
 			response.getWriter().write(json);
 		}
+		
+	}
+
+	private boolean checkIfUserExist(HttpServletRequest request, HttpServletResponse response,PersistenceFacade pf,boolean doResponse) throws IOException {
+		String mail=request.getParameter("email");
+		boolean flag=pf.checkIfUserExist(mail);
+		if (doResponse) {
+			String json = JsonMessages.getJsonNewTypeComponentResponse(flag);
+			response.getWriter().write(json);
+		}
+		return flag;
+	}
+	private void addAdmin(HttpServletRequest request, HttpServletResponse response,PersistenceFacade pf) throws IOException {
+		String mail=request.getParameter("email");
+		String json = JsonMessages.getJsonStringResponse(pf.addAdmin(mail,true),"");
+		response.getWriter().write(json);
+	}
+	private void removeAdmin(HttpServletRequest request, HttpServletResponse response,PersistenceFacade pf) throws IOException {
+		String mail=request.getParameter("email");
+		String json = JsonMessages.getJsonStringResponse(pf.addAdmin(mail,false),"");
+		response.getWriter().write(json);
 	}
 }

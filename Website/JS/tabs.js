@@ -113,68 +113,58 @@ function addStdAtt(){
 	});						
 }
 function checkAddAdmin(){
+	
 	var mail=$("#addAdmin").val();
-	let posting=$.post("/administrator/checkAddAdmin",{email:mail})
+	let posting=$.post("/administrator/checkAdmin",{email:mail})
 	posting.done(function(data){
 		var convertedData= JSON.parse(data);
 		var flag=convertedData['Ok'];
-		console.log(typeof(flag))
-		console.log("xxxxxx"+flag)
 		if (flag) {
 			alert("Ok")
 		}else{
-			alert("Email sbagliata!")
+			alert("Wrong email!")
 		}
-		return flag;
-	})
-								
-}function addAdmin(){
-	var flag=checkAddAdmin();
-	console.log(flag)
-	var mail=$("#addAdmin").val();
-	if (flag) {
-		let posting=$.post("/administrator/addAdmin",{email:mail})
-	}
-	else{
-		alert("Email non esiste")
-	}
+		
+	});
+}
+	
+function checkRemoveAdmin(){
+	
+	var mail=$("#removeAdmin").val();
+	let posting=$.post("/administrator/checkAdmin",{email:mail})
 	posting.done(function(data){
 		var convertedData= JSON.parse(data);
 		var flag=convertedData['Ok'];
 		if (flag) {
-			alert("New Admin")
+			alert("Ok")
 		}else{
-			alert("Error")
+			alert("Wrong email!")
 		}
-		return flag;
+		
+	});
+}
+function addAdmin(){
+	var mail=$("#addAdmin").val();
+	let posting=$.post("/administrator/addAdmin",{email:mail})
+	posting.done(function(data){
+		var convertedData= JSON.parse(data);
+		var message=convertedData['response'];
+		alert(message)
+		
+		
 	})
 								
 }
 
 function removeAdmin(){
-	var flag=checkAddAdmin();
-	console.log(flag)
-	var mail=$("#addAdmin").val();
-	if (flag) {
-		let posting=$.post("/administrator/removeAdmin",{email:mail})
-	}
-	else{
-		alert("Email non esiste")
-	}
+	var mail=$("#removeAdmin").val();
+
+	let posting=$.post("/administrator/removeAdmin",{email:mail})
+	
 	posting.done(function(data){
 		var convertedData= JSON.parse(data);
-		var flag=convertedData['Ok'];
-		if (flag) {
-			alert("New Admin")
-		}else{
-			alert("Error")
-		}
-		return flag;
+		var message=convertedData['response'];
+		alert(message)
 	})
-								
-}
-function addBound(){
-	
-	alert("sono un alert");
 								
 }
