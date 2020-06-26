@@ -220,6 +220,9 @@ public class Configuration {
 			//L'autocompletamento e' fallito
 			return false;
 		}
+		if(this.name == null || this.name.equals("")) {
+			this.name = "configuration_"+this.id;
+		}
 		addedComponents = newComponents;
 		return true;
 	}

@@ -24,11 +24,11 @@ public class ProfileServlet extends MyServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		String email = (String) request.getSession().getAttribute("email");
+		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
+				.getAttribute(email + "_controller");
 		
 		String name = null;
-		if (email != null) {
-			ServletController controller = (ServletController) this.getServletConfig().getServletContext()
-					.getAttribute(email + "_controller");
+		if (email != null && controller != null) {
 			// Se nella sessione esiste la mail, mi salvo tutte le info e carico il profilo
 			Customer c = controller.getCustomer();
 			name = c.getName();
@@ -40,7 +40,7 @@ public class ProfileServlet extends MyServlet {
 			response.getWriter().write(Rythm.render("profile.html", name, surname, email, isAdmin, conf, request));
 		} else {
 			// altrimenti reindirizzo al login
-			response.sendRedirect("/login");
+			response.sendRedirect("/logout");
 		}
 	}
 
