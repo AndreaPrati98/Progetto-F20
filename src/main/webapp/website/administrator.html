@@ -1,8 +1,8 @@
 @args() { 
+	String tab,
 	List<main.model.configurator.constraint.AbstractConstraint> bounds,
 	List<String> admin ,
 	List<String> typeOfC, 
-	
 } 
 <!DOCTYPE html>
 <html>
@@ -62,10 +62,29 @@
 	
 		<div class="col s12">
 			<ul class="tabs">
-				<li class="tab col s3"><a href="#test1">Add new Component</a></li>
-				<li class="tab col s3"><a href="#test2">Remove Component</a></li>
-				<li class="tab col s3"><a href="#test3">Add Admin</a></li>
-				<li class="tab col s3"><a href="#test4">Remove admin</a></li>
+				<li class="tab col s3"><a href="#test1"		
+				@if(tab.equals("1")){
+					class="active"
+				}
+				>Add new Component</a></li>	
+				
+				<li class="tab col s3"><a href="#test2"
+				@if(tab.equals("2")){
+					class="active"
+				}
+				>Remove Component</a></li>
+				
+				<li class="tab col s3"><a href="#test3"
+				@if(tab.equals("3")){
+					class="active"
+				}
+				>Add Admin</a></li>
+				
+				<li class="tab col s3"><a href="#test4"
+				@if(tab.equals("4")){
+					class="active"
+				}
+				>Remove admin</a></li>
 				<!-- 
 				<li class="tab col s2 "><a href="#test3">Add Std Attribute</a></li>
 				<li class="tab col s2"><a href="#test4">Add new bound</a></li>
@@ -229,7 +248,7 @@
 	</div>
 
 </body>
-<script src="statics/JS/tabs.js"></script>
+<script src="statics/JS/administrator.js"></script>
 <script src="statics/JS/sidenavScript.js"></script>
 
 </html>

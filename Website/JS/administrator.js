@@ -149,11 +149,9 @@ function addAdmin(){
 	posting.done(function(data){
 		var convertedData= JSON.parse(data);
 		var message=convertedData['response'];
-		alert(message)
-		
-		
-	})
-								
+		alert(message);
+		window.location.replace("/administrator?tab=3");
+	})						
 }
 
 function removeAdmin(){
@@ -164,7 +162,8 @@ function removeAdmin(){
 	posting.done(function(data){
 		var convertedData= JSON.parse(data);
 		var message=convertedData['response'];
-		alert(message)
+		alert(message);
+		window.location.replace("/administrator?tab=4");
 	})
 								
 }

@@ -32,15 +32,16 @@ public class AdministratorServlet extends MyServlet {
 		String email = (String) request.getSession().getAttribute("email");
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
 				.getAttribute(email + "_controller");
-
-		if (email != null) {
+		String tab = request.getParameter("tab");
+		
+		if (email != null && controller != null) {
 			boolean isAdmin = controller.getCustomer().isAdmin();
 			
 			// Se nella sessione esiste la mail, mi salvo tutte le info e carico il profilo
 			if (!isAdmin) {
 				response.getWriter().write(Rythm.render("403.html"));
 			} else {
-				response.getWriter().write(Rythm.render("administrator.html", pf.getAllConstraints(),pf.getAdmin(),pf.getTypeComponent()));
+				response.getWriter().write(Rythm.render("administrator.html", tab, pf.getAllConstraints(),pf.getAdmin(),pf.getTypeComponent()));
 			}
 		} else {
 			// altrimenti reindirizzo al login
@@ -134,8 +135,6 @@ public class AdministratorServlet extends MyServlet {
 			json = JsonMessages.getJsonNewTypeComponentResponse(pf.addTypeComponent(newTypeOfC, flag));
 			response.getWriter().write(json);
 		} else if (request.getPathInfo().equals("/getAllComp")) {
-			System.out.println("Getallcomp");
-
 			List<Component> list = catalog.getComponentListByType(typeComponent);
 			String json = "";
 			json = JsonMessages.getJsonAllTypeComponentResponse(list);
