@@ -29,6 +29,49 @@
 <link type="text/css" rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"
 	media="screen,projection" />
+	
+	<style>
+		#test1{
+			width: 20%;
+			text-align: center;
+			margin: auto;
+		}
+		#test2{
+			width: 20%;
+			margin: auto;
+		}
+		#inField1{
+			text-align: center;
+		}
+		#checkBtn{
+    		background-color: #0097a7;
+		}
+		#removeBtn{
+    		background-color: #d32f2f;
+		}
+		#addBtn{
+    		background-color: #0097a7;
+		}
+		
+		
+		.tabs {
+  			.tab {
+    			a {
+      				color: #0097a7;
+      				&.active {color: #0097a7;}
+      				&:hover {color: #0097a7;}
+      				&:focus {
+        				background-color: rgba(#0097a7, 0.1);
+        				&.active{
+						background-color: rgba(#0097a7, 0.1);
+						}	
+      				}
+    			}
+  			}			
+  			.indicator {background-color: #0097a7;}
+		}
+		
+	</style>
 
 </head>
 <body>
@@ -94,10 +137,12 @@
 			</ul>
 		</div>
 		
+		
+		<div class="center">
 		<div id="test1" class="col s12">
-			Select Type component 
+			<h5>Select Type component </h5>
 			
-			<div class="input-field col s12">
+			<div class="input-field col s12" id="inField1">
 			    <select class="typeComp">
 			    	<option value="" disabled selected>Choose your option</option>
 			    	@for(String type: typeOfC) {				
@@ -108,12 +153,15 @@
 			<div id="typeComponentDiv" style="display: none;">
 				<select class="addComp" id="addCompSelect">
 			    	<option value="" disabled selected>Choose your option</option>
+			    	<br><br>
 			    </select>
+			    <br><br>
 			</div>
+		</div>
 		</div>
 		
 		<div id="test2" class="col s12">
-			Select type of component to remove 
+			<h5>Select type of component to remove </h5>
 			
 			<div class="input-field col s12">
 			    <select class="removeComp">
@@ -153,8 +201,8 @@
 					<input name="email" type="text" placeholder="Email" id="addAdmin" />
 					<br>
 					<p id="checkMsg">
-						<a class="waves-effect waves-light btn" onclick="checkAddAdmin()">check</a>
-						<a class="waves-effect waves-light btn" onclick="addAdmin()">add</a>
+						<a class="waves-effect waves-light btn" id="checkBtn" onclick="checkAddAdmin()">check</a>
+						<a class="waves-effect waves-light btn" id="addBtn" onclick="addAdmin()">add</a>
 					</p>
 				</div>
 			</div>
@@ -185,8 +233,8 @@
 					<input name="email" type="text" placeholder="Email" id="removeAdmin" />
 					<br>
 					<p id="checkMsgr">
-						<a class="waves-effect waves-light btn" onclick="checkRemoveAdmin()">check</a>
-						<a class="waves-effect waves-light btn" onclick="removeAdmin()">remove</a>
+						<a class="waves-effect waves-light btn" id="checkBtn" onclick="checkRemoveAdmin()">check</a>
+						<a class="waves-effect waves-light btn" id="removeBtn" onclick="removeAdmin()">remove</a>
 					</p>
 				</div>
 			</div>
