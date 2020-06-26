@@ -75,7 +75,8 @@ public class ConfigurationServlet extends MyServlet {
 
 		ComponentCatalog catalog = ComponentCatalog.getInstance();
 		List<String> type = PersistenceFacade.getIstance().getTypeComponent();
-
+		System.out.println("I tipi sono");
+		System.out.println(type);
 		response.getWriter().write(Rythm.render("configurationv2.html", catalog.getComponentList(), type,
 				elementOfPreexistentConfiguration, elementSetOfPreexistentConfiguration ,price, performance, valid,errorInAutofill, configurationName));
 	}

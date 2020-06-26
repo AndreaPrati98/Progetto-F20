@@ -50,33 +50,36 @@
         <div class="col s7">
 			<ul class="collapsible" id="collapsibleConfiguration">
 			        @for (String tipo:type) {
-						<li>
-						@if(tipo.equals("case")){
-			        		<div class="collapsible-header " style='font-size:20px '><i class='fas fa-mobile'></i>Case</div>
-			        	}
-				        @if(tipo.equals("mobo")){
-				        	<div class="collapsible-header"><i class="material-icons">developer_board</i>Motherboard</div>
-				        }
-				        @if(tipo.equals("cpu")){
-				        	<div class="collapsible-header"><i class='fas fa-microchip' style='font-size:20px'></i>CPU</div>
-				        }
-				        @if(tipo.equals("ram")){
-				        	<a href="#!" class="collection-item"><span class="badge">1</span></a>
-				            <div class="collapsible-header"><i class='fas fa-memory' style='font-size:20px'></i>RAM</div>
-				        }
-				        @if(tipo.equals("massStorage")){
-				        	 <a href="#!" class="collection-item"><span class="badge">1</span></a>
-				             <div class="collapsible-header"><i class='fas fa-hdd' style='font-size:20px'></i>Storage</div>
-				        }
-				        @if(tipo.equals("power")){
-				        	<div class="collapsible-header"><i class='fas fa-plug' style='font-size:20px'></i>Power</div>
-				        } 
-				        @if(tipo.equals("gpu")){
-				        	<div class="collapsible-header"><i class="material-icons">videogame_asset</i>Graphic Card</div>
-				        }
-				        @if(tipo.equals("cooler")){
-				        	<div class="collapsible-header"><i class="material-icons">ac_unit</i>Cooler</div>
-				        }
+						<li>				        
+				        <div class="collapsible-header " style='font-size:20px '>
+				        	@if(tipo.equals("case")){
+				        		<i class='fas fa-mobile'></i>
+				        	}
+					        else if(tipo.equals("mobo")){
+					        	<i class="material-icons">developer_board</i>
+					        }
+					        else if(tipo.equals("cpu")){
+					        	<i class='fas fa-microchip' style='font-size:20px'></i>
+					        }
+					        else if(tipo.equals("ram")){
+					        	<i class='fas fa-memory' style='font-size:20px'></i>
+					        }
+					        else if(tipo.equals("massStorage")){
+					             <i class='fas fa-hdd' style='font-size:20px'></i>
+					        }
+					        else if(tipo.equals("power")){
+					        	<i class='fas fa-plug' style='font-size:20px'></i>
+					        } 
+					        else if(tipo.equals("gpu")){
+					        	<i class="material-icons">videogame_asset</i>
+					        }
+					        else if(tipo.equals("cooler")){
+					        	<i class="material-icons">ac_unit</i>
+					        }else{
+					        	<i class="material-icons">settings_ethernet</i>
+					        }
+				        @tipo.capFirst()</div>
+				        
 				        
 				        <div class="collapsible-body"  id="@(tipo)Menu">
 			        	<form action="#" style="overflow: auto; height: 20rem">
