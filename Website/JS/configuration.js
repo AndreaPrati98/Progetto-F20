@@ -44,7 +44,10 @@ $("#saveBtn").click(function(){
 	$("#saveBtn").val('true');
 	let confName = $("#confRename").val();
 	//Richiesta ajx
-	save(confName);
+	if(confName != "")
+		save(confName);
+	else
+		alert("Devi inserire un nome!");
 	
 });
 
