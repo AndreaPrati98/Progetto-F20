@@ -1,7 +1,10 @@
+var modals;
 $(document).ready(function(){
     $('.collapsible').collapsible();
     let ranges  = document.querySelectorAll("input[type=range]");
     M.Range.init(ranges);
+    var elems = document.querySelectorAll('.modal');
+	modals = M.Modal.init(elems);
 });
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -192,9 +195,8 @@ function save(confName){
 		  alert("Qualcosa è andato storto");
 	  }
 
-	  var elems = document.querySelectorAll('#modal2');
-	  var instances = M.Modal.init(elems);	  
-	  instances.close();
+	  $('.modal').modal('close');
+
 
 		
 	});  
