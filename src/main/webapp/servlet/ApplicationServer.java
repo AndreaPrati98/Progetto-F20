@@ -17,16 +17,18 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.rythmengine.Rythm;
 
-/**
- * 
- * @author Capici Alessandro
- *
- */
+
 public class ApplicationServer {
 	private int port;
 	private List<MyServlet> servlet;
 	private Server server;
+/**
+ * this servlet class manage the connection by jetty (enable comunication )  we used rtm to write the web pages
+ * for this reason wee had to make a handler for manage the session.
 
+ * @param port
+ * @param servlet
+ */
 	public ApplicationServer(int port, List<MyServlet> servlet) {
 		this.port = port;
 		this.servlet = servlet;
@@ -61,7 +63,7 @@ public class ApplicationServer {
 		try {
 			server.start();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}
@@ -70,11 +72,15 @@ public class ApplicationServer {
 		try {
 			server.stop();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
 	}
+	/**
+	 * 
+	 * @param handler
+	 */
 
 	private void addStaticFileServing(ServletContextHandler handler) {
 		ServletHolder holderPwd = new ServletHolder("default", new DefaultServlet());

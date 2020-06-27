@@ -137,6 +137,15 @@ public class AdministratorServlet extends MyServlet {
 		json = JsonMessages.getJsonOkResponse();
 		response.getWriter().write(json);
 	}
+	/**
+	 * remove a component from db 
+	 * @see ComponentCatalog , PersistenceFacade
+	 * @param request
+	 * @param response
+	 * @param pf
+	 * @param catalog
+	 * @throws IOException
+	 */
 
 	private void removeComponent(HttpServletRequest request, HttpServletResponse response, PersistenceFacade pf,
 			ComponentCatalog catalog) throws IOException {
