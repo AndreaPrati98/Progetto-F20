@@ -14,7 +14,12 @@ import org.rythmengine.Rythm;
 import main.services.util.HashingPassword;
 
 public class LoginServlet extends MyServlet {
+/**
+ * this servlet manage the login we use the hash function to ensure privacy from user
 
+ * @param name
+ * @param path
+ */
 	public LoginServlet(String name, String path) {
 		super(name, path);
 	}
@@ -24,7 +29,7 @@ public class LoginServlet extends MyServlet {
 		response.getWriter().write(Rythm.render("login.html", false));
 	}
 
-	//TODO: Creare metodi privati per alleggerire il tutto
+	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter("Email");
@@ -39,7 +44,7 @@ public class LoginServlet extends MyServlet {
 			response.sendRedirect("/profile");
 			
 		} else {
-			//response.sendRedirect("/login");
+			
 			response.getWriter().write(Rythm.render("login.html", true));
 
 		}

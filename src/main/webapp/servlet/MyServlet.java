@@ -3,7 +3,8 @@ package main.webapp.servlet;
 import javax.servlet.http.HttpServlet;
 
 /**
- * 
+ * main servlet 
+ * @see HttpServlet
  * @author Capici Alessandro
  *
  */
