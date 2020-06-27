@@ -19,6 +19,7 @@ public class LoginServlet extends MyServlet {
 
  * @param name
  * @param path
+ * 
  */
 	public LoginServlet(String name, String path) {
 		super(name, path);
