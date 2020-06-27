@@ -24,7 +24,9 @@ public class JsonMessages {
 	public static final String responseErrorString = "error";
 
 	/**
-	 * Metodo generico quando devo solo scrivere che è andato storto
+	 * 
+	 * generic method for making that  when there is an error plots to string
+
 	 * 
 	 * @return
 	 */
@@ -36,8 +38,9 @@ public class JsonMessages {
 	}
 
 	/**
-	 * Metodo che serve per dire che l'add è andata a male perchè ha violato dei
-	 * contraint
+	 * 
+	 * 
+	 * error in add method beacause break contraint  
 	 * 
 	 * @return
 	 */
@@ -60,6 +63,10 @@ public class JsonMessages {
 		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
 		return responseJsonToSend.toJSONString();
 	}
+	/**
+	 * generic method for making that all ok 
+	 * @return
+	 */
 	
 	public static String getJsonOkResponse() {
 		Map<String, Object> responseMapToSend = new HashMap<String, Object>();
@@ -74,6 +81,8 @@ public class JsonMessages {
 		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
 		return responseJsonToSend.toJSONString();
 	}
+	
+	
 
 	public static String getJsonPerformanceResponse(double performance) {
 		Map<String, Object> responseMapToSend = new HashMap<String, Object>();
