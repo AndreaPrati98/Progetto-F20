@@ -90,6 +90,7 @@ function saveComponent(num) {
 }
 
 $("select.removeComp").change(function(){
+	$("#typeComponentDiv").hide();
     var selected = $(this).children("option:selected").text();
     $("input").attr("placeholder", selected);
     
