@@ -64,8 +64,8 @@ public class RdbUserDAO implements InterfaceUserDAO {
 
 	}
 
-	public boolean changePassword(String oldPassword, String newPassword) {
-		return dbop.changePassword(oldPassword, newPassword);
+	public boolean changePassword(String email, String newPassword) {
+		return dbop.changePassword(email, newPassword);
 
 	}
 
@@ -116,6 +116,20 @@ public class RdbUserDAO implements InterfaceUserDAO {
 		boolean isDone = dbop.removeUser(email); 
 		
 		return isDone;
+	}
+
+	@Override
+	public String getPasswordByMail(String email) {
+		ResultSet rs = dbop.getPassword(email);
+		String psw = null;
+		
+		try {
+			psw = rs.getString("password");			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return psw;
 	}
 
 }

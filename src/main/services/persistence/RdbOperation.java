@@ -442,12 +442,12 @@ public class RdbOperation {
 
 	}
 	
-	public boolean changePassword(String oldPassword, String newPassword) {
-		String sql = ("UPDATE User SET password= ? WHERE password= ?");
+	public boolean changePassword(String email, String newPassword) {
+		String sql = ("UPDATE User SET password= ? WHERE email= ?");
 		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
 			// set the corresponding param
 			pstmt.setString(1, newPassword);
-			pstmt.setString(2, oldPassword);
+			pstmt.setString(2, email);
 			// execute the delete statement
 			pstmt.executeUpdate();
 			return true;
@@ -456,6 +456,21 @@ public class RdbOperation {
 		}
 		return false;
 
+	}
+	
+	public ResultSet getPassword(String email) {
+		String sql = "SELECT password FROM User WHERE email = ?";
+		try {
+			PreparedStatement pstmt = c.prepareStatement(sql);
+			pstmt.setString(1, email);
+			
+			return pstmt.executeQuery();
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+			
+		return null;
 	}
 	
 	public ResultSet getStandardAttributes(String typeComponent) {

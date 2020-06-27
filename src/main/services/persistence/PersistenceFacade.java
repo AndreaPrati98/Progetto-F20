@@ -113,7 +113,13 @@ public class PersistenceFacade {
 		return c;
 
 	}
-
+	
+	//TODO aggiungere uml
+	public String getPasswordByMail(String mail) {
+		String psw = udao.getPasswordByMail(mail);
+		return psw;
+	}
+	
 	public boolean login(String email, String password) {
 
 		return udao.login(email, password);
