@@ -14,4 +14,6 @@ public interface InterfaceUserDAO {
 	public boolean checkIfUserExist(String mail);
 	public List<String> getAdmin();
 	public boolean addAdmin(String mail,boolean decision);
+	public boolean removeUser(String email);
+	
 }
