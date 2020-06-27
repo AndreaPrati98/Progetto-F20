@@ -116,6 +116,9 @@ public class AdministratorServlet extends MyServlet {
 
 			catalog.refreshCatalog();
 		}
+		String json = "";
+		json = JsonMessages.getJsonOkResponse();
+		response.getWriter().write(json);
 	}
 
 	private void removeComponent(HttpServletRequest request, HttpServletResponse response, PersistenceFacade pf,
@@ -134,7 +137,7 @@ public class AdministratorServlet extends MyServlet {
 		}
 
 		catalog.refreshCatalog();
-		response.sendRedirect("/administrator");
+		response.sendRedirect("/administrator?tab=2");
 	}
 
 	private void getCompForm(HttpServletRequest request, HttpServletResponse response, PersistenceFacade pf,

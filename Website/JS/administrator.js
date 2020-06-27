@@ -1,4 +1,4 @@
- $(document).ready(function(){
+$(document).ready(function(){
     $('.tabs').tabs();
     $('select').formSelect();
   });
@@ -35,18 +35,40 @@ function saveComponent(num) {
 	var value;
 	var name;
 	var json;
+	var price;
 	json = '{"';
 	
 	for (i = 0; i < num; i++) {
+		name = $("input#" + i).attr("placeholder");
 		value = $("input#" + i).val();
-		name = $("#label" + i).text();
 		json = json + name + '": "' + value ;
 		
 		json = json + '", "';
+		
+		if(value == ''){
+			console.log(name);
+			let text = "You can't leave " + name + " empty!";
+			M.toast({html: text});
+			return false;
+		}
 	}
 	
-	json = json + 'price": "' + $("input#price").val() + '",';
-	json = json + '"name": "' + $("input#name").val() + '",';
+	price = $("input#price").val();
+	name = $("input#name").val();
+	
+	if(price == ''){
+		let text = "You can't leave price empty!";
+		M.toast({html: text});
+		return false;
+	}
+	
+	if(name == ''){
+		let text = "You can't leave name empty!";
+		M.toast({html: text});
+		return false;
+	}
+	json = json + 'price": "' + price + '",';
+	json = json + '"name": "' + name + '",';
 	json = json + '"type": "' + $("select.typeComp").children("option:selected").text();
 	
 	json = json + '"}';
@@ -54,7 +76,17 @@ function saveComponent(num) {
 	console.log(json);
 	
 	let posting = $.post("administrator/addComp", json);
-	alert("asdasdasd");
+	
+	posting.done(function(data) {
+		var convertedData =  JSON.parse(data);
+		console.log(convertedData);
+	
+		if(convertedData['response'] == 'ok'){
+			window.location.replace("/administrator?tab=1");
+		}else{
+			M.toast({html: 'Error'});
+		}
+	});
 }
 
 $("select.removeComp").change(function(){
@@ -70,12 +102,23 @@ $("select.removeComp").change(function(){
 	  	$("#removeComponentForm").empty();
 	  	
 	  	for (i = 0; i < convertedData['num']; i++) {
-	  		$("#removeComponentForm").append('<p><label><input type="checkbox" value="' + convertedData[i] + '" name="' + 'checkBox' + '"/><span>' + convertedData[i].split("@")[0] + '</span></label></p>');
+	  		$("#removeComponentForm").append('<p><label><input class="removeCompCheckbox"type="checkbox" value="' + convertedData[i] + '" name="' + 'checkBox' + '"/><span>' + convertedData[i].split("@")[0] + '</span></label></p>');
 		}
 		
-		$("#removeComponentForm").append('<button id="submit" class="btn waves-effect waves-light" type="submit" style="background-color: #0097a7;" name="action">Submit</button>');
+		$("#removeComponentForm").append('<button id="removeCompButt" onclick="removeComp()" type="button" class="btn waves-effect waves-light" style="background-color: #0097a7;" name="action">Submit</button>');
 	});
 });
+
+function removeComp(){
+ 	let checked = $(".removeCompCheckbox:checked").length;
+
+	if(!checked) {
+		M.toast({html: "You must check at least one checkbox"});
+	    return false;
+	}else{
+		$("#removeComponentForm").submit();
+	}
+}
 
 function addTypeC(){
 	
@@ -93,7 +136,6 @@ function addTypeC(){
 
 function addStdAtt(){
 	
-	alert("sono un alert");
 	var name=$("#stdAttName").val();
 	var type=$("#stdAttSelectType option:selected").text();
 	var bound=$("#stdAttSelectBound option:selected").text();
@@ -117,9 +159,10 @@ function checkAddAdmin(){
 		var convertedData= JSON.parse(data);
 		var flag=convertedData['Ok'];
 		if (flag) {
-			alert("Ok")
+			let text = mail + " exists!";
+			M.toast({html: text});
 		}else{
-			alert("Wrong email!")
+			M.toast({html: "Wrong email!"});
 		}
 		
 	});
@@ -133,9 +176,10 @@ function checkRemoveAdmin(){
 		var convertedData= JSON.parse(data);
 		var flag=convertedData['Ok'];
 		if (flag) {
-			alert("Ok")
+			let text = mail + " exists!";
+			M.toast({html: text});
 		}else{
-			alert("Wrong email!")
+			M.toast({html: "Wrong email!"});
 		}
 		
 	});
@@ -146,7 +190,6 @@ function addAdmin(){
 	posting.done(function(data){
 		var convertedData= JSON.parse(data);
 		var message=convertedData['response'];
-		alert(message);
 		window.location.replace("/administrator?tab=3");
 	})						
 }
@@ -159,7 +202,6 @@ function removeAdmin(){
 	posting.done(function(data){
 		var convertedData= JSON.parse(data);
 		var message=convertedData['response'];
-		alert(message);
 		window.location.replace("/administrator?tab=4");
 	})
 								

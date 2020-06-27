@@ -60,6 +60,13 @@ public class JsonMessages {
 		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
 		return responseJsonToSend.toJSONString();
 	}
+	
+	public static String getJsonOkResponse() {
+		Map<String, Object> responseMapToSend = new HashMap<String, Object>();
+		responseMapToSend.put(responseString, responseOkString);
+		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
+		return responseJsonToSend.toJSONString();
+	}
 
 	public static String getJsonRedirectResponse() {
 		Map<String, Object> responseMapToSend = new HashMap<String, Object>();
