@@ -105,4 +105,17 @@ public class RdbUserDAO implements InterfaceUserDAO {
 		return dbop.addAdmin(mail, decision);
 	}
 
+	@Override
+	public boolean removeUser(String email) {
+		boolean exist = checkIfUserExist(email);
+		
+		if (!exist) {
+			return false;
+		}
+		
+		boolean isDone = dbop.removeUser(email); 
+		
+		return isDone;
+	}
+
 }
