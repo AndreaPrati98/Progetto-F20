@@ -308,6 +308,20 @@ public class RdbOperation {
 		return false;
 
 	}
+	
+	public boolean removeUser(String email) {
+		String query = "DELETE FROM User WHERE email= '"+ email+"'";
+		boolean isDone = false;
+		try {
+			PreparedStatement pstm = c.prepareStatement(query);
+			pstm.executeUpdate();
+			isDone = true;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+		
+		return isDone;
+	}
 
 	public boolean removeConfiguration(int id) {
 		String sql = "DELETE FROM ElementConfiguration WHERE Id = ?";
