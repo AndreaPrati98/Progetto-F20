@@ -2,7 +2,6 @@ package main.webapp.servlet;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,8 +13,9 @@ import main.model.configurator.configuration.Configuration;
 import main.model.customer.Customer;
 import main.services.persistence.PersistenceFacade;
 
+@SuppressWarnings("serial")
 public class ProfileServlet extends MyServlet {
-
+	
 	public ProfileServlet(String name, String path) {
 		super(name, path);
 	}
@@ -54,6 +54,10 @@ public class ProfileServlet extends MyServlet {
 		if (request.getPathInfo().equals("/remove")) {
 			remove(request, response, controller);
 		}
+		
+		if(request.getPathInfo().equals("/unsubscribe")) {
+			unsubscribe(request, response, controller);
+		}
 	}
 
 	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
@@ -68,17 +72,20 @@ public class ProfileServlet extends MyServlet {
 			System.out.println("Configurazione non rimossa");
 		}
 		
-//		Questo è inutile, è una cosa pensata solo per la pagina di configuration 
-// 		ed inoltre non esiste quel		
-//		String json = "";
-//		if (controller.removeConfiguration(confId)) {
-//			json = JsonMessages.getJsonRemoveConfigurationResponse(confId);
-//		} else {
-//			json = JsonMessages.getJsonNotOkResponse();
-//		}
-//		response.getWriter().write(json);
-		// System.out.println(json);
-		response.sendRedirect("/login");
+		response.sendRedirect("/profile");
+	}
+	
+	private void unsubscribe(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
+
+		if(controller.removeUser()) {
+			System.out.println("Utente disiscritto");
+			response.sendRedirect("/logout");
+
+		} else {
+			System.out.println("Utente iscritto");
+			response.sendRedirect("/profile");			
+		}
+	
 	}
 	
 }

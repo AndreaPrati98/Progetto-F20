@@ -150,6 +150,15 @@ public class ServletController {
 		return configurator.removeConfiguration(confId);
 	}
 	
+	//TODO aggiungere uml
+	public boolean removeUser() {
+		String email = customer.getEmail();
+		PersistenceFacade pf = PersistenceFacade.getIstance();
+		
+		return pf.removeUser(email);
+		
+	}
+	
 	/**
 	 * @return true if create and saves a configuration autofilling the remaining elements
 	 */
