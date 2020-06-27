@@ -1,14 +1,10 @@
 package main.webapp.servlet;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import main.model.configurator.ComponentCatalog;
 import main.model.configurator.Configurator;
 import main.model.configurator.component.Component;
-import main.model.configurator.configuration.Configuration;
 import main.model.customer.Customer;
 import main.services.persistence.PersistenceFacade;
 
