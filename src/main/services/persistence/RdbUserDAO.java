@@ -108,7 +108,6 @@ public class RdbUserDAO implements InterfaceUserDAO {
 	@Override
 	public boolean removeUser(String email) {
 		boolean exist = checkIfUserExist(email);
-		
 		if (!exist) {
 			return false;
 		}
