@@ -14,6 +14,7 @@ public interface InterfaceUserDAO {
 	public boolean checkIfUserExist(String mail);
 	public List<String> getAdmin();
 	public boolean addAdmin(String mail,boolean decision);
+	//TODO aggiungere uml
 	public boolean removeUser(String email);
 	
 }

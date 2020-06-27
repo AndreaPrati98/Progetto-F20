@@ -309,6 +309,7 @@ public class RdbOperation {
 
 	}
 	
+	//TODO aggiungere uml
 	public boolean removeUser(String email) {
 		String query = "DELETE FROM User WHERE email= '"+ email+"'";
 		boolean isDone = false;

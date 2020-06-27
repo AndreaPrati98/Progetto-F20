@@ -102,6 +102,11 @@ public class PersistenceFacade {
 		return udao.addUsers(name, cognome, email, password, isAdmin);
 
 	}
+	
+	//TODO aggiungere uml
+	public boolean removeUser(String email) {
+		return udao.removeUser(email);
+	}
 
 	public Customer getUser(String email) {
 		Customer c = udao.getCustomer(email);
