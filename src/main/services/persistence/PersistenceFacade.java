@@ -1,6 +1,5 @@
 package main.services.persistence;
 
-import java.sql.ResultSet;
 import java.util.List;
 
 import main.model.configurator.component.Component;
