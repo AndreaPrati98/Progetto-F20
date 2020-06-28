@@ -21,19 +21,28 @@ import main.webapp.servlet.util.JsonMessages;
 
 @SuppressWarnings("serial")
 public class AdministratorServlet extends MyServlet {
-/**
- * Adminstrator Servlet  needs to menage the operation like add or remove component 
- * from a configuration or promote an user administrator or not.
- * this servlet communicate with model in detail catolog end comunicate with database  thanks to PersistenceFacade
- * enable the  exchange of data
- * 
- * @param name
- * @param path
- */
+	/**
+	 * Administrator Servlet is used to add or remove components and administrators from db
+	 * Interacts with model using PersistenceFacade and ComponentCatalog.
+	 * Takes a name and its path (as url) as arguments.
+	 * 
+	 * @param name
+	 * @param path
+	 */
 	public AdministratorServlet(String name, String path) {
 		super(name, path);
 	}
-
+	
+	/**
+	 * 	Manage get requests.
+	 *  Renders administrator.html if the user is logged in, otherwise redirects to
+	 *  login, or 403 in case of errors.
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PersistenceFacade pf = PersistenceFacade.getIstance();
@@ -58,15 +67,21 @@ public class AdministratorServlet extends MyServlet {
 		}
 	}
 
+	/**
+	 *  Manages post requests.
+	 *  Each request gets handled by an individual method. Each one of them is better documented later.
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO aggiungere metodi JsonMessage
 		String typeComponent = request.getParameter("typeComp");
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		ComponentCatalog catalog = ComponentCatalog.getInstance();
-		String model = null;
-		String type = null;
-		double price = 0;
 
 		if (request.getPathInfo().equals("/addComp")) {
 			addComponent(request, response, pf, catalog);
@@ -75,7 +90,7 @@ public class AdministratorServlet extends MyServlet {
 		} else if (request.getPathInfo().equals("/getCompForm")) {
 			getCompForm(request, response, pf, typeComponent);
 		} else if (request.getPathInfo().equals("/getAllComp")) {
-			getAllComp(request, response, pf, typeComponent, catalog);
+			getAllComp(request, response, typeComponent, catalog);
 		} else if (request.getPathInfo().equals("/checkAdmin")) {
 			checkIfUserExist(request, response, pf, true);
 		} else if (request.getPathInfo().equals("/addAdmin")) {
@@ -86,7 +101,11 @@ public class AdministratorServlet extends MyServlet {
 
 	}
 	/**
-	 * add component in database thanks to PersistenceFacade 
+	 * Adds a component to db, using PersistenceFacade, and later updates the catalog
+	 * in order to show the changes on the website.
+	 * It first read the information about the component in a json (generated in javascript), 
+	 * then executes the query to add a component, included in PersistenceFacade.
+	 * 
 	 * @see PersistenceFacade,ComponentCatalog
 	 * @param request
 	 * @param response
@@ -97,7 +116,6 @@ public class AdministratorServlet extends MyServlet {
 
 	private void addComponent(HttpServletRequest request, HttpServletResponse response, PersistenceFacade pf,
 			ComponentCatalog catalog) throws IOException {
-		System.out.println("Salva");
 
 		String model = null;
 		String type = null;
@@ -112,11 +130,8 @@ public class AdministratorServlet extends MyServlet {
 				e.printStackTrace();
 			}
 
-			System.out.println(j);
-
 			model = (String) j.get("name");
 			type = (String) j.get("type");
-			System.out.println("Tipo � " + type);
 			price = Double.parseDouble((String) j.get("price"));
 			pf.addComponent(model, type, price);
 
@@ -125,7 +140,6 @@ public class AdministratorServlet extends MyServlet {
 
 			while (o.hasNext()) {
 				att = o.next();
-				System.out.println(att);
 				if (!att.equals("price") && !att.equals("name") && !att.equals("type")) {
 					pf.addAttribute(type, model, att, (String) j.get(att));
 				}
@@ -138,7 +152,10 @@ public class AdministratorServlet extends MyServlet {
 		response.getWriter().write(json);
 	}
 	/**
-	 * remove a component from db 
+	 * Removes a component from db, using PersistenceFacade, and later updates the catalog.
+	 * Splits information stored in a json (generated in javascript), and executes the query
+	 * removing the component, included in PersistenceFacade.
+	 * 
 	 * @see ComponentCatalog , PersistenceFacade
 	 * @param request
 	 * @param response
@@ -157,8 +174,6 @@ public class AdministratorServlet extends MyServlet {
 			model = result.split("@")[0];
 			type = result.split("@")[1];
 
-			System.out.println(model + " - " + type);
-
 			pf.removeComponent(model, type);
 		}
 
@@ -166,6 +181,19 @@ public class AdministratorServlet extends MyServlet {
 		response.sendRedirect("/administrator?tab=2");
 	}
 
+	/**
+	 * Gets the information to dynamically generate the form used in addComponent().
+	 * It first gets a list of every standard attribute of an input component (as its type)
+	 * and then generates a json respones used in javascript later. 
+	 * 
+	 * @see PersistenceFacade
+	 * @param request
+	 * @param response
+	 * @param pf
+	 * @param typeComponent
+	 * @throws IOException
+	 */
+	
 	private void getCompForm(HttpServletRequest request, HttpServletResponse response, PersistenceFacade pf,
 			String typeComponent) throws IOException {
 		List<String> list = pf.getStandardAttributes(typeComponent);
@@ -175,7 +203,20 @@ public class AdministratorServlet extends MyServlet {
 		response.getWriter().write(json);
 	}
 
-	private void getAllComp(HttpServletRequest request, HttpServletResponse response, PersistenceFacade pf,
+	/**
+	 * Gets the information to dynamically generate the form used in removeComponent().
+	 * It first gets a list of every component having their type equal to the parameter typeComponent
+	 * and then generates a json respones used in javascript later. 
+	 * 
+	 * @see ComponentCatalog
+	 * @param request
+	 * @param response
+	 * @param typeComponent
+	 * @param catalog
+	 * @throws IOException
+	 */
+	
+	private void getAllComp(HttpServletRequest request, HttpServletResponse response,
 			String typeComponent, ComponentCatalog catalog) throws IOException {
 		List<Component> list = catalog.getComponentListByType(typeComponent);
 		String json = "";
@@ -183,6 +224,18 @@ public class AdministratorServlet extends MyServlet {
 		response.getWriter().write(json);
 	}
 
+	
+	/**
+	 * Used to check if a user (identified by its email) exists, through an existing method in PersistenceFacade.
+	 * Returns a positive json response if it exists, otherwise returns false.
+	 * 
+	 * @see PersistenceFacade
+	 * @param request
+	 * @param response
+	 * @param pf
+	 * @param doResponse
+	 * @throws IOException
+	 */
 	private boolean checkIfUserExist(HttpServletRequest request, HttpServletResponse response, PersistenceFacade pf,
 			boolean doResponse) throws IOException {
 		String mail = request.getParameter("email");
@@ -193,15 +246,18 @@ public class AdministratorServlet extends MyServlet {
 		}
 		return flag;
 	}
+	
 	/**
-	 *  operation for add administrator users in data base, administrator users have access rights and change the data
-
+	 *  Used to give administrator privileges to a user.
+	 *  It first checks if a given user exists using checkIfUserExist().
+	 *  Grants the privileges if the user exists, shows an error if it does not.
+	 *  
+	 * @see PersistenceFacade, checkIfUserExist()
 	 * @param request
 	 * @param response
 	 * @param pf
 	 * @throws IOException
 	 */
-
 	private void addAdmin(HttpServletRequest request, HttpServletResponse response, PersistenceFacade pf)
 			throws IOException {
 
@@ -219,7 +275,11 @@ public class AdministratorServlet extends MyServlet {
 
 	}
 	/**
-	 * remove the administeator righs from a user 
+	 * Removes administrator privileges from a user.
+	 * It first checks if a given user exists using checkIfUserExist().
+	 * Removes the privileges if the user exists, shows an error if it does not.
+	 * 
+	 * @see PersistenceFacade, checkIfUserExist()
 	 * @param request
 	 * @param response
 	 * @param pf
