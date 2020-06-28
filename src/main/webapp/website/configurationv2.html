@@ -3,227 +3,227 @@
 @extends(main)
 @args() {
 	List<main.model.configurator.component.Component> componentlist,
-	List<String> type
-	List<main.model.configurator.component.Component> elementOfPreexistentConfiguration,
-	Set<main.model.configurator.component.Component> elementSetOfPreexistentConfiguration,
-	double price,
-	double performance,
-	boolean valid,
-	boolean errorAutofill,
-	String configurationName,
-}
-<html>
-<head>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <link type="text/css" rel="stylesheet" href="statics/CSS/personalizedScrollbar.css"  media="screen,projection"/>
-	<style>
-	#saveBtn{
-    	background-color: #388e3c;
-	}
-	#saveBtnModal{
-    	background-color: #388e3c;
-	}
-	#resetBtn{
-    	background-color: #d32f2f;
-	}	
-	#checkBtn{
-    	background-color: #0097a7;
-	}
-	#PerformanceIndex{
-    	width: 20%;
-	}
-	#perfBtn{
-    	background-color: #fbc02d;
-	}
-	#confBtn{
-    	background-color: #90a4ae;
-	}
-	#getBtn{
-    	background-color: #0097a7;
-	}
-	</style>
-</head>
+		List<String> type
+			List<main.model.configurator.component.Component> elementOfPreexistentConfiguration,
+				Set<main.model.configurator.component.Component> elementSetOfPreexistentConfiguration,
+					double price,
+					double performance,
+					boolean valid,
+					boolean errorAutofill,
+					String configurationName,
+				}
+				<html>
+				<head>
+					<meta name='viewport' content='width=device-width, initial-scale=1'>
+					<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+					<link type="text/css" rel="stylesheet" href="statics/CSS/personalizedScrollbar.css"  media="screen,projection"/>
+					<style>
+						#saveBtn{
+							background-color: #388e3c;
+						}
+						#saveBtnModal{
+							background-color: #388e3c;
+						}
+						#resetBtn{
+							background-color: #d32f2f;
+						}
+						#checkBtn{
+							background-color: #0097a7;
+						}
+						#PerformanceIndex{
+							width: 20%;
+						}
+						#perfBtn{
+							background-color: #fbc02d;
+						}
+						#confBtn{
+							background-color: #90a4ae;
+						}
+						#getBtn{
+							background-color: #0097a7;
+						}
+					</style>
+				</head>
 
 
-    <div class="row">
-        <div class="col s7">
-			<ul class="collapsible" id="collapsibleConfiguration">
-			        @for (String tipo:type) {
-						<li>				        
-				        <div class="collapsible-header " style='font-size:20px '>
-				        	@if(tipo.equals("case")){
-				        		<i class='fas fa-mobile'></i>
-				        	}
-					        else if(tipo.equals("mobo")){
-					        	<i class="material-icons">developer_board</i>
-					        }
-					        else if(tipo.equals("cpu")){
-					        	<i class='fas fa-microchip' style='font-size:20px'></i>
-					        }
-					        else if(tipo.equals("ram")){
-					        	<i class='fas fa-memory' style='font-size:20px'></i>
-					        }
-					        else if(tipo.equals("massStorage")){
-					             <i class='fas fa-hdd' style='font-size:20px'></i>
-					        }
-					        else if(tipo.equals("power")){
-					        	<i class='fas fa-plug' style='font-size:20px'></i>
-					        } 
-					        else if(tipo.equals("gpu")){
-					        	<i class="material-icons">videogame_asset</i>
-					        }
-					        else if(tipo.equals("cooler")){
-					        	<i class="material-icons">ac_unit</i>
-					        }else{
-					        	<i class="material-icons">settings_ethernet</i>
-					        }
-				        @tipo.capFirst()</div>
-				        
-				        
-				        <div class="collapsible-body"  id="@(tipo)Menu">
-			        	<form action="#" style="overflow: auto; min-height:5rm; max-height: 20rem">
-			            	<table id="@(tipo)Table" >
-						        @for(main.model.configurator.component.Component cl:componentlist){
-						        	@if(cl.getTypeComponent().equals(tipo)){
-						        		<tr class="row@(tipo)Table" >
-					        				<th>
-						        				<label>
-											    	<input name="group@(tipo)" type="checkbox" id="@(cl.getModel())" class="check@(tipo) selection" @if(elementOfPreexistentConfiguration.contains(cl)){checked}/>
-								        			<span></span>
-								        		</label>
-								        	</th>
-								        	<th>
-						        		 		<input style="width:4rem;" placeholder="Number" id="@(cl.getModel())_number" data-previousValue="-1" type="number" class="validate numberInput" 
-						        		 			@if(Collections.frequency(elementOfPreexistentConfiguration, cl)==0){
-						        		 				value="1"
-						        		 			}else{
-						        		 				value="@(Collections.frequency(elementOfPreexistentConfiguration, cl))"
-						        		 			}
-						        		 			
-						        		 			min="1" max="10">
-								        	</th>
-								        	<th>
-								        		Model <hr>
-								        		@(cl.getModel())
-								        	</th>	
-								        	<th>
-								        		Price <hr>
-								        		<span name="@(cl.getModel())_price"> @(cl.getPrice())</span>$
-								        	</th>
-								        	@for(Map.Entry<String,main.model.configurator.component.Attribute> entry : cl.getAttributesMap().entrySet()) {
-												@if(entry.getValue().isPresentable()){
-													<th>@(entry.getValue().getName()) <hr> @(entry.getValue().getValue())</th> 
+				<div class="row">
+					<div class="col s7">
+						<ul class="collapsible" id="collapsibleConfiguration">
+							@for (String tipo:type) {
+								<li>
+									<div class="collapsible-header " style='font-size:20px '>
+										@if(tipo.equals("case")){
+											<i class='fas fa-mobile'></i>
+										}
+										else if(tipo.equals("mobo")){
+											<i class="material-icons">developer_board</i>
+										}
+										else if(tipo.equals("cpu")){
+											<i class='fas fa-microchip' style='font-size:20px'></i>
+										}
+										else if(tipo.equals("ram")){
+											<i class='fas fa-memory' style='font-size:20px'></i>
+										}
+										else if(tipo.equals("massStorage")){
+											<i class='fas fa-hdd' style='font-size:20px'></i>
+										}
+										else if(tipo.equals("power")){
+											<i class='fas fa-plug' style='font-size:20px'></i>
+										}
+										else if(tipo.equals("gpu")){
+											<i class="material-icons">videogame_asset</i>
+										}
+										else if(tipo.equals("cooler")){
+											<i class="material-icons">ac_unit</i>
+										}else{
+											<i class="material-icons">settings_ethernet</i>
+										}
+										@tipo.capFirst()</div>
+
+
+										<div class="collapsible-body"  id="@(tipo)Menu">
+											<form action="#" style="overflow: auto; min-height:5rm; max-height: 20rem">
+												<table id="@(tipo)Table" >
+													@for(main.model.configurator.component.Component cl:componentlist){
+														@if(cl.getTypeComponent().equals(tipo)){
+															<tr class="row@(tipo)Table" >
+																<th>
+																	<label>
+																		<input name="group@(tipo)" type="checkbox" id="@(cl.getModel())" class="check@(tipo) selection" @if(elementOfPreexistentConfiguration.contains(cl)){checked}/>
+																		<span></span>
+																	</label>
+																</th>
+																<th>
+																	<input style="width:4rem;" placeholder="Number" id="@(cl.getModel())_number" data-previousValue="-1" type="number" class="validate numberInput"
+																	@if(Collections.frequency(elementOfPreexistentConfiguration, cl)==0){
+																		value="1"
+																	}else{
+																		value="@(Collections.frequency(elementOfPreexistentConfiguration, cl))"
+																	}
+
+																	min="1" max="10">
+																</th>
+																<th>
+																	Model <hr>
+																	@(cl.getModel())
+																</th>
+																<th>
+																	Price <hr>
+																	<span name="@(cl.getModel())_price"> @(cl.getPrice())</span>$
+																</th>
+																@for(Map.Entry<String,main.model.configurator.component.Attribute> entry : cl.getAttributesMap().entrySet()) {
+																	@if(entry.getValue().isPresentable()){
+																		<th>@(entry.getValue().getName()) <hr> @(entry.getValue().getValue())</th>
+																	}
+																}
+
+															</th>
+														</tr>
+
+													}
 												}
-											}
-						        	    
-							            	</th>    
-					        			</tr> 
-					        		  
-					        		}
-							     }
-			        		</table>
-			           </form>
-			        </div>
-			     </li>           
-			   } 
-            </ul>
-            <a class="waves-effect waves-light btn" id="checkBtn"><i class="material-icons left">center_focus_weak</i>Check</a>
-            <a class="waves-effect waves-light btn modal-trigger" id="saveBtnModal" href="#modal2"><i class="material-icons left">save</i>Save</a>
-            <div id="modal2" class="modal">
-                <div class="modal-content">
-                    <h4>Save configuration as...</h4>
-                        <div class="input-field col s6">
-          					<input id="confRename" name="confRename" type="text" value="@(configurationName)" class="validate">
-          					<label for="confRename">Give a name</label>
-        				</div>
-        				<a class="waves-effect waves-light btn" id="saveBtn"><i class="material-icons left">save</i>Save</a>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                </div>
-            </div>
-            <a class="waves-effect waves-light btn" id="resetBtn"><i class="material-icons left">delete</i>Reset</a>
-            <a class="waves-effect waves-light btn" id="perfBtn"><i class="material-icons left">poll</i>Performance</a>
-            <a class="waves-effect waves-light btn modal-trigger" id="confBtn" href="#modal1"><i class="material-icons left">widgets</i>Try random config.</a>
-            <div id="modal1" class="modal">
-                <div class="modal-content">
-                    <h4>Get your random configuration</h4>
-                    <form action="/configuration/autofill" method="post">
-                        <p>
-                            <label>
-                                <input name="groupCase" type="radio" value="price"/>
-                                <span>By price</span>
-                 					<div class="widthElement">                                
-                                		<p class="range-field">
-                                        	<input type="range" id="test5" name="priceAutofill" min="1" max="2500"/>
-                                		</p>
-                               		</div>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <input name="groupCase" type="radio" value="random" />
-                                <span>Random</span>
-                            </label>
-                        </p>
-                        <button type="submit" class="waves-effect waves-light btn" id="getBtn" value="GET"></button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
-                </div>
-            </div>
-        </div>
-        <div class="col s5">
-        	<p>
-		        <h4>Price: <label id="totalPrice" style='font-size:55px ; color: black;'>@(price)</label>$</h4>
-		    </p>
-		    <p>
-		        <div id="outcomeLabel">
-		            <h3 id="configurationCheckResultText">
-		            	@if(valid){
-		            	 	Valid Configuration
-		            	}else{
-		            		Invalid Configuration
-		            	}
-		            </h3>
-		        </div>
-		    </p>
-            <ul class="collection with-header">
-                <li class="collection-header"><h4>Added Components</h4></li>
-           		<!-- Qui vengono inseriti i componenti dal javascript -->
-           		@for(main.model.configurator.component.Component component: elementSetOfPreexistentConfiguration){
-           			<li class='collection-item' name='@(component.getModel())'><div>@(component.getModel())<a href='#!' class='secondary-content'>
-           				@if(Collections.frequency(elementOfPreexistentConfiguration, component)!=0){
-						     @(Collections.frequency(elementOfPreexistentConfiguration, component))
-       		 			}		 			
-           			</a></div></li>
-           		}
-            </ul>
-        </div>
-    </div>
-</div>
-<br>
-<div class="col s5">
-    <p>
-        <h3>Performance Index: <label id="performanceLabel" style="font-size: 2rem; color: #00bcd4 ">@(performance)%</label></h3> 
-        <div class="progress" id="PerformanceIndex">
-            <div class="determinate" id="performanceValue" style="width: @(performance)%"></div>
-        </div>
-    </p>
-</div>
-<br>
+											</table>
+										</form>
+									</div>
+								</li>
+							}
+						</ul>
+						<a class="waves-effect waves-light btn" id="checkBtn"><i class="material-icons left">center_focus_weak</i>Check</a>
+						<a class="waves-effect waves-light btn modal-trigger" id="saveBtnModal" href="#modal2"><i class="material-icons left">save</i>Save</a>
+						<div id="modal2" class="modal">
+							<div class="modal-content">
+								<h4>Save configuration as...</h4>
+								<div class="input-field col s6">
+									<input id="confRename" name="confRename" type="text" value="@(configurationName)" class="validate">
+									<label for="confRename">Give a name</label>
+								</div>
+								<a class="waves-effect waves-light btn" id="saveBtn"><i class="material-icons left">save</i>Save</a>
+							</div>
+							<div class="modal-footer">
+								<a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+							</div>
+						</div>
+						<a class="waves-effect waves-light btn" id="resetBtn"><i class="material-icons left">delete</i>Reset</a>
+						<a class="waves-effect waves-light btn" id="perfBtn"><i class="material-icons left">poll</i>Performance</a>
+						<a class="waves-effect waves-light btn modal-trigger" id="confBtn" href="#modal1"><i class="material-icons left">widgets</i>Try random config.</a>
+						<div id="modal1" class="modal">
+							<div class="modal-content">
+								<h4>Get your random configuration</h4>
+								<form action="/configuration/autofill" method="post">
+									<p>
+										<label>
+											<input name="groupCase" type="radio" value="price"/>
+											<span>By price</span>
+											<div class="widthElement">
+												<p class="range-field">
+													<input type="range" id="test5" name="priceAutofill" min="1" max="2500"/>
+												</p>
+											</div>
+										</label>
+									</p>
+									<p>
+										<label>
+											<input name="groupCase" type="radio" value="random" />
+											<span>Random</span>
+										</label>
+									</p>
+									<button type="submit" class="waves-effect waves-light btn" id="getBtn" value="GET"></button>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+							</div>
+						</div>
+					</div>
+					<div class="col s5">
+						<p>
+							<h4>Price: <label id="totalPrice" style='font-size:55px ; color: black;'>@(price)</label>$</h4>
+						</p>
+						<p>
+							<div id="outcomeLabel">
+								<h3 id="configurationCheckResultText">
+									@if(valid){
+										Valid Configuration
+									}else{
+										Invalid Configuration
+									}
+								</h3>
+							</div>
+						</p>
+						<ul class="collection with-header">
+							<li class="collection-header"><h4>Added Components</h4></li>
+							<!-- Qui vengono inseriti i componenti dal javascript -->
+							@for(main.model.configurator.component.Component component: elementSetOfPreexistentConfiguration){
+								<li class='collection-item' name='@(component.getModel())'><div>@(component.getModel())<a href='#!' class='secondary-content'>
+									@if(Collections.frequency(elementOfPreexistentConfiguration, component)!=0){
+										@(Collections.frequency(elementOfPreexistentConfiguration, component))
+									}
+								</a></div></li>
+							}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="col s5">
+				<p>
+					<h3>Performance Index: <label id="performanceLabel" style="font-size: 2rem; color: #00bcd4 ">@(performance)%</label></h3>
+					<div class="progress" id="PerformanceIndex">
+						<div class="determinate" id="performanceValue" style="width: @(performance)%"></div>
+					</div>
+				</p>
+			</div>
+			<br>
 
-@if(errorAutofill){
-	<script>
-		$().ready(function(){
-			alert("Qualcosa nell'autofill e' andato storto")	
-		});
-	</script>
-}
+			@if(errorAutofill){
+				<script>
+					$().ready(function(){
+						alert("Qualcosa nell'autofill e' andato storto")
+					});
+				</script>
+			}
 
-<script src="statics/JS/modal.js"></script>
-<script src="statics/JS/collapsibleScript.js"></script>
-<script src="statics/JS/sidenavScript.js"></script>
-<script src="statics/JS/configuration.js"></script>
+			<script src="statics/JS/modal.js"></script>
+			<script src="statics/JS/collapsibleScript.js"></script>
+			<script src="statics/JS/sidenavScript.js"></script>
+			<script src="statics/JS/configuration.js"></script>
