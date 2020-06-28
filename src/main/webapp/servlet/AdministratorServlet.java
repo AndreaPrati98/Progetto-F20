@@ -34,7 +34,7 @@ public class AdministratorServlet extends MyServlet {
 	}
 	
 	/**
-	 * 	Manage get requests.
+	 * 	Manages get requests.
 	 *  Renders administrator.html if the user is logged in, otherwise redirects to
 	 *  login, or 403 in case of errors.
 	 * 
@@ -184,13 +184,13 @@ public class AdministratorServlet extends MyServlet {
 	/**
 	 * Gets the information to dynamically generate the form used in addComponent().
 	 * It first gets a list of every standard attribute of an input component (as its type)
-	 * and then generates a json respones used in javascript later. 
+	 * and then generates a json response used in javascript later. 
 	 * 
 	 * @see PersistenceFacade
 	 * @param request
 	 * @param response
 	 * @param pf
-	 * @param typeComponent
+	 * @param typeComponent String (ex. cpu, ram...)
 	 * @throws IOException
 	 */
 	
@@ -211,7 +211,7 @@ public class AdministratorServlet extends MyServlet {
 	 * @see ComponentCatalog
 	 * @param request
 	 * @param response
-	 * @param typeComponent
+	 * @param typeComponent String (ex. cpu, ram...)
 	 * @param catalog
 	 * @throws IOException
 	 */
