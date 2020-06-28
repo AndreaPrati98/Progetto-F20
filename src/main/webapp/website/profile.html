@@ -92,6 +92,7 @@
 		
 		
 		<div align="right">
+			<!-- Form per il cambio password -->
 			<form id="changePasswordForm" action="/profile/changePassword" method="POST">
 				<!-- password vecchia -->
 				<div class="center container">
@@ -109,11 +110,36 @@
             	</div>
 	            	<!-- Bottone -->
             	<div class="center container">
-                <button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="changePassBtn">
-                    Change Password
-                    <i class="material-icons right">autorenew</i>
-                </button>
+	                <button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="changePassBtn">
+	                    Change Password
+	                    <i class="material-icons right">autorenew</i>
+	                </button>
+				</div>
+			</form>
 			
+			<!-- Form per il cambio mail -->			
+			<form id="changeEmailForm" action="/profile/changeEmail" method="POST">
+				<!-- email vecchia -->
+				<div class="center container">
+                	<div class="input-field col s3">
+                    	<input id="oldEmail" name="oldEmail" type="text" class="validate">
+                    	<label for="oldEmail">Old email</label>
+                	</div>
+            	</div>
+            	<!-- email nuova -->
+            	<div class="center container">
+                	<div class="input-field col s3">
+                    	<input id="newEmail" name="newEmail" type="text" class="validate">
+                    	<label for="newEmail">New email</label>
+                	</div>
+            	</div>
+	            	<!-- Bottone -->
+            	<div class="center container">
+	                <button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="changePassBtn">
+	                    Change Email
+	                    <i class="material-icons right">autorenew</i>
+	                </button>
+                </div>
 			</form>
 		</div>
 		
