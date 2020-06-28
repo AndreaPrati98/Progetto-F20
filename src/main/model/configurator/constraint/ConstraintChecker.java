@@ -6,11 +6,10 @@ import java.util.List;
 import main.model.configurator.component.Component;
 import main.services.persistence.PersistenceFacade;
 /**
+ * This class is an implementation of {@link InterfaceConstraintChecker}
+ * 
  * @author Guglielmo Cassini
  * @author Irene Schimperna
- * 
- * 
- * 
  */
 public class ConstraintChecker implements InterfaceConstraintChecker {
 	
@@ -52,6 +51,12 @@ public class ConstraintChecker implements InterfaceConstraintChecker {
 		return true;
 	}
 	
+	/**
+	 * 
+	 * @param typeComp - type of component that we are looking for
+	 * @param components - List of components in which
+	 * @return
+	 */
 	private boolean checkIfComponentIsPresent(String typeComp, List<Component> components) {
 		for(Component c : components) {
 			if(c.getTypeComponent().equals(typeComp)) {
