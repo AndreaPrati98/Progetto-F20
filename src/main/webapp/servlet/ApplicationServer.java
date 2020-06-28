@@ -25,7 +25,6 @@ public class ApplicationServer {
 /**
  * this servlet class manage the connection by jetty (enable comunication )  we used rtm to write the web pages
  * for this reason wee had to make a handler for manage the session.
-
  * @param port
  * @param servlet
  */

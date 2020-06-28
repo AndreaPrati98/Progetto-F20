@@ -13,22 +13,36 @@ import main.model.configurator.configuration.Configuration;
 
 import main.services.persistence.PersistenceFacade;
 
+/**
+ * Used to show the home page, containting 3 configurations as a showcase. 
+ */
+
 @SuppressWarnings("serial")
 public class HomeServlet extends MyServlet {
  
-/**
- * @author stefano
- * @param name
- * @param path
- * 
- * this servlet manage the home page of the web site and load 3 configuration from database and it write in home.html these configuration
- * 
- */
+	/**
+	 * Takes a name and its path (as url) as arguments.
+	 * 
+	 * @param name
+	 * @param path
+	 */
 	public HomeServlet(String name, String path) {
 		super(name, path);
 
 	}
 
+	
+	/**
+	 * 	Manage get requests.
+	 *  Renders administrator.html if the user is logged in, otherwise redirects to
+	 *  login, or 403 in case of errors.
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws ServletException
+	 */
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		if (request.getPathInfo().equals("/") || request.getPathInfo().equals("/home.html")) {

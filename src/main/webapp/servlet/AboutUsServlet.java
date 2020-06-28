@@ -10,8 +10,9 @@ import org.rythmengine.Rythm;
 import main.services.persistence.PersistenceFacade;
 
 public class AboutUsServlet extends MyServlet{
+	
 /**
- * this is a servlet, his goal is to load a web page ( abaut us page) 
+ * Simple Servlet used to show the about us page.
  * @param name
  * @param path
  */
@@ -20,8 +21,7 @@ public class AboutUsServlet extends MyServlet{
 		
 	}
 /**
- *  @description responds to a request ( type get) 
- *  @return void 
+ *  Renders the aboutUs html
  */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().write(Rythm.render("aboutUs.html"));

@@ -24,7 +24,7 @@ import main.webapp.servlet.util.JsonMessages;
 @SuppressWarnings("serial")
 public class ConfigurationServlet extends MyServlet {
 /**
- * this servlet need to send the user request to make sure thath is possible add or remove component of a configuration  end anathoer opertion 
+ * Servlet used to handle the creation and editing of configurations.
  * @param name
  * @param path
  */
