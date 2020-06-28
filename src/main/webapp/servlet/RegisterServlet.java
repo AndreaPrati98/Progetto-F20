@@ -19,7 +19,12 @@ import main.services.util.Mail;
  */
 @SuppressWarnings("serial")
 public class RegisterServlet extends MyServlet {
+/**
+ *  wee use this servlet when the user want to registe in our web site ,we need to know name , surname and password the user chose your password
 
+ * @param name
+ * @param path
+ */
 	public RegisterServlet(String name, String path) {
 		super(name, path);
 	}
