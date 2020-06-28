@@ -92,13 +92,11 @@ public class ConfigurationServlet extends MyServlet {
 				elementOfPreexistentConfiguration, elementSetOfPreexistentConfiguration ,price, performance, valid,errorInAutofill, configurationName));
 	}
 
-	// TODO: Cambiare le stringhe boiler con costanti per i percorsi ed i nomi degli
-	// attributi
-	// da recuperare
+	/**
+	 * manage the option in configuration web page and mange the error case
+	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-		// ServletController controller = (ServletController)
-		// request.getSession().getAttribute("controller");
 		String email = (String) request.getSession().getAttribute("email");
 		System.out.println(email);
 		if (email == null) {
@@ -108,20 +106,18 @@ public class ConfigurationServlet extends MyServlet {
 
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
 				.getAttribute(email + "_controller");
-		// Se il controller � nullo (cosa che non dovrebbe succedere poich� viene
-		// istanziato
-		// durante la login, vuol dire che qualcuno sta facendo una cattiva post e
-		// quindi lo
-		// redirigo alla logout
+		/*
+		 * if the controll is null wee redirect to login 
+		 */
 		if (controller == null) {
-			// Devo fare in modo di inviare di risposta come ajax un erorre
-			// e se trovo quell'errore invio un json che venendo letto lato
-			// client dal javascript poi forza a sloggare e poi loggare.
+			/*
+			 * wee send error message (json)
+			 */
 			redirectToLogout(request, response);
 			return;
 		}
 
-		// Prende solo /add anche se il path completo � /configuration/add
+		
 		if (request.getPathInfo().equals("/add")) {
 			add(request, response, controller);
 		} else if (request.getPathInfo().equals("/remove")) {
@@ -255,6 +251,13 @@ public class ConfigurationServlet extends MyServlet {
 		controller.printConf();
 		response.getWriter().write(json);
 	}
+	/**
+	 * remove component from configuration 
+	 * @param request
+	 * @param response
+	 * @param controller
+	 * @throws IOException
+	 */
 
 	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
@@ -279,6 +282,13 @@ public class ConfigurationServlet extends MyServlet {
 		response.getWriter().write(json);
 
 	}
+	/**
+	 *  save configuration in database
+	 * @param request
+	 * @param response
+	 * @param controller
+	 * @throws IOException
+	 */
 
 	private void save(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		String json = "";
@@ -304,6 +314,11 @@ public class ConfigurationServlet extends MyServlet {
 		response.getWriter().write(json);
 	}
 
+	/**
+	 * this method verifies that all the constraints have been respected
+	 * @see ServletController
+	 * 
+	 */
 	private void check(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
 
