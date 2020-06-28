@@ -50,8 +50,8 @@ public class RegisterServlet extends MyServlet {
 			response.getWriter().write(Rythm.render("sign-in.rtm", flag));
 		}
 		pf.addUser(nome, cognome, mail,hashingPassword.getHashPsw(psw), false);
-		Mail m=new Mail(mail,nome);
-		//response.getWriter().write(Rythm.render("profile.html",nome,cognome,mail));
+		Mail m= new Mail(mail,nome);
+		System.out.println("Email inviata"+ m);
 		request.getSession().invalidate();
 		response.sendRedirect("/login");
 	}
