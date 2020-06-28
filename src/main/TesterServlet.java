@@ -34,17 +34,6 @@ public class TesterServlet {
 		// Questo va fatto all'avvio per inizializzare gli id da usare per le configurazioni
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		Configuration.setLastUsedId(pf.getLastUsedId());
-//		ComponentCatalog cata = new ComponentCatalog();
-//		System.out.println(cata.toString());
- 		
-
-		//		for (Component c : catalog.getComponentList()) {
-//			System.out.println(c.getTypeComponent()+"  "+c.getAttributesMap().get("modello").getValue());
-//		}
-//	System.out.println(catalog.getComponentList().size());
-		
-		
-		
 		
 	}
 
