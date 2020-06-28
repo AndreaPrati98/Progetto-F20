@@ -72,7 +72,6 @@ public class RegisterServlet extends MyServlet {
 		} else {
 			pf.addUser(nome, cognome, mail, hashingPassword.getHashPsw(psw), false);
 			Mail m = new Mail(mail, nome);
-			System.out.println("Email inviata" + m);
 			request.getSession().invalidate();
 			response.sendRedirect(LOGIN);
 		}

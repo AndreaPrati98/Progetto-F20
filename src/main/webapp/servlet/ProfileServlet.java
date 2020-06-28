@@ -97,7 +97,7 @@ public class ProfileServlet extends MyServlet {
 		String email = (String) request.getSession().getAttribute(EMAIL);
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
 				.getAttribute(email + _CONTROLLER);
-		System.out.println(request.getPathInfo());
+
 		if (request.getPathInfo().equals(REMOVE)) {
 			remove(request, response, controller);
 		}
@@ -148,11 +148,9 @@ public class ProfileServlet extends MyServlet {
 			throws IOException {
 
 		if (controller.removeUser()) {
-			System.out.println("Utente disiscritto");
 			response.sendRedirect(LOGOUT);
 
 		} else {
-			System.out.println("Utente iscritto");
 			response.sendRedirect(PROFILE);
 		}
 
@@ -184,10 +182,8 @@ public class ProfileServlet extends MyServlet {
 		boolean isDone = controller.changePassword(newPassword, oldPassword);
 		// TODO aggiungere alert
 		if (!isDone) {
-			System.out.println("Password non cambiata");
 			response.sendRedirect(PROFILE);
 		} else {
-			System.out.println("Password cambiata");
 			response.sendRedirect(LOGOUT);
 		}
 	}
@@ -212,10 +208,8 @@ public class ProfileServlet extends MyServlet {
 		boolean isDone = controller.changeEmail(newEmail, oldEmail);
 		// TODO aggiungere alert
 		if (!isDone) {
-			System.out.println("Email non cambiata");
 			response.sendRedirect(PROFILE);
 		} else {
-			System.out.println("Email cambiata");
 			response.sendRedirect(LOGOUT);
 		}
 	}
