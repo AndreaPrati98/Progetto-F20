@@ -47,7 +47,7 @@ public class RegisterServlet extends MyServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	@Override
+	@Override 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		boolean flag = true;
 		HashingPassword hashingPassword = new HashingPassword();
