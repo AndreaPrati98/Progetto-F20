@@ -85,9 +85,9 @@ public class PersistenceFacade {
 
 	}
 
-	public boolean changePassword(String oldPassword, String newPassword) {
+	public boolean changePassword(String email, String newPassword) {
 
-		return udao.changePassword(oldPassword, newPassword);
+		return udao.changePassword(email, newPassword);
 
 	}
 
