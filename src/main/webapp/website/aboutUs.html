@@ -17,7 +17,12 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Import materialize.css-->
 	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"  media="screen,projection"/>
-
+	
+	<script>
+window.onload = function() {
+  var context = new AudioContext();
+}
+</script>
 </head>
 <body>
 	<nav class="  cyan darken-2">
@@ -93,7 +98,13 @@
 	<h5 style="text-align: center;">Our grateful thanks goes to NullPointerException and Rythm for joining us in this trip.
 	 <br><br><br><marquee>By Ris8 team</marquee>
 	</h5>
-
+	
+	<div>
+		<iframe src="statics/IMG/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
+		<audio id="player" autoplay>
+		  <source src="statics/IMG/theme.mp3" type="audio/mpeg">
+		</audio>
+	</div>
 </body>
 </html>
 
@@ -102,6 +113,8 @@
 	document.addEventListener('DOMContentLoaded', function() {
 		var elems = document.querySelectorAll('.slider');
 		var instances = M.Slider.init(elems, options);
+        document.querySelector('#player').autoplay = true;
+
 	});
 
   // Or with jQuery
