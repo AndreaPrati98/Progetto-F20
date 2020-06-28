@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 public class LogoutServlet extends MyServlet {
 
+	private static final String _CONTROLLER = "_controller";
+	private static final String EMAIL = "email";
+
+
 	/**
 	 * @param name
 	 * @param path
@@ -34,8 +38,8 @@ public class LogoutServlet extends MyServlet {
 	 */
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		String email = (String) request.getSession().getAttribute("email");
-		this.getServletConfig().getServletContext().removeAttribute(email+"_controller");
+		String email = (String) request.getSession().getAttribute(EMAIL);
+		this.getServletConfig().getServletContext().removeAttribute(email+_CONTROLLER);
 		request.getSession().invalidate();
 		response.sendRedirect("/");
 	}

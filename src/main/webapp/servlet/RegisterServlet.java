@@ -21,6 +21,14 @@ import main.services.util.Mail;
 
 @SuppressWarnings("serial")
 public class RegisterServlet extends MyServlet {
+	private static final String LOGIN = "/login";
+	private static final String RIPETI_PASSWORD = "RipetiPassword";
+	private static final String PASSWORD = "Password";
+	private static final String EMAIL = "Email";
+	private static final String LAST_NAME = "LastName";
+	private static final String FIRST_NAME = "FirstName";
+	private static final String SIGN_IN_HTML = "sign-in.html";
+
 	/**
 	 * @param name
 	 * @param path
@@ -31,7 +39,7 @@ public class RegisterServlet extends MyServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		response.getWriter().write(Rythm.render("sign-in.html", true));
+		response.getWriter().write(Rythm.render(SIGN_IN_HTML, true));
 	}
 
 	/**
@@ -53,20 +61,20 @@ public class RegisterServlet extends MyServlet {
 		HashingPassword hashingPassword = new HashingPassword();
 
 		PersistenceFacade pf = PersistenceFacade.getIstance();
-		String nome = request.getParameter("FirstName");
-		String cognome = request.getParameter("LastName");
-		String mail = request.getParameter("Email");
-		String psw = request.getParameter("Password");
-		String confpsw = request.getParameter("RipetiPassword");
+		String nome = request.getParameter(FIRST_NAME);
+		String cognome = request.getParameter(LAST_NAME);
+		String mail = request.getParameter(EMAIL);
+		String psw = request.getParameter(PASSWORD);
+		String confpsw = request.getParameter(RIPETI_PASSWORD);
 		if (!psw.equals(confpsw)) {
 			flag = false;
-			response.getWriter().write(Rythm.render("sign-in.html", flag));
+			response.getWriter().write(Rythm.render(SIGN_IN_HTML, flag));
 		} else {
 			pf.addUser(nome, cognome, mail, hashingPassword.getHashPsw(psw), false);
 			Mail m = new Mail(mail, nome);
 			System.out.println("Email inviata" + m);
 			request.getSession().invalidate();
-			response.sendRedirect("/login");
+			response.sendRedirect(LOGIN);
 		}
 	}
 

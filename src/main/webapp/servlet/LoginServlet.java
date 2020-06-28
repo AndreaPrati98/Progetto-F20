@@ -18,6 +18,13 @@ import main.services.util.HashingPassword;
  */
 
 public class LoginServlet extends MyServlet {
+	private static final String PROFILE = "/profile";
+	private static final String _CONTROLLER = "_controller";
+	private static final String LOGIN_HTML = "login.html";
+	private static final String EMAIL2 = "email";
+	private static final String PASSWORD = "Password";
+	private static final String EMAIL = "Email";
+
 	/**
 	 * @param name
 	 * @param path
@@ -29,7 +36,7 @@ public class LoginServlet extends MyServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().write(Rythm.render("login.html", false));
+		response.getWriter().write(Rythm.render(LOGIN_HTML, false));
 	}
 
 	/**
@@ -46,21 +53,21 @@ public class LoginServlet extends MyServlet {
 	
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email = request.getParameter("Email");
-		String password = request.getParameter("Password");
+		String email = request.getParameter(EMAIL);
+		String password = request.getParameter(PASSWORD);
 		HashingPassword hashingPassword = new HashingPassword();
 
 		ServletController controller = new ServletController();
 
 		if (controller.login(email, hashingPassword.getHashPsw(password))) {
-			request.getSession().setAttribute("email", email);
-			this.getServletConfig().getServletContext().setAttribute(email + "_controller", controller); // add to
+			request.getSession().setAttribute(EMAIL2, email);
+			this.getServletConfig().getServletContext().setAttribute(email + _CONTROLLER, controller); // add to
 																											// application
 																											// context
-			response.sendRedirect("/profile");
+			response.sendRedirect(PROFILE);
 
 		} else {
-			response.getWriter().write(Rythm.render("login.html", true));
+			response.getWriter().write(Rythm.render(LOGIN_HTML, true));
 		}
 
 	}
