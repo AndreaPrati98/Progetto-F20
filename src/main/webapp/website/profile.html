@@ -4,182 +4,182 @@
 	String email,
 	boolean isAdmin,
 	List<main.model.configurator.configuration.Configuration> conf,
-	javax.servlet.http.HttpServletRequest request
-}
+		javax.servlet.http.HttpServletRequest request
+	}
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Configurazione pc</title>
-	<!-- link CSS -->
-	<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css">
-	<!-- Compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<!-- sidenav script -->
-	<script src="statics/JS/sidenavScript.js"></script>
-	<!-- Compiled and minified JavaScript -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<!--Import Google Icon Font-->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<!--Import materialize.css-->
-	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"  media="screen,projection"/>
-	<style>
-		#confRow{
-			text-align: left;
-		}
-		#confBtnRow{
-			text-align: center;
-		}
-		#renameForm{
-			text-align: right;
-		}
-		#renameBox{
-			width: 10%;
-		}
-		#changePassBtn{
-			background-color: #0097a7;
-		}
-	</style>
-</head>
-<body>
-	<nav class="  cyan darken-2">
-		<div >
-			<a href="/" class="brand-logo"><img src="statics/IMG/ris8.png"></a>
-			<a href="#" class="sidenav-trigger right" data-target="mobile-nav">
-				<i class="material-icons">menu</i>
-			</a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				
-				@if(isAdmin){
-					<li><a href="administrator">Administrator</a></li>
-				}
-				
-				<li><a href="configuration">Configuration</a></li>
-				
-				@if(request!=null){
-					@if((String)request.getSession().getAttribute("email") == null){
-						<li><a href="login">Login</a></li>
-						<li><a href="sign-in" method="post">Sign-up</a></li>
-					}else{	
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Configurazione pc</title>
+		<!-- link CSS -->
+		<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css">
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<!-- sidenav script -->
+		<script src="statics/JS/sidenavScript.js"></script>
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<!--Import Google Icon Font-->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"  media="screen,projection"/>
+		<style>
+			#confRow{
+				text-align: left;
+			}
+			#confBtnRow{
+				text-align: center;
+			}
+			#renameForm{
+				text-align: right;
+			}
+			#renameBox{
+				width: 10%;
+			}
+			#changePassBtn{
+				background-color: #0097a7;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="  cyan darken-2">
+			<div >
+				<a href="/" class="brand-logo"><img src="statics/IMG/ris8.png"></a>
+				<a href="#" class="sidenav-trigger right" data-target="mobile-nav">
+					<i class="material-icons">menu</i>
+				</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+
+					@if(isAdmin){
+						<li><a href="administrator">Administrator</a></li>
+					}
+
+					<li><a href="configuration">Configuration</a></li>
+
+					@if(request!=null){
+						@if((String)request.getSession().getAttribute("email") == null){
+							<li><a href="login">Login</a></li>
+							<li><a href="sign-in" method="post">Sign-up</a></li>
+						}else{
+							<li><a href="logout"> Logout</a></li>
+							<li><a href="profile"> Profile</a></li>
+						}
+					}else{
 						<li><a href="logout"> Logout</a></li>
 						<li><a href="profile"> Profile</a></li>
 					}
-				}else{
-					<li><a href="logout"> Logout</a></li>
-					<li><a href="profile"> Profile</a></li>
-				}
-			</ul>
-		</div>
-	</nav>
+				</ul>
+			</div>
+		</nav>
 
-	<ul class="sidenav" id="mobile-nav">
-		<li><a href="/">Home</a></li>
-		<li><a href="logout"> Logout</a></li>
-		<li><a href="/configuration">Configuration</a></li>
-	</ul>
-	
-	<div class="row">
-		<div align="left" class="col s6">
-			<h5><b>Name:</b> @(nome)</h5> <br>
-			<h5><b>Surname:</b> @(Cognome)</h5> <br>
-			<h5><b>E-mail:</b> @(email)</h5>
-			<br><br>
-			<form action="/profile/unsubscribe" method= "post">
-			<button class="btn" style="background-color: #d32f2f" type="submit">Unsubscribe</button>
-		</form>
+		<ul class="sidenav" id="mobile-nav">
+			<li><a href="/">Home</a></li>
+			<li><a href="logout"> Logout</a></li>
+			<li><a href="/configuration">Configuration</a></li>
+		</ul>
+
+		<div class="row">
+			<div align="left" class="col s6">
+				<h5><b>Name:</b> @(nome)</h5> <br>
+				<h5><b>Surname:</b> @(Cognome)</h5> <br>
+				<h5><b>E-mail:</b> @(email)</h5>
+				<br><br>
+				<form action="/profile/unsubscribe" method= "post">
+					<button class="btn" style="background-color: #d32f2f" type="submit">Unsubscribe</button>
+				</form>
+			</div>
+
+
+			<div align="right">
+				<!-- Form per il cambio password -->
+				<form id="changePasswordForm" action="/profile/changePassword" method="POST">
+					<!-- password vecchia -->
+					<div class="center container">
+						<div class="input-field col s3">
+							<input id="oldPass" name="oldPass" type="text" class="validate">
+							<label for="oldPass">Old password</label>
+						</div>
+					</div>
+					<!-- password nuova -->
+					<div class="center container">
+						<div class="input-field col s3">
+							<input id="newPass" name="newPass" type="text" class="validate">
+							<label for="newPass">New password</label>
+						</div>
+					</div>
+					<!-- Bottone -->
+					<div class="center container">
+						<button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="changePassBtn">
+							Change Password
+							<i class="material-icons right">autorenew</i>
+						</button>
+					</div>
+				</form>
+
+				<!-- Form per il cambio mail -->
+				<form id="changeEmailForm" action="/profile/changeEmail" method="POST">
+					<!-- email vecchia -->
+					<div class="center container">
+						<div class="input-field col s3">
+							<input id="oldEmail" name="oldEmail" type="text" class="validate">
+							<label for="oldEmail">Old email</label>
+						</div>
+					</div>
+					<!-- email nuova -->
+					<div class="center container">
+						<div class="input-field col s3">
+							<input id="newEmail" name="newEmail" type="text" class="validate">
+							<label for="newEmail">New email</label>
+						</div>
+					</div>
+					<!-- Bottone -->
+					<div class="center container">
+						<button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="changePassBtn">
+							Change Email
+							<i class="material-icons right">autorenew</i>
+						</button>
+					</div>
+				</form>
+			</div>
+
+			<div class="col s6">
+
+			</div>
 		</div>
-		
-		
-		<div align="right">
-			<!-- Form per il cambio password -->
-			<form id="changePasswordForm" action="/profile/changePassword" method="POST">
-				<!-- password vecchia -->
-				<div class="center container">
-                	<div class="input-field col s3">
-                    	<input id="oldPass" name="oldPass" type="text" class="validate">
-                    	<label for="oldPass">Old password</label>
-                	</div>
-            	</div>
-            	<!-- password nuova -->
-            	<div class="center container">
-                	<div class="input-field col s3">
-                    	<input id="newPass" name="newPass" type="text" class="validate">
-                    	<label for="newPass">New password</label>
-                	</div>
-            	</div>
-	            	<!-- Bottone -->
-            	<div class="center container">
-	                <button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="changePassBtn">
-	                    Change Password
-	                    <i class="material-icons right">autorenew</i>
-	                </button>
-				</div>
-			</form>
-			
-			<!-- Form per il cambio mail -->			
-			<form id="changeEmailForm" action="/profile/changeEmail" method="POST">
-				<!-- email vecchia -->
-				<div class="center container">
-                	<div class="input-field col s3">
-                    	<input id="oldEmail" name="oldEmail" type="text" class="validate">
-                    	<label for="oldEmail">Old email</label>
-                	</div>
-            	</div>
-            	<!-- email nuova -->
-            	<div class="center container">
-                	<div class="input-field col s3">
-                    	<input id="newEmail" name="newEmail" type="text" class="validate">
-                    	<label for="newEmail">New email</label>
-                	</div>
-            	</div>
-	            	<!-- Bottone -->
-            	<div class="center container">
-	                <button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="changePassBtn">
-	                    Change Email
-	                    <i class="material-icons right">autorenew</i>
-	                </button>
-                </div>
-			</form>
-		</div>
-		
-		<div class="col s6">
-			
-		</div>
-	</div>
-	
-	<br><br><br><br><br><br><br><br><br><br>
-	
-	<ul class="collection with-header">
-		<li class="collection-header">
-			<h4>
-				Configurations
-			</h4>
-		</li>
-		@if(conf.size()>0){
-			@for(main.model.configurator.configuration.Configuration c: conf) {	
+
+		<br><br><br><br><br><br><br><br><br><br>
+
+		<ul class="collection with-header">
+			<li class="collection-header">
+				<h4>
+					Configurations
+				</h4>
+			</li>
+			@if(conf.size()>0){
+				@for(main.model.configurator.configuration.Configuration c: conf) {
+					<li class="collection-item">
+						<div class="row">
+							<div class="center " id="confRow" >
+								<b><h5>@(c.getName())</h5></b>
+							</div>
+							<div class="col s2 offset-s10" id="confBtnRow" >
+								<a href="configuration?configurationId=@(c.getId())" class="waves-effect waves-light btn right-align" id="@(c.getId())" style="background-color: #0097a7; align:right; ">edit</a>
+								<a href="" class="waves-effect waves-light btn confLink right-align" id="@(c.getId())" style="background-color: #d32f2f;align:right ;">remove</a>
+							</div>
+						</div>
+					</li>
+				}
+			}else{
 				<li class="collection-item">
-					<div class="row">
-					<div class="center " id="confRow" >
-						<b><h5>@(c.getName())</h5></b>
-					</div>
-					<div class="col s2 offset-s10" id="confBtnRow" > 
-						<a href="configuration?configurationId=@(c.getId())" class="waves-effect waves-light btn right-align" id="@(c.getId())" style="background-color: #0097a7; align:right; ">edit</a>
-						<a href="" class="waves-effect waves-light btn confLink right-align" id="@(c.getId())" style="background-color: #d32f2f;align:right ;">remove</a>
-					</div>
+					<div>
+						You have no configuration, buddy!
+						<!-- <img alt="" src=""> -->
 					</div>
 				</li>
 			}
-		}else{
-			<li class="collection-item">
-				<div>
-					You have no configuration, buddy!
-				<!-- <img alt="" src=""> -->
-				</div>
-			</li>
-		}
-	</ul>
+		</ul>
 
-<script src="statics/JS/profile.js"></script>
-</body>
-</html>
+		<script src="statics/JS/profile.js"></script>
+	</body>
+	</html>

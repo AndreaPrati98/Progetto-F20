@@ -1,299 +1,299 @@
 @args() { 
 	String tab,
 	List<main.model.configurator.constraint.AbstractConstraint> bounds,
-	List<String> admin ,
-	List<String> typeOfC, 
-} 
-<!DOCTYPE html>
-<html>
-<head>
+		List<String> admin ,
+			List<String> typeOfC,
+			}
+			<!DOCTYPE html>
+			<html>
+			<head>
 
-<title>Administrator</title>
-<!-- link additional CSS file -->
-<!--<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css"> -->
-<!-- Compiled and minified CSS -->
+				<title>Administrator</title>
+				<!-- link additional CSS file -->
+				<!--<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css"> -->
+				<!-- Compiled and minified CSS -->
 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<script type="text/javascript"
-	src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<!-- sidenav script -->
-<script src="../JS/sidenavScript.js"></script>
-<!-- Compiled and minified JavaScript -->
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<!--Import Google Icon Font-->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-	rel="stylesheet">
-<!--Import materialize.css-->
-<link type="text/css" rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"
-	media="screen,projection" />
-	
-	<style>
-		#test1{
-			width: 20%;
-			text-align: center;
-			margin: auto;
-		}
-		#test2{
-			width: 20%;
-			margin: auto;
-		}
-		#inField1{
-			text-align: center;
-		}
-		#checkBtn{
-    		background-color: #0097a7;
-		}
-		#removeBtn{
-    		background-color: #d32f2f;
-		}
-		#addBtn{
-    		background-color: #0097a7;
-		}
-		
-		
-		.tabs {
-  			.tab {
-    			a {
-      				color: #0097a7;
-      				&.active {color: #0097a7;}
-      				&:hover {color: #0097a7;}
-      				&:focus {
-        				background-color: rgba(#0097a7, 0.1);
-        				&.active{
-						background-color: rgba(#0097a7, 0.1);
-						}	
-      				}
-    			}
-  			}			
-  			.indicator {background-color: #0097a7;}
-		}
-		
-	</style>
+				<link rel="stylesheet"
+				href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+				<script type="text/javascript"
+				src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+				<!-- sidenav script -->
+				<script src="../JS/sidenavScript.js"></script>
+				<!-- Compiled and minified JavaScript -->
+				<script
+				src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+				<!--Import Google Icon Font-->
+				<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+				rel="stylesheet">
+				<!--Import materialize.css-->
+				<link type="text/css" rel="stylesheet"
+				href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"
+				media="screen,projection" />
 
-</head>
-<body>
-	<nav class="  cyan darken-2">
-		<div>
-			<a href="/" class="brand-logo"><img src="statics/IMG/ris8.png"></img></a> <a href="#"
-				class="sidenav-trigger right" data-target="mobile-nav"> <i
-				class="material-icons">menu</i>
-			</a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="administrator">Administrator</a></li>		
+				<style>
+					#test1{
+						width: 20%;
+						text-align: center;
+						margin: auto;
+					}
+					#test2{
+						width: 20%;
+						margin: auto;
+					}
+					#inField1{
+						text-align: center;
+					}
+					#checkBtn{
+						background-color: #0097a7;
+					}
+					#removeBtn{
+						background-color: #d32f2f;
+					}
+					#addBtn{
+						background-color: #0097a7;
+					}
+
+
+					.tabs {
+						.tab {
+							a {
+								color: #0097a7;
+								&.active {color: #0097a7;}
+								&:hover {color: #0097a7;}
+								&:focus {
+									background-color: rgba(#0097a7, 0.1);
+									&.active{
+										background-color: rgba(#0097a7, 0.1);
+									}
+								}
+							}
+						}
+						.indicator {background-color: #0097a7;}
+					}
+
+				</style>
+
+			</head>
+			<body>
+				<nav class="  cyan darken-2">
+					<div>
+						<a href="/" class="brand-logo"><img src="statics/IMG/ris8.png"></img></a> <a href="#"
+						class="sidenav-trigger right" data-target="mobile-nav"> <i
+						class="material-icons">menu</i>
+					</a>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<li><a href="administrator">Administrator</a></li>
+						<li><a href="/configuration">Configuration</a></li>
+						<li><a href="logout"> Logout</a></li>
+						<li><a href="/profile">Profile</a></li>
+					</ul>
+				</div>
+			</nav>
+
+			<ul class="sidenav" id="mobile-nav">
+				<li><a href="/">Home</a></li>
+				<!--<li><a href="/login">Login</a></li>
+				<li><a href="/sign-in">Sign-in</a></li>-->
+				<li><a href="/profile">Profile</a></li>
 				<li><a href="/configuration">Configuration</a></li>
-				<li><a href="logout"> Logout</a></li>
-				<li><a href="/profile">Profile</a></li>				
 			</ul>
-		</div>
-	</nav>
-
-	<ul class="sidenav" id="mobile-nav">
-		<li><a href="/">Home</a></li>
-		<!--<li><a href="/login">Login</a></li>
-		<li><a href="/sign-in">Sign-in</a></li>-->
-		<li><a href="/profile">Profile</a></li>		
-		<li><a href="/configuration">Configuration</a></li>
-	</ul>
 
 
-	<h2 id="mainTitle">Managing Page</h2>
+			<h2 id="mainTitle">Managing Page</h2>
 
-	<div class="row">
-	
-		<div class="col s12">
-			<ul class="tabs">
-				<li class="tab col s3"><a href="#test1"		
-				@if(tab.equals("1")){
-					class="active"
-				}
-				>Add new Component</a></li>	
-				
-				<li class="tab col s3"><a href="#test2"
-				@if(tab.equals("2")){
-					class="active"
-				}
-				>Remove Component</a></li>
-				
-				<li class="tab col s3"><a href="#test3"
-				@if(tab.equals("3")){
-					class="active"
-				}
-				>Add Admin</a></li>
-				
-				<li class="tab col s3"><a href="#test4"
-				@if(tab.equals("4")){
-					class="active"
-				}
-				>Remove admin</a></li>
-				<!-- 
-				<li class="tab col s2 "><a href="#test3">Add Std Attribute</a></li>
-				<li class="tab col s2"><a href="#test4">Add new bound</a></li>
-				<li class="tab col s2"><a href="#test5">Add new type Component</a></li>
-				<li class="tab col s1"></li>
-				-->
-			</ul>
-		</div>
-		
-		
-		<div class="center">
-		<div id="test1" class="col s12">
-			<h5>Select Type component </h5>
-			
-			<div class="input-field col s12" id="inField1">
-			    <select class="typeComp">
-			    	<option value="" disabled selected>Choose your option</option>
-			    	@for(String type: typeOfC) {				
-						<option value="1">@(type)</option>
-					}
-			    </select>
-			</div>
-			<div id="typeComponentDiv" style="display: none;">
-				<select class="addComp" id="addCompSelect">
-			    	<option value="" disabled selected>Choose your option</option>
-			    	<br><br>
-			    </select>
-			    <br><br>
-			</div>
-		</div>
-		</div>
-		
-		<div id="test2" class="col s12">
-			<h5>Select type of component to remove </h5>
-			
-			<div class="input-field col s12">
-			    <select class="removeComp">
-			    	<option value="" disabled selected>Choose your option</option>
-			    	@for(String type: typeOfC) {				
-						<option value="1">@(type)</option>
-					}
-			    </select>
-			</div>
-			<div id="removeComponentDiv">
-				<form action="/administrator/removeComp" id="removeComponentForm" method="post">
-				</form>
-			</div>
-		</div>
-		<div id="test3" class="col s12" >
-			Add administrator
-			<div class="row" style="color:black;">
-				<div class = "col s5">
-				 <table>
-       	 			<thead>
-          				<tr>
-              				<th>Admin Email</th>
-          				</tr>
-        			</thead>
-        			<tbody>
-          				@for(String mail: admin){
-          					<tr>
-            					<td>@(mail)</td>
-         					</tr>
-         				}
-          			</tbody>
-      			</table>
-				</div>
-				<div class="col s1">
-				</div>
-				<div class = "col s5">
-					<input name="email" type="text" placeholder="Email" id="addAdmin" />
-					<br>
-					<p id="checkMsg">
-						<a class="waves-effect waves-light btn" id="checkBtn" onclick="checkAddAdmin()">check</a>
-						<a class="waves-effect waves-light btn" id="addBtn" onclick="addAdmin()">add</a>
-					</p>
-				</div>
-			</div>
-			
-		</div>
-		<div id="test4" class="col s12">
-			Remove administrator
-			<div class="row" style="color:black;">
-				<div class = "col s5">
-				 <table>
-       	 			<thead>
-          				<tr>
-              				<th>Admin Email</th>
-          				</tr>
-        			</thead>
-        			<tbody>
-          				@for(String mail: admin){
-          					<tr>
-            					<td>@(mail)</td>
-         					</tr>
-         				}
-          			</tbody>
-      			</table>
-				</div>
-				<div class="col s1">
-				</div>
-				<div class = "col s5">
-					<input name="email" type="text" placeholder="Email" id="removeAdmin" />
-					<br>
-					<p id="checkMsgr">
-						<a class="waves-effect waves-light btn" id="checkBtn" onclick="checkRemoveAdmin()">check</a>
-						<a class="waves-effect waves-light btn" id="removeBtn" onclick="removeAdmin()">remove</a>
-					</p>
-				</div>
-			</div>
-		</div>
-		<!-- 
-		<div id="test3" class="col s12">
-			<input type="text" placeholder="Name" name="stdAttName" id="stdAttName" class="stdAtt"/>
-			<select class="stdAtt" id="stdAttSelectType">
-		    	<option value="" disabled selected>Choose type of component</option>
-		    	@for(String type: typeOfC) {				
-					<option value="1">@(type)</option>
-				}
-		    </select>
-		    <select class="stdAtt" id="stdAttSelectBound">
-		    	<option value="" disabled selected>Choose bound</option>
-		    	<option value="2">None</option>
-		    	@for(main.model.configurator.constraint.AbstractConstraint bound : bounds) {				
+			<div class="row">
+
+				<div class="col s12">
+					<ul class="tabs">
+						<li class="tab col s3"><a href="#test1"
+							@if(tab.equals("1")){
+								class="active"
+							}
+							>Add new Component</a></li>
+
+							<li class="tab col s3"><a href="#test2"
+								@if(tab.equals("2")){
+									class="active"
+								}
+								>Remove Component</a></li>
+
+								<li class="tab col s3"><a href="#test3"
+									@if(tab.equals("3")){
+										class="active"
+									}
+									>Add Admin</a></li>
+
+									<li class="tab col s3"><a href="#test4"
+										@if(tab.equals("4")){
+											class="active"
+										}
+										>Remove admin</a></li>
+										<!--
+										<li class="tab col s2 "><a href="#test3">Add Std Attribute</a></li>
+										<li class="tab col s2"><a href="#test4">Add new bound</a></li>
+										<li class="tab col s2"><a href="#test5">Add new type Component</a></li>
+										<li class="tab col s1"></li>
+									-->
+								</ul>
+							</div>
+
+
+							<div class="center">
+								<div id="test1" class="col s12">
+									<h5>Select Type component </h5>
+
+									<div class="input-field col s12" id="inField1">
+										<select class="typeComp">
+											<option value="" disabled selected>Choose your option</option>
+											@for(String type: typeOfC) {
+												<option value="1">@(type)</option>
+											}
+										</select>
+									</div>
+									<div id="typeComponentDiv" style="display: none;">
+										<select class="addComp" id="addCompSelect">
+											<option value="" disabled selected>Choose your option</option>
+											<br><br>
+										</select>
+										<br><br>
+									</div>
+								</div>
+							</div>
+
+							<div id="test2" class="col s12">
+								<h5>Select type of component to remove </h5>
+
+								<div class="input-field col s12">
+									<select class="removeComp">
+										<option value="" disabled selected>Choose your option</option>
+										@for(String type: typeOfC) {
+											<option value="1">@(type)</option>
+										}
+									</select>
+								</div>
+								<div id="removeComponentDiv">
+									<form action="/administrator/removeComp" id="removeComponentForm" method="post">
+									</form>
+								</div>
+							</div>
+							<div id="test3" class="col s12" >
+								Add administrator
+								<div class="row" style="color:black;">
+									<div class = "col s5">
+										<table>
+											<thead>
+												<tr>
+													<th>Admin Email</th>
+												</tr>
+											</thead>
+											<tbody>
+												@for(String mail: admin){
+													<tr>
+														<td>@(mail)</td>
+													</tr>
+												}
+											</tbody>
+										</table>
+									</div>
+									<div class="col s1">
+									</div>
+									<div class = "col s5">
+										<input name="email" type="text" placeholder="Email" id="addAdmin" />
+										<br>
+										<p id="checkMsg">
+											<a class="waves-effect waves-light btn" id="checkBtn" onclick="checkAddAdmin()">check</a>
+											<a class="waves-effect waves-light btn" id="addBtn" onclick="addAdmin()">add</a>
+										</p>
+									</div>
+								</div>
+
+							</div>
+							<div id="test4" class="col s12">
+								Remove administrator
+								<div class="row" style="color:black;">
+									<div class = "col s5">
+										<table>
+											<thead>
+												<tr>
+													<th>Admin Email</th>
+												</tr>
+											</thead>
+											<tbody>
+												@for(String mail: admin){
+													<tr>
+														<td>@(mail)</td>
+													</tr>
+												}
+											</tbody>
+										</table>
+									</div>
+									<div class="col s1">
+									</div>
+									<div class = "col s5">
+										<input name="email" type="text" placeholder="Email" id="removeAdmin" />
+										<br>
+										<p id="checkMsgr">
+											<a class="waves-effect waves-light btn" id="checkBtn" onclick="checkRemoveAdmin()">check</a>
+											<a class="waves-effect waves-light btn" id="removeBtn" onclick="removeAdmin()">remove</a>
+										</p>
+									</div>
+								</div>
+							</div>
+							<!--
+							<div id="test3" class="col s12">
+							<input type="text" placeholder="Name" name="stdAttName" id="stdAttName" class="stdAtt"/>
+							<select class="stdAtt" id="stdAttSelectType">
+							<option value="" disabled selected>Choose type of component</option>
+							@for(String type: typeOfC) {
+							<option value="1">@(type)</option>
+						}
+					</select>
+					<select class="stdAtt" id="stdAttSelectBound">
+					<option value="" disabled selected>Choose bound</option>
+					<option value="2">None</option>
+					@for(main.model.configurator.constraint.AbstractConstraint bound : bounds) {
 					<option value="2">@(bound.getConstraintName())</option>
 				}
-		    </select>
-		    <select class="stdAtt" id="stdAttSelectCat">
-		    	<option value="" disabled selected>Choose category</option>
-		    	<option value="2">None</option>
-		    	<option value="2">Internal</option>
-		    	<option value="2">External</option>
-		    </select>
-		    <p>
-		      <label>
-		        <input name="stdAttCheck" type="checkbox" id="stdAttIsPres" />
-		        <span>Is presentable</span>
-		      </label>
-		    </p>
-		    <a class="waves-effect waves-light btn" onclick="addStdAtt()">add</a>
-		</div>
-		
-		<div id="test4" class="col s12">
-			<input type="text" placeholder="Name" name="boundName" id="boundName" class="newBound"/>
-			<select class="newBound">
-		    	<option value="" disabled selected>Choose your option</option>
-		    	<option value="2">Equals</option>
-		    	<option value="2">Max</option>
-		    	<option value="2">Dimension</option>
-		    </select>
-		    <a class="waves-effect waves-light btn" onclick="addBound()">add</a>
-		</div>
-		
-		<div id="test5" class="col s12">
-			Insert new type component
-			<input type="text" placeholder="Name" name="routenamewe" id="ntc"/>
-			<p>
-		      <label>
-		        <input name="group1" type="checkbox" id="radioB" />
-		        <span>Is needed</span>
-		      </label>
-		    </p>
-		    <a class="waves-effect waves-light btn" onclick="addTypeC()">add</a>
-		</div>
-		-->
-	</div>
+			</select>
+			<select class="stdAtt" id="stdAttSelectCat">
+			<option value="" disabled selected>Choose category</option>
+			<option value="2">None</option>
+			<option value="2">Internal</option>
+			<option value="2">External</option>
+		</select>
+		<p>
+		<label>
+		<input name="stdAttCheck" type="checkbox" id="stdAttIsPres" />
+		<span>Is presentable</span>
+	</label>
+</p>
+<a class="waves-effect waves-light btn" onclick="addStdAtt()">add</a>
+</div>
+
+<div id="test4" class="col s12">
+<input type="text" placeholder="Name" name="boundName" id="boundName" class="newBound"/>
+<select class="newBound">
+<option value="" disabled selected>Choose your option</option>
+<option value="2">Equals</option>
+<option value="2">Max</option>
+<option value="2">Dimension</option>
+</select>
+<a class="waves-effect waves-light btn" onclick="addBound()">add</a>
+</div>
+
+<div id="test5" class="col s12">
+Insert new type component
+<input type="text" placeholder="Name" name="routenamewe" id="ntc"/>
+<p>
+<label>
+<input name="group1" type="checkbox" id="radioB" />
+<span>Is needed</span>
+</label>
+</p>
+<a class="waves-effect waves-light btn" onclick="addTypeC()">add</a>
+</div>
+-->
+</div>
 
 </body>
 <script src="statics/JS/administrator.js"></script>
