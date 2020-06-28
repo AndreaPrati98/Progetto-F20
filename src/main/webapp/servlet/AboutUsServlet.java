@@ -11,7 +11,7 @@ import main.services.persistence.PersistenceFacade;
 
 public class AboutUsServlet extends MyServlet{
 /**
- * @description this is a servlet, his goal is to load a web page ( abaut us page) 
+ * this is a servlet, his goal is to load a web page ( abaut us page) 
  * @param name
  * @param path
  */
