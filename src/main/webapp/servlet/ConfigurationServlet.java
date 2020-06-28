@@ -31,6 +31,25 @@ import main.webapp.servlet.util.JsonMessages;
 @SuppressWarnings("serial")
 public class ConfigurationServlet extends MyServlet {
 
+	private static final String NAME2 = "name";
+	private static final String MODEL = "model";
+	private static final String PRICE = "price";
+	private static final String RANDOM = "random";
+	private static final String GROUP_CASE = "groupCase";
+	private static final String AUTOFILL = "/autofill";
+	private static final String PERFORMANCE = "/performance";
+	private static final String SAVE = "/save";
+	private static final String CHECK = "/check";
+	private static final String REMOVE = "/remove";
+	private static final String ADD = "/add";
+	private static final String CONFIGURATIONV2_HTML = "configurationv2.html";
+	private static final String ERROR_AUTOFILL = "errorAutofill";
+	private static final String CONFIGURATION_ID = "configurationId";
+	private static final String LOGOUT = "/logout";
+	private static final String _CONTROLLER = "_controller";
+	public static final String EMAIL = "email";
+
+
 	public ConfigurationServlet(String name, String path) {
 		super(name, path);
 	}
@@ -51,24 +70,21 @@ public class ConfigurationServlet extends MyServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-		String email = (String) request.getSession().getAttribute("email");
+		String email = (String) request.getSession().getAttribute(EMAIL);
 		if (email == null) {
-			response.sendRedirect("/login");
-			
+			response.sendRedirect(LOGOUT);
 			return;
-		}
-
-		
+		}		
 
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
-				.getAttribute(email + "_controller");
+				.getAttribute(email + _CONTROLLER);
 		if (controller == null) {
-			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/logout");
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(LOGOUT);
 			dispatcher.forward(request, response);
 			return;
 		}
 
-		String confIdAsString = request.getParameter("configurationId");
+		String confIdAsString = request.getParameter(CONFIGURATION_ID);
 		List<Component> elementOfPreexistentConfiguration = new ArrayList<Component>();
 		Set<Component> elementSetOfPreexistentConfiguration = new HashSet<Component>();
 		double price = 0.0;
@@ -86,7 +102,7 @@ public class ConfigurationServlet extends MyServlet {
 			if(performance == -1)
 				performance = 0.0;
 			valid = controller.checkConfiguration();
-			errorInAutofill = Boolean.parseBoolean(request.getParameter("errorAutofill"));
+			errorInAutofill = Boolean.parseBoolean(request.getParameter(ERROR_AUTOFILL));
 			configurationName = controller.getConfigurationName();
 			System.out.println("Configuration name "+configurationName);
 			elementSetOfPreexistentConfiguration = new HashSet<>(elementOfPreexistentConfiguration);
@@ -100,7 +116,7 @@ public class ConfigurationServlet extends MyServlet {
 		List<String> type = PersistenceFacade.getIstance().getTypeComponent();
 		System.out.println("I tipi sono");
 		System.out.println(type);
-		response.getWriter().write(Rythm.render("configurationv2.html", catalog.getComponentList(), type,
+		response.getWriter().write(Rythm.render(CONFIGURATIONV2_HTML, catalog.getComponentList(), type,
 				elementOfPreexistentConfiguration, elementSetOfPreexistentConfiguration ,price, performance, valid,errorInAutofill, configurationName));
 	}
 
@@ -124,7 +140,7 @@ public class ConfigurationServlet extends MyServlet {
 	 * */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-		String email = (String) request.getSession().getAttribute("email");
+		String email = (String) request.getSession().getAttribute(EMAIL);
 		System.out.println(email);
 		if (email == null) {
 			response.sendRedirect("/login");
@@ -132,7 +148,7 @@ public class ConfigurationServlet extends MyServlet {
 		}
 
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
-				.getAttribute(email + "_controller");
+				.getAttribute(email + _CONTROLLER);
 		/*
 		 * if the controll is null wee redirect to login 
 		 */
@@ -145,17 +161,17 @@ public class ConfigurationServlet extends MyServlet {
 		}
 
 		
-		if (request.getPathInfo().equals("/add")) {
+		if (request.getPathInfo().equals(ADD)) {
 			add(request, response, controller);
-		} else if (request.getPathInfo().equals("/remove")) {
+		} else if (request.getPathInfo().equals(REMOVE)) {
 			remove(request, response, controller);
-		} else if (request.getPathInfo().equals("/check")) {
+		} else if (request.getPathInfo().equals(CHECK)) {
 			check(request, response, controller);
-		} else if (request.getPathInfo().equals("/save")) {
+		} else if (request.getPathInfo().equals(SAVE)) {
 			save(request, response, controller);
-		} else if (request.getPathInfo().equals("/performance")) {
+		} else if (request.getPathInfo().equals(PERFORMANCE)) {
 			getPerformance(request, response, controller);
-		}else if(request.getPathInfo().equals("/autofill")) {
+		}else if(request.getPathInfo().equals(AUTOFILL)) {
 			
 			autofill(request, response, controller);
 		}
@@ -178,7 +194,7 @@ public class ConfigurationServlet extends MyServlet {
 	 */
 	private void autofill(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 				
-		String choice = (String) request.getParameter("groupCase");
+		String choice = (String) request.getParameter(GROUP_CASE);
 		
 		System.out.println("La scelta � "+ choice);
 		if(choice == null) {
@@ -188,7 +204,7 @@ public class ConfigurationServlet extends MyServlet {
 		
 		
 		
-		if(choice.equals("random")) {
+		if(choice.equals(RANDOM)) {
 			if(controller.autofill()){
 				//Make redirection to same page with current conf id
 				System.out.println("auto random ok");
@@ -198,7 +214,7 @@ public class ConfigurationServlet extends MyServlet {
 				
 				reloadConfigurationHtmlPage(response, controller, true);
 			}	
-		}else if(choice.equals("price")){
+		}else if(choice.equals(PRICE)){
 			String priceString = (String) request.getParameter("priceAutofill");
 			if( priceString != null){
 				double price = Double.parseDouble(priceString);
@@ -268,7 +284,7 @@ public class ConfigurationServlet extends MyServlet {
 	private void add(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
 		
-		String modelOfComponentToInsert = request.getParameter("model");
+		String modelOfComponentToInsert = request.getParameter(MODEL);
 		String numberString = request.getParameter("number");
 		int number = 1;
 		if (numberString != null)
@@ -307,7 +323,7 @@ public class ConfigurationServlet extends MyServlet {
 
 	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
-		String modelOfComponentToRemove = request.getParameter("model");
+		String modelOfComponentToRemove = request.getParameter(MODEL);
 		System.out.println("Sto facendo la rimozione di " + modelOfComponentToRemove);
 
 		
@@ -340,7 +356,7 @@ public class ConfigurationServlet extends MyServlet {
 
 	private void save(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		String json = "";
-		String confName = request.getParameter("name");
+		String confName = request.getParameter(NAME2);
 		System.out.println("Confname "+confName);
 		if(confName != null)
 			controller.setConfigurationName(confName);
