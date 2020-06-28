@@ -208,7 +208,7 @@ public class ServletController {
 		if(!configurator.autofillRandom()) 
 			return false;
 		
-		return true;
+		return this.saveConfiguration();
 	}
 	
 	/**
@@ -222,7 +222,7 @@ public class ServletController {
 		if(!configurator.autofillByPrice(price)) 
 			return false;
 		
-		return 	true;
+		return 	this.saveConfiguration();
 	}
 	
 	/**

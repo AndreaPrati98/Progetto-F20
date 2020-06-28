@@ -175,13 +175,7 @@ public class ConfigurationServlet extends MyServlet {
 	 * @throws IOException
 	 */
 	private void autofill(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
-		//The first thing is to save the configuration
-		if(!controller.saveConfiguration()) {
-			reloadConfigurationHtmlPage(response, controller,true);
-			return;
-		}
-		
-		
+				
 		String choice = (String) request.getParameter("groupCase");
 		
 		System.out.println("La scelta � "+ choice);
