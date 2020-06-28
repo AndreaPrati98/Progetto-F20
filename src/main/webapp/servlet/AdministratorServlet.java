@@ -25,6 +25,26 @@ import main.webapp.servlet.util.JsonMessages;
 
 @SuppressWarnings("serial")
 public class AdministratorServlet extends MyServlet {
+	private static final String ADMIN_REMOVED = "Admin removed";
+	private static final String CHECK_EMAIL = "check email";
+	private static final String ADMIN_ADDED = "Admin added";
+	private static final String PRICE = "price";
+	private static final String TYPE = "type";
+	private static final String NAME = "name";
+	private static final String REMOVE_ADMIN = "/removeAdmin";
+	private static final String ADD_ADMIN = "/addAdmin";
+	private static final String CHECK_ADMIN = "/checkAdmin";
+	private static final String GET_ALL_COMP = "/getAllComp";
+	private static final String GET_COMP_FORM = "/getCompForm";
+	private static final String REMOVE_COMP = "/removeComp";
+	private static final String ADD_COMP = "/addComp";
+	private static final String TYPE_COMP = "typeComp";
+	private static final String LOGIN = "/login";
+	private static final String ADMINISTRATOR_HTML = "administrator.html";
+	private static final String _403_HTML = "403.html";
+	private static final String TAB = "tab";
+	private static final String _CONTROLLER = "_controller";
+	private static final String EMAIL = "email";
 	/**
 	 * @param name its name.
 	 * @param path its url .
@@ -46,24 +66,24 @@ public class AdministratorServlet extends MyServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PersistenceFacade pf = PersistenceFacade.getIstance();
-		String email = (String) request.getSession().getAttribute("email");
+		String email = (String) request.getSession().getAttribute(EMAIL);
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
-				.getAttribute(email + "_controller");
-		String tab = request.getParameter("tab");
+				.getAttribute(email + _CONTROLLER);
+		String tab = request.getParameter(TAB);
 
 		if (email != null && controller != null) {
 			boolean isAdmin = controller.getCustomer().isAdmin();
 
 			// Se nella sessione esiste la mail, mi salvo tutte le info e carico il profilo
 			if (!isAdmin) {
-				response.getWriter().write(Rythm.render("403.html"));
+				response.getWriter().write(Rythm.render(_403_HTML));
 			} else {
-				response.getWriter().write(Rythm.render("administrator.html", tab, pf.getAllConstraints(),
+				response.getWriter().write(Rythm.render(ADMINISTRATOR_HTML, tab, pf.getAllConstraints(),
 						pf.getAdmin(), pf.getTypeComponent()));
 			}
 		} else {
 			// altrimenti reindirizzo al login
-			response.sendRedirect("/login");
+			response.sendRedirect(LOGIN);
 		}
 	}
 
@@ -86,23 +106,23 @@ public class AdministratorServlet extends MyServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO aggiungere metodi JsonMessage
-		String typeComponent = request.getParameter("typeComp");
+		String typeComponent = request.getParameter(TYPE_COMP);
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		ComponentCatalog catalog = ComponentCatalog.getInstance();
 
-		if (request.getPathInfo().equals("/addComp")) {
+		if (request.getPathInfo().equals(ADD_COMP)) {
 			addComponent(request, response, pf, catalog);
-		} else if (request.getPathInfo().equals("/removeComp")) {
+		} else if (request.getPathInfo().equals(REMOVE_COMP)) {
 			removeComponent(request, response, pf, catalog);
-		} else if (request.getPathInfo().equals("/getCompForm")) {
+		} else if (request.getPathInfo().equals(GET_COMP_FORM)) {
 			getCompForm(request, response, pf, typeComponent);
-		} else if (request.getPathInfo().equals("/getAllComp")) {
+		} else if (request.getPathInfo().equals(GET_ALL_COMP)) {
 			getAllComp(request, response, typeComponent, catalog);
-		} else if (request.getPathInfo().equals("/checkAdmin")) {
+		} else if (request.getPathInfo().equals(CHECK_ADMIN)) {
 			checkIfUserExist(request, response, pf, true);
-		} else if (request.getPathInfo().equals("/addAdmin")) {
+		} else if (request.getPathInfo().equals(ADD_ADMIN)) {
 			addAdmin(request, response, pf);
-		} else if (request.getPathInfo().equals("/removeAdmin")) {
+		} else if (request.getPathInfo().equals(REMOVE_ADMIN)) {
 			removeAdmin(request, response, pf);
 		}
 
@@ -137,9 +157,9 @@ public class AdministratorServlet extends MyServlet {
 				e.printStackTrace();
 			}
 
-			model = (String) j.get("name");
-			type = (String) j.get("type");
-			price = Double.parseDouble((String) j.get("price"));
+			model = (String) j.get(NAME);
+			type = (String) j.get(TYPE);
+			price = Double.parseDouble((String) j.get(PRICE));
 			pf.addComponent(model, type, price);
 
 			Iterator<String> o = j.keySet().iterator();
@@ -147,7 +167,7 @@ public class AdministratorServlet extends MyServlet {
 
 			while (o.hasNext()) {
 				att = o.next();
-				if (!att.equals("price") && !att.equals("name") && !att.equals("type")) {
+				if (!att.equals(PRICE) && !att.equals(NAME) && !att.equals(TYPE)) {
 					pf.addAttribute(type, model, att, (String) j.get(att));
 				}
 			}
@@ -245,7 +265,7 @@ public class AdministratorServlet extends MyServlet {
 	 */
 	private boolean checkIfUserExist(HttpServletRequest request, HttpServletResponse response, PersistenceFacade pf,
 			boolean doResponse) throws IOException {
-		String mail = request.getParameter("email");
+		String mail = request.getParameter(EMAIL);
 		boolean flag = pf.checkIfUserExist(mail);
 		if (doResponse) {
 			String json = JsonMessages.getJsonNewTypeComponentResponse(flag);
@@ -272,11 +292,11 @@ public class AdministratorServlet extends MyServlet {
 
 		boolean userFlag = checkIfUserExist(request, response, pf, false);
 		if (userFlag) {
-			mail = request.getParameter("email");
-			json = JsonMessages.getJsonStringResponse(pf.addAdmin(mail, true), "Admin added");
+			mail = request.getParameter(EMAIL);
+			json = JsonMessages.getJsonStringResponse(pf.addAdmin(mail, true), ADMIN_ADDED);
 			response.getWriter().write(json);
 		} else {
-			json = JsonMessages.getJsonStringResponse(false, "check email");
+			json = JsonMessages.getJsonStringResponse(false, CHECK_EMAIL);
 			response.getWriter().write(json);
 		}
 
@@ -298,11 +318,11 @@ public class AdministratorServlet extends MyServlet {
 		String mail, json;
 		boolean userFlag = checkIfUserExist(request, response, pf, false);
 		if (userFlag) {
-			mail = request.getParameter("email");
-			json = JsonMessages.getJsonStringResponse(pf.addAdmin(mail, false), "Admin removed");
+			mail = request.getParameter(EMAIL);
+			json = JsonMessages.getJsonStringResponse(pf.addAdmin(mail, false), ADMIN_REMOVED);
 			response.getWriter().write(json);
 		} else {
-			json = JsonMessages.getJsonStringResponse(false, "check email");
+			json = JsonMessages.getJsonStringResponse(false, CHECK_EMAIL);
 			response.getWriter().write(json);
 		}
 	}

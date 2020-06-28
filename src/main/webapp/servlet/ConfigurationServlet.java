@@ -47,7 +47,7 @@ public class ConfigurationServlet extends MyServlet {
 	private static final String CONFIGURATION_ID = "configurationId";
 	private static final String LOGOUT = "/logout";
 	private static final String _CONTROLLER = "_controller";
-	public static final String EMAIL = "email";
+	private static final String EMAIL = "email";
 
 
 	public ConfigurationServlet(String name, String path) {
