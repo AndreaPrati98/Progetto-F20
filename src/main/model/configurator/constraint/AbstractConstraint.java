@@ -15,8 +15,8 @@ public abstract class AbstractConstraint {
 	
 	private String name;
 	
-	/*
-	 * @param name 
+	/**
+	 * @param name - name of the Constraint
 	 */
 	public AbstractConstraint(String name) {
 		this.name = name;
