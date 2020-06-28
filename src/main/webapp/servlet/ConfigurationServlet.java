@@ -104,7 +104,6 @@ public class ConfigurationServlet extends MyServlet {
 			valid = controller.checkConfiguration();
 			errorInAutofill = Boolean.parseBoolean(request.getParameter(ERROR_AUTOFILL));
 			configurationName = controller.getConfigurationName();
-			System.out.println("Configuration name "+configurationName);
 			elementSetOfPreexistentConfiguration = new HashSet<>(elementOfPreexistentConfiguration);
 			if (elementOfPreexistentConfiguration == null) {
 				elementOfPreexistentConfiguration = new ArrayList<Component>();
@@ -114,8 +113,6 @@ public class ConfigurationServlet extends MyServlet {
 
 		ComponentCatalog catalog = ComponentCatalog.getInstance();
 		List<String> type = PersistenceFacade.getIstance().getTypeComponent();
-		System.out.println("I tipi sono");
-		System.out.println(type);
 		response.getWriter().write(Rythm.render(CONFIGURATIONV2_HTML, catalog.getComponentList(), type,
 				elementOfPreexistentConfiguration, elementSetOfPreexistentConfiguration ,price, performance, valid,errorInAutofill, configurationName));
 	}
@@ -141,7 +138,6 @@ public class ConfigurationServlet extends MyServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 		String email = (String) request.getSession().getAttribute(EMAIL);
-		System.out.println(email);
 		if (email == null) {
 			response.sendRedirect("/login");
 			return;
@@ -196,7 +192,6 @@ public class ConfigurationServlet extends MyServlet {
 				
 		String choice = (String) request.getParameter(GROUP_CASE);
 		
-		System.out.println("La scelta � "+ choice);
 		if(choice == null) {
 			reloadConfigurationHtmlPage(response, controller, true);
 			return;
@@ -207,23 +202,17 @@ public class ConfigurationServlet extends MyServlet {
 		if(choice.equals(RANDOM)) {
 			if(controller.autofill()){
 				//Make redirection to same page with current conf id
-				System.out.println("auto random ok");
 				reloadConfigurationHtmlPage(response, controller, false);
-			}else{
-			
-				
+			}else{				
 				reloadConfigurationHtmlPage(response, controller, true);
 			}	
 		}else if(choice.equals(PRICE)){
 			String priceString = (String) request.getParameter("priceAutofill");
 			if( priceString != null){
 				double price = Double.parseDouble(priceString);
-				System.out.println("Prezzo pari a "+price);
 				if(controller.autofill(price)) {
-					System.out.println("auto price ok");
 					reloadConfigurationHtmlPage(response, controller,false);
 				}else{
-					System.out.println("auto price fallita");
 					reloadConfigurationHtmlPage(response, controller,true);
 				}
 			}
@@ -261,11 +250,9 @@ public class ConfigurationServlet extends MyServlet {
 	 */
 	private void getPerformance(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
-		System.out.println("getPerf");
 		double performance = controller.getPerformanceIndex();
 		if(performance == -1)
 			performance = 0.0;
-		System.out.println("getPerf " + performance);
 		String json = JsonMessages.getJsonPerformanceResponse(performance);
 		response.getWriter().write(json);
 	}
@@ -289,9 +276,6 @@ public class ConfigurationServlet extends MyServlet {
 		int number = 1;
 		if (numberString != null)
 			number = Integer.parseInt(numberString);
-
-		System.out.println("Voglio inserire il modello " + modelOfComponentToInsert + "volte: " + number);
-
 		
 		boolean allOk = controller.addToConfiguration(modelOfComponentToInsert, number);
 		String json = "";
@@ -324,8 +308,6 @@ public class ConfigurationServlet extends MyServlet {
 	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
 		String modelOfComponentToRemove = request.getParameter(MODEL);
-		System.out.println("Sto facendo la rimozione di " + modelOfComponentToRemove);
-
 		
 		boolean allOk = controller.removeFromConfiguration(modelOfComponentToRemove);
 		String json = "";
@@ -357,7 +339,6 @@ public class ConfigurationServlet extends MyServlet {
 	private void save(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		String json = "";
 		String confName = request.getParameter(NAME2);
-		System.out.println("Confname "+confName);
 		if(confName != null)
 			controller.setConfigurationName(confName);
 		
@@ -367,8 +348,6 @@ public class ConfigurationServlet extends MyServlet {
 		} else {
 			json = JsonMessages.getJsonNotOkResponse();
 		}
-
-		System.out.println(json);
 
 		response.getWriter().write(json);
 	}

@@ -25,8 +25,6 @@ public class RdbOperation {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection("jdbc:sqlite:Util/projectDatabase.sqlite");
-			System.out.println("Connection done");
-
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
 

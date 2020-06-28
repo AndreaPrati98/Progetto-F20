@@ -101,9 +101,6 @@ public class Configurator {
 	public boolean saveConfiguration(Customer customer) {
 		String email = customer.getEmail();
 		int confId = configuration.getId();
-		for (Component c : configuration.getAddedComponents()) {
-			System.out.println(c.getModel());
-		}
 		PersistenceFacade facade = PersistenceFacade.getIstance();
 		if (email.equals(facade.getOwnerMailByConfigurationId(confId))) {
 			return facade.updateConfiguration(configuration, customer);
