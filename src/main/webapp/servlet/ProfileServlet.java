@@ -23,6 +23,21 @@ import main.services.util.HashingPassword;
 @SuppressWarnings("serial")
 public class ProfileServlet extends MyServlet {
 
+	private static final String NEW_EMAIL = "newEmail";
+	private static final String OLD_EMAIL = "oldEmail";
+	private static final String NEW_PASS = "newPass";
+	private static final String OLD_PASS = "oldPass";
+	private static final String PROFILE = "/profile";
+	private static final String ID = "id";
+	private static final String CHANGE_EMAIL = "/changeEmail";
+	private static final String CHANGE_PASSWORD = "/changePassword";
+	private static final String UNSUBSCRIBE = "/unsubscribe";
+	private static final String REMOVE = "/remove";
+	private static final String LOGOUT = "/logout";
+	private static final String PROFILE_HTML = "profile.html";
+	private static final String _CONTROLLER = "_controller";
+	private static final String EMAIL = "email";
+
 	public ProfileServlet(String name, String path) {
 		super(name, path);
 	}
@@ -42,9 +57,9 @@ public class ProfileServlet extends MyServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		PersistenceFacade pf = PersistenceFacade.getIstance();
-		String email = (String) request.getSession().getAttribute("email");
+		String email = (String) request.getSession().getAttribute(EMAIL);
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
-				.getAttribute(email + "_controller");
+				.getAttribute(email + _CONTROLLER);
 
 		String name = null;
 		if (email != null && controller != null) {
@@ -56,10 +71,10 @@ public class ProfileServlet extends MyServlet {
 
 			List<Configuration> conf;
 			conf = pf.getConfigurationByEmail(email);
-			response.getWriter().write(Rythm.render("profile.html", name, surname, email, isAdmin, conf, request));
+			response.getWriter().write(Rythm.render(PROFILE_HTML, name, surname, email, isAdmin, conf, request));
 		} else {
 
-			response.sendRedirect("/logout");
+			response.sendRedirect(LOGOUT);
 		}
 	}
 
@@ -79,23 +94,23 @@ public class ProfileServlet extends MyServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-		String email = (String) request.getSession().getAttribute("email");
+		String email = (String) request.getSession().getAttribute(EMAIL);
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
-				.getAttribute(email + "_controller");
+				.getAttribute(email + _CONTROLLER);
 		System.out.println(request.getPathInfo());
-		if (request.getPathInfo().equals("/remove")) {
+		if (request.getPathInfo().equals(REMOVE)) {
 			remove(request, response, controller);
 		}
 
-		if (request.getPathInfo().equals("/unsubscribe")) {
+		if (request.getPathInfo().equals(UNSUBSCRIBE)) {
 			unsubscribe(request, response, controller);
 		}
 
-		if (request.getPathInfo().equals("/changePassword")) {
+		if (request.getPathInfo().equals(CHANGE_PASSWORD)) {
 			changePassword(request, response, controller);
 		}
 
-		if (request.getPathInfo().equals("/changeEmail")) {
+		if (request.getPathInfo().equals(CHANGE_EMAIL)) {
 			changeEmail(request, response, controller);
 		}
 
@@ -113,10 +128,10 @@ public class ProfileServlet extends MyServlet {
 	 */
 	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
-		int confId = Integer.parseInt(request.getParameter("id"));
+		int confId = Integer.parseInt(request.getParameter(ID));
 
 		if (controller.removeConfiguration(confId)) {
-			response.sendRedirect("/profile");
+			response.sendRedirect(PROFILE);
 		}
 	}
 
@@ -135,11 +150,11 @@ public class ProfileServlet extends MyServlet {
 
 		if (controller.removeUser()) {
 			System.out.println("Utente disiscritto");
-			response.sendRedirect("/logout");
+			response.sendRedirect(LOGOUT);
 
 		} else {
 			System.out.println("Utente iscritto");
-			response.sendRedirect("/profile");
+			response.sendRedirect(PROFILE);
 		}
 
 	}
@@ -160,8 +175,8 @@ public class ProfileServlet extends MyServlet {
 	private void changePassword(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
 		// Le password non sono ancora hashate
-		String oldPassword = request.getParameter("oldPass");
-		String newPassword = request.getParameter("newPass");
+		String oldPassword = request.getParameter(OLD_PASS);
+		String newPassword = request.getParameter(NEW_PASS);
 
 		HashingPassword hashingPassword = new HashingPassword();
 
@@ -172,10 +187,10 @@ public class ProfileServlet extends MyServlet {
 		// TODO aggiungere alert
 		if (!isDone) {
 			System.out.println("Password non cambiata");
-			response.sendRedirect("/profile");
+			response.sendRedirect(PROFILE);
 		} else {
 			System.out.println("Password cambiata");
-			response.sendRedirect("/logout");
+			response.sendRedirect(LOGOUT);
 		}
 	}
 
@@ -193,18 +208,18 @@ public class ProfileServlet extends MyServlet {
 	// TODO aggiungere uml
 	private void changeEmail(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
-		String oldEmail = request.getParameter("oldEmail");
-		String newEmail = request.getParameter("newEmail");
+		String oldEmail = request.getParameter(OLD_EMAIL);
+		String newEmail = request.getParameter(NEW_EMAIL);
 
 		// invio al controller mail vecchia e mail nuova, lui gestirà il resto
 		boolean isDone = controller.changeEmail(newEmail, oldEmail);
 		// TODO aggiungere alert
 		if (!isDone) {
 			System.out.println("Email non cambiata");
-			response.sendRedirect("/profile");
+			response.sendRedirect(PROFILE);
 		} else {
 			System.out.println("Email cambiata");
-			response.sendRedirect("/logout");
+			response.sendRedirect(LOGOUT);
 		}
 	}
 }
