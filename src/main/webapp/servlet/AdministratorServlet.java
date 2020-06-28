@@ -19,15 +19,15 @@ import main.model.configurator.component.Component;
 import main.services.persistence.PersistenceFacade;
 import main.webapp.servlet.util.JsonMessages;
 
+/**
+ * Administrator Servlet is used to add or remove components and administrators from db
+ */
+
 @SuppressWarnings("serial")
 public class AdministratorServlet extends MyServlet {
 	/**
-	 * Administrator Servlet is used to add or remove components and administrators from db
-	 * Interacts with model using PersistenceFacade and ComponentCatalog.
-	 * Takes a name and its path (as url) as arguments.
-	 * 
-	 * @param name
-	 * @param path
+	 * @param name its name.
+	 * @param path its url .
 	 */
 	public AdministratorServlet(String name, String path) {
 		super(name, path);
