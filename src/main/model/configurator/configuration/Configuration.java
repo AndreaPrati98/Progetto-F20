@@ -36,7 +36,7 @@ public class Configuration {
 	}
 	
 	
-	/**USATO
+	/**
 	 * Create an empty configuration with a given id.
 	 * This constructor is used when the configuration is downloaded from the database
 	 * @param id
@@ -47,7 +47,7 @@ public class Configuration {
 		this.id=id;
 	}
 	
-	/**USATO
+	/**
 	 * Create a configuration with a given id and some components.
 	 * This constructor is used when the configuration is downloaded from the database.
 	 * @param id
@@ -58,7 +58,7 @@ public class Configuration {
 		this.addedComponents=addedComponents;
 	}
 	
-	//USATO
+	
 	public Configuration(int id, String name) {
 		this(id);
 		this.name = name;
@@ -70,7 +70,8 @@ public class Configuration {
 	}
 
 	/**
-	 * aggiunta del componente scelto nella lista dei componenti solo se compatibile
+	 * Add the given component to the component list only if it is compatible
+	 * with the components that are already inside the configuration
 	 * 
 	 * @param c type:{@link Component} Component that you would like to add.
 	 * @return true if the component have been added, false if the component haven't
@@ -109,8 +110,10 @@ public class Configuration {
 		InterfaceConstraintChecker cc = new ConstraintChecker();
 		return cc.checkIfComplete(addedComponents);		
 	}
+	
 	/**
-	 * Used during downloading from db because they're ok
+	 * Used during downloading from db because we suppose that all the configurations
+	 * in the database respect the constraint
 	 * @param c
 	 * @return
 	 */

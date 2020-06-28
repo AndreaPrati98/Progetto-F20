@@ -17,7 +17,6 @@ import main.services.persistence.PersistenceFacade;
  */
 public class Configurator {
 
-//	private ComponentCatalog catalog;
 	private Configuration configuration;
 
 	public Configurator() {

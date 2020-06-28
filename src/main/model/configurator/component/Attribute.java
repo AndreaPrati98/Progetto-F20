@@ -10,7 +10,14 @@ import main.model.configurator.constraint.ConstraintCategory;
  */
 public class Attribute {
 	private String name, value, constraintName;
-	private boolean isBinding, isPresentable;
+	
+	private boolean isBinding;
+	
+	/**
+	 * Tells if this attribute have to be shown in the website
+	 */
+	private boolean isPresentable;
+	
 	private ConstraintCategory constraintCategory;
 	
 	

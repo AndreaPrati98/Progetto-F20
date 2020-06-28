@@ -8,6 +8,7 @@ import main.model.configurator.component.Attribute;
 import main.model.configurator.component.Component;
 
 /**
+ * Constraint where there is a value that must be greater than the sum of the other values.
  * 
  * @author Irene Schimperna
  *

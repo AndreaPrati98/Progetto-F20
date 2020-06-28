@@ -6,7 +6,8 @@ import java.util.List;
 import main.model.configurator.component.Component;
 import main.services.persistence.PersistenceFacade;
 /**
- * Here is where we have the list of all components 
+ * Here is where we have the list of all components.
+ * This class is a singleton.
  * @author Alessandro Capici
  *
  */
