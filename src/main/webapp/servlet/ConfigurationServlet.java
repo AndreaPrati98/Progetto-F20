@@ -269,15 +269,11 @@ public class ConfigurationServlet extends MyServlet {
 			double price = this.getConfigurationPrice(controller);
 			json = JsonMessages.getJsonOkResponse(price);
 
-			// controller.printConf();
-			// System.out.println("b");
 		} else {
 			json = JsonMessages.getJsonNotOkResponse();
-			// controller.printConf();
-			// System.out.println("m");
+			
 		}
 
-		// Invio la risposta
 
 		controller.printConf();
 		response.getWriter().write(json);
