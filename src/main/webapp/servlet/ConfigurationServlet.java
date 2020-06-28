@@ -21,22 +21,32 @@ import main.model.configurator.component.Component;
 import main.services.persistence.PersistenceFacade;
 import main.webapp.servlet.util.JsonMessages;
 
+/**
+ * Servlet used to handle the creation and editing of configurations and show the relative
+ * page.
+ * @author Guglielmo Cassini
+ *
+ */
+
 @SuppressWarnings("serial")
 public class ConfigurationServlet extends MyServlet {
-/**
- * Servlet used to handle the creation and editing of configurations.
- * @param name
- * @param path
- */
+
 	public ConfigurationServlet(String name, String path) {
 		super(name, path);
 	}
 	
 	/**
-	 *  this method answer to user request , only component have a price and another atribute these atribute have to write in configurationv2.html beyond name of componentr
-	 *  another things is important write in configurationv2.html web page the performance index end comunicate the validation or not of user component selection in a configuration 
-	 *  
-	 *  @see ServletController,Catalog
+	 * Manges the request. If the user is logged, it renders the right page, otherwise it 
+	 * returns to login page.
+	 * In the right page shows inputs to make the users communicate with the servlet via ajax.
+	 * If in the get is passed the parameter "configurationId" it open an existent configuration
+	 * to allow users to edit it.
+	 * 	 *  
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws ServletException
 	 */
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -92,9 +102,24 @@ public class ConfigurationServlet extends MyServlet {
 				elementOfPreexistentConfiguration, elementSetOfPreexistentConfiguration ,price, performance, valid,errorInAutofill, configurationName));
 	}
 
+	
 	/**
-	 * manage the option in configuration web page and mange the error case
-	 */
+	 * Manages ajax request made from the web page. 
+	 * If the user is logged, handles the ajax request of: addition of a component, remotion of a component, calculation of performance,
+	 * the check of the configuration relative to the fact it is valid or not and the saving of the configuration.
+	 * Also handles post request for autofill that instead reload the page.
+	 * 
+	 * If the user is not logged, it redirects to login.
+	 * 
+	 * @see add, autofill, check, getPerformance, redirect to logout, remove, save.
+	 *  
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws ServletException
+	 * 
+	 * */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 		String email = (String) request.getSession().getAttribute("email");
@@ -136,8 +161,14 @@ public class ConfigurationServlet extends MyServlet {
 	}
 
 	/**
-	 * wee can use this method to make autofill and : save usere configuration, communicate if is an error in autofil,
-	 * whend the user want to generate random configuration the user can select an indicative price. 
+	 * This methods handles the autofill of a configuration calling the relative controller method.
+	 * It choice between the random autofill and the autofill by price using the parameter
+	 * "groupCase".
+	 * Before performing the autofill, it saves the configuration. 
+	 * After the autofill operation is concluded, it uses the reloadConfigurationHtmlPage method.
+	 * 
+	 * @see ServletController
+	 * 
 	 * @param request
 	 * @param response
 	 * @param controller
@@ -189,6 +220,11 @@ public class ConfigurationServlet extends MyServlet {
 	}
 
 	/**TODO: Aggiungere all'uml
+	 * 
+	 * This method is called after the autofill. It reload the current page with as parameters the current
+	 * configuration id, to keep editing this configuration, and a boolean value to tell the page if the 
+	 * autofill went wrong.
+	 *
 	 * @param response
 	 * @param controller
 	 * @param errorInAutofill 
@@ -201,6 +237,16 @@ public class ConfigurationServlet extends MyServlet {
 		response.sendRedirect(redirectPath+configurationId+otherParam+errorInAutofill);
 	}
 
+	/**
+	 * This method calculate the performance index of the configuration and return 
+	 * it to the client via a json message. If the performance index is not calculable it
+	 * values -1.
+	 * 
+	 * @param request
+	 * @param response
+	 * @param controller
+	 * @throws IOException
+	 */
 	private void getPerformance(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
 		System.out.println("getPerf");
@@ -211,11 +257,11 @@ public class ConfigurationServlet extends MyServlet {
 	}
 
 	/**
-	 * wee use this method to add component in a configuration we add them if they respect the constraints , 
-	 * the servlet comunicate with user thanks to configuration web page end comunicate the user's  choices to the model. 
-	 * in case of error during the operation it is communicated to the user
-
-
+	 * This methods add a component to the configuration with the specified model as a parameter of the request,
+	 * answering the client with a json containing the new price of the configuration.
+	 * If it fails the message contains the name of the constraint that the configuration
+	 * does not respect if it would contain the new element.
+	 * 
 	 * @param request
 	 * @param response
 	 * @param controller
@@ -252,7 +298,9 @@ public class ConfigurationServlet extends MyServlet {
 		response.getWriter().write(json);
 	}
 	/**
-	 * remove component from configuration 
+	 * This method remove the specified model as parameter of the request.
+	 * Answer to the client with a json containing the new price of the request.
+	 * 	 * 
 	 * @param request
 	 * @param response
 	 * @param controller
@@ -283,7 +331,9 @@ public class ConfigurationServlet extends MyServlet {
 
 	}
 	/**
-	 *  save configuration in database
+	 * This metod save the configuration. It answer with a json containing the result
+	 * of this action.
+	 * 
 	 * @param request
 	 * @param response
 	 * @param controller
@@ -309,15 +359,24 @@ public class ConfigurationServlet extends MyServlet {
 		response.getWriter().write(json);
 	}
 
+	/**
+	 * A support method used to tell the client to redirect the page to login. It il called 
+	 * when some client is trying to make a post or a get request when the user is not logged.
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	private void redirectToLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String json = JsonMessages.getJsonRedirectResponse();
 		response.getWriter().write(json);
 	}
 
 	/**
-	 * this method verifies that all the constraints have been respected
-	 * @see ServletController
+	 * This method verify if configuration is valid or not using the controller method.
+	 * It answer with a json containing the result of this action.
 	 * 
+	 * @see ServletController
 	 */
 	private void check(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
@@ -333,6 +392,13 @@ public class ConfigurationServlet extends MyServlet {
 		response.getWriter().write(json);
 	}
 
+	
+	/**
+	 * A private support method used to calculate the price of the current configuration.
+	 * 
+	 * @param controller
+	 * @return the price of the configuration
+	 */
 	private double getConfigurationPrice(ServletController controller) {
 		return controller.getConfigurationPrice();
 	}
