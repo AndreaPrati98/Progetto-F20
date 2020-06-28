@@ -15,46 +15,67 @@ import main.services.persistence.PersistenceFacade;
 import main.services.util.HashingPassword;
 
 /**
- * Servlet used to show profile page, containg information about the user, such as his name, and his
- * saved configurations
+ * Servlet used to show profile page, containg information about the user, such
+ * as his name, and his saved configurations. The user can edit or create a
+ * configuration, change his password, and unsubscribe.
  */
 
 @SuppressWarnings("serial")
 public class ProfileServlet extends MyServlet {
-	
+
 	public ProfileServlet(String name, String path) {
 		super(name, path);
 	}
-/**
- * this method is used to manage a user's login if the user exist in db redirect to profile page, else it communicate the failure of the request
- * 
- */
+
+	/**
+	 * Manages get requests. If the user is logged in renders profile, otherwise
+	 * redirects to login. Shows user name, surname, email, saved configurations. If
+	 * user is also an administrator, adds a section in the html navbar that
+	 * redirects to the specific page.
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws ServletException
+	 */
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		String email = (String) request.getSession().getAttribute("email");
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
 				.getAttribute(email + "_controller");
-		
+
 		String name = null;
 		if (email != null && controller != null) {
-			
+
 			Customer c = controller.getCustomer();
 			name = c.getName();
 			String surname = c.getSurname();
 			boolean isAdmin = c.isAdmin();
-			
+
 			List<Configuration> conf;
 			conf = pf.getConfigurationByEmail(email);
 			response.getWriter().write(Rythm.render("profile.html", name, surname, email, isAdmin, conf, request));
 		} else {
-			
+
 			response.sendRedirect("/logout");
 		}
 	}
-/**
- * a user can remove or rename  his configuration
- */
+
+	/**
+	 * Manages post requests. Each request gets handled by an individual method.
+	 * Each one of them is better documented later.
+	 * 
+	 * @see remove()
+	 * @see unsubscribe()
+	 * @see changePassword()
+	 * @see changeEmail()
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
@@ -65,83 +86,122 @@ public class ProfileServlet extends MyServlet {
 		if (request.getPathInfo().equals("/remove")) {
 			remove(request, response, controller);
 		}
-		
-		if(request.getPathInfo().equals("/unsubscribe")) {
+
+		if (request.getPathInfo().equals("/unsubscribe")) {
 			unsubscribe(request, response, controller);
 		}
-		
+
 		if (request.getPathInfo().equals("/changePassword")) {
 			changePassword(request, response, controller);
 		}
-		
-		if(request.getPathInfo().equals("/changeEmail")) {
+
+		if (request.getPathInfo().equals("/changeEmail")) {
 			changeEmail(request, response, controller);
 		}
-		
+
 	}
 
-	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
+	/**
+	 * Deletes a configuration, given a user and configuration id. Refresh profile
+	 * if the configuration is removed correctly.
+	 * 
+	 * @see ServletController
+	 * @param request
+	 * @param response
+	 * @param controller
+	 * @throws IOException
+	 */
+	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller)
+			throws IOException {
 		int confId = Integer.parseInt(request.getParameter("id"));
-		// controller.removeConfiguration(confId);
 
-		System.out.println(request.getParameterMap().keySet());
-		
-		if(controller.removeConfiguration(confId)) {
-			System.out.println("Configurazione rimossa");
-		}else {
-			System.out.println("Configurazione non rimossa");
+		if (controller.removeConfiguration(confId)) {
+			response.sendRedirect("/profile");
 		}
-		
-		response.sendRedirect("/profile");
 	}
-	
-	//TODO aggiungere uml
-	private void unsubscribe(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 
-		if(controller.removeUser()) {
+	/**
+	 * Deletes a user from db. If user is removed correctly, redirects to logout
+	 * 
+	 * @see ServletController
+	 * @param request
+	 * @param response
+	 * @param controller
+	 * @throws IOException
+	 */
+	// TODO aggiungere uml
+	private void unsubscribe(HttpServletRequest request, HttpServletResponse response, ServletController controller)
+			throws IOException {
+
+		if (controller.removeUser()) {
 			System.out.println("Utente disiscritto");
 			response.sendRedirect("/logout");
 
 		} else {
 			System.out.println("Utente iscritto");
-			response.sendRedirect("/profile");			
+			response.sendRedirect("/profile");
 		}
-	
+
 	}
 
-	//TODO aggiungere uml
-	private void changePassword(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
-		//Le password non sono ancora hashate
+	/**
+	 * Changes a user password, using ServletController methods. Passwords are
+	 * encrypted using HashingPassword. Redirect to login, if the passwords were
+	 * changed correctly, otherwise refresh profile
+	 * 
+	 * @see ServletController
+	 * @see HashingPassword
+	 * @param request
+	 * @param response
+	 * @param controller
+	 * @throws IOException
+	 */
+	// TODO aggiungere uml
+	private void changePassword(HttpServletRequest request, HttpServletResponse response, ServletController controller)
+			throws IOException {
+		// Le password non sono ancora hashate
 		String oldPassword = request.getParameter("oldPass");
 		String newPassword = request.getParameter("newPass");
-		
+
 		HashingPassword hashingPassword = new HashingPassword();
-		
+
 		oldPassword = hashingPassword.getHashPsw(oldPassword);
 		newPassword = hashingPassword.getHashPsw(newPassword);
-		//invio al controller psw vecchia e psw nuova, lui gestirà il resto
+		// invio al controller psw vecchia e psw nuova, lui gestirà il resto
 		boolean isDone = controller.changePassword(newPassword, oldPassword);
-		//TODO aggiungere alert
+		// TODO aggiungere alert
 		if (!isDone) {
 			System.out.println("Password non cambiata");
-			response.sendRedirect("/profile");					
+			response.sendRedirect("/profile");
 		} else {
 			System.out.println("Password cambiata");
 			response.sendRedirect("/logout");
 		}
 	}
 
-	//TODO aggiungere uml
-	private void changeEmail(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
+	/**
+	 * Changes a user email, using ServletController methods. Redirect to login, if
+	 * the emails were changed correctly, otherwise refresh profile
+	 * 
+	 * @see ServletController
+	 * @see HashingPassword
+	 * @param request
+	 * @param response
+	 * @param controller
+	 * @throws IOException
+	 */
+	// TODO aggiungere uml
+	private void changeEmail(HttpServletRequest request, HttpServletResponse response, ServletController controller)
+			throws IOException {
 		String oldEmail = request.getParameter("oldEmail");
 		String newEmail = request.getParameter("newEmail");
-		
-		//invio al controller mail vecchia e mail nuova, lui gestirà il resto
+
+		// invio al controller mail vecchia e mail nuova, lui gestirà il resto
 		boolean isDone = controller.changeEmail(newEmail, oldEmail);
-		//TODO aggiungere alert
+		// TODO aggiungere alert
 		if (!isDone) {
 			System.out.println("Email non cambiata");
-			response.sendRedirect("/profile");					
+			response.sendRedirect("/profile");
 		} else {
 			System.out.println("Email cambiata");
 			response.sendRedirect("/logout");

@@ -13,18 +13,18 @@ import main.services.util.HashingPassword;
 import main.services.util.Mail;
 
 /**
- * 
  * @author Capici Alessandro
- *
+ * 
+ *         Servlet used to show register page. User needs to input his name,
+ *         surname, password and email.
  */
+
 @SuppressWarnings("serial")
 public class RegisterServlet extends MyServlet {
-/**
- *  wee use this servlet when the user want to registe in our web site ,we need to know name , surname and password the user chose your password
-
- * @param name
- * @param path
- */
+	/**
+	 * @param name
+	 * @param path
+	 */
 	public RegisterServlet(String name, String path) {
 		super(name, path);
 	}
@@ -34,11 +34,24 @@ public class RegisterServlet extends MyServlet {
 		response.getWriter().write(Rythm.render("sign-in.html", true));
 	}
 
+	/**
+	 * Manages post requests. Gets information sent using a post request from a
+	 * form, if the two emails are different shows an error, otherwise
+	 * a user will be added to db using PersistenceFacade methods.
+	 * An email will be sent to the email chosen by the user.
+	 * 
+	 * @see PersistenceFacade
+	 * @see Mail
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		boolean flag = true;
 		HashingPassword hashingPassword = new HashingPassword();
-		
+
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		String nome = request.getParameter("FirstName");
 		String cognome = request.getParameter("LastName");
@@ -49,9 +62,9 @@ public class RegisterServlet extends MyServlet {
 			flag = false;
 			response.getWriter().write(Rythm.render("sign-in.rtm", flag));
 		}
-		pf.addUser(nome, cognome, mail,hashingPassword.getHashPsw(psw), false);
-		Mail m= new Mail(mail,nome);
-		System.out.println("Email inviata"+ m);
+		pf.addUser(nome, cognome, mail, hashingPassword.getHashPsw(psw), false);
+		Mail m = new Mail(mail, nome);
+		System.out.println("Email inviata" + m);
 		request.getSession().invalidate();
 		response.sendRedirect("/login");
 	}

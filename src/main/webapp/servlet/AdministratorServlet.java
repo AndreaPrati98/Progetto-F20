@@ -71,6 +71,13 @@ public class AdministratorServlet extends MyServlet {
 	 *  Manages post requests.
 	 *  Each request gets handled by an individual method. Each one of them is better documented later.
 	 * 
+	 * @see addComponent()
+	 * @see removeComponent()
+	 * @see getCompForm()
+	 * @see getAllComp()
+	 * @see checkIfUserExist()
+	 * @see addAdmin()
+	 * @see removeAdmin()
 	 * @param request
 	 * @param response
 	 * @throws ServletException
