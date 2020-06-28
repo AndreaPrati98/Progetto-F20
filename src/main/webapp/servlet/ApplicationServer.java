@@ -34,6 +34,11 @@ public class ApplicationServer {
 		this.servlet = servlet;
 	}
 
+	/**
+	 * this methods need to generate a session end (by jetty) make to session handler
+	 * this handler manage  only servlet (add ) 
+	 * 
+	 */
 	public void start(){
 		initTemplateEngine();
 		server = new Server(port);
