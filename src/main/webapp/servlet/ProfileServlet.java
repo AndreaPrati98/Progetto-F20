@@ -88,4 +88,9 @@ public class ProfileServlet extends MyServlet {
 	
 	}
 	
+	private void changePassword(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
+		String newPassword = request.getParameter("newPass")
+		controller.changePassword(newPassword);
+	}
+	
 }

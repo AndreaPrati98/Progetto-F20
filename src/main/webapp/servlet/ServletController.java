@@ -201,5 +201,15 @@ public class ServletController {
 		return customer;
 	}
 	
+	//TODO aggiungere a uml
+	public boolean changePassword(String newPassword) {	
+		String email = customer.getEmail();
+		PersistenceFacade pf = PersistenceFacade.getIstance();
+
+		boolean isDone = pf.changePassword(email, newPassword);
+	
+		return isDone;
+	}
+	
 	
 }
