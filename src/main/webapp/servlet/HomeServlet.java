@@ -14,15 +14,14 @@ import main.model.configurator.configuration.Configuration;
 import main.services.persistence.PersistenceFacade;
 
 /**
- * Used to show the home page, containting 3 configurations as a showcase. 
+ * Used to show the home page, containing 3 configurations as a showcase for the
+ * project.
  */
 
 @SuppressWarnings("serial")
 public class HomeServlet extends MyServlet {
  
 	/**
-	 * Takes a name and its path (as url) as arguments.
-	 * 
 	 * @param name
 	 * @param path
 	 */
@@ -33,9 +32,8 @@ public class HomeServlet extends MyServlet {
 
 	
 	/**
-	 * 	Manage get requests.
-	 *  Renders administrator.html if the user is logged in, otherwise redirects to
-	 *  login, or 403 in case of errors.
+	 * 	Manages get requests.
+	 *  Renders home, or 404 in case of errors.
 	 * 
 	 * @param request
 	 * @param response
@@ -57,9 +55,15 @@ public class HomeServlet extends MyServlet {
 		}
 
 	}
-/**
- *  when the user to click wieew botton the web site resposnse whith configuration page or sigin in page
- */
+	
+	/**
+	 *  Manages post requests.
+	 * 
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		response.getWriter().write(Rythm.render("sign-in.rtm"));

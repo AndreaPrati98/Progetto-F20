@@ -14,6 +14,11 @@ import main.model.customer.Customer;
 import main.services.persistence.PersistenceFacade;
 import main.services.util.HashingPassword;
 
+/**
+ * Servlet used to show profile page, containg information about the user, such as his name, and his
+ * saved configurations
+ */
+
 @SuppressWarnings("serial")
 public class ProfileServlet extends MyServlet {
 	
