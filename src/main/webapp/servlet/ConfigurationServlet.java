@@ -83,6 +83,8 @@ public class ConfigurationServlet extends MyServlet {
 			elementOfPreexistentConfiguration = controller.retrieveConfigurationComponentById(confId);
 			price = controller.getConfigurationPrice();
 			performance = controller.getPerformanceIndex();
+			if(performance == -1)
+				performance = 0.0;
 			valid = controller.checkConfiguration();
 			errorInAutofill = Boolean.parseBoolean(request.getParameter("errorAutofill"));
 			configurationName = controller.getConfigurationName();
@@ -245,6 +247,8 @@ public class ConfigurationServlet extends MyServlet {
 			throws IOException {
 		System.out.println("getPerf");
 		double performance = controller.getPerformanceIndex();
+		if(performance == -1)
+			performance = 0.0;
 		System.out.println("getPerf " + performance);
 		String json = JsonMessages.getJsonPerformanceResponse(performance);
 		response.getWriter().write(json);
