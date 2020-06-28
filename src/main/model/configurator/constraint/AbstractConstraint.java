@@ -102,8 +102,7 @@ public abstract class AbstractConstraint {
 	/**
 	 * Filters the attributes list according to the CategoryType given as parameter. 
 	 * 
-	 * @param componentFromWichExtracts
-	 * @return
+	 * @return the filtered list
 	 */
 	protected List<Attribute> filterAttributesList(List<Attribute> listToFilter, ConstraintCategory category){
 		List<Attribute> filteredList = new ArrayList<Attribute>();
