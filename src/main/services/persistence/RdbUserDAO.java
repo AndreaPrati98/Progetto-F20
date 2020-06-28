@@ -105,7 +105,6 @@ public class RdbUserDAO implements InterfaceUserDAO {
 		return dbop.addAdmin(mail, decision);
 	}
 
-	//TODO aggiungere uml
 	@Override
 	public boolean removeUser(String email) {
 		boolean exist = checkIfUserExist(email);

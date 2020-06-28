@@ -144,7 +144,6 @@ public class ProfileServlet extends MyServlet {
 	 * @param controller
 	 * @throws IOException
 	 */
-	// TODO aggiungere uml
 	private void unsubscribe(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
 
@@ -171,7 +170,6 @@ public class ProfileServlet extends MyServlet {
 	 * @param controller
 	 * @throws IOException
 	 */
-	// TODO aggiungere uml
 	private void changePassword(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
 		// Le password non sono ancora hashate
@@ -205,7 +203,6 @@ public class ProfileServlet extends MyServlet {
 	 * @param controller
 	 * @throws IOException
 	 */
-	// TODO aggiungere uml
 	private void changeEmail(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
 		String oldEmail = request.getParameter(OLD_EMAIL);

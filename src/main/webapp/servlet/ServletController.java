@@ -262,7 +262,6 @@ public class ServletController {
 		return customer;
 	}
 	
-	//TODO aggiungere a uml
 	/**
 	 * Changes the password of the customer.
 	 * 
@@ -286,7 +285,6 @@ public class ServletController {
 		return isDone;
 	}
 	
-	//TODO aggiungere uml
 	/**
 	 * Changes the email of the customer.
 	 * 
