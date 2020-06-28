@@ -12,6 +12,7 @@ import org.rythmengine.Rythm;
 import main.model.configurator.configuration.Configuration;
 import main.model.customer.Customer;
 import main.services.persistence.PersistenceFacade;
+import main.services.util.HashingPassword;
 
 @SuppressWarnings("serial")
 public class ProfileServlet extends MyServlet {
@@ -21,7 +22,7 @@ public class ProfileServlet extends MyServlet {
 	}
 /**
  * this method is used to manage a user's login if the user exist in db redirect to profile page, else it communicate the failure of the request
- 
+ * 
  */
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -63,6 +64,11 @@ public class ProfileServlet extends MyServlet {
 		if(request.getPathInfo().equals("/unsubscribe")) {
 			unsubscribe(request, response, controller);
 		}
+		
+		if (request.getPathInfo().equals("/changePassword")) {
+			changePassword(request, response, controller);
+		}
+		
 	}
 
 	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
@@ -94,8 +100,24 @@ public class ProfileServlet extends MyServlet {
 	}
 	
 	private void changePassword(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
-		String newPassword = request.getParameter("newPass")
-		controller.changePassword(newPassword);
+		//Le password non sono ancora hashate
+		String oldPassword = request.getParameter("oldPass");
+		String newPassword = request.getParameter("newPass");
+		
+		HashingPassword hashingPassword = new HashingPassword();
+		
+		oldPassword = hashingPassword.getHashPsw(oldPassword);
+		newPassword = hashingPassword.getHashPsw(newPassword);
+		//invio al controller psw vecchia e psw nuova, lui gestirà il resto
+		boolean isDone = controller.changePassword(newPassword, oldPassword);
+		//TODO aggiungere alert
+		if (!isDone) {
+			System.out.println("Password non cambiata");
+			response.sendRedirect("/profile");					
+		} else {
+			System.out.println("Password cambiata");
+			response.sendRedirect("/logout");
+		}
 	}
 	
 }

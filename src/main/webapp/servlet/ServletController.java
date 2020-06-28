@@ -202,12 +202,19 @@ public class ServletController {
 	}
 	
 	//TODO aggiungere a uml
-	public boolean changePassword(String newPassword) {	
+	public boolean changePassword(String newPassword, String oldPassword) {	
 		String email = customer.getEmail();
 		PersistenceFacade pf = PersistenceFacade.getIstance();
-
-		boolean isDone = pf.changePassword(email, newPassword);
-	
+		String oldPswFromDb = pf.getPasswordByMail(email);
+		
+		boolean isDone = false;
+		if (oldPswFromDb.equals(oldPassword)) {
+			System.out.println("La password vecchia è giusta, procedo a cambiarla");
+			isDone = pf.changePassword(email, newPassword);
+		} else {
+			System.out.println("La vecchia password non è corretta");
+		}
+		
 		return isDone;
 	}
 	
