@@ -218,5 +218,22 @@ public class ServletController {
 		return isDone;
 	}
 	
+	//TODO aggiungere uml
+	public boolean changeEmail(String newEmail, String oldEmail) {
+		String emailOfThisUser = customer.getEmail();
+		PersistenceFacade pf = PersistenceFacade.getIstance();		
+		
+		boolean isDone = false;
+		if (emailOfThisUser.equals(oldEmail)) {
+			System.out.println("Procedo a cambiare la mail");
+			isDone = pf.changeMail(oldEmail, newEmail);
+		} else {
+			System.out.println("La vecchia mail è sbagliata");
+		}
+		
+		return isDone;
+		
+	}
+	
 	
 }

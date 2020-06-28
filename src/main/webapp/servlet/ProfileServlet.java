@@ -69,6 +69,10 @@ public class ProfileServlet extends MyServlet {
 			changePassword(request, response, controller);
 		}
 		
+		if(request.getPathInfo().equals("/changeEmail")) {
+			changeEmail(request, response, controller);
+		}
+		
 	}
 
 	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
@@ -86,6 +90,7 @@ public class ProfileServlet extends MyServlet {
 		response.sendRedirect("/profile");
 	}
 	
+	//TODO aggiungere uml
 	private void unsubscribe(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 
 		if(controller.removeUser()) {
@@ -98,7 +103,8 @@ public class ProfileServlet extends MyServlet {
 		}
 	
 	}
-	
+
+	//TODO aggiungere uml
 	private void changePassword(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		//Le password non sono ancora hashate
 		String oldPassword = request.getParameter("oldPass");
@@ -119,5 +125,21 @@ public class ProfileServlet extends MyServlet {
 			response.sendRedirect("/logout");
 		}
 	}
-	
+
+	//TODO aggiungere uml
+	private void changeEmail(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
+		String oldEmail = request.getParameter("oldEmail");
+		String newEmail = request.getParameter("newEmail");
+		
+		//invio al controller mail vecchia e mail nuova, lui gestirà il resto
+		boolean isDone = controller.changeEmail(newEmail, oldEmail);
+		//TODO aggiungere alert
+		if (!isDone) {
+			System.out.println("Email non cambiata");
+			response.sendRedirect("/profile");					
+		} else {
+			System.out.println("Email cambiata");
+			response.sendRedirect("/logout");
+		}
+	}
 }
