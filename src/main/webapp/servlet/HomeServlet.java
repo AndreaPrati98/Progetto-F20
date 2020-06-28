@@ -15,7 +15,15 @@ import main.services.persistence.PersistenceFacade;
 
 @SuppressWarnings("serial")
 public class HomeServlet extends MyServlet {
-
+ 
+/**
+ * @author stefano
+ * @param name
+ * @param path
+ * 
+ * this servlet manage the home page of the web site and load 3 configuration from database and it write in home.html these configuration
+ * 
+ */
 	public HomeServlet(String name, String path) {
 		super(name, path);
 
@@ -35,7 +43,9 @@ public class HomeServlet extends MyServlet {
 		}
 
 	}
-
+/**
+ *  when the user to click wieew botton the web site resposnse whith configuration page or sigin in page
+ */
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		response.getWriter().write(Rythm.render("sign-in.rtm"));

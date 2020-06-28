@@ -11,20 +11,22 @@ import main.webapp.servlet.ServletController;
 
 public class JsonMessages {
 
-	// Chiavi e valori per la mappa della risposta
+	// Keys and values for the response map
+
 	public static final String responseString = "response";
 	public static final String responseOkString = "ok";
 	public static final String responseNotOkString = "not";
 	public static final String responseToRedirectString = "redirect";
-
-	// Chiave per inserire il prezzo
+    // key for the resposnse price
 	public static final String responsePrice = "price";
 
-	// Chiave per la mappa della risposta quando ho errori
+	// key for the error map
 	public static final String responseErrorString = "error";
 
 	/**
-	 * Metodo generico quando devo solo scrivere che è andato storto
+	 * 
+	 * generic method for making that  when there is an error plots to string
+
 	 * 
 	 * @return
 	 */
@@ -36,8 +38,9 @@ public class JsonMessages {
 	}
 
 	/**
-	 * Metodo che serve per dire che l'add è andata a male perchè ha violato dei
-	 * contraint
+	 * 
+	 * 
+	 * error in add method beacause break contraint  
 	 * 
 	 * @return
 	 */
@@ -60,6 +63,10 @@ public class JsonMessages {
 		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
 		return responseJsonToSend.toJSONString();
 	}
+	/**
+	 * generic method for making that all ok 
+	 * @return
+	 */
 	
 	public static String getJsonOkResponse() {
 		Map<String, Object> responseMapToSend = new HashMap<String, Object>();
@@ -74,6 +81,8 @@ public class JsonMessages {
 		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
 		return responseJsonToSend.toJSONString();
 	}
+	
+	
 
 	public static String getJsonPerformanceResponse(double performance) {
 		Map<String, Object> responseMapToSend = new HashMap<String, Object>();

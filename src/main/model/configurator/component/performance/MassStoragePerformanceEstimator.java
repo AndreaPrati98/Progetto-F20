@@ -13,19 +13,24 @@ public class MassStoragePerformanceEstimator implements InterfacePerformanceEsti
 	private static final double MAX_POINT_SIZE = 50;
 	private static final double MAX_POINT_TYPE = 50;
 	
+	/*
+	 * Considera i seguenti parametri:
+	 * size
+	 * type
+	 * 
+	 */
+	
 	@Override
 	public double computePerformance(Map<String, Attribute> componentAttributes) {
-		/*
-		 * Considera i seguenti parametri:
-		 * size
-		 * type
-		 * 
-		 */
-		String sizeString = componentAttributes.get("size").getValue();
-		String type = componentAttributes.get("type").getValue();
-		if(type == null || sizeString == null) {
+		Attribute att1 = componentAttributes.get("size");
+		Attribute att2 = componentAttributes.get("type");
+		
+		if(att1 == null ||att2 == null) {
 			return -1;
 		}
+		
+		String sizeString = att1.getValue();
+		String type = att2.getValue();
 		
 		int size;
 		try {

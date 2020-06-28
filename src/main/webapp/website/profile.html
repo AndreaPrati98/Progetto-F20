@@ -37,6 +37,9 @@
 		#renameBox{
 			width: 10%;
 		}
+		#changePassBtn{
+			background-color: #0097a7;
+		}
 	</style>
 </head>
 <body>
@@ -81,7 +84,12 @@
 			<h5><b>Nome:</b> @(nome)</h5> <br>
 			<h5><b>Cognome:</b> @(Cognome)</h5> <br>
 			<h5><b>E-mail:</b> @(email)</h5>
+			<br><br>
+			<form action="/profile/unsubscribe" method= "post">
+			<button class="btn" style="background-color: #d32f2f" type="submit">Unsubscribe</button>
+		</form>
 		</div>
+		
 		
 		<div align="right">
 			<form id="changePasswordForm" action="/profile/changePassword" method="POST">
@@ -101,7 +109,7 @@
             	</div>
 	            	<!-- Bottone -->
             	<div class="center container">
-                <button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="submitForm">
+                <button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="changePassBtn">
                     Change Password
                     <i class="material-icons right">autorenew</i>
                 </button>
@@ -113,6 +121,8 @@
 			
 		</div>
 	</div>
+	
+	<br><br><br><br><br><br><br><br><br><br>
 	
 	<ul class="collection with-header">
 		<li class="collection-header">
@@ -144,11 +154,6 @@
 		}
 	</ul>
 
-	<div class="center row">
-		<form action="/profile/unsubscribe" method= "post">
-			<button class="btn" style="background-color: #d32f2f" type="submit">Unsubscribe</button>
-		</form>
-	</div>
 <script src="statics/JS/profile.js"></script>
 </body>
 </html>

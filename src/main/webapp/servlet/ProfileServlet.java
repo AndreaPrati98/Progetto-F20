@@ -19,7 +19,10 @@ public class ProfileServlet extends MyServlet {
 	public ProfileServlet(String name, String path) {
 		super(name, path);
 	}
-
+/**
+ * this method is used to manage a user's login if the user exist in db redirect to profile page, else it communicate the failure of the request
+ 
+ */
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		PersistenceFacade pf = PersistenceFacade.getIstance();
@@ -29,21 +32,23 @@ public class ProfileServlet extends MyServlet {
 		
 		String name = null;
 		if (email != null && controller != null) {
-			// Se nella sessione esiste la mail, mi salvo tutte le info e carico il profilo
+			
 			Customer c = controller.getCustomer();
 			name = c.getName();
 			String surname = c.getSurname();
 			boolean isAdmin = c.isAdmin();
-			// Da sostituire
+			
 			List<Configuration> conf;
 			conf = pf.getConfigurationByEmail(email);
 			response.getWriter().write(Rythm.render("profile.html", name, surname, email, isAdmin, conf, request));
 		} else {
-			// altrimenti reindirizzo al login
+			
 			response.sendRedirect("/logout");
 		}
 	}
-
+/**
+ * a user can remove or rename  his configuration
+ */
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 

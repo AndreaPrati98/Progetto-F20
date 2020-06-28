@@ -10,11 +10,11 @@ import main.services.persistence.PersistenceFacade;
 
 /**
  * 
- * @author Ale e Cic
+ * 
  *
- *         Classe che serve da tramite tra tutti i servlet ed il nostro modello.
- *         Ne viene istanziata una per ogni utente e viene poi conservata nel context
- *         handler.
+ *        Class that serves as a link between all servlets and our model.
+  *       One is instantiated for each user and is then kept in the context
+  *       handler.
  */
 public class ServletController {
 
@@ -150,7 +150,7 @@ public class ServletController {
 		return configurator.removeConfiguration(confId);
 	}
 	
-	//TODO aggiungere uml
+	
 	public boolean removeUser() {
 		String email = customer.getEmail();
 		PersistenceFacade pf = PersistenceFacade.getIstance();
@@ -185,13 +185,13 @@ public class ServletController {
 	}
 
 	
-	//TODO: Aggiungere all'uml
+	
 	public void setConfigurationName(String name) {
 		configurator.setConfigurationName(name);
 		
 	}
 	
-	//TODO: Aggiungere all'uml
+	
 	public String getConfigurationName() {
 		return configurator.getConfigurationName();
 	}

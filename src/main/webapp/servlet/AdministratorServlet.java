@@ -21,7 +21,15 @@ import main.webapp.servlet.util.JsonMessages;
 
 @SuppressWarnings("serial")
 public class AdministratorServlet extends MyServlet {
-
+/**
+ * Adminstrator Servlet  needs to menage the operation like add or remove component 
+ * from a configuration or promote an user administrator or not.
+ * this servlet communicate with model in detail catolog end comunicate with database  thanks to PersistenceFacade
+ * enable the  exchange of data
+ * 
+ * @param name
+ * @param path
+ */
 	public AdministratorServlet(String name, String path) {
 		super(name, path);
 	}
@@ -77,6 +85,15 @@ public class AdministratorServlet extends MyServlet {
 		}
 
 	}
+	/**
+	 * add component in database thanks to PersistenceFacade 
+	 * @see PersistenceFacade,ComponentCatalog
+	 * @param request
+	 * @param response
+	 * @param pf
+	 * @param catalog
+	 * @throws IOException
+	 */
 
 	private void addComponent(HttpServletRequest request, HttpServletResponse response, PersistenceFacade pf,
 			ComponentCatalog catalog) throws IOException {
@@ -99,7 +116,7 @@ public class AdministratorServlet extends MyServlet {
 
 			model = (String) j.get("name");
 			type = (String) j.get("type");
-			System.out.println("Tipo è " + type);
+			System.out.println("Tipo ï¿½ " + type);
 			price = Double.parseDouble((String) j.get("price"));
 			pf.addComponent(model, type, price);
 
@@ -120,6 +137,15 @@ public class AdministratorServlet extends MyServlet {
 		json = JsonMessages.getJsonOkResponse();
 		response.getWriter().write(json);
 	}
+	/**
+	 * remove a component from db 
+	 * @see ComponentCatalog , PersistenceFacade
+	 * @param request
+	 * @param response
+	 * @param pf
+	 * @param catalog
+	 * @throws IOException
+	 */
 
 	private void removeComponent(HttpServletRequest request, HttpServletResponse response, PersistenceFacade pf,
 			ComponentCatalog catalog) throws IOException {
@@ -167,6 +193,14 @@ public class AdministratorServlet extends MyServlet {
 		}
 		return flag;
 	}
+	/**
+	 *  operation for add administrator users in data base, administrator users have access rights and change the data
+
+	 * @param request
+	 * @param response
+	 * @param pf
+	 * @throws IOException
+	 */
 
 	private void addAdmin(HttpServletRequest request, HttpServletResponse response, PersistenceFacade pf)
 			throws IOException {
@@ -184,6 +218,13 @@ public class AdministratorServlet extends MyServlet {
 		}
 
 	}
+	/**
+	 * remove the administeator righs from a user 
+	 * @param request
+	 * @param response
+	 * @param pf
+	 * @throws IOException
+	 */
 
 	private void removeAdmin(HttpServletRequest request, HttpServletResponse response, PersistenceFacade pf)
 			throws IOException {

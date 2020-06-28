@@ -23,21 +23,32 @@ import main.webapp.servlet.util.JsonMessages;
 
 @SuppressWarnings("serial")
 public class ConfigurationServlet extends MyServlet {
-
+/**
+ * this servlet need to send the user request to make sure thath is possible add or remove component of a configuration  end anathoer opertion 
+ * @param name
+ * @param path
+ */
 	public ConfigurationServlet(String name, String path) {
 		super(name, path);
 	}
+	
+	/**
+	 *  this method answer to user request , only component have a price and another atribute these atribute have to write in configurationv2.html beyond name of componentr
+	 *  another things is important write in configurationv2.html web page the performance index end comunicate the validation or not of user component selection in a configuration 
+	 *  
+	 *  @see ServletController,Catalog
+	 */
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 		String email = (String) request.getSession().getAttribute("email");
 		if (email == null) {
 			response.sendRedirect("/login");
-			System.out.println("Utente nullo " + email);
+			
 			return;
 		}
 
-		System.out.println("Utente non nullo " + email);
+		
 
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
 				.getAttribute(email + "_controller");
@@ -81,13 +92,11 @@ public class ConfigurationServlet extends MyServlet {
 				elementOfPreexistentConfiguration, elementSetOfPreexistentConfiguration ,price, performance, valid,errorInAutofill, configurationName));
 	}
 
-	// TODO: Cambiare le stringhe boiler con costanti per i percorsi ed i nomi degli
-	// attributi
-	// da recuperare
+	/**
+	 * manage the option in configuration web page and mange the error case
+	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-		// ServletController controller = (ServletController)
-		// request.getSession().getAttribute("controller");
 		String email = (String) request.getSession().getAttribute("email");
 		System.out.println(email);
 		if (email == null) {
@@ -97,20 +106,18 @@ public class ConfigurationServlet extends MyServlet {
 
 		ServletController controller = (ServletController) this.getServletConfig().getServletContext()
 				.getAttribute(email + "_controller");
-		// Se il controller è nullo (cosa che non dovrebbe succedere poichè viene
-		// istanziato
-		// durante la login, vuol dire che qualcuno sta facendo una cattiva post e
-		// quindi lo
-		// redirigo alla logout
+		/*
+		 * if the controll is null wee redirect to login 
+		 */
 		if (controller == null) {
-			// Devo fare in modo di inviare di risposta come ajax un erorre
-			// e se trovo quell'errore invio un json che venendo letto lato
-			// client dal javascript poi forza a sloggare e poi loggare.
+			/*
+			 * wee send error message (json)
+			 */
 			redirectToLogout(request, response);
 			return;
 		}
 
-		// Prende solo /add anche se il path completo è /configuration/add
+		
 		if (request.getPathInfo().equals("/add")) {
 			add(request, response, controller);
 		} else if (request.getPathInfo().equals("/remove")) {
@@ -122,13 +129,20 @@ public class ConfigurationServlet extends MyServlet {
 		} else if (request.getPathInfo().equals("/performance")) {
 			getPerformance(request, response, controller);
 		}else if(request.getPathInfo().equals("/autofill")) {
-			//TODO modificare anche l'uml
-			System.out.println("Voglio autofillare");
+			
 			autofill(request, response, controller);
 		}
 
 	}
 
+	/**
+	 * wee can use this method to make autofill and : save usere configuration, communicate if is an error in autofil,
+	 * whend the user want to generate random configuration the user can select an indicative price. 
+	 * @param request
+	 * @param response
+	 * @param controller
+	 * @throws IOException
+	 */
 	private void autofill(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		//The first thing is to save the configuration
 		if(!controller.saveConfiguration()) {
@@ -139,13 +153,13 @@ public class ConfigurationServlet extends MyServlet {
 		
 		String choice = (String) request.getParameter("groupCase");
 		
-		System.out.println("La scelta è "+ choice);
+		System.out.println("La scelta ï¿½ "+ choice);
 		if(choice == null) {
 			reloadConfigurationHtmlPage(response, controller, true);
 			return;
 		}
 		
-		System.out.println("Scelta non nulla");
+		
 		
 		if(choice.equals("random")) {
 			if(controller.autofill()){
@@ -153,9 +167,8 @@ public class ConfigurationServlet extends MyServlet {
 				System.out.println("auto random ok");
 				reloadConfigurationHtmlPage(response, controller, false);
 			}else{
-				//Se arrivo qui l'autofill è fallito e la configurazione è rimasta 
-				//invariata, devo dare un messaggio di errore al coso
-				System.out.println("auto random fallito");
+			
+				
 				reloadConfigurationHtmlPage(response, controller, true);
 			}	
 		}else if(choice.equals("price")){
@@ -197,9 +210,20 @@ public class ConfigurationServlet extends MyServlet {
 		response.getWriter().write(json);
 	}
 
+	/**
+	 * wee use this method to add component in a configuration we add them if they respect the constraints , 
+	 * the servlet comunicate with user thanks to configuration web page end comunicate the user's  choices to the model. 
+	 * in case of error during the operation it is communicated to the user
+
+
+	 * @param request
+	 * @param response
+	 * @param controller
+	 * @throws IOException
+	 */
 	private void add(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
-		// Recupero il modello
+		
 		String modelOfComponentToInsert = request.getParameter("model");
 		String numberString = request.getParameter("number");
 		int number = 1;
@@ -208,32 +232,39 @@ public class ConfigurationServlet extends MyServlet {
 
 		System.out.println("Voglio inserire il modello " + modelOfComponentToInsert + "volte: " + number);
 
-		// Facciamo l'inserimento con i controlli con le classi che abbiamo
+		
 		boolean allOk = controller.addToConfiguration(modelOfComponentToInsert, number);
 		String json = "";
 
 		if (allOk) {
 			double price = this.getConfigurationPrice(controller);
 			json = JsonMessages.getJsonOkResponse(price);
-			// controller.printConf();
-			System.out.println("Aggiunta andata a buon fine");
+			
+			
 		} else {
 
 			json = JsonMessages.getJsonNotOkResponse(controller);
-			// controller.printConf();
-			System.out.println("Aggiunta andata male");
+			
+			
 		}
 
 		controller.printConf();
 		response.getWriter().write(json);
 	}
+	/**
+	 * remove component from configuration 
+	 * @param request
+	 * @param response
+	 * @param controller
+	 * @throws IOException
+	 */
 
 	private void remove(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
 		String modelOfComponentToRemove = request.getParameter("model");
 		System.out.println("Sto facendo la rimozione di " + modelOfComponentToRemove);
 
-		// Facciamo l'inserimento con i controlli con le classi che abbiamo
+		
 		boolean allOk = controller.removeFromConfiguration(modelOfComponentToRemove);
 		String json = "";
 
@@ -241,20 +272,23 @@ public class ConfigurationServlet extends MyServlet {
 			double price = this.getConfigurationPrice(controller);
 			json = JsonMessages.getJsonOkResponse(price);
 
-			// controller.printConf();
-			// System.out.println("b");
 		} else {
 			json = JsonMessages.getJsonNotOkResponse();
-			// controller.printConf();
-			// System.out.println("m");
+			
 		}
 
-		// Invio la risposta
 
 		controller.printConf();
 		response.getWriter().write(json);
 
 	}
+	/**
+	 *  save configuration in database
+	 * @param request
+	 * @param response
+	 * @param controller
+	 * @throws IOException
+	 */
 
 	private void save(HttpServletRequest request, HttpServletResponse response, ServletController controller) throws IOException {
 		String json = "";
@@ -280,6 +314,11 @@ public class ConfigurationServlet extends MyServlet {
 		response.getWriter().write(json);
 	}
 
+	/**
+	 * this method verifies that all the constraints have been respected
+	 * @see ServletController
+	 * 
+	 */
 	private void check(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
 
