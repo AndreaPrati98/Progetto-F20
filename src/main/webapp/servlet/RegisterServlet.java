@@ -36,9 +36,9 @@ public class RegisterServlet extends MyServlet {
 
 	/**
 	 * Manages post requests. Gets information sent using a post request from a
-	 * form, if the two emails are different shows an error, otherwise
-	 * a user will be added to db using PersistenceFacade methods.
-	 * An email will be sent to the email chosen by the user.
+	 * form, if the two emails are different shows an error, otherwise a user will
+	 * be added to db using PersistenceFacade methods. An email will be sent to the
+	 * email chosen by the user.
 	 * 
 	 * @see PersistenceFacade
 	 * @see Mail
@@ -47,7 +47,7 @@ public class RegisterServlet extends MyServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
-	@Override
+	@Override 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		boolean flag = true;
 		HashingPassword hashingPassword = new HashingPassword();
@@ -60,13 +60,14 @@ public class RegisterServlet extends MyServlet {
 		String confpsw = request.getParameter("RipetiPassword");
 		if (!psw.equals(confpsw)) {
 			flag = false;
-			response.getWriter().write(Rythm.render("sign-in.rtm", flag));
+			response.getWriter().write(Rythm.render("sign-in.html", flag));
+		} else {
+			pf.addUser(nome, cognome, mail, hashingPassword.getHashPsw(psw), false);
+			Mail m = new Mail(mail, nome);
+			System.out.println("Email inviata" + m);
+			request.getSession().invalidate();
+			response.sendRedirect("/login");
 		}
-		pf.addUser(nome, cognome, mail, hashingPassword.getHashPsw(psw), false);
-		Mail m = new Mail(mail, nome);
-		System.out.println("Email inviata" + m);
-		request.getSession().invalidate();
-		response.sendRedirect("/login");
 	}
 
 }
