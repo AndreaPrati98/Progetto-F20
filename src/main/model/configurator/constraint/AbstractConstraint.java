@@ -70,10 +70,20 @@ public abstract class AbstractConstraint {
 		return list;		
 	}
 	
-
-	protected List<Attribute> selectAttributeSameName(Component componentFromWichExtracts){
+	/**
+	 * Extract, from a component, a List of attributes that have the same name of the constraint that is
+	 * calling this method
+	 * @param componentFromWhichExtracts - from wich we want to extract the list of attributes<br>
+	 * @return null - if component as parameter has no attributes with same name of constraint <br>
+	 * ListOfAttribute - the list of attributes that respect the condition
+	 * 
+	 * @see AbstractConstraint
+	 * @see Component
+	 * @see List
+	 */
+	protected List<Attribute> selectAttributeSameName(Component componentFromWhichExtracts){
 		List<Attribute> list = new ArrayList<Attribute>();
-		List<Attribute> tmpAttribute = componentFromWichExtracts.getAttributesByConstraint(this.name);
+		List<Attribute> tmpAttribute = componentFromWhichExtracts.getAttributesByConstraint(this.name);
 		
 		
 		if(tmpAttribute != null)
@@ -81,7 +91,6 @@ public abstract class AbstractConstraint {
 		
 		if(list.isEmpty())
 			return null;
-		
 		
 		return list;		
 	}
