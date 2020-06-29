@@ -5,12 +5,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import main.model.configurator.configuration.Configuration;
 import main.model.configurator.constraint.AbstractConstraint;
 import main.model.configurator.constraint.DimensionConstraint;
 import main.model.configurator.constraint.EqualsConstraint;
 import main.model.configurator.constraint.MaxConstraint;
-import main.model.customer.Customer;
 
 public class RdbConstraintDAO implements InterfaceCostraintDAO {
 

@@ -9,8 +9,6 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 
-import main.model.configurator.configuration.Configuration;
-import main.model.customer.Customer;
 
 /**
  * Defines every interaction with db, using sql queries.

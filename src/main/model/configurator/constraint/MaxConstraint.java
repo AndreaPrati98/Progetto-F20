@@ -2,7 +2,6 @@ package main.model.configurator.constraint;
 
 import java.util.List;
 
-import org.eclipse.jetty.util.security.Constraint;
 
 import main.model.configurator.component.Attribute;
 import main.model.configurator.component.Component;
