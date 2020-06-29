@@ -152,7 +152,7 @@ public class AdministratorServlet extends MyServlet {
 		for (Entry<String, String[]> name : request.getParameterMap().entrySet()) {
 			JSONObject j = null;
 			JSONParser jsonParser = new JSONParser();
-			try {
+			try { 
 				j = (JSONObject) jsonParser.parse(name.getKey());
 			} catch (ParseException e) {
 				e.printStackTrace();
