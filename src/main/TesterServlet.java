@@ -5,6 +5,7 @@ import java.util.List;
 
 import main.model.configurator.configuration.Configuration;
 import main.services.persistence.PersistenceFacade;
+import main.services.util.Mail;
 import main.webapp.servlet.AboutUsServlet;
 import main.webapp.servlet.AdministratorServlet;
 import main.webapp.servlet.ApplicationServer;
@@ -34,7 +35,6 @@ public class TesterServlet {
 		// Questo va fatto all'avvio per inizializzare gli id da usare per le configurazioni
 		PersistenceFacade pf = PersistenceFacade.getIstance();
 		Configuration.setLastUsedId(pf.getLastUsedId());
-		
 	}
 
 }
