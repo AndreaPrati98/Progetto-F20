@@ -4,13 +4,14 @@ import java.util.List;
 
 import main.model.configurator.component.Component;
 
-public interface InterfaceComponentDAO {
 /**
- * in questa interfaccia definiamo i metodi che ci serve implementare per fare le interrogazioni al database
- * 
- * 
- * @return
+ * Interface used to define methods related to components, that will later get implemented in RdbComponentDAO
+ * @see RdbComponentDAO
+ * @see Component
  */
+
+public interface InterfaceComponentDAO {
+
 	List<Component> getAllComponent();
 	List<String> getNeededComponents();
 	List<String> getTypeOfComponent();

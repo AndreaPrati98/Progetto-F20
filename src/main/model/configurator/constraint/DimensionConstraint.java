@@ -25,6 +25,13 @@ public class DimensionConstraint extends AbstractConstraint {
 		super(name);
 	}
 	
+	
+	/**
+	 * Check if this Constraint is compatible with the list of others constraints given
+	 * 
+	 * @param Constraint type:{@link Constraint}
+	 * @return true if the component will respect the constraint,false if it will not respect the costraint
+	 */
 	@Override
 	public boolean checkList(List<Component> oldCheckedComponents, Component componentToCheck) {
 		List<Attribute> oldAttributesAlreadyChecked = this.selectAttributeSameName(oldCheckedComponents);

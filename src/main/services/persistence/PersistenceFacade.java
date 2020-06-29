@@ -7,9 +7,7 @@ import main.model.configurator.configuration.Configuration;
 import main.model.configurator.constraint.AbstractConstraint;
 import main.model.customer.Customer;
 /**
- * 
  * This class is a singleton.
- *
  */
 public class PersistenceFacade {
 

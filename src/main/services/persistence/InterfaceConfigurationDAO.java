@@ -6,12 +6,12 @@ import java.util.List;
 import main.model.configurator.configuration.Configuration;
 import main.model.customer.Customer;
 
-public interface InterfaceConfigurationDAO {
 /**
- * interfaccia  per definire un set di metodi che verrano poi implementati dai vari DAO che interrogheranno il Database
- * @param confId
- * @return
+ * Interface used to define methods related to configurations, that will later get implemented in RdbConfigurationDAO
+ * @see RdbConfigurationDAO
  */
+
+public interface InterfaceConfigurationDAO {
 	public Configuration getConfiguration(int confId);
 
 	public List<Configuration> getConfigurationByEmail(String email);

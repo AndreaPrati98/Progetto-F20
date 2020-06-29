@@ -4,12 +4,12 @@ import java.util.List;
 
 import main.model.customer.Customer;
 
-public interface InterfaceUserDAO {
 /**
- * usiamo questa interfaccia per definire un cospiquo set di istruzioni che veranno implementate dai Dao per interrogare il
- * database in particolare queste operazioni sono mirate alla coretta gestione degli user e a salvare nel db le varie informazioni a loro collegate
- * 
+ * Interface used to define methods related to users, that will later get implemented in RdbUserDAO
+ * @see RdbUserDAO
  */
+
+public interface InterfaceUserDAO {
 	public boolean addUsers(String name, String cognome, String email, String password, boolean isAdmin);
 	public boolean login(String email, String password);
 	public Customer getCustomer(String email);
