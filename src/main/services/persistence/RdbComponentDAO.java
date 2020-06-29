@@ -24,6 +24,17 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 		this.dbop = dbop;
 	}
 
+	/**
+	 * Used to fill the catalog.
+	 * It first gets every component model, type and price, then gets its attributes,
+	 * and return a list.
+	 * 
+	 * @return a list containing every component
+	 * @see Component
+	 * @see Attribute
+	 * @see ComponentCatalog
+	 */
+	
 	public List<Component> getAllComponent() {
 		ResultSet allComp = dbop.getAllComponents();
 		ResultSet comp;
@@ -90,6 +101,11 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 		return result;
 	}
 		
+	/**
+	 * @return a list containing every component type
+	 * @see Component
+	 */
+	
 	public List<String> getTypeOfComponent(){
 		ResultSet rs = dbop.getTypeComponents();
 		List<String> typeComp = new ArrayList<>();
@@ -107,6 +123,12 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 		return typeComp;
 	}
 
+	
+	/**
+	 * @return a list containing every necessary component in a configuration
+	 * @see Component
+	 * @see Configuration
+	 */
 	@Override
 	public List<String> getNeededComponents() {
 		ResultSet rs = dbop.getNeededComponents();
@@ -125,6 +147,11 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 		return neededComp;
 	}
 	
+	/**
+	 * @return a list containing every standard attribute
+	 * @see Component
+	 * @see Attribute
+	 */
 	public List<String> getStandardAttributes(String typeComponent){
 		ResultSet rs = dbop.getStandardAttributes(typeComponent);
 		List<String> stdAtt = new ArrayList<>();

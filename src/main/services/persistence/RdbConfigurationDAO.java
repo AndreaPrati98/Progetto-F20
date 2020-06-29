@@ -20,6 +20,11 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 		this.dbop = dbop;
 	}
 
+	/**
+	 * @return a configuration given its id in the database.
+	 * @see Configuration
+	 */
+	
 	public Configuration getConfiguration(int confId) {
 
 		ResultSet rs = dbop.getConfiguration(confId);
@@ -50,7 +55,12 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 		}
 		return null;
 	}
-
+	
+	/**
+	 * @return a list of configurations, given an email in the database.
+	 * @see Configuration
+	 */
+	
 	public List<Configuration> getConfigurationByEmail(String email) {
 
 		ResultSet rs = dbop.getConfigurationByEmail(email);
@@ -88,6 +98,12 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 
 	}
 
+	/**
+	 * add a configuration
+	 * @return true if the component is added, false if it isn't.
+	 * @see Configuration
+	 */
+	
 	public boolean addConfiguration(Configuration conf, Customer user) {
 		List<String> type = new ArrayList<String>();
 		List<String> model = new ArrayList<String>();
@@ -113,6 +129,14 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 	}
 	
 	// TODO: Sistemare in modo che tutto viene fatto in modo atomico
+	/**
+	 * Updates a configuration, given the owner (a customer), and a new configuration that
+	 * will overwrite the old one.
+	 * 
+	 * @return true if the configuration is updated, false if it isn't.
+	 * @see Configuration
+	 * @see Customer
+	 */
 	public boolean updateConfiguration(Configuration conf, Customer user) {
 		boolean flag1 = this.removeConfiguration(conf.getId());
 		boolean flag2 = false;
@@ -129,6 +153,13 @@ public class RdbConfigurationDAO implements InterfaceConfigurationDAO {
 		return dbop.removeConfiguration(confId);
 
 	}
+	
+	/**
+	 * Gets the last used id in db, useful when adding new configurations
+	 * 
+	 * @return last used id.
+	 * @see Configuration
+	 */
 	
 	public int getLastUsedId() {
 		ResultSet rs = dbop.getLastUsedId();
