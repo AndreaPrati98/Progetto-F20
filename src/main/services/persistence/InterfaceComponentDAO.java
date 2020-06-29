@@ -5,7 +5,12 @@ import java.util.List;
 import main.model.configurator.component.Component;
 
 public interface InterfaceComponentDAO {
-	
+/**
+ * in questa interfaccia definiamo i metodi che ci serve implementare per fare le interrogazioni al database
+ * 
+ * 
+ * @return
+ */
 	List<Component> getAllComponent();
 	List<String> getNeededComponents();
 	List<String> getTypeOfComponent();

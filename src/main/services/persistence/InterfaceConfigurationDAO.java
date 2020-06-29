@@ -7,7 +7,11 @@ import main.model.configurator.configuration.Configuration;
 import main.model.customer.Customer;
 
 public interface InterfaceConfigurationDAO {
-
+/**
+ * interfaccia  per definire un set di metodi che verrano poi implementati dai vari DAO che interrogheranno il Database
+ * @param confId
+ * @return
+ */
 	public Configuration getConfiguration(int confId);
 
 	public List<Configuration> getConfigurationByEmail(String email);

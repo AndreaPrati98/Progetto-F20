@@ -29,7 +29,7 @@ public class Mail {
 	private String user;
 
 	/**
-	 *  we use this method to send an email a user when to  a user when signs up on the site 
+	 *  we use this method to send an email a user when to a user when signs up on the site or for other operations
 
 	 * @param to
 	 * @param user
