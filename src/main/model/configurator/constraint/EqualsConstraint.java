@@ -5,6 +5,7 @@ import java.util.List;
 import main.model.configurator.component.Attribute;
 import main.model.configurator.component.Component;
 /**
+ * Constraint in which an equality between two values must be respected.
  * 
  * @author Guglielmo
  *

@@ -1,3 +1,6 @@
+@args() {
+	javax.servlet.http.HttpServletRequest request
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,18 +24,34 @@
 </head>
 <body>
 	<nav class="  cyan darken-2">
-		<div >
-			<a href="/" class="brand-logo">Logo</a>
-			<a href="#" class="sidenav-trigger right" data-target="mobile-nav">
-				<i class="material-icons">menu</i>
-			</a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="login">Login</a></li>
-				<li><a href="sign-in">Sign-in</a></li>
-				<li><a href="configuration">Configuration</a></li>
-			</ul>
-		</div>
-	</nav>
+			<div >
+				<a href="/" class="brand-logo"><img src="statics/IMG/ris8.png"></a>
+				<a href="#" class="sidenav-trigger right" data-target="mobile-nav">
+					<i class="material-icons">menu</i>
+				</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+
+					@if(request.getSession().getAttribute("isAdmin")){
+						<li><a href="administrator">Administrator</a></li>
+					}
+
+					<li><a href="configuration">Configuration</a></li>
+
+					@if(request!=null){
+						@if((String)request.getSession().getAttribute("email") == null){
+							<li><a href="login">Login</a></li>
+							<li><a href="sign-in" method="post">Sign-up</a></li>
+						}else{
+							<li><a href="logout"> Logout</a></li>
+							<li><a href="profile"> Profile</a></li>
+						}
+					}else{
+						<li><a href="logout"> Logout</a></li>
+						<li><a href="profile"> Profile</a></li>
+					}
+				</ul>
+			</div>
+		</nav>
 
 	<div class="slider">
 		<ul class="slides">

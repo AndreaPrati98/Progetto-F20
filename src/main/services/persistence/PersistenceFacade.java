@@ -6,7 +6,11 @@ import main.model.configurator.component.Component;
 import main.model.configurator.configuration.Configuration;
 import main.model.configurator.constraint.AbstractConstraint;
 import main.model.customer.Customer;
-
+/**
+ * 
+ * This class is a singleton.
+ *
+ */
 public class PersistenceFacade {
 
 	private InterfaceComponentDAO cdao;
@@ -180,11 +184,14 @@ public class PersistenceFacade {
 
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * @see InterfaceUserDAO,RdbUserDAO
 	 * @param email
 	 * @return
 	 */
+=======
+>>>>>>> branch 'master' of https://github.com/IngSW-unipv/Progetto-F20.git
 	public boolean removeUser(String email) {
 		return udao.removeUser(email);
 	}
@@ -198,6 +205,7 @@ public class PersistenceFacade {
 		return c;
 
 	}
+<<<<<<< HEAD
 
 //TODO aggiungere uml
 	/**
@@ -206,6 +214,9 @@ public class PersistenceFacade {
 	 * @param mail
 	 * @return
 	 */
+=======
+	
+>>>>>>> branch 'master' of https://github.com/IngSW-unipv/Progetto-F20.git
 	public String getPasswordByMail(String mail) {
 		String psw = udao.getPasswordByMail(mail);
 		return psw;

@@ -1,7 +1,6 @@
 package main.webapp.servlet;
 
 import java.io.File;
-import java.net.URL;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,7 +24,6 @@ public class ApplicationServer {
 /**
  * this servlet class manage the connection by jetty (enable comunication )  we used rtm to write the web pages
  * for this reason wee had to make a handler for manage the session.
-
  * @param port
  * @param servlet
  */

@@ -115,7 +115,7 @@ public class Component {
 
 	/**
 	 * 
-	 * @return price  dd 
+	 * @return price
 	 * 
 	 * @desc fornisce indicazioni relative al prezzo amazon
 	 */
@@ -148,6 +148,11 @@ public class Component {
 		return model;
 	}
 	
+	/**
+	 * 
+	 * @param constraintName
+	 * @return all the attributes with the given constraint name
+	 */
 	public List<Attribute> getAttributesByConstraint(String constraintName) {
 		List<Attribute> att = new ArrayList<>();
 		for(Attribute a : attributesMap.values()) {

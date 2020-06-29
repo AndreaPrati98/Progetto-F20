@@ -14,13 +14,11 @@ public interface InterfaceUserDAO {
 	public boolean login(String email, String password);
 	public Customer getCustomer(String email);
 	public boolean changeEmail(String oldEmail, String newEmail);
-	//TODO aggiungere uml
 	public String getPasswordByMail(String mail);
 	public boolean changePassword(String email, String newPassword);
 	public boolean checkIfUserExist(String mail);
 	public List<String> getAdmin();
 	public boolean addAdmin(String mail,boolean decision);
-	//TODO aggiungere uml
 	public boolean removeUser(String email);
 	
 }

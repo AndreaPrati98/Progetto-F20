@@ -7,6 +7,7 @@ import main.model.configurator.component.Attribute;
 import main.model.configurator.component.Component;
 
 /**
+ * Constraint in which an inequality between two values must be respected.
  * 
  * @author Capici Alessandro
  *

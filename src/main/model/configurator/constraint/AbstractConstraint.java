@@ -15,8 +15,8 @@ public abstract class AbstractConstraint {
 	
 	private String name;
 	
-	/*
-	 * @param name 
+	/**
+	 * @param name - name of the Constraint
 	 */
 	public AbstractConstraint(String name) {
 		this.name = name;
@@ -45,19 +45,23 @@ public abstract class AbstractConstraint {
 	
 
 	/**
-	 * The method to extract a list of attributes with the same name of the contraint.
+	 * Extract, from a list({@link List}) of component, a List of attributes that have the same name of the constraint that is
+	 * calling this method
 	 * 
-	 * 
-	 * 
-	 * @return the list of attributes that have the same name of the constraint. If there aren't 
-	 * attributes with that name returns null. If a list is null it means it's ok because there aren't
+	 * @param componentFromWhichExtracts - from wich we want to extract the list of attributes<br>
+	 * @return null - if component as parameter has no attributes with same name of constraint <br>
+	 * ListOfAttribute - the list of attributes that respect the condition. If a list is null it means it's ok because there aren't
 	 * attributes that goes in conflict with others.
+	 * 
+	 * @see AbstractConstraint
+	 * @see Component
+	 * @see List
 	 */
-	protected List<Attribute> selectAttributeSameName(List<Component> componentsFromWichExtracts){
+	protected List<Attribute> selectAttributeSameName(List<Component> componentsFromWhichExtracts){
 		List<Attribute> list = new ArrayList<Attribute>();
 		List<Attribute> tmpAttribute; 
 		
-		for(Component c : componentsFromWichExtracts) {	
+		for(Component c : componentsFromWhichExtracts) {	
 			tmpAttribute = c.getAttributesByConstraint(this.name);
 			if(!tmpAttribute.isEmpty()){
 				list.addAll(tmpAttribute);
@@ -70,10 +74,20 @@ public abstract class AbstractConstraint {
 		return list;		
 	}
 	
-
-	protected List<Attribute> selectAttributeSameName(Component componentFromWichExtracts){
+	/**
+	 * Extract, from a component, a List of attributes that have the same name of the constraint that is
+	 * calling this method
+	 * @param componentFromWhichExtracts - from wich we want to extract the list of attributes<br>
+	 * @return null - if component as parameter has no attributes with same name of constraint <br>
+	 * ListOfAttribute - the list of attributes that respect the condition
+	 * 
+	 * @see AbstractConstraint
+	 * @see Component
+	 * @see List
+	 */
+	protected List<Attribute> selectAttributeSameName(Component componentFromWhichExtracts){
 		List<Attribute> list = new ArrayList<Attribute>();
-		List<Attribute> tmpAttribute = componentFromWichExtracts.getAttributesByConstraint(this.name);
+		List<Attribute> tmpAttribute = componentFromWhichExtracts.getAttributesByConstraint(this.name);
 		
 		
 		if(tmpAttribute != null)
@@ -82,15 +96,13 @@ public abstract class AbstractConstraint {
 		if(list.isEmpty())
 			return null;
 		
-		
 		return list;		
 	}
 	
 	/**
 	 * Filters the attributes list according to the CategoryType given as parameter. 
 	 * 
-	 * @param componentFromWichExtracts
-	 * @return
+	 * @return the filtered list
 	 */
 	protected List<Attribute> filterAttributesList(List<Attribute> listToFilter, ConstraintCategory category){
 		List<Attribute> filteredList = new ArrayList<Attribute>();

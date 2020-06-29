@@ -3,7 +3,13 @@ package main.model.configurator.constraint;
 import java.util.List;
 
 import main.model.configurator.component.Component;
+import main.model.configurator.configuration.Configuration;
 
+/**
+ * Used to check the compatibility between components ({@link Component}) or if a configuration ({@link Configuration})
+ * is complete
+ * 
+ */
 public interface InterfaceConstraintChecker {
 
 

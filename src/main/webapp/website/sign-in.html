@@ -5,97 +5,101 @@
 }
 <html>
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <!-- link CSS -->
-    <script src="statics/JS/sidenavScript.js"></script>
-    <link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css">
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"  media="screen,projection"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<!-- link CSS -->
+	<script src="statics/JS/sidenavScript.js"></script>
+	<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css">
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"  media="screen,projection"/>
+
+	<script src="statics/JS/sign-in.js"></script>
+
+
 	<style>
-	#submitForm{
-		background-color: #0097a7;
-	}
-	#resetForm{
-		background-color: #d32f2f;
-	}
+		#submitForm{
+			background-color: #0097a7;
+		}
+		#resetForm{
+			background-color: #d32f2f;
+		}
 	</style>
-	
+
 </head>
 <body>
 
-    <nav class="cyan darken-2"><!--inizio della navbar-->
-        <div >
-            <a href="home.html" class="brand-logo"><img src="statics/IMG/ris8.png"></img></a>
-            <a href="#" class="sidenav-trigger right" data-target="mobile-nav">
-                <i class="material-icons">menu</i>
-            </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="/configuration">Configuration</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/sign-in">Sign-up</a></li>
-            </ul>
-        </div>
-    </nav><!--fine della navbar-->
+	<nav class="cyan darken-2"><!--inizio della navbar-->
+		<div >
+			<a href="home.html" class="brand-logo"><img src="statics/IMG/ris8.png"></img></a>
+			<a href="#" class="sidenav-trigger right" data-target="mobile-nav">
+				<i class="material-icons">menu</i>
+			</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="/configuration">Configuration</a></li>
+				<li><a href="/login">Login</a></li>
+				<li><a href="/sign-in">Sign-up</a></li>
+			</ul>
+		</div>
+	</nav><!--fine della navbar-->
 
-    <ul class="sidenav" id="mobile-nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/configuration">Configuration</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/sign-in">Sign-up</a></li>
-    </ul>
+	<ul class="sidenav" id="mobile-nav">
+		<li><a href="/">Home</a></li>
+		<li><a href="/configuration">Configuration</a></li>
+		<li><a href="/login">Login</a></li>
+		<li><a href="/sign-in">Sign-up</a></li>
+	</ul>
 
 
-    <br>
+	<br>
 
-    <div class="container"><!--inizio form regisrazione-->
-        <form id="SignUpForm" align="center" method="POST"> <!-- metodo post per invio dati acquisiti -->
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="FirstName" name="FirstName" type="text" class="validate">
-                    <label for="FirstName">Nome</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="LastName" name="LastName" type="text" class="validate">
-                    <label for="LastName">Cognome</label>
-                </div>
-            </div>
-            <div class="center container">
-                <div class="input-field col s8">
-                    <input id="Email" name="Email" type="text" class="validate">
-                    <label for="Email">Email</label>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="Password" name="Password" type="password" class="validate">
-                    <label for="Password">Password</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="RipetiPassword" name="RipetiPassword" type="password" class="validate">
-                    <label for="RipetiPassword">Ripeti Password</label>
-                </div>
-            </div>
-            @if(!flag){
-            	<h3>Compilare bene il form</h3>
-            	<br>
-            }
-            <div class="center container">
-                <button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="submitForm" method="post">
-                    Sign-up
-                    <i class="material-icons right">done</i>
-                </button>
-                <button class="btn waves-effect waves-light" type="reset" id="resetForm">
-                    Delete
-                    <i class="material-icons right">cancel</i>
-                </button>
-            </div>
-        </form>
-    </div><!--fine form registrazione-->
+	<div class="container"><!--inizio form regisrazione-->
+		<form id="SignUpForm" align="center" method="POST"> <!-- metodo post per invio dati acquisiti -->
+			<div class="row">
+				<div class="input-field col s6">
+					<input id="FirstName" name="FirstName" type="text" class="validate">
+					<label for="FirstName">Nome</label>
+				</div>
+				<div class="input-field col s6">
+					<input id="LastName" name="LastName" type="text" class="validate">
+					<label for="LastName">Cognome</label>
+				</div>
+			</div>
+			<div class="center container">
+				<div class="input-field col s8">
+					<input id="Email" name="Email" type="email" class="validate">
+					<label for="Email">Email</label>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="input-field col s6">
+					<input id="Password" name="Password" type="password" class="validate">
+					<label for="Password">Password</label>
+				</div>
+				<div class="input-field col s6">
+					<input id="RipetiPassword" name="RipetiPassword" type="password" class="validate">
+					<label for="RipetiPassword">Ripeti Password</label>
+				</div>
+			</div>
+			@if(!flag){
+				<h3>Compilare bene il form</h3>
+				<br>
+			}
+			<div class="center container">
+				<button class="btn waves-effect waves-light" type="submit" class="grey darken-2" id="submitForm" method="post">
+					Sign-up
+					<i class="material-icons right">done</i>
+				</button>
+				<button class="btn waves-effect waves-light" type="reset" id="resetForm">
+					Delete
+					<i class="material-icons right">cancel</i>
+				</button>
+			</div>
+		</form>
+	</div><!--fine form registrazione-->
 </body>
 </html>

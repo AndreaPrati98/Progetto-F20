@@ -25,8 +25,6 @@ public class RdbOperation {
 		try {
 			Class.forName("org.sqlite.JDBC");
 			c = DriverManager.getConnection("jdbc:sqlite:Util/projectDatabase.sqlite");
-			System.out.println("Connection done");
-
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
 
@@ -309,7 +307,6 @@ public class RdbOperation {
 
 	}
 	
-	//TODO aggiungere uml
 	public boolean removeUser(String email) {
 		String query = "DELETE FROM User WHERE email= '"+ email+"'";
 		boolean isDone = false;
