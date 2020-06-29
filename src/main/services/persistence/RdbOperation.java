@@ -9,7 +9,11 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 
+import main.model.configurator.configuration.Configuration;
+import main.model.customer.Customer;
+
 /**
+ * Defines every interaction with db, using sql queries.
  * 
  * @author Alessandro Capici
  * @author Cristian Garau
@@ -224,6 +228,7 @@ public class RdbOperation {
 		return null;
 	}
 
+	
 	public boolean addConfiguration(int id, String name, String email, List<String> Type, List<String> Model,
 			Map<String, Integer> counter) {
 		String sql = "INSERT INTO Configuration(Id,Name,EmailU) VALUES(?,?,?)";

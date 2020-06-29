@@ -5,10 +5,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import main.model.configurator.configuration.Configuration;
 import main.model.configurator.constraint.AbstractConstraint;
 import main.model.configurator.constraint.DimensionConstraint;
 import main.model.configurator.constraint.EqualsConstraint;
 import main.model.configurator.constraint.MaxConstraint;
+import main.model.customer.Customer;
 
 public class RdbConstraintDAO implements InterfaceCostraintDAO {
 
@@ -18,13 +20,6 @@ public class RdbConstraintDAO implements InterfaceCostraintDAO {
 		super();
 		this.dbop = dbop;
 	}
-	
-	/*
-	@Override
-	public AbstractConstraint getConstraint(String name, String typeOfComponent) {
-		//  Auto-generated method stub
-		return null;
-	}*/
 
 	@Override
 	public List<AbstractConstraint> getAllConstraints() {
@@ -54,6 +49,11 @@ public class RdbConstraintDAO implements InterfaceCostraintDAO {
 		return constraints;
 	}
 
+	/**
+	 * Adds a constraint, given a name, and its type (ex. Max, Equals, Dimension)
+	 * 
+	 * @return true if the constraint is updated, false if it isn't.
+	 */
 	@Override
 	public boolean addNewConstraint(String name, String type) {
 		

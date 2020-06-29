@@ -34,8 +34,7 @@ public class Mail {
 	private String user;
 
 	/**
-	 * we use this method to send an email a user when to a user when signs up on
-	 * the site or for other operations
+	 * Sends an email upon signing up, to the email chosen by the user.
 	 * 
 	 * @param to
 	 * @param user

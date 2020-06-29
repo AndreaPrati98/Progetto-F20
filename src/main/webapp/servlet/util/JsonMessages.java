@@ -9,6 +9,11 @@ import org.json.simple.JSONObject;
 import main.model.configurator.component.Component;
 import main.webapp.servlet.ServletController;
 
+/**
+ * Define methods for generating standard responses to POST requests
+ * @return
+ */
+
 public class JsonMessages {
 
 	// Keys and values for the response map
@@ -24,9 +29,7 @@ public class JsonMessages {
 	public static final String responseErrorString = "error";
 
 	/**
-	 * 
 	 * generic method for making that  when there is an error plots to string
-
 	 * 
 	 * @return
 	 */
