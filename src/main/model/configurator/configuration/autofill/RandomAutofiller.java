@@ -30,6 +30,14 @@ public class RandomAutofiller extends AbstractAutoFiller {
 		componentTypes.add("cooler");
 	}
 	
+	/**
+	 * Complete the configuration in a random way, respecting all the compatibility constraints
+	 * 
+	 * @param alreadyInside components
+	 * @return the list of components of the complete configuration or
+	 * the initial list of components if the algorithm fails (for example if in the database there
+	 * are no compatible components with the given ones)
+	 */
 	@Override
 	public List<Component> completeConfiguration(List<Component> alreadyInside) {
 		// Se viene passata una lista nulla mi comporto come se venisse passata una lista vuota

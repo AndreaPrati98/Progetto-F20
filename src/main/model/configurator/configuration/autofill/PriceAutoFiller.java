@@ -50,7 +50,15 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 		this.percentageMap = calculatePercentageMap();
 		
 	}
-
+	
+	/**
+	 * Completes the configuration trying to get as close as possible to the price scope
+	 * 
+	 * @param alreadyInside components
+	 * @return the list of components of the complete configuration or
+	 * the initial list of components if the algorithm fails (for example if in the database there
+	 * are no compatible components with the given ones)
+	 */
 	@Override
 	public List<Component> completeConfiguration(List<Component> alreadyInside) {
 		// Se viene passata una lista nulla mi comporto come se venisse passata una lista vuota
@@ -78,6 +86,8 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 	}
 
 	/**
+	 * Get the component of the given type which price is the nearest to the price scope for that type.
+	 * The price scope of a given type is obtained as a percentage of the total scope price.
 	 * 
 	 * @param compatibleComp
 	 * @param typeOfComponent
