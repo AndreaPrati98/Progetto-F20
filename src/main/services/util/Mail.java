@@ -28,6 +28,12 @@ public class Mail {
 	@SuppressWarnings("unused")
 	private String user;
 
+	/**
+	 *  we use this method to send an email a user when to  a user when signs up on the site
+
+	 * @param to
+	 * @param user
+	 */
 	public Mail(String to, String user) {
 
 		this.to = to;
@@ -230,13 +236,13 @@ public class Mail {
 					"<!--[if mso]></td></tr></table><![endif]-->\r\n" + 
 					"<div align=\"center\" class=\"img-container center fixedwidth\" style=\"padding-right: 0px;padding-left: 0px;\">\r\n" + 
 					"<!--[if mso]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr style=\"line-height:0px\"><td style=\"padding-right: 0px;padding-left: 0px;\" align=\"center\"><![endif]-->\r\n" + 
-					"<div style=\"font-size:1px;line-height:45px\"> </div><img align=\"center\" alt=\"Image\" border=\"0\" class=\"center fixedwidth\" src=\"cid:logo\" style=\"text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 540px; display: block;\" title=\"Image\" width=\"540\"/>\r\n" + 
+					"<div style=\"font-size:1px;line-height:45px\">ï¿½</div><img align=\"center\" alt=\"Image\" border=\"0\" class=\"center fixedwidth\" src=\"cid:logo\" style=\"text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 540px; display: block;\" title=\"Image\" width=\"540\"/>\r\n" + 
 					"<!--[if mso]></td></tr></table><![endif]-->\r\n" + 
 					"</div>\r\n" + 
 					"<!--[if mso]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Tahoma, Verdana, sans-serif\"><![endif]-->\r\n" + 
 					"<div style=\"color:#555555;font-family:Lato, Tahoma, Verdana, Segoe, sans-serif;line-height:1.2;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;\">\r\n" + 
 					"<div style=\"font-size: 12px; line-height: 1.2; color: #555555; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14px;\">\r\n" + 
-					"<p style=\"font-size: 18px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 22px; margin: 0;\"><span style=\"font-size: 18px; color: #000000;\">Thanks for signing up for our updates. We’ll be sending an occasional email with everything new and good that you’ll probably want to know about: new products, posts, promos, and parties.</span></p>\r\n" + 
+					"<p style=\"font-size: 18px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 22px; margin: 0;\"><span style=\"font-size: 18px; color: #000000;\">Thanks for signing up for our updates. Weï¿½ll be sending an occasional email with everything new and good that youï¿½ll probably want to know about: new products, posts, promos, and parties.</span></p>\r\n" + 
 					"</div>\r\n" + 
 					"</div>\r\n" + 
 					"<!--[if mso]></td></tr></table><![endif]-->\r\n" + 
@@ -263,7 +269,7 @@ public class Mail {
 					"<!--[if mso]><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td style=\"padding-right: 10px; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; font-family: Tahoma, Verdana, sans-serif\"><![endif]-->\r\n" + 
 					"<div style=\"color:#555555;font-family:Lato, Tahoma, Verdana, Segoe, sans-serif;line-height:1.5;padding-top:10px;padding-right:10px;padding-bottom:10px;padding-left:10px;\">\r\n" + 
 					"<div style=\"font-size: 12px; line-height: 1.5; color: #555555; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 18px;\">\r\n" + 
-					"<p style=\"font-size: 14px; line-height: 1.5; text-align: center; word-break: break-word; mso-line-height-alt: 21px; margin: 0;\">NetShop - Lorem ipsum dolor sit amet hasellus sagittis aliquam luctus. </p>\r\n" + 
+					"<p style=\"font-size: 14px; line-height: 1.5; text-align: center; word-break: break-word; mso-line-height-alt: 21px; margin: 0;\">NetShop - Lorem ipsum dolor sit amet hasellus sagittis aliquam luctus.ï¿½</p>\r\n" + 
 					"<p style=\"font-size: 14px; line-height: 1.5; text-align: center; word-break: break-word; mso-line-height-alt: 21px; margin: 0;\">329 California St, San Francisco, CA 94118</p>\r\n" + 
 					"</div>\r\n" + 
 					"</div>\r\n" + 
