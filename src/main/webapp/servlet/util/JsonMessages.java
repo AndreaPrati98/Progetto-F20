@@ -10,7 +10,7 @@ import main.model.configurator.component.Component;
 import main.webapp.servlet.ServletController;
 
 /**
- * Define methods for generating standard responses to POST requests
+ * Define methods for generating standard json responses to POST requests
  * @return
  */
 
@@ -29,9 +29,7 @@ public class JsonMessages {
 	public static final String responseErrorString = "error";
 
 	/**
-	 * generic method for making that  when there is an error plots to string
-	 * 
-	 * @return
+	 * Generic response in case of errors.
 	 */
 	public static String getJsonNotOkResponse() {
 		Map<String, Object> responseMapToSend = new HashMap<String, Object>();
@@ -41,11 +39,7 @@ public class JsonMessages {
 	}
 
 	/**
-	 * 
-	 * 
-	 * error in add method beacause break contraint  
-	 * 
-	 * @return
+	 * Response used when an error occurs upon adding a component that breaks a constraint
 	 */
 	public static String getJsonNotOkResponse(ServletController controller) {
 		Map<String, Object> responseMapToSend = new HashMap<String, Object>();
@@ -59,6 +53,9 @@ public class JsonMessages {
 		return responseJsonToSend.toJSONString();
 	}
 
+	/**
+	 * Response used when an operation in configuration ends with no errors.
+	 */
 	public static String getJsonOkResponse(double price) {
 		Map<String, Object> responseMapToSend = new HashMap<String, Object>();
 		responseMapToSend.put(responseString, responseOkString);
@@ -66,9 +63,9 @@ public class JsonMessages {
 		JSONObject responseJsonToSend = new JSONObject(responseMapToSend);
 		return responseJsonToSend.toJSONString();
 	}
+	
 	/**
-	 * generic method for making that all ok 
-	 * @return
+	 * Generic response, used when there are no errors.
 	 */
 	
 	public static String getJsonOkResponse() {
@@ -99,7 +96,7 @@ public class JsonMessages {
 		if (flag) {
 			responseMapToSend.put("response", "Operazione Effettuata");
 		}else {
-			responseMapToSend.put("response", "Error "+message);
+			responseMapToSend.put("response", "Error " + message);
 		}
 		
 
