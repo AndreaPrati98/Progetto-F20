@@ -43,6 +43,7 @@ public class ConfigurationServlet extends MyServlet {
 	private static final String ERROR_AUTOFILL = "errorAutofill";
 	private static final String CONFIGURATION_ID = "configurationId";
 	private static final String LOGOUT = "/logout";
+	private static final String LOGIN = "/login";
 	private static final String _CONTROLLER = "_controller";
 	private static final String EMAIL = "email";
 
@@ -69,7 +70,7 @@ public class ConfigurationServlet extends MyServlet {
 
 		String email = (String) request.getSession().getAttribute(EMAIL);
 		if (email == null) {
-			response.sendRedirect(LOGOUT);
+			response.sendRedirect(LOGIN);
 			return;
 		}		
 
