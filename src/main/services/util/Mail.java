@@ -79,7 +79,7 @@ public class Mail {
 			mm.addBodyPart(messageBodyPart);
 
 			messageBodyPart = new MimeBodyPart();
-			DataSource f1 = new FileDataSource("Website\\IMG\\ris8mail.jpg");
+			DataSource f1 = new FileDataSource("Website\\IMG\\ris8mail.jpeg");
 			messageBodyPart.setDataHandler(new DataHandler((javax.activation.DataSource) f1));
 			messageBodyPart.addHeader("Content-ID", "<logo>");
 			mm.addBodyPart(messageBodyPart);

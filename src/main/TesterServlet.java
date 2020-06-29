@@ -5,7 +5,6 @@ import java.util.List;
 
 import main.model.configurator.configuration.Configuration;
 import main.services.persistence.PersistenceFacade;
-import main.services.util.Mail;
 import main.webapp.servlet.AboutUsServlet;
 import main.webapp.servlet.AdministratorServlet;
 import main.webapp.servlet.ApplicationServer;
