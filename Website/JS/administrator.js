@@ -12,8 +12,7 @@ $("select.typeComp").change(function(){
     let posting = $.post( "/administrator/getCompForm", {typeComp: selected});
     
     posting.done(function(data) {
-	  	var convertedData =  JSON.parse(data);
-	  	console.log(convertedData);  	
+	  	var convertedData =  JSON.parse(data);	
 	  		
 		$("#typeComponentDiv").empty();
 		
@@ -46,7 +45,6 @@ function saveComponent(num) {
 		json = json + '", "';
 		
 		if(value == ''){
-			console.log(name);
 			let text = "You can't leave " + name + " empty!";
 			M.toast({html: text});
 			return false;
@@ -73,13 +71,10 @@ function saveComponent(num) {
 	
 	json = json + '"}';
 	
-	console.log(json);
-	
 	let posting = $.post("administrator/addComp", json);
 	
 	posting.done(function(data) {
 		var convertedData =  JSON.parse(data);
-		console.log(convertedData);
 	
 		if(convertedData['response'] == 'ok'){
 			window.location.replace("/administrator?tab=1");
@@ -98,7 +93,6 @@ $("select.removeComp").change(function(){
     
     posting.done(function(data) {
 	  	var convertedData =  JSON.parse(data);
-	  	console.log(convertedData);  	
 	  	
 	  	$("#removeComponentForm").empty();
 	  	
@@ -131,7 +125,6 @@ function addTypeC(){
 	
 	posting.done(function(data){
 		var convertedData= JSON.parse(data);
-		alert(convertedData['Ok']);
 	});									
 }
 
@@ -143,13 +136,10 @@ function addStdAtt(){
 	var cat=$("#stdAttSelectCat option:selected").text();
 	var isPresentable=$("#stdAttIsPres:checked").val();
 
-	console.log(name + type + bound + cat + isPresentable);
-
 	let posting = $.post( "/administrator/newTypeComp", {stdAttName: name, stdAttType: type, stdAttBound: bound, stdAttCat: cat, stdAttIsPres: isPresentable});
 								
 	posting.done(function(data){
 		var convertedData= JSON.parse(data);
-		alert(convertedData['Ok']);
 	});						
 }
 function checkAddAdmin(){
