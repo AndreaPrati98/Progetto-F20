@@ -21,22 +21,12 @@ public class ApplicationServer {
 	private int port;
 	private List<MyServlet> servlet;
 	private Server server;
-/**
- * this servlet class manage the connection by jetty (enable comunication )  we used rtm to write the web pages
- * for this reason wee had to make a handler for manage the session.
- * @param port
- * @param servlet
- */
+
 	public ApplicationServer(int port, List<MyServlet> servlet) {
 		this.port = port;
 		this.servlet = servlet;
 	}
 
-	/**
-	 * this methods need to generate a session end (by jetty) make to session handler
-	 * this handler manage  only servlet (add ) 
-	 * 
-	 */
 	public void start(){
 		initTemplateEngine();
 		server = new Server(port);
@@ -80,10 +70,6 @@ public class ApplicationServer {
 		}
 
 	}
-	/**
-	 * 
-	 * @param handler
-	 */
 
 	private void addStaticFileServing(ServletContextHandler handler) {
 		ServletHolder holderPwd = new ServletHolder("default", new DefaultServlet());
