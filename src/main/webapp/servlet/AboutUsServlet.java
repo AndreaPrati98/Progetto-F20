@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.rythmengine.Rythm;
 
-import main.services.persistence.PersistenceFacade;
 
+@SuppressWarnings("serial")
 public class AboutUsServlet extends MyServlet{
 	
 /**

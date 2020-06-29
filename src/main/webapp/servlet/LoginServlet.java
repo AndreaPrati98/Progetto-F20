@@ -1,9 +1,6 @@
 package main.webapp.servlet;
 
 import java.io.IOException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +14,7 @@ import main.services.util.HashingPassword;
  * Servlet used to handle login, saving user informations through sessions.
  */
 
+@SuppressWarnings("serial")
 public class LoginServlet extends MyServlet {
 	private static final String PROFILE = "/profile";
 	private static final String _CONTROLLER = "_controller";

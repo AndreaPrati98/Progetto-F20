@@ -141,6 +141,7 @@ public class AdministratorServlet extends MyServlet {
 	 * @throws IOException
 	 */
 
+	@SuppressWarnings("unchecked")
 	private void addComponent(HttpServletRequest request, HttpServletResponse response, PersistenceFacade pf,
 			ComponentCatalog catalog) throws IOException {
 

@@ -55,6 +55,7 @@ public class RegisterServlet extends MyServlet {
 	 * @throws ServletException
 	 * @throws IOException
 	 */
+	@SuppressWarnings("unused")
 	@Override 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		boolean flag = true;

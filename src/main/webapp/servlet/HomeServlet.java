@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.rythmengine.Rythm;
 
-import main.model.configurator.component.Component;
 import main.model.configurator.configuration.Configuration;
 
 import main.services.persistence.PersistenceFacade;
