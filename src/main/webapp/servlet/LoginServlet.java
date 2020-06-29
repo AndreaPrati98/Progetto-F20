@@ -24,6 +24,7 @@ public class LoginServlet extends MyServlet {
 	private static final String EMAIL2 = "email";
 	private static final String PASSWORD = "Password";
 	private static final String EMAIL = "Email";
+	private static final String ISADMIN = "isAdmin";
 
 	/**
 	 * @param name
@@ -55,15 +56,20 @@ public class LoginServlet extends MyServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email = request.getParameter(EMAIL);
 		String password = request.getParameter(PASSWORD);
+		boolean isAdmin;
 		HashingPassword hashingPassword = new HashingPassword();
-
 		ServletController controller = new ServletController();
-
+		
+		
 		if (controller.login(email, hashingPassword.getHashPsw(password))) {
 			request.getSession().setAttribute(EMAIL2, email);
+			
 			this.getServletConfig().getServletContext().setAttribute(email + _CONTROLLER, controller); // add to
 																											// application
 																											// context
+			isAdmin = ((ServletController) this.getServletConfig().getServletContext()
+					.getAttribute(email + _CONTROLLER)).getCustomer().isAdmin();
+			request.getSession().setAttribute(ISADMIN, isAdmin);
 			response.sendRedirect(PROFILE);
 
 		} else {

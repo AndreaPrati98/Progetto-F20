@@ -114,7 +114,7 @@ public class ConfigurationServlet extends MyServlet {
 		ComponentCatalog catalog = ComponentCatalog.getInstance();
 		List<String> type = PersistenceFacade.getIstance().getTypeComponent();
 		response.getWriter().write(Rythm.render(CONFIGURATIONV2_HTML, catalog.getComponentList(), type,
-				elementOfPreexistentConfiguration, elementSetOfPreexistentConfiguration ,price, performance, valid,errorInAutofill, configurationName));
+				elementOfPreexistentConfiguration, elementSetOfPreexistentConfiguration ,price, performance, valid,errorInAutofill, configurationName, request));
 	}
 
 	

@@ -1,7 +1,10 @@
+@args() {
+	javax.servlet.http.HttpServletRequest request
+}
 <!DOCTYPE html>
 <html>
 <head>
-
+	
 	<title>About us</title>
 	<!-- link additional CSS file -->
 	<!--<link rel="stylesheet" type="text/css" href="../CSS/stylesheet.css"> -->
@@ -17,27 +20,38 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Import materialize.css-->
 	<link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"  media="screen,projection"/>
-	
-	<script>
-window.onload = function() {
-  var context = new AudioContext();
-}
-</script>
+
 </head>
 <body>
 	<nav class="  cyan darken-2">
-		<div >
-			<a href="/" class="brand-logo"><img src="statics/IMG/ris8.png"></img></a>
-			<a href="#" class="sidenav-trigger right" data-target="mobile-nav">
-				<i class="material-icons">menu</i>
-			</a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li><a href="login">Login</a></li>
-				<li><a href="sign-in">Sign-in</a></li>
-				<li><a href="configuration">Configuration</a></li>
-			</ul>
-		</div>
-	</nav>
+			<div >
+				<a href="/" class="brand-logo"><img src="statics/IMG/ris8.png"></a>
+				<a href="#" class="sidenav-trigger right" data-target="mobile-nav">
+					<i class="material-icons">menu</i>
+				</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+
+					@if(request.getSession().getAttribute("isAdmin")){
+						<li><a href="administrator">Administrator</a></li>
+					}
+
+					<li><a href="configuration">Configuration</a></li>
+
+					@if(request!=null){
+						@if((String)request.getSession().getAttribute("email") == null){
+							<li><a href="login">Login</a></li>
+							<li><a href="sign-in" method="post">Sign-up</a></li>
+						}else{
+							<li><a href="logout"> Logout</a></li>
+							<li><a href="profile"> Profile</a></li>
+						}
+					}else{
+						<li><a href="logout"> Logout</a></li>
+						<li><a href="profile"> Profile</a></li>
+					}
+				</ul>
+			</div>
+		</nav>
 
 	<div class="slider">
 		<ul class="slides">
@@ -96,15 +110,9 @@ window.onload = function() {
 		</ul>
 	</div>
 	<h5 style="text-align: center;">Our grateful thanks goes to NullPointerException and Rythm for joining us in this trip.
-		<br><br><br><marquee>By Ris8 team</marquee>
+	 <br><br><br><marquee>By Ris8 team</marquee>
 	</h5>
-	
-	<div>
-		<iframe src="statics/IMG/silence.mp3" allow="autoplay" id="audio" style="display: none"></iframe>
-		<audio id="player" autoplay>
-		  <source src="statics/IMG/theme.mp3" type="audio/mpeg">
-		</audio>
-	</div>
+
 </body>
 </html>
 
@@ -113,14 +121,11 @@ window.onload = function() {
 	document.addEventListener('DOMContentLoaded', function() {
 		var elems = document.querySelectorAll('.slider');
 		var instances = M.Slider.init(elems, options);
-        document.querySelector('#player').autoplay = true;
-
 	});
 
+  // Or with jQuery
 
-// Or with jQuery
-
-$(document).ready(function(){
-	$('.slider').slider();
-});
+  $(document).ready(function(){
+  	$('.slider').slider();
+  });
 </script>

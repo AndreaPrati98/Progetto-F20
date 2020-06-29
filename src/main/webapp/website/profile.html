@@ -4,8 +4,8 @@
 	String email,
 	boolean isAdmin,
 	List<main.model.configurator.configuration.Configuration> conf,
-		javax.servlet.http.HttpServletRequest request
-	}
+	javax.servlet.http.HttpServletRequest request
+}
 
 	<!DOCTYPE html>
 	<html>
@@ -51,7 +51,7 @@
 				</a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 
-					@if(isAdmin){
+					@if(request.getSession().getAttribute("isAdmin")){
 						<li><a href="administrator">Administrator</a></li>
 					}
 

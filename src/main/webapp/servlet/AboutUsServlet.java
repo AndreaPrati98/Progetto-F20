@@ -24,6 +24,6 @@ public class AboutUsServlet extends MyServlet{
  *  Renders the aboutUs html
  */
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().write(Rythm.render("aboutUs.html"));
+		response.getWriter().write(Rythm.render("aboutUs.html", request));
 	}
 }
