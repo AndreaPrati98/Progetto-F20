@@ -35,9 +35,7 @@ public class Mail {
 
 	/**
 	 * Sends an email upon signing up, to the email chosen by the user.
-	 * 
-	 * @param to
-	 * @param user
+	 *
 	 */
 	public Mail(String to, String user) {
 

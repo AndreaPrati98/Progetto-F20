@@ -116,7 +116,6 @@ public class Configurator {
 	 * inside the configurator
 	 * 
 	 * @param confId
-	 * @return
 	 */
 	public void retrieveConfigurationById(int confId) {
 		PersistenceFacade facade = PersistenceFacade.getIstance();

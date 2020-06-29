@@ -12,8 +12,7 @@ import main.model.configurator.constraint.ConstraintChecker;
 import main.model.configurator.constraint.InterfaceConstraintChecker;
 
 /**
- * @author Capici Alessandro ,Frenkli Buzhiqi
- * @co_author Cic
+ * @author Capici Alessandro ,Frenkli Buzhiqi,Cic
  */
 
 public class Configuration {

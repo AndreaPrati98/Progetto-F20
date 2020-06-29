@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import main.model.configurator.ComponentCatalog;
 import main.model.configurator.component.Attribute;
 import main.model.configurator.component.Component;
 

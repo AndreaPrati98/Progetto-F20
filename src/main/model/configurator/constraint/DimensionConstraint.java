@@ -18,8 +18,7 @@ public class DimensionConstraint extends AbstractConstraint {
 	/**
 	 * 
 	 * @param name
-	 * @param value
-	 * @param constraintType {@link ConstraintType}
+	 * @param constraintType {@link ConstraintCategory}
 	 */
 	public DimensionConstraint(String name) {
 		super(name);
@@ -29,7 +28,6 @@ public class DimensionConstraint extends AbstractConstraint {
 	/**
 	 * Check if this Constraint is compatible with the list of others constraints given
 	 * 
-	 * @param Constraint type:{@link Constraint}
 	 * @return true if the component will respect the constraint,false if it will not respect the costraint
 	 */
 	@Override

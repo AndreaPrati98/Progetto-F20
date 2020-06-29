@@ -116,8 +116,6 @@ public class Component {
 	/**
 	 * 
 	 * @return price
-	 * 
-	 * @desc fornisce indicazioni relative al prezzo amazon
 	 */
 	
 	public double getPrice() {

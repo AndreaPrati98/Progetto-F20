@@ -124,7 +124,6 @@ public class ConfigurationServlet extends MyServlet {
 	 * 
 	 * If the user is not logged, it redirects to login.
 	 * 
-	 * @see add, autofill, check, getPerformance, redirect to logout, remove, save.
 	 *  
 	 * @param request
 	 * @param response

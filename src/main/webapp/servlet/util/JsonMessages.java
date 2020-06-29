@@ -11,7 +11,7 @@ import main.webapp.servlet.ServletController;
 
 /**
  * Define methods for generating standard json responses to POST requests
- * @return
+ * 
  */
 
 public class JsonMessages {

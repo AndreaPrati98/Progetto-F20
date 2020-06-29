@@ -17,7 +17,7 @@ public class ConstraintChecker implements InterfaceConstraintChecker {
 	}
 	/**
 	 * 
-	 * @return List<Contraints> the list of the Constraints that are not respected from
+	 * @return List of Contraint the list of the Constraints that are not respected from
 	 * the new component with the previous components.
 	 */
 	@Override

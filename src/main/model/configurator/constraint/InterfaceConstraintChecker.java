@@ -20,8 +20,8 @@ public interface InterfaceConstraintChecker {
 	 * 
 	 * @return List of Constraints that are not respected
 	 * 
-	 * @see Constraint
-	 * @see Component 
+	 * @see {@link ConstraintChecker}
+	 * @see {@link Component} 
 	 */
 	List<AbstractConstraint> check(Component newComponent, List<Component> oldComponents);
 	

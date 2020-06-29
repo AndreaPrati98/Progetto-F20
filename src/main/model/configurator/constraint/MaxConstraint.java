@@ -23,7 +23,6 @@ public class MaxConstraint extends AbstractConstraint {
 	/**
 	 * Check if this Constraint is compatible with the list of others constraints given
 	 * 
-	 * @param Constraint type:{@link Constraint}
 	 * @return true if the component will respect the constraint,false if it will not respect the costraint
 	 */	
 	@Override
