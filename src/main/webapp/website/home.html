@@ -37,7 +37,11 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;
-		<button type ="submit" class="waves-effect waves-light btn" value ="View" style="background-color: #0097a7;" id="viewBtn">View</button>
+		<form method="get" action="configuration">
+			<input type="hidden" name="configurationId" value="@conf1.getId()"/>
+			<button type ="submit" class="waves-effect waves-light btn" value ="View" style="background-color: #0097a7;" id="viewBtn">View</button>
+			
+		</form>
 	</div>
 </div>
 </div>
@@ -63,7 +67,10 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;
-		<button type ="submit" class="waves-effect waves-light btn" value ="View" style="background-color: #0097a7;" id="viewBtn">View</button>
+		<form method="get" action="configuration">
+			<input type="hidden" name="configurationId" value="@conf2.getId()"/>
+			<button type ="submit" class="waves-effect waves-light btn" value ="View" style="background-color: #0097a7;" id="viewBtn">View</button>
+		</form>
 	</div>
 	<div class="col s7">
 		<div>
@@ -103,8 +110,10 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;
-		<button type ="submit" class="waves-effect waves-light btn" value ="View" style="background-color: #0097a7;" id="viewBtn">View</button>
-	</div>
+		<form method="get" action="configuration">
+			<input type="hidden" name="configurationId" value="@conf3.getId()"/>
+			<button type ="submit" class="waves-effect waves-light btn" value ="View" style="background-color: #0097a7;" id="viewBtn">View</button>
+		</form>	</div>
 </div>
 </div>
 </div>
