@@ -169,7 +169,7 @@ public class AdministratorServlet extends MyServlet {
 			while (o.hasNext()) {
 				att = o.next();
 				if (!att.equals(PRICE) && !att.equals(NAME) && !att.equals(TYPE)) {
-					pf.addAttribute(type, model, att.toLowerCase(), (String) j.get(att));
+					pf.addAttribute(type, model, att, ((String) j.get(att)).toLowerCase());
 				}
 			}
 
