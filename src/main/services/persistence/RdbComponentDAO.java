@@ -47,7 +47,7 @@ public class RdbComponentDAO implements InterfaceComponentDAO {
 		String model, typeOfComponent, stringPrice;
 		String nameStdAtt, attValue, constraintName, category;
 		boolean isPresentable, isBinding;
-		double price = -1; // settato a -1 perchè è un valore non valido
+		double price = -1; // settato a -1 perche' e' un valore non valido
 
 		try {
 			while (allComp.next()) {

@@ -33,16 +33,16 @@ public class EqualsConstraint extends AbstractConstraint {
 		List<Attribute> oldAttributesAlreadyChecked = this.selectAttributeSameName(oldCheckedComponents);
 		List<Attribute> newAttributesToCheck = this.selectAttributeSameName(componentToCheck);
 				
-		//Se una delle due liste è null, significa che una delle due non aveva componenti con attributi
-		//che fossero da controllare da questo vincolo, quindi non può andare in conflitto con l'altra lista
-		//quindi per questo vincolo è tutto ok
+		//Se una delle due liste e' null, significa che una delle due non aveva componenti con attributi
+		//che fossero da controllare da questo vincolo, quindi non puï¿½ andare in conflitto con l'altra lista
+		//quindi per questo vincolo e' tutto ok
 		if(oldAttributesAlreadyChecked == null || newAttributesToCheck == null) {
 			return true;
 		}
 		//Devo fare un doppio ciclo for per iterare sulla lista dei nuovi attributi esternamente e poi
 		//uno interno per iterare sulla lista di vecchi attributi.
 		//Controllo i nuovi sui vecchi per ridurre le iterazioni necessarie
-		//Arrivato a questo punto ho già filtrato gli attributi per nome relativo a questo vincolo, 
+		//Arrivato a questo punto ho gia' filtrato gli attributi per nome relativo a questo vincolo, 
 		//quindi devo controllare solo che abbiano valore diverso per dire che sono incompatibili
 		for(Attribute newAttribute : newAttributesToCheck) {
 			for(Attribute oldAttribute : oldAttributesAlreadyChecked) {

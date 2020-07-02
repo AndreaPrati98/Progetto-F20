@@ -29,14 +29,14 @@ public class AbstractConstraintTestTriple {
 	 */
 	private static ArrayList<Object[]> initializeAttributesForEqualsTrue() {
 		/*
-		 * Costruisco così la lista, almeno creo un Component con un 
+		 * Costruisco cosi' la lista, almeno creo un Component con un 
 		 * attributo solo e riesco a provare il funzionamento dei singoli constraint.
 		 * Qui posso sfruttare il fatto che non ho internal ed external per
 		 * "interlacciare" gli attribti.
 		 */
 		
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
-		//NOTA BENE: la prima tupla è quellache viene inserita come nuova!
+		//NOTA BENE: la prima tupla e' quellache viene inserita come nuova!
 		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true, null});
 		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true, null});		
 		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true, null});
@@ -58,13 +58,13 @@ public class AbstractConstraintTestTriple {
 	 */
 	private static ArrayList<Object[]> initializeAttributesForEqualsFalse() {
 		/*
-		 * Costruisco così la lista, almeno creo tre Component con un solo
+		 * Costruisco cosi' la lista, almeno creo tre Component con un solo
 		 * attributo.
 		 * 
 		 */
 		
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
-		//NOTA BENE: la prima tupla è quellache viene inserita come nuova!		
+		//NOTA BENE: la prima tupla e' quellache viene inserita come nuova!		
 		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true, null});
 		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true, null});
 		buff.add(new Object[] {"cpuSocket", "1201", "CpuSocket", true, true, null});
@@ -86,7 +86,7 @@ public class AbstractConstraintTestTriple {
 	 */
 	private static ArrayList<Object[]> initializeAttributesForDimensionTrue() {
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
-		//NOTA BENE: la prima tupla è quella che viene inserita come nuova!
+		//NOTA BENE: la prima tupla e' quella che viene inserita come nuova!
 		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
 		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
 		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "internal"});
@@ -121,7 +121,7 @@ public class AbstractConstraintTestTriple {
 	 */
 	private static ArrayList<Object[]> initializeAttributesForDimensionFalse() {
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
-		//NOTA BENE: la prima tupla è quellache viene inserita come nuova!
+		//NOTA BENE: la prima tupla e' quellache viene inserita come nuova!
 		buff.add(new Object[] {"ramSize", "4", "RamSize", true, true, "external"});		
 		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "external"});
 		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
@@ -139,7 +139,7 @@ public class AbstractConstraintTestTriple {
 	 */
 	private static ArrayList<Object[]> initializeAttributesForMaxTrue(){
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
-		//NOTA BENE: la prima tupla è quellache viene inserita come nuova!
+		//NOTA BENE: la prima tupla ï¿½ quellache viene inserita come nuova!
 		buff.add(new Object[] {"power", "750", "Power", true, true, "external"});
 		buff.add(new Object[] {"power", "65", "Power", true, true, "internal"});
 		buff.add(new Object[] {"power", "600", "Power", true, true, "internal"});
@@ -161,7 +161,7 @@ public class AbstractConstraintTestTriple {
 	 */
 	private static ArrayList<Object[]> initializeAttributesForMaxFalse(){
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
-		//NOTA BENE: la prima tupla è quellache viene inserita come nuova!
+		//NOTA BENE: la prima tupla e' quellache viene inserita come nuova!
 		buff.add(new Object[] {"power", "750", "Power", true, true, "internal"});
 		buff.add(new Object[] {"power", "65", "Power", true, true, "internal"});
 		buff.add(new Object[] {"power", "65", "Power", true, true, "external"});

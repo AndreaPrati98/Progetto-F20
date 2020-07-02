@@ -178,7 +178,7 @@ public class ProfileServlet extends MyServlet {
 
 		oldPassword = hashingPassword.getHashPsw(oldPassword);
 		newPassword = hashingPassword.getHashPsw(newPassword);
-		// invio al controller psw vecchia e psw nuova, lui gestirà il resto
+		// invio al controller psw vecchia e psw nuova, lui gestira' il resto
 		boolean isDone = controller.changePassword(newPassword, oldPassword);
 		// TODO aggiungere alert
 		if (!isDone) {
@@ -204,9 +204,9 @@ public class ProfileServlet extends MyServlet {
 		String oldEmail = request.getParameter(OLD_EMAIL);
 		String newEmail = request.getParameter(NEW_EMAIL);
 
-		// invio al controller mail vecchia e mail nuova, lui gestirà il resto
+		// invio al controller mail vecchia e mail nuova, lui gestira' il resto
 		boolean isDone = controller.changeEmail(newEmail, oldEmail);
-		// TODO aggiungere alert
+		
 		if (!isDone) {
 			response.sendRedirect(PROFILE);
 		} else {

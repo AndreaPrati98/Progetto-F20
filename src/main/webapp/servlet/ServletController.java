@@ -276,10 +276,10 @@ public class ServletController {
 		
 		boolean isDone = false;
 		if (oldPswFromDb.equals(oldPassword)) {
-			System.out.println("La password vecchia è giusta, procedo a cambiarla");
+			System.out.println("La password vecchia e' giusta, procedo a cambiarla");
 			isDone = pf.changePassword(email, newPassword);
 		} else {
-			System.out.println("La vecchia password non è corretta");
+			System.out.println("La vecchia password non e' corretta");
 		}
 		
 		return isDone;
@@ -301,7 +301,7 @@ public class ServletController {
 			System.out.println("Procedo a cambiare la mail");
 			isDone = pf.changeMail(oldEmail, newEmail);
 		} else {
-			System.out.println("La vecchia mail è sbagliata");
+			System.out.println("La vecchia mail e' sbagliata");
 		}
 		
 		return isDone;

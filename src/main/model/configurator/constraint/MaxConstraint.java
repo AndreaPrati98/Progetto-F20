@@ -29,13 +29,13 @@ public class MaxConstraint extends AbstractConstraint {
 		List<Attribute> oldAttributesAlreadyChecked = this.selectAttributeSameName(oldCheckedComponents);
 		List<Attribute> newAttributesToCheck = this.selectAttributeSameName(componentToCheck);
 		
-		//Se una delle due liste è null, significa che una delle due non aveva componenti con attributi
-		//che fossero da controllare da questo vincolo, quindi non può andare in conflitto con l'altra lista
-		//quindi per questo vincolo è tutto ok
+		//Se una delle due liste e null, significa che una delle due non aveva componenti con attributi
+		//che fossero da controllare da questo vincolo, quindi non puo' andare in conflitto con l'altra lista
+		//quindi per questo vincolo e' tutto ok
 		if(oldAttributesAlreadyChecked == null || newAttributesToCheck == null)
 			return true;
 		
-		//Metto insieme le due liste perchè i max constraint vanno controllati sulla totalità degli attributi
+		//Metto insieme le due liste perche i max constraint vanno controllati sulla totalita' degli attributi
 		//della confugurazione
 		List<Attribute> attributesToCheck = oldAttributesAlreadyChecked;
 		attributesToCheck.addAll(newAttributesToCheck);
@@ -45,8 +45,8 @@ public class MaxConstraint extends AbstractConstraint {
 		List<Attribute> externalAttributesFilteredList = this.filterAttributesList(attributesToCheck, ConstraintCategory.EXTERNAL);
 		
 		
-		//Per prima cosa controllo che nessuna delle due lista sia nulla, poichè in tal caso sicuramente
-		//i componenti sono compatibili poichè o non esistono ancora internal o non esistono external
+		//Per prima cosa controllo che nessuna delle due lista sia nulla, poiche' in tal caso sicuramente
+		//i componenti sono compatibili poiche' o non esistono ancora internal o non esistono external
 				
 		if(internalAttributesFilteredList.isEmpty() || externalAttributesFilteredList.isEmpty())
 			return true;

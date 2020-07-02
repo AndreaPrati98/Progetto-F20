@@ -21,12 +21,12 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 	public PriceAutoFiller(double priceScope) {
 		componentTypes = new ArrayList<>();
 		// Nella lista aggiungo nell'ordine i tipi di componenti a partire da quelli che hanno
-		// più vincoli da rispettare, che quindi voglio che siano aggiunti per primi
+		// piu' vincoli da rispettare, che quindi voglio che siano aggiunti per primi
 		// Avremmo potuto scaricare l'elenco dei tipi di componenti dal database, ma non sarebbero
 		// stati nell'ordine voluto, quindi abbiamo scelto di inserirli a mano
 		if(priceScope <= 500) {
 			// Se voglio una configurazione a basso prezzo aggiungo solo le componenti essenziali
-			// (cioè quelle che nel database sono needed)
+			// (cioe' quelle che nel database sono needed)
 			componentTypes.add("mobo");
 			componentTypes.add("cpu");
 			componentTypes.add("ram");
@@ -68,12 +68,12 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 		
 		List<Component> completeConfig = new ArrayList<>(alreadyInside);
 		for(String typeComp : componentTypes) {
-			// Controllo se tra i componenti già presenti ce n'è uno del tipo specificato
+			// Controllo se tra i componenti gia' presenti ce n'e' uno del tipo specificato
 			if(!containsTypeComponent(typeComp, completeConfig)) {
 				List<Component> compatibleComp = new ArrayList<>();
 				compatibleComp = getCompatibleComponents(typeComp, completeConfig);
 				if(compatibleComp.isEmpty()) {
-					// Se non ci sono componenti compatibili allora l'autocompletamento è fallito
+					// Se non ci sono componenti compatibili allora l'autocompletamento e' fallito
 					return alreadyInside;
 				}
 				
@@ -107,7 +107,7 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 		double priceScopeByType = percentageMap.get(typeOfComponent)*priceScope;
 		
 		for (Component component : compatibleComp) {
-			//se diff è negativa allora è il primo giro
+			//se diff e' negativa allora e' il primo giro
 			if (diff < 0) {
 				diff = component.getPrice() - priceScopeByType;
 				diff = Math.abs(diff);
@@ -115,7 +115,7 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 			} else {
 				temp = component.getPrice() - priceScopeByType;
 				temp = Math.abs(temp);
-				//se ho minimizzato ancora di più la differenza di prezzo mi salvo la componente
+				//se ho minimizzato ancora di piu' la differenza di prezzo mi salvo la componente
 				if(temp < diff) {
 					diff = temp;
 					bestComponent = component;

@@ -31,7 +31,7 @@ public class AbstractConstraintTestCouples {
 	 */
 	private static ArrayList<Object[]> initializeAttributesForEqualsTrue() {
 		/*
-		 * Costruisco così la lista, almeno creo un Component con un 
+		 * Costruisco cosi' la lista, almeno creo un Component con un 
 		 * attributo solo e riesco a provare il funzionamento dei singoli constraint.
 		 * Qui posso sfruttare il fatto che non ho internal ed external per
 		 * "interlacciare" gli attribti.
@@ -57,7 +57,7 @@ public class AbstractConstraintTestCouples {
 	 */
 	private static ArrayList<Object[]> initializeAttributesForEqualsFalse() {
 		/*
-		 * Costruisco così la lista, almeno creo un Component con un 
+		 * Costruisco cosi' la lista, almeno creo un Component con un 
 		 * attributo solo e riesco a provare il funzionamento dei singoli constraint.
 		 * Qui posso sfruttare il fatto che non ho internal ed external per
 		 * "interlacciare" gli attribti.

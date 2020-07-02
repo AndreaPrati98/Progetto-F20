@@ -17,7 +17,7 @@ public class RandomAutofiller extends AbstractAutoFiller {
 	public RandomAutofiller() {
 		componentTypes = new ArrayList<>();
 		// Nella lista aggiungo nell'ordine i tipi di componenti a partire da quelli che hanno
-		// più vincoli da rispettare, che quindi voglio che siano aggiunti per primi.
+		// piu' vincoli da rispettare, che quindi voglio che siano aggiunti per primi.
 		// Avremmo potuto scaricare l'elenco dei tipi di componenti dal database, ma non sarebbero
 		// stati nell'ordine voluto, quindi abbiamo scelto di inserirli a mano
 		componentTypes.add("mobo");
@@ -47,12 +47,12 @@ public class RandomAutofiller extends AbstractAutoFiller {
 		
 		List<Component> completeConfig = new ArrayList<>(alreadyInside);
 		for(String typeComp : componentTypes) {
-			// Controllo se tra i componenti già presenti ce n'è uno del tipo specificato
+			// Controllo se tra i componenti giu' presenti ce n'e' uno del tipo specificato
 			if(!containsTypeComponent(typeComp, completeConfig)) {
 				List<Component> compatibleComp = new ArrayList<>();
 				compatibleComp = getCompatibleComponents(typeComp, completeConfig);
 				if(compatibleComp.isEmpty()) {
-					// Se non ci sono componenti compatibili allora l'autocompletamento è fallito
+					// Se non ci sono componenti compatibili allora l'autocompletamento e' fallito
 					return alreadyInside;
 				}
 				// Genero un numero casuale con cui scegliere quale tra gli elementi compatibili 

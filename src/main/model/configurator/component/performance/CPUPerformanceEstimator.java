@@ -12,7 +12,7 @@ import main.model.configurator.component.Attribute;
  */
 public class CPUPerformanceEstimator implements InterfacePerformanceEstimator {
 
-	/* Abbiamo diviso così in base a quanti attributi consideriamo
+	/* Abbiamo diviso cosi' in base a quanti attributi consideriamo
 	 * in questo caso 100/5
 	 */
 	private static final double MAX_POINT_RAM_TYPE = 20;
@@ -52,7 +52,7 @@ public class CPUPerformanceEstimator implements InterfacePerformanceEstimator {
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 			/*
-			 * Ritorno valore negativo perchè non ho abbastanza info per calcolare un
+			 * Ritorno valore negativo perche' non ho abbastanza info per calcolare un
 			 * indice di performance
 			 */
 			return -1;

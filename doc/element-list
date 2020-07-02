@@ -1,0 +1,13 @@
+main
+main.model.configurator
+main.model.configurator.component
+main.model.configurator.component.performance
+main.model.configurator.configuration
+main.model.configurator.configuration.autofill
+main.model.configurator.constraint
+main.model.customer
+main.services.persistence
+main.services.util
+main.webapp.servlet
+main.webapp.servlet.util
+test

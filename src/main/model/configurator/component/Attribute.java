@@ -62,7 +62,7 @@ public class Attribute {
 			String constraintCategory) {
 		this(name, value, constraintName, isBinding, isPresentable);
 		
-		// L'ho fatto così se no avrei dovuto far vedere al CompoenntDAO l'enum ConstraintCategory
+		// L'ho fatto cosi' se no avrei dovuto far vedere al CompoenntDAO l'enum ConstraintCategory
 		for (ConstraintCategory elem : ConstraintCategory.values()) {
 			String categoryElem = elem.name();
 			if(categoryElem.equalsIgnoreCase(constraintCategory))

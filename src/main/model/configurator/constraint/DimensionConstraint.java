@@ -35,9 +35,9 @@ public class DimensionConstraint extends AbstractConstraint {
 		List<Attribute> oldAttributesAlreadyChecked = this.selectAttributeSameName(oldCheckedComponents);
 		List<Attribute> newAttributesToCheck = this.selectAttributeSameName(componentToCheck);
 		
-		//Se una delle due liste è null, significa che una delle due non aveva componenti con attributi
-		//che fossero da controllare da questo vincolo, quindi non può andare in conflitto con l'altra lista
-		//quindi per questo vincolo è tutto ok
+		//Se una delle due liste  null, significa che una delle due non aveva componenti con attributi
+		//che fossero da controllare da questo vincolo, quindi non puo andare in conflitto con l'altra lista
+		//quindi per questo vincolo  tutto ok
 		if(oldAttributesAlreadyChecked == null || newAttributesToCheck == null) {
 			return true;
 		}
@@ -52,7 +52,7 @@ public class DimensionConstraint extends AbstractConstraint {
 		for(Attribute newAttribute : newAttributesToCheck) {
 			//Eseguo un ciclo interno diverso a seconda della categoria dell'attribute
 			
-			//Se il newAttribute è internal deve essere minore di tutti gli external
+			//Se il newAttribute  internal deve essere minore di tutti gli external
 			if(newAttribute.getConstraintCategory() == ConstraintCategory.INTERNAL) {
 				
 				for(Attribute oldExternalAttribute : externalAttributesFilteredList) {
@@ -64,7 +64,7 @@ public class DimensionConstraint extends AbstractConstraint {
 					}
 				}			
 			}
-			//Se il newAttribute è external deve essere maggiore di tutti gli intenal
+			//Se il newAttribute  external deve essere maggiore di tutti gli intenal
 			if(newAttribute.getConstraintCategory() == ConstraintCategory.EXTERNAL) {
 				for(Attribute oldInternalAttribute : internalAttributesFilteredList) {
 					double newExternallValue = Double.parseDouble(newAttribute.getValue()); 
