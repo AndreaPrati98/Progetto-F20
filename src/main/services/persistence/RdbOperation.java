@@ -150,9 +150,22 @@ public class RdbOperation {
 			pstmt.setString(1, type);
 			pstmt.setString(2, model);
 			// execute the delete statement
-			if (pstmt.executeUpdate() == 1) {
-				return true;
-			}
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+		
+		sql = "DELETE FROM Attribute WHERE ModelofC = ? AND TypeofC = ?";
+		try (PreparedStatement pstmt = c.prepareStatement(sql)) {
+
+			pstmt.setString(1, model);
+			pstmt.setString(2, type);
+			// execute the delete statement
+			pstmt.executeUpdate();
+			return true;
+			
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
