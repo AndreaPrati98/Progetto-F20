@@ -210,6 +210,8 @@ function performance(){
 
 	posting.done(function(data) {
 		  var convertedData =  JSON.parse(data);
+		  console.log(convertedData['response']);
+
 		  if(convertedData['response'] != '-1'){
 			  	console.log(convertedData['response']);
 			  	let value = parseFloat(convertedData['response']);
@@ -218,7 +220,7 @@ function performance(){
 			  	$("#performanceLabel").text(str);
 		  }else if(convertedData['response'] == 'redirect'){
 				 window.location.replace("/logout");
-		  }else{
+		  }else if(convertedData['response'] == '-1'){
 			  alert("Alcuni componenti non sono valutabili");
 		  }	
 	}); 
