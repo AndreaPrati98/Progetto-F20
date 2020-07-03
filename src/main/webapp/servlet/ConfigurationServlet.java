@@ -248,8 +248,6 @@ public class ConfigurationServlet extends MyServlet {
 	private void getPerformance(HttpServletRequest request, HttpServletResponse response, ServletController controller)
 			throws IOException {
 		double performance = controller.getPerformanceIndex();
-//		if(performance == -1)
-//			performance = 0.0;
 		String json = JsonMessages.getJsonPerformanceResponse(performance);
 		response.getWriter().write(json);
 	}
