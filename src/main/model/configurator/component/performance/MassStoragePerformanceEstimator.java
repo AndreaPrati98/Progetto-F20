@@ -23,7 +23,7 @@ public class MassStoragePerformanceEstimator implements InterfacePerformanceEsti
 	@Override
 	public double computePerformance(Map<String, Attribute> componentAttributes) {
 		Attribute att1 = componentAttributes.get("size");
-		Attribute att2 = componentAttributes.get("type");
+		Attribute att2 = componentAttributes.get("storageType");
 		
 		if(att1 == null ||att2 == null) {
 			return -1;
