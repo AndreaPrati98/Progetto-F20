@@ -36,8 +36,8 @@ public class PriceAutoFiller extends AbstractAutoFiller {
 		} else {
 			// Se voglio una configurazione con un prezzo sopra una certa soglia allora 
 			// nella confgurazione verranno aggiunte tutte le componenti
-			componentTypes.add("mobo");
 			componentTypes.add("cpu");
+			componentTypes.add("mobo");
 			componentTypes.add("ram");
 			componentTypes.add("case");
 			componentTypes.add("gpu");
