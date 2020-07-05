@@ -24,19 +24,15 @@ import main.model.configurator.constraint.MaxConstraint;
 public class AbstractConstraintTestTriple {
 
 	/**
-	 * Qui devo avere tutti gli attribute che poi verranno provati con assertTrue
+	 * This is the oracle for cases that has to assert true with EqualsConstraint's 
+	 * checkList method
+	 * 
 	 * @see EqualsConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForEqualsTrue() {
-		/*
-		 * Costruisco cosi' la lista, almeno creo un Component con un 
-		 * attributo solo e riesco a provare il funzionamento dei singoli constraint.
-		 * Qui posso sfruttare il fatto che non ho internal ed external per
-		 * "interlacciare" gli attribti.
-		 */
 		
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
-		//NOTA BENE: la prima tupla e' quellache viene inserita come nuova!
+		//NOTA BENE: la prima tupla e' quella che viene inserita come nuova!
 		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true, null});
 		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true, null});		
 		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true, null});
@@ -53,18 +49,15 @@ public class AbstractConstraintTestTriple {
 	} 
 	
 	/**
-	 * Qui devo avere tutti gli attribute che poi verranno provati con assertFalse
+	 * This is the oracle for cases that has to assert false with EqualsConstraint's 
+	 * checkList method
+	 * 
 	 * @see EqualsConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForEqualsFalse() {
-		/*
-		 * Costruisco cosi' la lista, almeno creo tre Component con un solo
-		 * attributo.
-		 * 
-		 */
 		
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
-		//NOTA BENE: la prima tupla e' quellache viene inserita come nuova!		
+		//NOTA BENE: la prima tupla e' quella che viene inserita come nuova!		
 		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true, null});
 		buff.add(new Object[] {"cpuSocket", "1200", "CpuSocket", true, true, null});
 		buff.add(new Object[] {"cpuSocket", "1201", "CpuSocket", true, true, null});
@@ -80,11 +73,14 @@ public class AbstractConstraintTestTriple {
 		return buff;		
 	} 
 	
-	/**
-	 * Qui devo avere tutti gli attribute che poi verranno provati con assertTrue
+	/** 
+	 * This is the oracle for cases that has to assert true with DimensionConstraint's 
+	 * checkList method
+	 * 
 	 * @see DimensionConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForDimensionTrue() {
+		
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
 		//NOTA BENE: la prima tupla e' quella che viene inserita come nuova!
 		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "external"});
@@ -115,13 +111,15 @@ public class AbstractConstraintTestTriple {
 
 	}
 	
-	/**
-	 * Qui devo avere tutti gli attribute che poi verranno provati con assertFalse
+	/** 
+	 * This is the oracle for cases that has to assert false with DimensionConstraint's 
+	 * checkList method
+	 * 
 	 * @see DimensionConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForDimensionFalse() {
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
-		//NOTA BENE: la prima tupla e' quellache viene inserita come nuova!
+		//NOTA BENE: la prima tupla e' quella che viene inserita come nuova!
 		buff.add(new Object[] {"ramSize", "4", "RamSize", true, true, "external"});		
 		buff.add(new Object[] {"ramSize", "8", "RamSize", true, true, "external"});
 		buff.add(new Object[] {"ramSize", "16", "RamSize", true, true, "internal"});
@@ -134,12 +132,14 @@ public class AbstractConstraintTestTriple {
 	}
 	
 	/**
-	 * Qui devo avere tutti gli attribute che poi verranno provati con assertTrue
+	 * This is the oracle for cases that has to assert true with MaxConstraint's 
+	 * checkList method
+	 * 
 	 * @see MaxConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForMaxTrue(){
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
-		//NOTA BENE: la prima tupla � quellache viene inserita come nuova!
+		//NOTA BENE: la prima tupla e quella che viene inserita come nuova!
 		buff.add(new Object[] {"power", "750", "Power", true, true, "external"});
 		buff.add(new Object[] {"power", "65", "Power", true, true, "internal"});
 		buff.add(new Object[] {"power", "600", "Power", true, true, "internal"});
@@ -156,12 +156,14 @@ public class AbstractConstraintTestTriple {
 	}
 	
 	/**
-	 * Qui devo avere tutti gli attribute che poi verranno provati con assertFalse
+	 * This is the oracle for cases that has to assert false with MaxConstraint's 
+	 * checkList method
+	 * 
 	 * @see MaxConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForMaxFalse(){
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
-		//NOTA BENE: la prima tupla e' quellache viene inserita come nuova!
+		//NOTA BENE: la prima tupla e' quella che viene inserita come nuova!
 		buff.add(new Object[] {"power", "750", "Power", true, true, "internal"});
 		buff.add(new Object[] {"power", "65", "Power", true, true, "internal"});
 		buff.add(new Object[] {"power", "65", "Power", true, true, "external"});
@@ -177,6 +179,11 @@ public class AbstractConstraintTestTriple {
 		return buff;				
 	}
 		
+	/**
+	 * Support method for the creation of a List of Attributes, strating by a List of Objects
+	 * @param attBuff - List of Objects to convert into List of Attributes
+	 * @return List of attributes that has are usable 3 by 3
+	 */
 	private static ArrayList<Attribute> createAttributesTriple(ArrayList<Object[]> attBuff) {
 		
 		ArrayList<Attribute> attributesList = new ArrayList<Attribute>(); 
@@ -211,12 +218,7 @@ public class AbstractConstraintTestTriple {
 				boolean isPresentable3 = (boolean)attBuff.get(k)[4];
 				String constraintCategory3 = (String)attBuff.get(k)[5];				
 				Attribute oldAtt2 = new Attribute(name3, value3, constraintName3, isBinding3, isPresentable3, constraintCategory3);
-				
-				//System.out.println(name1 +" "+value1+" "+ constraintCategory1);
-				//System.out.println(name2 +" "+value2+" "+ constraintCategory2);			
-				//System.out.println(name3 +" "+value3+" "+ constraintCategory3);					
-				//System.out.println();
-				
+								
 				attributesList.add(oldAtt);
 				attributesList.add(oldAtt2);
 				attributesList.add(newAtt);

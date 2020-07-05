@@ -26,16 +26,12 @@ import main.model.configurator.constraint.MaxConstraint;
 public class AbstractConstraintTestCouples {
 		
 	/**
-	 * Qui devo avere tutti gli attribute che poi verranno provati con assertTrue
+	 * This is the oracle for cases that has to assert true with EqualsConstraint's 
+	 * checkList method
+	 * 
 	 * @see EqualsConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForEqualsTrue() {
-		/*
-		 * Costruisco cosi' la lista, almeno creo un Component con un 
-		 * attributo solo e riesco a provare il funzionamento dei singoli constraint.
-		 * Qui posso sfruttare il fatto che non ho internal ed external per
-		 * "interlacciare" gli attribti.
-		 */
 		
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
 		
@@ -52,16 +48,12 @@ public class AbstractConstraintTestCouples {
 	} 
 	
 	/**
-	 * Qui devo avere tutti gli attribute che poi verranno provati con assertFalse
+	 * This is the oracle for cases that has to assert false with EqualsConstraint's 
+	 * checkList method
+	 * 
 	 * @see EqualsConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForEqualsFalse() {
-		/*
-		 * Costruisco cosi' la lista, almeno creo un Component con un 
-		 * attributo solo e riesco a provare il funzionamento dei singoli constraint.
-		 * Qui posso sfruttare il fatto che non ho internal ed external per
-		 * "interlacciare" gli attribti.
-		 */
 		
 		ArrayList<Object[]> buff = new ArrayList<Object[]>();
 		
@@ -77,8 +69,10 @@ public class AbstractConstraintTestCouples {
 		return buff;		
 	} 
 	
-	/**
-	 * Qui devo avere tutti gli attribute che poi verranno provati con assertTrue
+	/** 
+	 * This is the oracle for cases that has to assert true with DimensionConstraint's 
+	 * checkList method
+	 * 
 	 * @see DimensionConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForDimensionTrue() {
@@ -101,8 +95,10 @@ public class AbstractConstraintTestCouples {
 		return buff;		
 	}
 
-	/**
-	 * Qui devo avere tutti gli attribute che poi verranno provati con assertFalse
+	/** 
+	 * This is the oracle for cases that has to assert false with DimensionConstraint's 
+	 * checkList method
+	 * 
 	 * @see DimensionConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForDimensionFalse() {
@@ -119,7 +115,9 @@ public class AbstractConstraintTestCouples {
 	}
 
 	/**
-	 * Qui devo avere tutti gli attribute che poi verranno provati con assertTrue
+	 * This is the oracle for cases that has to assert true with MaxConstraint's 
+	 * checkList method
+	 * 
 	 * @see MaxConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForMaxTrue(){
@@ -141,7 +139,9 @@ public class AbstractConstraintTestCouples {
 	}
 	
 	/**
-	 * Qui devo avere tutti gli attribute che poi verranno provati con assertFalse
+	 * This is the oracle for cases that has to assert false with MaxConstraint's 
+	 * checkList method
+	 * 
 	 * @see MaxConstraint
 	 */
 	private static ArrayList<Object[]> initializeAttributesForMaxFalse(){
@@ -158,9 +158,9 @@ public class AbstractConstraintTestCouples {
 	}
 
 	/**
+	 * Support method for the creation of a List of Attributes, strating by a List of Objects
 	 * @param attBuff
-	 * @return attriuteList - elements goes 2 by 2
-	 * 
+	 * @return List of attributes that has are usable 2 by 2
 	 */
 	private static ArrayList<Attribute> createAttributesCouples(ArrayList<Object[]> attBuff) {
 		
@@ -187,10 +187,6 @@ public class AbstractConstraintTestCouples {
 				boolean isPresentable2 = (boolean)attBuff.get(j)[4];
 				String constraintCategory2 = (String)attBuff.get(j)[5];				
 				Attribute oldAtt = new Attribute(name2, value2, constraintName2, isBinding2, isPresentable2, constraintCategory2);
-
-				//System.out.println(name1 +" "+value1+" "+ constraintCategory1);
-				//System.out.println(name2 +" "+value2+" "+ constraintCategory2);			
-				//System.out.println();
 				
 				attributesList.add(oldAtt);
 				attributesList.add(newAtt);
@@ -202,10 +198,6 @@ public class AbstractConstraintTestCouples {
 	}
 	
 	
-	
-	/**
-	 * This test should consider ok
-	 */
 	@Test
 	public void trueTestCheckListOnDimension() {
 
@@ -236,9 +228,6 @@ public class AbstractConstraintTestCouples {
 		
 	}
 
-	/**
-	 * This test should consider ok
-	 */
 	@Test
 	public void falseTestCheckListOnDimension() {
 
