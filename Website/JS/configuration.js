@@ -37,6 +37,7 @@ $("#resetBtn").click(function(){
 	previouslyCheckedCheckbox.prop("checked", false);
 	previouslyCheckedCheckbox.trigger('change');
 	$(".collection-item").remove();
+	$("#totalPrice").text("0");
 });
 
 $("#saveBtn").click(function(){
