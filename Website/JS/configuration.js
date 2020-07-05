@@ -38,6 +38,8 @@ $("#resetBtn").click(function(){
 	previouslyCheckedCheckbox.trigger('change');
 	$(".collection-item").remove();
 	$("#totalPrice").text("0");
+	$("#performanceLabel").text("0%");
+	$("#performanceValue").css("width", "0%");
 });
 
 $("#saveBtn").click(function(){
